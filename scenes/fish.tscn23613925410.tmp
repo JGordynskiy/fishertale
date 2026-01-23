@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0m4623tpxvua"]
+
+[ext_resource type="Script" uid="uid://bhiwhge6dfr8p" path="res://Scripts/fishMovement.gd" id="1_8g0i4"]
+[ext_resource type="Texture2D" uid="uid://drt8nw4o3bfv" path="res://Assets/fish.png" id="2_nub35"]
+[ext_resource type="Script" uid="uid://t68tkcrx4pao" path="res://Scripts/fishFace.gd" id="3_nub35"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nub35"]
+
+[node name="fish" type="CharacterBody2D"]
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_8g0i4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nub35")
+flip_h = true
+script = ExtResource("3_nub35")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(184, 4)
+rotation = 1.5707964
+scale = Vector2(16.766972, 21.778332)
+shape = SubResource("CapsuleShape2D_nub35")

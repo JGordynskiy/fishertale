@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://df3qjfdbfmxtg"]
+
+[ext_resource type="Script" uid="uid://djym14i1vkpyf" path="res://scenes/ui/boss1healthbar.gd" id="1_3dfc5"]
+[ext_resource type="Texture2D" uid="uid://0u3obyrl87sb" path="res://Assets/pixelart_skull.png" id="2_48l5p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dokc1"]
+bg_color = Color(0.033853274, 0.03385329, 0.033853233, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.54509807, 0.3529412, 0.16862746, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dfc5"]
+bg_color = Color(0.62, 0.155, 0.17049998, 1)
+
+[node name="bosshealthbar" type="CanvasLayer"]
+script = ExtResource("1_3dfc5")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.4077726
+anchor_top = 0.8890072
+anchor_right = 0.77
+anchor_bottom = 0.953392
+offset_left = -0.7540283
+offset_top = -1.0766602
+offset_right = 30.742676
+offset_bottom = 32.201965
+scale = Vector2(0.61778605, 0.37181658)
+size_flags_horizontal = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_dokc1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3dfc5")
+step = 0.5
+value = 99.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ProgressBar"]
+position = Vector2(-39.546112, 37.794556)
+scale = Vector2(0.22682452, 0.37687677)
+texture = ExtResource("2_48l5p")

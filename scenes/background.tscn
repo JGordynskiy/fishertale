@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn2bjqurecbev"]
+
+[ext_resource type="Texture2D" uid="uid://mwccbo0i7u8g" path="res://Assets/watercave.png" id="1_bkp1e"]
+[ext_resource type="Texture2D" uid="uid://bpy514bil6top" path="res://Assets/watercavefore.png" id="1_y0upk"]
+
+[node name="Background" type="StaticBody2D" groups=["objects"]]
+
+[node name="foregr" type="Sprite2D" parent="."]
+z_index = 1000
+position = Vector2(-414.99997, 1031)
+scale = Vector2(2.71, 2.71)
+texture = ExtResource("1_y0upk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["objects"]]
+scale = Vector2(2.71, 2.71)
+polygon = PackedVector2Array(-851.29156, 1651.6606, -546.4945, 1832.8414, -367.5277, 1800.7382, -156.82658, 1789.668, 56.088566, 1829.5204, 169.37271, 1760.8857, 577.8598, 1798.8931, 847.9705, 1670.1108, 1322.5093, 386.71588, 698.52405, -657.56464, 431.36533, -860.14764, 220.66422, -856.8266, -10.332104, -782.28784, -545.7565, -892.989, -804.4281, -908.4871, -1626.5684, -1143.1735, -1296.31, -1382.6569, 1307.0111, -1416.2362, 1460.1477, 413.28415, 1307.0111, 2182.657, -1339.4835, 2200.3691, -1281.919, 250.92253)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.71, 2.71)
+texture = ExtResource("1_bkp1e")

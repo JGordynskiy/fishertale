@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://f2stv0etrp1"]
+
+[ext_resource type="Texture2D" uid="uid://biljmjygnte0k" path="res://Assets/bubble.png" id="1_0ot80"]
+[ext_resource type="Script" uid="uid://dcnilrv8nhq01" path="res://Scripts/bubble_explosion.gd" id="1_jc8qa"]
+
+[sub_resource type="Curve" id="Curve_jc8qa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7038835, 0.7191012), 0.0, 0.0, 0, 0, Vector2(0.9708738, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="BubbleExplosion" type="Node2D"]
+scale = Vector2(51.606003, 51.606003)
+script = ExtResource("1_jc8qa")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 900
+scale = Vector2(0.9007828, 0.9007828)
+emitting = false
+amount = 60
+texture = ExtResource("1_0ot80")
+lifetime = 4.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -2000)
+initial_velocity_min = 25.0
+initial_velocity_max = 75.0
+linear_accel_min = 45.0
+linear_accel_max = 45.0
+scale_amount_min = 0.8
+scale_amount_curve = SubResource("Curve_jc8qa")
+color = Color(1, 1, 1, 0.49411765)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

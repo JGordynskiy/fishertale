@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwhh0mgm82iav"]
+
+[ext_resource type="Script" uid="uid://6owsco7pfjuc" path="res://Scripts/spike.gd" id="2_7a7y0"]
+[ext_resource type="Texture2D" uid="uid://b7umjsd0qo6h0" path="res://Assets/spikeBall.png" id="2_et748"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i6l4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2b0l"]
+
+[node name="Spike" type="CharacterBody2D" groups=["objects"]]
+
+[node name="damageArea" type="Area2D" parent="." groups=["dangerObj"]]
+script = ExtResource("2_7a7y0")
+
+[node name="Sprite2D" type="Sprite2D" parent="damageArea"]
+texture = ExtResource("2_et748")
+
+[node name="damagezone" type="CollisionShape2D" parent="damageArea"]
+scale = Vector2(126.535, 126.535)
+shape = SubResource("CircleShape2D_2i6l4")
+debug_color = Color(0.8693157, 0.32715964, 0.3496942, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["objects"]]
+position = Vector2(0, 18.999998)
+scale = Vector2(85.57, 85.57)
+shape = SubResource("CircleShape2D_s2b0l")
+
+[connection signal="body_entered" from="damageArea" to="damageArea" method="_on_body_entered"]
+[connection signal="body_exited" from="damageArea" to="damageArea" method="_on_body_exited"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://by7vcs52nv2vp"]
+
+[ext_resource type="Script" uid="uid://0vdnodgxs1eu" path="res://scenes/ui/fps_counter.gd" id="1_0xo0n"]
+[ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="2_tx82a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tx82a"]
+font = ExtResource("2_tx82a")
+font_size = 20
+font_color = Color(0.86, 0.86, 0.86, 1)
+
+[node name="FPS counter" type="CanvasLayer"]
+script = ExtResource("1_0xo0n")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -117.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = 39.0
+grow_horizontal = 0
+text = "60 FPS"
+label_settings = SubResource("LabelSettings_tx82a")

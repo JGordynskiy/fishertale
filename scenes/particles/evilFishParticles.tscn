@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://deh86lghlnitr"]
+
+[ext_resource type="Script" uid="uid://cx6xh7jpffnxm" path="res://Scripts/evilFishParticles.gd" id="1_1ekvh"]
+[ext_resource type="Texture2D" uid="uid://biljmjygnte0k" path="res://Assets/bubble.png" id="2_pyv65"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pyv65"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 750.0
+emission_ring_inner_radius = 750.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -100.0
+attractor_interaction_enabled = false
+scale_min = 81.82
+scale_max = 156.81999
+hue_variation_min = 0.09999997
+hue_variation_max = 0.09999997
+
+[sub_resource type="Curve" id="Curve_1ekvh"]
+_data = [Vector2(0.30573252, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pyv65"]
+curve = SubResource("Curve_1ekvh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rha6e"]
+particle_flag_disable_z = true
+radial_velocity_min = 999.99994
+radial_velocity_max = 3000.0
+gravity = Vector3(0, -1000, 0)
+scale_min = 100.0
+scale_max = 200.0
+scale_curve = SubResource("CurveTexture_pyv65")
+
+[sub_resource type="Curve" id="Curve_pyv65"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rha6e"]
+curve = SubResource("Curve_pyv65")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ekvh"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 100.0
+gravity = Vector3(0, -4000, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_rha6e")
+
+[node name="Node2D" type="Node2D"]
+z_index = -200
+script = ExtResource("1_1ekvh")
+
+[node name="charge" type="GPUParticles2D" parent="."]
+scale = Vector2(3.2480185, 3.2480185)
+emitting = false
+amount = 200
+lifetime = 7.0
+one_shot = true
+speed_scale = 13.95
+visibility_rect = Rect2(-500, -500, 1000, 1000)
+process_material = SubResource("ParticleProcessMaterial_pyv65")
+
+[node name="splosion" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0.5, 0.5, 1)
+scale = Vector2(-49.374607, -49.374607)
+emitting = false
+amount = 200
+lifetime = 4.0
+one_shot = true
+speed_scale = 5.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rha6e")
+
+[node name="trail" type="GPUParticles2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(21.608011, 19.369713)
+emitting = false
+amount = 200
+texture = ExtResource("2_pyv65")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_1ekvh")

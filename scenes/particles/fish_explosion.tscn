@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs5tttc7qqu37"]
+
+[ext_resource type="Script" uid="uid://hjsreemr6426" path="res://Scripts/fish_explosion.gd" id="1_4yari"]
+
+[node name="fishExplosion" type="Node2D"]
+z_index = 1000
+script = ExtResource("1_4yari")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 0.54899997, 0.33999997, 1)
+scale = Vector2(51.212467, 51.212467)
+emitting = false
+amount = 200
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, -5000)
+initial_velocity_min = 25.0
+initial_velocity_max = 175.0
+scale_amount_min = 100.0
+scale_amount_max = 200.0
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

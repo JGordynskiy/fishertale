@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://dq5rons5tejqv"]
+
+[ext_resource type="Script" uid="uid://bjuxhw134thd0" path="res://Scripts/projectiles/enemy_bullet.gd" id="1_13kv7"]
+[ext_resource type="Texture2D" uid="uid://b80s2e757wl8l" path="res://Assets/enemies/enemyBullet/fishBulletEvilpop1.png" id="2_upu7t"]
+[ext_resource type="Texture2D" uid="uid://b3vfa6iae4csv" path="res://Assets/enemies/enemyBullet/fishBulletEvilpop2.png" id="3_me7kd"]
+[ext_resource type="Texture2D" uid="uid://cqbqok2mbqcla" path="res://Assets/enemies/enemyBullet/fishBulletEvilpop3.png" id="4_yh3mi"]
+[ext_resource type="Texture2D" uid="uid://dtmphugkwweuf" path="res://Assets/enemies/enemyBullet/fishBulletEvil1.png" id="5_upu7t"]
+[ext_resource type="Texture2D" uid="uid://dx6kdpb3o2era" path="res://Assets/enemies/enemyBullet/fishBulletEvil2.png" id="6_me7kd"]
+[ext_resource type="Texture2D" uid="uid://cij2er4x73e15" path="res://Assets/enemies/enemyBullet/fishBulletEvil3.png" id="7_yh3mi"]
+[ext_resource type="Texture2D" uid="uid://cyys701b2ts8k" path="res://Assets/enemies/enemyBullet/fishBulletEvil4.png" id="8_ynd4k"]
+[ext_resource type="AudioStream" uid="uid://c4rgtq0scxm76" path="res://Assets/sounds/enemyShoot.ogg" id="10_me7kd"]
+[ext_resource type="AudioStream" uid="uid://g4oya8qr7l7x" path="res://Assets/sounds/enemyShootPop.ogg" id="11_yh3mi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2l1h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oarcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_upu7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_me7kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yh3mi")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("5_upu7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_me7kd")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_yh3mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ynd4k")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 60.0
+}]
+
+[node name="EnemyBullet" type="CharacterBody2D" groups=["dangerObj"]]
+z_index = 300
+rotation = -1.5707964
+scale = Vector2(2, 2)
+script = ExtResource("1_13kv7")
+
+[node name="area2d" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area2d"]
+visible = false
+z_index = 15
+position = Vector2(428.00003, 2.861023e-06)
+scale = Vector2(15.4447, -14.07353)
+shape = SubResource("CircleShape2D_v2l1h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="area2d" groups=["dangerObj"]]
+position = Vector2(392.78082, 4.491716)
+scale = Vector2(0.595, 0.595)
+sprite_frames = SubResource("SpriteFrames_oarcu")
+animation = &"shoot"
+frame_progress = 0.8599967
+offset = Vector2(-622.773, -13.81)
+
+[node name="shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_me7kd")
+volume_db = -5.0
+max_polyphony = 40
+
+[node name="pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_yh3mi")
+max_polyphony = 99
+
+[connection signal="body_entered" from="area2d" to="." method="_on_area_2d_body_entered"]

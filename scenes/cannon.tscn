@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://1jlslaopwk34"]
+
+[ext_resource type="Script" uid="uid://dh8ia8258s6eo" path="res://Scripts/cannon.gd" id="1_xuqfy"]
+
+[node name="Cannon" type="Node2D" groups=["objects"]]
+script = ExtResource("1_xuqfy")
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(232, 0.99997973)
+color = Color(1, 0.35000002, 0.35000002, 0.49803922)
+polygon = PackedVector2Array(-376, -50.999966, -253, -54.999977, -255, 68.00002, -374, 72.00003)
+uv = PackedVector2Array(-406, -43, -258, -45, -258, 67, -417, 77)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(2.0000002, 1)
+rotation = 1.5707964
+color = Color(0.38605642, 0.42105904, 0.41760203, 1)
+offset = Vector2(383, -7)
+polygon = PackedVector2Array(-498, -6, -415, -51, -296, -60, -228, -7, -239.3905, 163.88544, -302.99997, 161.99998, -307.7456, 27.175446, -444.45554, 23.37796, -442.99997, 179.00002, -509.01306, 175.27795)
+uv = PackedVector2Array(-498, -6, -426, -59, -296, -60, -228, -7, -239.3905, 163.88544, -326.73303, 163.88544, -307.7456, 27.175446, -391.29053, 23.37796, -410.27808, 182.87299, -509.01306, 175.27795)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+z_index = -55
+position = Vector2(1.0000001, 3)
+rotation = 1.5707964
+scale = Vector2(0.99, 0.99)
+color = Color(0, 0, 0, 1)
+offset = Vector2(383, -7)
+polygon = PackedVector2Array(-518.3535, -14.212103, -416.33334, -65.727264, -289.0606, -69.767685, -218.35355, -7.1414347, -231.48485, 170.63634, -312.2929, 171.64644, -318.35355, 34.272717, -436.53534, 32.252533, -434.51514, 188.81818, -521.3838, 183.76768)
+uv = PackedVector2Array(-498, -6, -426, -59, -296, -60, -228, -7, -239.3905, 163.88544, -326.73303, 163.88544, -307.7456, 27.175446, -391.29053, 23.37796, -410.27808, 182.87299, -509.01306, 175.27795)
+
+[node name="CannonBody" type="StaticBody2D" parent="." groups=["objects"]]
+position = Vector2(6.9999995, -3.0000007)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CannonBody" groups=["objects"]]
+visible = false
+polygon = PackedVector2Array(17.000013, 156, 67.00001, 87.99999, 58.999996, -31.000006, 15.99999, -111, -168.00002, -124.999985, -170, -59.999985, -15.000006, -65, -14.999993, 80, -151, 82.000015, -151.99998, 141.00002)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, 3)
+rotation = 1.5707964
+scale = Vector2(1.0586594, 1.0586594)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-42.424248, -65.65656, -133.33333, -22.222206, -138.3838, 175.75758, -51.51513, 181.81818, -57.575752, 20.202026, 66.666664, 24.242416, 69.69699, 162.62625, 148.48486, 163.63632, 163.63635, -14.141434, 93.939384, -75.75759, -30.303038, -71.71717)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

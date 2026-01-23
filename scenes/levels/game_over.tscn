@@ -1,0 +1,192 @@
+[gd_scene load_steps=15 format=3 uid="uid://ckvml63hdsptk"]
+
+[ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_lpwf7"]
+[ext_resource type="Script" uid="uid://dn67wjet7fw7d" path="res://Scripts/gameover.gd" id="1_qy7gw"]
+[ext_resource type="FontFile" uid="uid://cao7skrrs3un5" path="res://Assets/fonts/Urban Shadow Sans Serif.otf" id="2_org1n"]
+[ext_resource type="AudioStream" uid="uid://ch8atmhcgq6on" path="res://Assets/sounds/uiHoveron.ogg" id="4_trggy"]
+[ext_resource type="AudioStream" uid="uid://cfuurh6fhfc7" path="res://Assets/sounds/uiHoveroff.ogg" id="5_i47r0"]
+[ext_resource type="AudioStream" uid="uid://dc6du6htd3uph" path="res://Assets/sounds/uiSelect.ogg" id="6_nesse"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy7gw"]
+bg_color = Color(0.067656614, 0.13840568, 0.41978937, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.06666667, 0.13725491, 0.41960785, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdwfc"]
+bg_color = Color(0.026177606, 0.07163545, 0.254907, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.02745098, 0.07058824, 0.25490198, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lw2kh"]
+bg_color = Color(0.12543598, 0.22955105, 0.64107025, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.1254902, 0.23137255, 0.6392157, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_org1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_org1n"]
+bg_color = Color(0.026177606, 0.07163545, 0.254907, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.02745098, 0.07058824, 0.25490198, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="Animation" id="Animation_lw2kh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qy7gw"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gdwfc"]
+_data = {
+&"RESET": SubResource("Animation_lw2kh"),
+&"fadein": SubResource("Animation_qy7gw")
+}
+
+[node name="GameOver" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_qy7gw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0000043, 1.0000141)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.05433341, 0.10799139, 0.26628348, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0012
+offset_top = 35.994934
+offset_right = 571.9988
+offset_bottom = 236.99493
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6399988, 0.6399988)
+size_flags_horizontal = 4
+theme_override_constants/separation = 200
+
+[node name="Retry" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_org1n")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_qy7gw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdwfc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lw2kh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
+text = "Retry"
+
+[node name="Quit" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_org1n")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_qy7gw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_org1n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lw2kh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
+text = "Quit
+"
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.50125
+offset_top = 144.99796
+offset_right = 284.49878
+offset_bottom = 211.99796
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_lpwf7")
+theme_override_font_sizes/font_size = 66
+text = "GAME OVER"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gdwfc")
+}
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="ui" type="Node" parent="sounds"]
+
+[node name="hoveron" type="AudioStreamPlayer" parent="sounds/ui"]
+stream = ExtResource("4_trggy")
+
+[node name="hoveroff" type="AudioStreamPlayer" parent="sounds/ui"]
+stream = ExtResource("5_i47r0")
+
+[node name="select" type="AudioStreamPlayer" parent="sounds/ui"]
+stream = ExtResource("6_nesse")
+
+[connection signal="mouse_entered" from="ColorRect/HBoxContainer/Retry" to="." method="_on_retry_mouse_entered"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="mouse_entered" from="ColorRect/HBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

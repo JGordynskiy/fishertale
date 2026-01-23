@@ -1,0 +1,159 @@
+[gd_scene load_steps=19 format=3 uid="uid://dylvrepm3tkw"]
+
+[ext_resource type="Script" uid="uid://bww8vkou1mqo1" path="res://Scripts/game2.gd" id="1_ee6yk"]
+[ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="1_f04mu"]
+[ext_resource type="PackedScene" uid="uid://5nhpv0faw0iy" path="res://scenes/entities/wallfish.tscn" id="2_1lsou"]
+[ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="2_33nkf"]
+[ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="2_c6ity"]
+[ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="2_f04mu"]
+[ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="2_urfkc"]
+[ext_resource type="Script" uid="uid://d0ih20pv4k5dg" path="res://scenes/ui/boss2healthbar.gd" id="3_b1pko"]
+[ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="6_33nkf"]
+[ext_resource type="PackedScene" uid="uid://pnkhtusxqtg4" path="res://scenes/backgroundlushcave.tscn" id="8_1lsou"]
+[ext_resource type="PackedScene" uid="uid://kkrhhsaofeou" path="res://scenes/objects/fan.tscn" id="8_c6ity"]
+[ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="8_oevex"]
+[ext_resource type="PackedScene" uid="uid://cwhh0mgm82iav" path="res://scenes/spike.tscn" id="13_hshte"]
+[ext_resource type="Texture2D" uid="uid://b8t1paljw5m18" path="res://Assets/tutMouse2.png" id="14_q6hs2"]
+
+[sub_resource type="Animation" id="Animation_qirlt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cu3vh"]
+resource_name = "fadein"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iy4g1"]
+resource_name = "fadeout"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy4g1"]
+_data = {
+&"RESET": SubResource("Animation_qirlt"),
+&"fadein": SubResource("Animation_cu3vh"),
+&"fadeout": SubResource("Animation_iy4g1")
+}
+
+[node name="Game2" type="Node2D"]
+script = ExtResource("1_ee6yk")
+
+[node name="GameOver" parent="." instance=ExtResource("2_urfkc")]
+
+[node name="bosshealthbar" parent="." instance=ExtResource("2_c6ity")]
+script = ExtResource("3_b1pko")
+
+[node name="Wallfish" parent="." instance=ExtResource("2_1lsou")]
+position = Vector2(22877.002, -20737)
+rotation = -1.5707964
+scale = Vector2(3.5921154, 3.5921154)
+
+[node name="fish" parent="." instance=ExtResource("1_f04mu")]
+z_index = 500
+position = Vector2(6032.0005, -21576.998)
+
+[node name="followCam" parent="fish" instance=ExtResource("2_33nkf")]
+position = Vector2(-168.00041, -0.001953125)
+limit_left = -4735
+limit_top = -29380
+limit_right = 20275
+limit_bottom = -11390
+limit_smoothed = true
+
+[node name="hpBar" parent="." instance=ExtResource("2_f04mu")]
+
+[node name="Pause Menu" parent="." instance=ExtResource("6_33nkf")]
+
+[node name="faderect" type="CanvasLayer" parent="."]
+layer = 136
+visible = false
+
+[node name="faderect" type="ColorRect" parent="faderect"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 805
+offset_left = 33187.004
+offset_top = -5831.0
+offset_right = 33227.004
+offset_bottom = -5791.0
+scale = Vector2(-1134.1254, -704.4781)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="faderect/faderect"]
+libraries = {
+&"": SubResource("AnimationLibrary_iy4g1")
+}
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_oevex")
+
+[node name="backgroundlushcave" parent="." instance=ExtResource("8_1lsou")]
+z_index = -500
+position = Vector2(11731, -20556.998)
+rotation = 1.5707964
+scale = Vector2(7.060037, 8.813087)
+
+[node name="fan" parent="." instance=ExtResource("8_c6ity")]
+position = Vector2(-3710, -20416.002)
+scale = Vector2(4.503764, 4.503764)
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color(0.32, 0.65999997, 1, 1)
+position = Vector2(11052, -28700.002)
+scale = Vector2(2.2823844, 2.2823844)
+
+[node name="Spike" parent="Node2D" instance=ExtResource("13_hshte")]
+position = Vector2(-2585.8923, 7242.8647)
+scale = Vector2(0.8787021, 0.8787021)
+
+[node name="Spike2" parent="Node2D" instance=ExtResource("13_hshte")]
+position = Vector2(-537.5952, 7052.275)
+scale = Vector2(0.7570561, 0.7570561)
+
+[node name="Spike3" parent="Node2D" instance=ExtResource("13_hshte")]
+position = Vector2(-2216.5415, -234.8418)
+scale = Vector2(0.7570561, 0.7570561)
+
+[node name="Spike4" parent="Node2D" instance=ExtResource("13_hshte")]
+
+[node name="tutmouse" type="Sprite2D" parent="."]
+modulate = Color(0.53, 0.6866667, 1, 0.5529412)
+z_index = -500
+position = Vector2(145.00018, -24740.998)
+rotation = -0.30237585
+scale = Vector2(2.795344, 2.795344)
+texture = ExtResource("14_q6hs2")

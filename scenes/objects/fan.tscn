@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://kkrhhsaofeou"]
+
+[ext_resource type="Script" uid="uid://caej4poys5ywu" path="res://scenes/objects/fan.gd" id="1_4a2ra"]
+[ext_resource type="Texture2D" uid="uid://db2csu62rjl5v" path="res://Assets/objects/fan/fan1.png" id="1_esvne"]
+[ext_resource type="Texture2D" uid="uid://cxph4e75iue7" path="res://Assets/objects/fan/fan2.png" id="2_4a2ra"]
+[ext_resource type="Texture2D" uid="uid://biljmjygnte0k" path="res://Assets/bubble.png" id="4_r3x1e"]
+[ext_resource type="AudioStream" uid="uid://bqyf4gfn4x6k5" path="res://Assets/sounds/fanAmbient.ogg" id="5_f472r"]
+[ext_resource type="AudioStream" uid="uid://c4gugj553rm6x" path="res://Assets/sounds/fanStartup.ogg" id="6_j6gng"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3x1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_esvne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4a2ra")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 31.0
+}]
+
+[sub_resource type="Curve" id="Curve_esvne"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_f472r"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.034782603, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_j6gng"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_g8p1j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.034782603, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4a2ra"]
+
+[node name="fan" type="Node2D"]
+scale = Vector2(5.011665, 5.011665)
+script = ExtResource("1_4a2ra")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_r3x1e")
+animation = &"spin"
+frame_progress = 0.9166611
+
+[node name="windParts" type="CPUParticles2D" parent="."]
+position = Vector2(154.24014, -6.3851013)
+rotation = 1.5707964
+scale = Vector2(1135.4915, 85.14597)
+emitting = false
+amount = 120
+lifetime = 2.0
+speed_scale = 0.5
+explosiveness = 0.1
+randomness = 0.46
+fixed_fps = 60
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+particle_flag_align_y = true
+direction = Vector2(0, -26000)
+spread = 2.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+linear_accel_curve = SubResource("Curve_esvne")
+scale_amount_min = 126.0
+scale_amount_max = 126.0
+scale_amount_curve = SubResource("Curve_f472r")
+
+[node name="bubbleparts" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("4_r3x1e")
+lifetime = 2.0
+speed_scale = 0.5
+randomness = 0.46
+fixed_fps = 60
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1000)
+particle_flag_align_y = true
+direction = Vector2(900000, 0)
+spread = 4.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 4000.0
+initial_velocity_max = 4000.0
+linear_accel_curve = SubResource("Curve_j6gng")
+scale_amount_min = 0.79999995
+scale_amount_max = 0.79999995
+scale_amount_curve = SubResource("Curve_g8p1j")
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.235836e-06, -74.0273)
+scale = Vector2(120.44774, -30.223846)
+shape = SubResource("CircleShape2D_4a2ra")
+
+[node name="Fan ambience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_f472r")
+volume_db = 5.0
+max_distance = 90000.0
+max_polyphony = 196
+
+[node name="fan Startup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_j6gng")
+volume_db = 5.0
+max_distance = 90000.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="Fan ambience" to="." method="_on_fan_ambience_finished"]
+[connection signal="finished" from="fan Startup" to="." method="_on_fan_startup_finished"]

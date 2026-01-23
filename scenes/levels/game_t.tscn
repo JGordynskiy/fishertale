@@ -1,0 +1,269 @@
+[gd_scene load_steps=27 format=3 uid="uid://dcqxpeyuf7pqo"]
+
+[ext_resource type="Script" uid="uid://c7ecq3qk63hnj" path="res://scenes/levels/game_t.gd" id="1_hb3pr"]
+[ext_resource type="PackedScene" uid="uid://kufc7apr17a3" path="res://scenes/background_tut.tscn" id="2_yljmy"]
+[ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="3_uvv3c"]
+[ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="4_uq1e6"]
+[ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="5_qjl4i"]
+[ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="5_uvv3c"]
+[ext_resource type="AudioStream" uid="uid://5oaf8yaq4e7j" path="res://Assets/music/calm1loop.ogg" id="6_uq1e6"]
+[ext_resource type="AudioStream" uid="uid://u2ahh3vnkk2w" path="res://Assets/music/calm1first.ogg" id="7_inl3r"]
+[ext_resource type="AudioStream" uid="uid://5vg6k3wt1x70" path="res://Assets/music/calm1active.ogg" id="8_nefry"]
+[ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="8_srh48"]
+[ext_resource type="PackedScene" uid="uid://c7a222euope7n" path="res://scenes/objects/tutLaster.tscn" id="9_k4blr"]
+[ext_resource type="Texture2D" uid="uid://ivs0bywl8l64" path="res://Assets/tutWASD.png" id="10_6rfn2"]
+[ext_resource type="Texture2D" uid="uid://bnmbw8e32ma7k" path="res://Assets/tutSpace.png" id="10_563oq"]
+[ext_resource type="PackedScene" uid="uid://crvo7jcworykb" path="res://scenes/objects/break_rock.tscn" id="12_2emxj"]
+[ext_resource type="Texture2D" uid="uid://djupfgmxb8xr1" path="res://Assets/tutPause.png" id="12_lv6ac"]
+[ext_resource type="Texture2D" uid="uid://dw3jatq8p1enc" path="res://Assets/tutMouse.png" id="14_oh18h"]
+[ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="16_cc187"]
+[ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="18_un2io"]
+[ext_resource type="PackedScene" uid="uid://du77jlb534rxn" path="res://scenes/entities/lunge_fish.tscn" id="19_o2a71"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yljmy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yljmy"]
+size = Vector2(20, 82.62999)
+
+[sub_resource type="Animation" id="Animation_qirlt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cu3vh"]
+resource_name = "fadein"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iy4g1"]
+resource_name = "fadeout"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy4g1"]
+_data = {
+&"RESET": SubResource("Animation_qirlt"),
+&"fadein": SubResource("Animation_cu3vh"),
+&"fadeout": SubResource("Animation_iy4g1")
+}
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_un2io"]
+vertices = PackedVector2Array(-18978.781, 7930.078, -10216.82, 5586.0703, -7975.0234, 7353.6563, -10235.781, 12656.406, -19517.71, 9468.594, 5572.211, -5697.0234, 10159.703, -5791.742, 8799.172, 880.3281, 1814.7188, -447.85156, -2132.5313, -3921, -3333.4375, -1262.9922, -4161.3984, -1547.5, -16939.773, -79.10156, -19086.906, 7075.297, -19045.047, 6695.922, -19171.25, 6408.4297, -19107.813, 5838.961, -25846.219, 6699.3594, -35520.4, 14260.18, -32685.602, 1277.3984, -25287.102, -325.96094, -24002.313, 3881.8594, -19250.313, 5783.3906, -19286.547, 5497, -21497.844, 10722.844, -20867.531, 10323.578, -20857.477, 10327.5, -20852.156, 10313.852, -22260.953, 10766.133, -24117.063, 9897.672, -25692.633, 8777.43, -21029.11, 3959.1016, -19210.094, 6101.367)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(9, 8, 10, 11), PackedInt32Array(11, 10, 2, 1), PackedInt32Array(12, 1, 0, 13, 14), PackedInt32Array(12, 14, 15, 16), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(16, 22, 23, 12), PackedInt32Array(24, 25, 26), PackedInt32Array(27, 4, 3, 26), PackedInt32Array(24, 26, 3), PackedInt32Array(24, 3, 18, 28), PackedInt32Array(29, 28, 18), PackedInt32Array(30, 29, 18), PackedInt32Array(17, 30, 18), PackedInt32Array(21, 20, 12, 31), PackedInt32Array(23, 31, 12), PackedInt32Array(16, 15, 32)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-32694, 1269, -35533, 14271, -10229, 12666, -7966, 7358, -3328, -1252, 1813, -438, 8807, 892, 10172, -5802, 5571, -5707, -2138, -3930, -4169, -1554, -10218, 5572, -16936, -89, -25288, -336), PackedVector2Array(-22259, 10756, -24112, 9889, -25683, 8772, -25836, 6702, -23997, 3892, -21033, 3969, -19296, 5502, -18989, 7929, -19526, 9462, -21501, 10713)])
+
+[node name="game_t" type="Node2D"]
+script = ExtResource("1_hb3pr")
+
+[node name="coverupcollision" type="StaticBody2D" parent="." groups=["objects"]]
+scale = Vector2(11.045784, 11.045784)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="coverupcollision"]
+visible = false
+polygon = PackedVector2Array(-1068.1903, -1862.8826, -825.47327, -1681.5464, -699.1807, -1555.3445, -693.83936, -1533.7977, -675.4613, -1513.247, -653.9146, -1494.9595, -633.3638, -1489.5275, -605.29877, -1476.5814, -578.3202, -1473.3223, -546.0001, -1469.0671, -503.90262, -1470.1536, -475.83762, -1477.6677, -445.5093, -1486.1777, -409.8396, -1508.6298, -384.12845, -1546.7439, -325.82565, -1712.8706, -697.008, -1898.4618)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.1254902)
+z_index = 1000
+offset_left = 55424.0
+offset_top = -38656.0
+offset_right = 55464.0
+offset_bottom = -38616.0
+scale = Vector2(-3306.4265, 1737.704)
+color = Color(2.887845e-05, 0.30066723, 0.75569415, 1)
+
+[node name="backgroundTut" parent="." instance=ExtResource("2_yljmy")]
+z_index = -320
+scale = Vector2(11.045784, 11.045784)
+
+[node name="fish" parent="." instance=ExtResource("3_uvv3c")]
+z_index = 500
+position = Vector2(-25506, -12573)
+
+[node name="followCam" parent="fish" instance=ExtResource("4_uq1e6")]
+limit_left = -33720
+limit_top = -25705
+limit_right = -13000
+limit_bottom = -8030
+limit_smoothed = true
+
+[node name="trigger1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger1"]
+position = Vector2(-16284, -12950)
+scale = Vector2(100, 100)
+shape = SubResource("CircleShape2D_yljmy")
+
+[node name="trigger2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger2"]
+position = Vector2(-4727, -14508)
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_yljmy")
+
+[node name="trigger3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger3"]
+position = Vector2(7946.001, -6521)
+scale = Vector2(-265.1824, 11.929243)
+shape = SubResource("RectangleShape2D_yljmy")
+
+[node name="trigger4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger4"]
+position = Vector2(-7533, 3680)
+rotation = 3.1415927
+scale = Vector2(265.1824, -11.929243)
+shape = SubResource("RectangleShape2D_yljmy")
+
+[node name="Pause Menu" parent="." instance=ExtResource("5_uvv3c")]
+layer = 2
+
+[node name="calmloop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_uq1e6")
+
+[node name="calmfirst" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_inl3r")
+
+[node name="calmactivity" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nefry")
+
+[node name="faderect" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="faderect" type="ColorRect" parent="faderect"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 805
+offset_left = 56459.0
+offset_top = 40909.996
+offset_right = 56499.0
+offset_bottom = 40949.996
+scale = Vector2(-5314.712, -3301.3088)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="faderect/faderect"]
+libraries = {
+&"": SubResource("AnimationLibrary_iy4g1")
+}
+
+[node name="Ambient Particles" parent="." instance=ExtResource("8_srh48")]
+z_index = 100
+position = Vector2(-12021, 18299)
+scale = Vector2(2.3644025, 7.4216585)
+
+[node name="Laser" parent="." instance=ExtResource("9_k4blr")]
+position = Vector2(-5974.0005, -14180.001)
+scale = Vector2(2.7856817, 2.7856817)
+
+[node name="coverup1" type="Polygon2D" parent="."]
+position = Vector2(-5034.001, -19148)
+scale = Vector2(19.056393, 19.056393)
+color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+polygon = PackedVector2Array(-143.36401, 104.05957, 41.50833, 103.58728, 81.28511, -8.133728, -30.278503, -26.237915, -257.394, -9.812988)
+uv = PackedVector2Array(-228.5, -42, -42.5, 95, 144.5, -69)
+
+[node name="coverup2" type="Polygon2D" parent="."]
+position = Vector2(-8689, -10399.999)
+rotation = 3.1415927
+scale = Vector2(19.056393, 19.056393)
+color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+polygon = PackedVector2Array(-109.20218, 98.602234, -30.121124, 112.71814, 79.868256, 102.85272, 213.68161, 94.08923, 163.30478, -55.99164, -321.362, 12.27948)
+uv = PackedVector2Array(-228.5, -42, -42.5, 95, 144.5, -69)
+
+[node name="tutPause" type="Sprite2D" parent="."]
+modulate = Color(0.6819995, 0.82573694, 1.0137012, 1)
+z_index = -100
+position = Vector2(5351, -1585)
+rotation = 0.35296178
+scale = Vector2(3.217335, 3.217335)
+texture = ExtResource("12_lv6ac")
+
+[node name="tutSpace" type="Sprite2D" parent="."]
+modulate = Color(0.88, 0.88, 0.88, 1)
+z_index = -120
+position = Vector2(-9640.999, -14848.001)
+rotation = 0.08767597
+scale = Vector2(1.642679, 1.5461042)
+texture = ExtResource("10_563oq")
+
+[node name="tutWASD" type="Sprite2D" parent="."]
+modulate = Color(0.47, 0.47, 0.47, 1)
+position = Vector2(-30524.002, -14148)
+rotation = -0.19269219
+scale = Vector2(2.759237, 2.5970185)
+texture = ExtResource("10_6rfn2")
+
+[node name="tutMouse" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(3443.0002, -13000.001)
+rotation = 0.40608487
+scale = Vector2(2.2998543, 2.2998543)
+texture = ExtResource("14_oh18h")
+
+[node name="breakRock" parent="." instance=ExtResource("12_2emxj")]
+modulate = Color(0.47, 0.47, 0.47, 1)
+position = Vector2(8256, -8237)
+rotation = 0.3171339
+scale = Vector2(18.684883, 18.684883)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_un2io")
+
+[node name="Object" parent="NavigationRegion2D" instance=ExtResource("5_qjl4i")]
+position = Vector2(-22192, 7222)
+rotation = 0.37169135
+
+[node name="GameOver" parent="." instance=ExtResource("16_cc187")]
+
+[node name="hpBar" parent="." instance=ExtResource("18_un2io")]
+
+[node name="lungeFish" parent="." instance=ExtResource("19_o2a71")]
+position = Vector2(-24968, 2905)
+scale = Vector2(0.69735014, 0.69735014)
+
+[node name="lungeFish2" parent="." instance=ExtResource("19_o2a71")]
+position = Vector2(-25742.002, 11914.001)
+scale = Vector2(0.69735014, 0.69735014)
+
+[node name="lungeFish3" parent="." instance=ExtResource("19_o2a71")]
+position = Vector2(-30407, 7303)
+scale = Vector2(0.69735014, 0.69735014)
+
+[connection signal="area_entered" from="trigger1" to="." method="_on_trigger_1_area_entered"]
+[connection signal="area_entered" from="trigger2" to="." method="_on_trigger_2_area_entered"]
+[connection signal="area_entered" from="trigger3" to="." method="_on_trigger_3_area_entered"]
+[connection signal="area_entered" from="trigger4" to="." method="_on_trigger_4_area_entered"]
+[connection signal="finished" from="calmfirst" to="." method="_on_calmfirst_finished"]

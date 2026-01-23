@@ -1,0 +1,214 @@
+[gd_scene load_steps=16 format=3 uid="uid://d2f2njwjm1mdb"]
+
+[ext_resource type="Texture2D" uid="uid://blky8mawp5lun" path="res://Assets/enemies/evilFish.png" id="1_6w7tp"]
+[ext_resource type="Script" uid="uid://xxhxnplho05k" path="res://Scripts/evil_fish.gd" id="1_xuvw8"]
+[ext_resource type="Texture2D" uid="uid://b5ujik5x2o62u" path="res://Assets/enemies/evilFishDead.png" id="3_y0tw7"]
+[ext_resource type="AudioStream" uid="uid://d4bgvenxd8xyu" path="res://Assets/sounds/enemyChargeup.ogg" id="4_s5mj2"]
+[ext_resource type="AudioStream" uid="uid://dnuqcywlrghpa" path="res://Assets/sounds/enemyBlast.ogg" id="5_4rtmy"]
+[ext_resource type="AudioStream" uid="uid://rtowf2k8mbcn" path="res://Assets/sounds/enemyBoss1death.ogg" id="6_4rtmy"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4rtmy"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 1500.0
+emission_ring_inner_radius = 1500.0
+emission_ring_cone_angle = 90.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -200.0
+radial_accel_max = -200.0
+scale_min = 50.0
+scale_max = 50.0
+color = Color(1, 0.41000003, 0.41000003, 1)
+
+[sub_resource type="Animation" id="Animation_0w853"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_4rtmy"]
+resource_name = "recoil"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(-600, 0, 0, 0.050000004, 66.66667, 0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.050000004, 0, 0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur1ch"]
+_data = {
+&"RESET": SubResource("Animation_0w853"),
+&"recoil": SubResource("Animation_4rtmy")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0tw7"]
+radius = 12.289959
+height = 35.732998
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xuvw8"]
+radius = 8.590401
+height = 35.732998
+
+[sub_resource type="Animation" id="Animation_ur1ch"]
+resource_name = "fadeaway"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qk5ja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ncq60"]
+_data = {
+&"RESET": SubResource("Animation_qk5ja"),
+&"fadeaway": SubResource("Animation_ur1ch")
+}
+
+[node name="evilFish" type="CharacterBody2D" groups=["enemies", "objects"]]
+top_level = true
+z_index = 500
+scale = Vector2(0.78756464, 0.78756464)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_xuvw8")
+
+[node name="miniCharge" type="GPUParticles2D" parent="."]
+position = Vector2(1070.3882, 74.91448)
+scale = Vector2(1.4747648, 1.4747648)
+emitting = false
+amount = 200
+lifetime = 5.0
+one_shot = true
+speed_scale = 15.0
+explosiveness = 0.25
+process_material = SubResource("ParticleProcessMaterial_4rtmy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-139, 0)
+texture = ExtResource("1_6w7tp")
+flip_h = true
+
+[node name="recoil" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ur1ch")
+}
+
+[node name="evilFish" type="Area2D" parent="." groups=["dangerObj", "enemyHitbox", "objects"]]
+position = Vector2(38.99997, 1.3855578e-13)
+rotation = 1.5707963
+scale = Vector2(52.699898, 72.61581)
+
+[node name="evilFish" type="CollisionShape2D" parent="evilFish" groups=["dangerObj", "enemies", "objects"]]
+position = Vector2(0.29768717, -1.6868744e-06)
+rotation = -3.1415927
+scale = Vector2(-1.0065125, -1.0094099)
+shape = SubResource("CapsuleShape2D_y0tw7")
+debug_color = Color(0.8740858, 0.31367257, 0.3913808, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies", "objects"]]
+position = Vector2(38.99997, 1.3855578e-13)
+rotation = -1.5707964
+scale = Vector2(-4.540733, -4.553804)
+shape = SubResource("CapsuleShape2D_xuvw8")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1000.0
+target_desired_distance = 1000.0
+path_max_distance = 485.0
+avoidance_enabled = true
+radius = 2000.0
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0.100000024, 0.100000024, 1)
+debug_path_custom_point_size = 250.0
+debug_path_custom_line_width = 20.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Dead" type="Sprite2D" parent="."]
+position = Vector2(-139, 0)
+texture = ExtResource("3_y0tw7")
+flip_h = true
+
+[node name="chargeup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_s5mj2")
+
+[node name="chargeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4rtmy")
+pitch_scale = 1.9
+
+[node name="deathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4rtmy")
+
+[node name="totalFade" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_ncq60")
+}
+
+[connection signal="area_entered" from="evilFish" to="." method="_on_area_2d_area_entered"]
+[connection signal="link_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_link_reached"]
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

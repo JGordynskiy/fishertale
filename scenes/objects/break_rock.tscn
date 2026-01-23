@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://crvo7jcworykb"]
+
+[ext_resource type="Script" uid="uid://vtednpsl46dw" path="res://scenes/objects/break_rock.gd" id="1_2ghs7"]
+[ext_resource type="Texture2D" uid="uid://c1im4mdfkcwic" path="res://Assets/objects/breakRock.png" id="1_8hyds"]
+[ext_resource type="AudioStream" uid="uid://ccis1wpch0sjs" path="res://Assets/sounds/rockHit.mp3" id="3_e0jvj"]
+[ext_resource type="AudioStream" uid="uid://b234r62u8yqlp" path="res://Assets/sounds/rockDestroy.mp3" id="4_oup5i"]
+
+[sub_resource type="Curve" id="Curve_2ghs7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9922779, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e0jvj"]
+curve = SubResource("Curve_2ghs7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oup5i"]
+particle_flag_disable_z = true
+radial_velocity_min = 329.70996
+radial_velocity_max = 1416.33
+gravity = Vector3(0, -600, 0)
+scale_min = 82.45
+scale_max = 82.45
+scale_curve = SubResource("CurveTexture_e0jvj")
+
+[node name="breakRock" type="Node2D"]
+script = ExtResource("1_2ghs7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["objects"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-90, -83, -114, -44, -130, -20, -146, 14, -155, 41, -143, 63, -120, 84, -101, 88, -86, 101, -74, 102, -51, 94, 41, 70, 96, 55, 116, 45, 133, 28, 152, -21, 155, -36, 143, -65, 129, -82, 40, -104, 5, -99, -40, -84, -60, -81)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8hyds")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+scale = Vector2(1.0670004, 1.0670004)
+polygon = PackedVector2Array(-90, -83, -114, -44, -130, -20, -146, 14, -155, 41, -143, 63, -120, 84, -101, 88, -86, 101, -74, 102, -51, 94, 41, 70, 96, 55, 116, 45, 133, 28, 152, -21, 155, -36, 143, -65, 129, -82, 40, -104, 5, -99, -40, -84, -60, -81)
+
+[node name="rockHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e0jvj")
+pitch_scale = 1.5
+
+[node name="rockDestroy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oup5i")
+volume_db = -6.0
+pitch_scale = 1.2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.33, 0.31317002, 0.2739, 1)
+position = Vector2(0, 44)
+scale = Vector2(0.73909426, 0.73909426)
+emitting = false
+amount = 450
+lifetime = 6.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_oup5i")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

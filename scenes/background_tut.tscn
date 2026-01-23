@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://kufc7apr17a3"]
+
+[ext_resource type="Texture2D" uid="uid://d1vkxuuq1imap" path="res://Assets/backgrounds/labtutbg.png" id="1_dc00k"]
+
+[node name="backgroundTut" type="StaticBody2D" groups=["objects"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-236, -2)
+texture = ExtResource("1_dc00k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-2468, -1357, -2545, -866, -2838, -898, -2786, -2457, -2078, -2428, 1161, -1870, 1420, -694, 1463, 89, 899, 472, -708, 1831, -3994, 1546, -3210, -323, -890, -246, -2557, -776, -2518, -1005, -1977, -1046, -2037, -1240, -2276, -1363, -2198, -1529, -1862, -1303, -1786, -1059, -927, -1118, -719, -1201, -587, -1100, 652, -632, 521, -586, 665, -569, -205, -363, -867, 416, -1544, -58, -2468, -72, -3027, 56, -3250, 1320, -873, 1172, -299, -69, 812, 98, 948, -564, 829, -586, 945, -622, 989, -739, 256, -1561, -498, -1751, -700, -1587, -1069, -1856, -1448, -1980, -1425, -1270, -1533, -1246, -1645, -1430, -1644, -1577, -1552, -2013, -2324, -2263, -2402, -1804, -2260, -1802, -2159, -1627, -2422, -1671)

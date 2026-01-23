@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0goxsbgvutup"]
+
+[ext_resource type="Script" uid="uid://du1ry8jcqdvgw" path="res://Scripts/projectiles/super_bullet.gd" id="1_etkvm"]
+[ext_resource type="Texture2D" uid="uid://bffoihedgm3k4" path="res://Assets/fishBullet/fly1.png" id="1_tlewr"]
+[ext_resource type="Texture2D" uid="uid://b0v6heri2gjpe" path="res://Assets/fishBullet/fly2.png" id="2_0bhlg"]
+[ext_resource type="Texture2D" uid="uid://bjkqed2g03jsf" path="res://Assets/fishBullet/fly3.png" id="3_bk5cc"]
+[ext_resource type="Texture2D" uid="uid://3cjf8xtbkdb3" path="res://Assets/fishBullet/fly4.png" id="4_i3liq"]
+[ext_resource type="Texture2D" uid="uid://chmths1lovp7m" path="res://Assets/fishBullet/fly5.png" id="5_2ohy5"]
+[ext_resource type="Texture2D" uid="uid://bshja12nkim5b" path="res://Assets/fishBullet/fishBulletpop1.png" id="6_i3liq"]
+[ext_resource type="Texture2D" uid="uid://bfwyvjbk6lfi0" path="res://Assets/fishBullet/fishBulletpop2.png" id="7_2ohy5"]
+[ext_resource type="Texture2D" uid="uid://bjo2sb1rqmkp5" path="res://Assets/fishBullet/fishBulletpop3.png" id="8_mmxlg"]
+[ext_resource type="AudioStream" uid="uid://c4rgtq0scxm76" path="res://Assets/sounds/enemyShoot.ogg" id="10_070gi"]
+[ext_resource type="AudioStream" uid="uid://g4oya8qr7l7x" path="res://Assets/sounds/enemyShootPop.ogg" id="11_eki6j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmxlg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tlewr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0bhlg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bk5cc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i3liq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ohy5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_i3liq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2ohy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mmxlg")
+}],
+"loop": true,
+"name": &"pop",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etkvm"]
+
+[node name="SuperBullet" type="CharacterBody2D" groups=["dangerObj"]]
+scale = Vector2(2.7256799, 2.7256799)
+script = ExtResource("1_etkvm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.9729999, 0.45999998, 1, 1)
+scale = Vector2(1.5330832, 1.5330832)
+sprite_frames = SubResource("SpriteFrames_mmxlg")
+frame_progress = 0.18906572
+
+[node name="shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_070gi")
+volume_db = -5.0
+max_polyphony = 40
+
+[node name="pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_eki6j")
+max_polyphony = 99
+
+[node name="superBulletdamage" type="Area2D" parent="." groups=["dangerObj"]]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="superBullet" type="CollisionShape2D" parent="superBulletdamage" groups=["dangerObj"]]
+position = Vector2(658.5514, -3.3019295)
+scale = Vector2(21.399904, 21.399904)
+shape = SubResource("CircleShape2D_etkvm")
+debug_color = Color(0.9732544, 0, 0.43865556, 0.41960785)
+
+[node name="superBullet" type="Area2D" parent="." groups=["dangerObj"]]
+
+[node name="superBullet" type="CollisionShape2D" parent="superBullet" groups=["dangerObj"]]
+position = Vector2(662, 0)
+scale = Vector2(16.995098, 16.995098)
+shape = SubResource("CircleShape2D_etkvm")
+
+[connection signal="body_entered" from="superBullet" to="." method="_on_super_bullet_body_entered"]

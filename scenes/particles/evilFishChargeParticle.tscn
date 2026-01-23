@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8ykuss2jwkyy"]
+
+[ext_resource type="Script" uid="uid://bj525i0h7bqhv" path="res://Scripts/evil_fish_charge_particle.gd" id="1_427ws"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nv7te"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 750.0
+emission_ring_inner_radius = 750.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -100.0
+scale_min = 132.22
+scale_max = 207.22
+hue_variation_min = 0.09999997
+hue_variation_max = 0.09999997
+
+[sub_resource type="Curve" id="Curve_427ws"]
+_data = [Vector2(0.30573252, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pyv65"]
+curve = SubResource("Curve_427ws")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhdv4"]
+particle_flag_disable_z = true
+radial_velocity_min = 1999.9999
+radial_velocity_max = 4000.0
+gravity = Vector3(0, -1000, 0)
+scale_min = 100.0
+scale_max = 200.0
+scale_curve = SubResource("CurveTexture_pyv65")
+
+[node name="evilFishChargeParticle" type="Node2D"]
+script = ExtResource("1_427ws")
+
+[node name="bulletcharge" type="GPUParticles2D" parent="."]
+self_modulate = Color(0.27999997, 1, 0.952, 1)
+scale = Vector2(3.037736, 3.037736)
+emitting = false
+amount = 200
+lifetime = 6.5
+one_shot = true
+speed_scale = 22.75
+process_material = SubResource("ParticleProcessMaterial_nv7te")
+
+[node name="splosion" type="GPUParticles2D" parent="."]
+modulate = Color(0.17101565, 0.78278095, 0.62650365, 1)
+scale = Vector2(-49.374607, -49.374607)
+emitting = false
+amount = 200
+lifetime = 5.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qhdv4")

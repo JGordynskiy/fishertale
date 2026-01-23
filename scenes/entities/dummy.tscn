@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu8elwjh0e4uc"]
+
+[ext_resource type="Script" uid="uid://d2blk7ygfaxwc" path="res://scenes/entities/dummy.gd" id="1_acb47"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_unk06"]
+
+[node name="Dummy" type="Node2D"]
+script = ExtResource("1_acb47")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(159, 9)
+color = Color(0.99215686, 0.57254905, 0, 1)
+polygon = PackedVector2Array(-221, -50, -236, -5, -226, 28, -192, 59, -127, 59, -93, 27, -96, -35, -120, -83, -173, -80)
+uv = PackedVector2Array(-190, -56, -241, -9, -244, 45, -197, 68, -94, 63, -10, 22, -15, -70, -60, -84, -150, -93)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["objects"]]
+position = Vector2(159, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" groups=["enemies", "enemyHitbox"]]
+position = Vector2(-159, -9)
+rotation = -0.17015117
+scale = Vector2(6.717058, 6.717058)
+shape = SubResource("CircleShape2D_unk06")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemies", "enemyHitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemies", "enemyHitbox"]]
+rotation = -0.08507558
+scale = Vector2(7.4510207, 7.4510207)
+shape = SubResource("CircleShape2D_unk06")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

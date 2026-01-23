@@ -1,0 +1,67 @@
+extends CanvasLayer
+
+@onready var pause_menu: Control = %"Pause Menu/CanvasLayer"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+
+@onready var cam = $"../fish/followCam"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	globalSignals.gameOver.connect(onDeath)
+	hide()
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+
+	pass
+
+func onDeath():
+	global.pausable = false
+	
+	await get_tree().create_timer(2.5).timeout
+	show()
+	animation_player.play("fadein")
+	await get_tree().create_timer(1).timeout
+	
+	pass
+
+
+func _on_retry_pressed() -> void:
+	if cam.tutorial:
+		$"sounds/ui/select".play()
+		await get_tree().create_timer(0.3).timeout
+		global.hp = global.max_hp
+		global.goto_scene("res://scenes/levels/game_t.tscn")
+	
+	$"sounds/ui/select".play()
+	await get_tree().create_timer(0.3).timeout
+	global.hp = global.max_hp
+	
+	global.damageCost = 5
+	global.rateCost = 5
+	global.healthCost = 1
+	
+	global.shot_damage = 1.5
+	global.shot_rate = 400
+	global.roe = 0
+	global.goto_scene("res://scenes/levels/respite_menu.tscn")
+	
+	pass # Replace with function body.
+
+func _on_quit_pressed() -> void:
+	$"sounds/ui/select".play()
+	await get_tree().create_timer(0.3).timeout
+	global.goto_scene("res://scenes/levels/main_menu.tscn")
+	pass # Replace with function body.
+
+func _on_retry_mouse_entered() -> void:
+	$"sounds/ui/hoveron".play()
+	pass # Replace with function body.
+
+
+func _on_quit_mouse_entered() -> void:
+	$"sounds/ui/hoveron".play()
+	pass # Replace with function body.

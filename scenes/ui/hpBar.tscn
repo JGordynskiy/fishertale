@@ -1,0 +1,181 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1u42n22eogqn"]
+
+[ext_resource type="Script" uid="uid://cv34dkwx5t1ct" path="res://Scripts/projectiles/hp_bar.gd" id="1_ah546"]
+[ext_resource type="Texture2D" uid="uid://b3wbrlpc72r1b" path="res://Assets/healthbarAll.png" id="1_wql2k"]
+[ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_62e5l"]
+
+[sub_resource type="Animation" id="Animation_62e5l"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.06324578, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.06324578, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(206.3381, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(83.51781, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ah546"]
+resource_name = "spawnIn"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2, 2),
+"points": PackedFloat32Array(1e-05, 0, 0, 0.033333335, 0.0002945478, 0.15, -0.9, 5.683303e-05, 0.25, 0, 0.14835657, -0.32833353, -0.00073270866, 0.36666656, 0.00081825256, 0.060023483, 0, 0.014999999, 0, -0.046146706),
+"times": PackedFloat32Array(0, 1, 2, 2.6666667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2, 2),
+"points": PackedFloat32Array(1e-05, 0, 0, 0.033333335, 0.000138997, 0.15, -0.9, -0.00025427341, 0.25, 0, 0.15063079, -0.32831648, 0.000956033, 0.5, -0.0014559627, 0.060399916, 0, -0.010883682, 0, 0.0084343515),
+"times": PackedFloat32Array(0, 1, 2, 2.6666667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0),
+"points": PackedFloat32Array(526.459, 0, 0, 0, -5.607422, 526.459, -0.057527542, 4.353624, 0.29386806, -22.239624, 206.3381, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.3666666, 3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0),
+"points": PackedFloat32Array(504.38208, 0, 0, 0.06666667, -0.839386, 525.7824, -0.4574723, 10.481412, 0.24267197, -5.5599976, 83.51781, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.3333333, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6tq8q"]
+_data = {
+&"RESET": SubResource("Animation_62e5l"),
+&"spawnIn": SubResource("Animation_ah546")
+}
+
+[sub_resource type="Animation" id="Animation_h0wn7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6tq8q"]
+resource_name = "spawnIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19449793, 0.94111896, 1.2987442),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5lv7s"]
+_data = {
+&"RESET": SubResource("Animation_h0wn7"),
+&"spawnIn": SubResource("Animation_6tq8q")
+}
+
+[node name="hpBar" type="CanvasLayer"]
+script = ExtResource("1_ah546")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 450.0
+offset_bottom = 135.0
+scale = Vector2(0.6106482, 0.6106482)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(206.3381, 83.51781)
+scale = Vector2(0.06324578, 0.06324578)
+texture = ExtResource("1_wql2k")
+vframes = 6
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_6tq8q")
+}
+speed_scale = 2.0
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 121.0
+offset_top = 170.0
+offset_right = 492.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("3_62e5l")
+theme_override_font_sizes/font_size = 66
+text = "Health"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_5lv7s")
+}

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://daallqpv0d4ul"]
+
+[ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/fish.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://b30dcmbgp40rx" path="res://Scripts/camera_2d.gd" id="2_iywne"]
+[ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dbyvc33coe6sb" path="res://scenes/border.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bn2bjqurecbev" path="res://scenes/background.tscn" id="4_lbhrr"]
+
+[node name="Game" type="Node2D"]
+
+[node name="fish" parent="." instance=ExtResource("1_uwrxv")]
+z_index = 40
+position = Vector2(995, -690)
+
+[node name="Camera2D" type="Camera2D" parent="fish"]
+scale = Vector2(2.9575753, 0.5186387)
+zoom = Vector2(0.12, 0.12)
+limit_left = 0
+limit_top = -27025
+limit_right = 28885
+limit_bottom = 0
+position_smoothing_enabled = true
+script = ExtResource("2_iywne")
+
+[node name="Object" parent="." instance=ExtResource("2_lnu2h")]
+z_index = 20
+position = Vector2(14472.999, -6890.9995)
+scale = Vector2(28.852652, 28.852652)
+
+[node name="border" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(7, 1)
+
+[node name="border2" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(0, -22)
+rotation = 1.5707964
+
+[node name="Background" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(14937, -23354)
+scale = Vector2(30.728422, 30.728422)
+metadata/_edit_lock_ = true

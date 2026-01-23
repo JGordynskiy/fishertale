@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://w055g11ybujx"]
+
+[ext_resource type="Texture2D" uid="uid://biljmjygnte0k" path="res://Assets/bubble.png" id="1_qy3wa"]
+
+[sub_resource type="Gradient" id="Gradient_qy3wa"]
+offsets = PackedFloat32Array(0, 0.46078432, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.5529412, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qy3wa"]
+gradient = SubResource("Gradient_qy3wa")
+
+[sub_resource type="Curve" id="Curve_362n0"]
+_limits = [0.0, 1.0, 0.0, 5.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09708738, 1), 0.0, 0.0, 0, 0, Vector2(4.199029, 1), 0.0, 0.0, 0, 0, Vector2(5, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_4couu"]
+curve = SubResource("Curve_362n0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5jy3v"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(15000, 1, 0)
+velocity_pivot = Vector3(0, -1, 0)
+direction = Vector3(1, -1, 0)
+spread = 0.0
+initial_velocity_max = 433.93
+gravity = Vector3(0, -25, 0)
+scale_min = 0.05
+scale_max = 0.07
+scale_curve = SubResource("CurveTexture_4couu")
+color_ramp = SubResource("GradientTexture1D_qy3wa")
+
+[node name="Ambient Particles Menu" type="Node2D"]
+
+[node name="CPUParticles2D" type="GPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.29411766)
+position = Vector2(0, 4.9999995)
+scale = Vector2(0.091563754, 0.091563754)
+amount = 30
+texture = ExtResource("1_qy3wa")
+lifetime = 6.8
+preprocess = 7.85
+fixed_fps = 0
+visibility_rect = Rect2(0, 0, 0, 0)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_5jy3v")

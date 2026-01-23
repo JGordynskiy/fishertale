@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://djy2i1xu1j0um"]
+
+[ext_resource type="Script" uid="uid://c83244awlji3s" path="res://menu_hp_bar.gd" id="1_7hi0h"]
+[ext_resource type="Texture2D" uid="uid://b3wbrlpc72r1b" path="res://Assets/healthbarAll.png" id="2_i30em"]
+
+[node name="menuHpBar" type="Node2D"]
+script = ExtResource("1_7hi0h")
+
+[node name="hpbarSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_i30em")
+vframes = 6

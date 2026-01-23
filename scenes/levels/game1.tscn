@@ -1,0 +1,245 @@
+[gd_scene load_steps=27 format=3 uid="uid://daallqpv0d4ul"]
+
+[ext_resource type="Script" uid="uid://crx37ouyvqali" path="res://Scripts/game1.gd" id="1_bo462"]
+[ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="2_qtp2c"]
+[ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="3_5v0ki"]
+[ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="6_i5lao"]
+[ext_resource type="PackedScene" uid="uid://d2f2njwjm1mdb" path="res://scenes/entities/evil_fish.tscn" id="6_kxvvm"]
+[ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="7_vek25"]
+[ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="8_cu3vh"]
+[ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="9_iy4g1"]
+[ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="10_iy4g1"]
+[ext_resource type="PackedScene" uid="uid://bn2bjqurecbev" path="res://scenes/background.tscn" id="10_kxvvm"]
+[ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="10_rwban"]
+[ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="11_kxvvm"]
+[ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="12_gvrma"]
+[ext_resource type="Script" uid="uid://d2pyurfm2p1mm" path="res://scenes/levels/cutscene_cam.gd" id="13_3sf34"]
+[ext_resource type="AudioStream" uid="uid://cwsvlsljhvcbu" path="res://Assets/music/boss1end.ogg" id="14_nu4re"]
+[ext_resource type="AudioStream" uid="uid://bko8bas1376gv" path="res://Assets/music/boss1loop.ogg" id="14_oi55c"]
+[ext_resource type="AudioStream" uid="uid://ck787pu1kc7l5" path="res://Assets/music/boss1looplowpass.ogg" id="16_aln2l"]
+[ext_resource type="AudioStream" uid="uid://b2xbghqux8wrc" path="res://Assets/music/boss1int.ogg" id="17_0w3bu"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kxvvm"]
+vertices = PackedVector2Array(-13607.758, -43967.203, -11293.906, -43443.71, -14516.633, -40564.344, -23968.617, -29689.008, -16561.797, -34351.367, -15226.469, -27948.203, -11144.539, -23379.547, -22181.523, -21129.64, 26188.906, -13108.07, 33859.39, -22110.36, 27499.344, -4867.3984, 25597.61, -11004.594, 7335.1484, -39334.86, 7162.5938, -39528, 8308.953, -39528, 25649.25, -15225.398, 19491.75, -38948.508, 21950.14, -39076.28, 25386.203, -36453.438, 24123.227, -16789.227, 22019.742, -17380.531, 12303.797, -21803.102, 11916.156, -23324.54, 16113.57, -37805.453, 24033.781, -9478.57, 24285.047, -3311.5625, 21916.46, -8938.906, 18372.656, -3786.5313, 19812.969, -9530.211, 10819.742, -24448.328, 9308.32, -24873.352, 8670.477, -32931.703, 5063.3438, -5433.0234, 25.890625, -22001.648, 1747.6875, -22360.719, 6238.078, -21877.867, 6625.711, -20356.43, 6625.3203, -26718.727, 7786.8906, -24485.703, 6663.1016, -23389.29, 7722.133, -19232.64, 8714.383, -2740.1875, 9233.547, -18807.633, 13988.3125, -3374.3281, 19902.422, -16840.86, 11878.781, -20291.68, 18338.602, -15314.852, 10755, -19195.258, 17747.29, -13211.367, 16801.32, -2840.6328, 18286.953, -11094.031)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2, 4), PackedInt32Array(5, 6, 7, 3), PackedInt32Array(3, 4, 5), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14), PackedInt32Array(9, 8, 15), PackedInt32Array(16, 17, 18, 9, 19, 20, 21, 22, 23), PackedInt32Array(24, 11, 10, 25), PackedInt32Array(26, 24, 25, 27), PackedInt32Array(28, 26, 27), PackedInt32Array(23, 22, 29, 14), PackedInt32Array(14, 29, 30, 31), PackedInt32Array(32, 33, 34, 35, 36), PackedInt32Array(31, 12, 14), PackedInt32Array(37, 31, 30, 38), PackedInt32Array(34, 37, 38, 39), PackedInt32Array(34, 39, 35), PackedInt32Array(32, 36, 40), PackedInt32Array(41, 32, 40, 42, 43), PackedInt32Array(9, 15, 19), PackedInt32Array(21, 20, 44, 45), PackedInt32Array(45, 44, 46, 47), PackedInt32Array(47, 46, 48, 43, 42), PackedInt32Array(49, 43, 48, 50, 27), PackedInt32Array(27, 50, 28)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1297, -22915, 4203, -4825, 8440, -1700, 13954, -2363, 16990, -1787, 18613, -2764, 24476, -2293, 28298, -4143, 34962, -22210, 26148, -37130, 22265, -40094, 19302, -39940, 16057, -38842, 8418, -40528, 4791, -40528, 141, -41882, -14030, -45088, -25038, -29918, -22957, -19951, -1721, -24280)])
+parsed_geometry_type = 0
+agent_radius = 1000.0
+
+[sub_resource type="Animation" id="Animation_rwban"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kxvvm"]
+resource_name = "fadeout"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3sf34"]
+_data = {
+&"RESET": SubResource("Animation_rwban"),
+&"fadeout": SubResource("Animation_kxvvm")
+}
+
+[sub_resource type="Animation" id="Animation_qirlt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cu3vh"]
+resource_name = "fadein"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iy4g1"]
+resource_name = "fadeout"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy4g1"]
+_data = {
+&"RESET": SubResource("Animation_qirlt"),
+&"fadein": SubResource("Animation_cu3vh"),
+&"fadeout": SubResource("Animation_iy4g1")
+}
+
+[node name="Game1" type="Node2D"]
+script = ExtResource("1_bo462")
+
+[node name="Background" parent="." instance=ExtResource("10_kxvvm")]
+position = Vector2(22533, -13487)
+rotation = 1.5814941
+scale = Vector2(3.5292397, 3.5292397)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Background"]
+position = Vector2(-3098.6965, 5300.0664)
+rotation = 0.0034832358
+scale = Vector2(0.19067727, 0.19067727)
+navigation_polygon = SubResource("NavigationPolygon_kxvvm")
+
+[node name="Hazards" type="Node2D" parent="Background/NavigationRegion2D"]
+z_index = 300
+
+[node name="Object" parent="Background/NavigationRegion2D/Hazards" instance=ExtResource("6_i5lao")]
+position = Vector2(22008.773, -13142.407)
+rotation = -0.5113642
+
+[node name="Object3" parent="Background/NavigationRegion2D/Hazards" instance=ExtResource("6_i5lao")]
+position = Vector2(9274.287, -21812.969)
+rotation = 0.5359249
+scale = Vector2(2.360991, 2.360991)
+
+[node name="Object2" parent="Background/NavigationRegion2D/Hazards" instance=ExtResource("6_i5lao")]
+position = Vector2(-3785.1743, -33653.96)
+rotation = -0.99099314
+scale = Vector2(13.709708, 13.709708)
+
+[node name="fish" parent="." instance=ExtResource("2_qtp2c")]
+z_index = 600
+position = Vector2(9275.319, -14843.165)
+
+[node name="followCam" parent="fish" instance=ExtResource("3_5v0ki")]
+enabled = false
+limit_left = 4605
+limit_top = -25380
+limit_right = 31945
+limit_bottom = -1320
+metadata/_edit_lock_ = true
+
+[node name="evilFish" parent="." instance=ExtResource("6_kxvvm")]
+position = Vector2(20058.002, -12446.001)
+scale = Vector2(1.2455237, 1.2455237)
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vek25")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ambience"]
+libraries = {
+&"": SubResource("AnimationLibrary_3sf34")
+}
+
+[node name="Ambient Particles" parent="." instance=ExtResource("9_iy4g1")]
+z_index = 100
+position = Vector2(16036, 16186)
+
+[node name="Pause Menu" parent="." instance=ExtResource("8_cu3vh")]
+unique_name_in_owner = true
+layer = 2
+
+[node name="hpBar" parent="." instance=ExtResource("10_iy4g1")]
+layer = 0
+
+[node name="bosshealthbar" parent="." instance=ExtResource("10_rwban")]
+
+[node name="GameOver" parent="." instance=ExtResource("11_kxvvm")]
+layer = 3
+
+[node name="FPS counter" parent="." instance=ExtResource("12_gvrma")]
+
+[node name="faderect" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="faderect" type="ColorRect" parent="faderect"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 805
+offset_left = 34955.996
+offset_top = 3056.0
+offset_right = 34995.996
+offset_bottom = 3096.0
+scale = Vector2(-1134.1254, -704.4781)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="faderect/faderect"]
+libraries = {
+&"": SubResource("AnimationLibrary_iy4g1")
+}
+
+[node name="cutsceneCam" type="Camera2D" parent="."]
+ignore_rotation = false
+enabled = false
+zoom = Vector2(0.08, 0.08)
+limit_left = 1790
+limit_top = -23655
+limit_right = 30405
+limit_bottom = -825
+script = ExtResource("13_3sf34")
+
+[node name="Music" type="Node" parent="."]
+process_mode = 3
+
+[node name="Boss1end" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+stream = ExtResource("14_nu4re")
+volume_db = -4.0
+
+[node name="Boss1loop" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+stream = ExtResource("14_oi55c")
+volume_db = -2.0
+
+[node name="boss1looplowpass" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+stream = ExtResource("16_aln2l")
+volume_db = -80.0
+
+[node name="boss1int" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("17_0w3bu")
+
+[connection signal="finished" from="ambience" to="." method="_on_ambience_finished"]
+[connection signal="finished" from="Music/Boss1loop" to="." method="_on_boss_1_loop_finished"]
+[connection signal="finished" from="Music/boss1int" to="." method="_on_boss_1_int_finished"]

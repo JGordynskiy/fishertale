@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://buy7w360hpg5"]
+
+[ext_resource type="Script" uid="uid://pmpdoibaedk5" path="res://Scripts/projectiles/bullet.gd" id="1_y25gk"]
+[ext_resource type="Texture2D" uid="uid://bshja12nkim5b" path="res://Assets/fishBullet/fishBulletpop1.png" id="2_qncy5"]
+[ext_resource type="Texture2D" uid="uid://bfwyvjbk6lfi0" path="res://Assets/fishBullet/fishBulletpop2.png" id="3_tamys"]
+[ext_resource type="Texture2D" uid="uid://bjo2sb1rqmkp5" path="res://Assets/fishBullet/fishBulletpop3.png" id="4_26lx3"]
+[ext_resource type="Texture2D" uid="uid://bffoihedgm3k4" path="res://Assets/fishBullet/fly1.png" id="5_k76ql"]
+[ext_resource type="Texture2D" uid="uid://b0v6heri2gjpe" path="res://Assets/fishBullet/fly2.png" id="6_in4mv"]
+[ext_resource type="Texture2D" uid="uid://bjkqed2g03jsf" path="res://Assets/fishBullet/fly3.png" id="7_s437g"]
+[ext_resource type="Texture2D" uid="uid://3cjf8xtbkdb3" path="res://Assets/fishBullet/fly4.png" id="8_iqq7w"]
+[ext_resource type="Texture2D" uid="uid://chmths1lovp7m" path="res://Assets/fishBullet/fly5.png" id="9_6umxm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6jwkh"]
+radius = 332.0241
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1cfmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qncy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tamys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_26lx3")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_k76ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_in4mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s437g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iqq7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6umxm")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 15.0
+}]
+
+[node name="Bullet" type="CharacterBody2D" groups=["playerBullet"]]
+scale = Vector2(0.65, 0.65)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_y25gk")
+
+[node name="Area2D" type="Area2D" parent="." groups=["playerBullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["playerBullet"]]
+z_index = 35
+position = Vector2(-1.5258789e-05, -816.9231)
+rotation = -0.61341053
+scale = Vector2(0.556666, 0.556666)
+shape = SubResource("CircleShape2D_6jwkh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(1.9073486e-06, -456.92307)
+rotation = -1.5996152
+scale = Vector2(0.8099625, 0.8099625)
+sprite_frames = SubResource("SpriteFrames_1cfmv")
+animation = &"shoot"
+offset = Vector2(71.2, 0)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,259 @@
+[gd_scene load_steps=25 format=3 uid="uid://dfc7lldewp5pq"]
+
+[ext_resource type="Texture2D" uid="uid://b5sek51ovhatj" path="res://Assets/objects/glassOverlay.png" id="1_h8wsi"]
+[ext_resource type="Script" uid="uid://6mulj1la2v3j" path="res://scenes/levels/respite_menu.gd" id="1_po2xu"]
+[ext_resource type="PackedScene" uid="uid://w055g11ybujx" path="res://scenes/particles/ambient_particlesMenu.tscn" id="1_ulady"]
+[ext_resource type="AudioStream" uid="uid://dteigimlfecem" path="res://Assets/music/respiteMenuloop.ogg" id="2_uu4xs"]
+[ext_resource type="Texture2D" uid="uid://cxtiq8hkyg78v" path="res://Assets/objects/coral.png" id="3_ulady"]
+[ext_resource type="AudioStream" uid="uid://dc6du6htd3uph" path="res://Assets/sounds/uiSelect.ogg" id="4_6i2y2"]
+[ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="4_17bcf"]
+[ext_resource type="Texture2D" uid="uid://cup65kdgdo3v7" path="res://Assets/objects/monitorstatic/monitorstatic (1).jpg" id="6_j8h43"]
+[ext_resource type="Texture2D" uid="uid://bhsfbmjrgvi17" path="res://Assets/objects/monitorBorder.png" id="6_uoip4"]
+[ext_resource type="Texture2D" uid="uid://ccknesb8jaccu" path="res://Assets/objects/monitorstatic/monitorstatic (2).jpg" id="7_uoip4"]
+[ext_resource type="Texture2D" uid="uid://sw1qsnsik5vs" path="res://Assets/objects/monitorstatic/monitorstatic (3).jpg" id="8_kpitc"]
+[ext_resource type="Texture2D" uid="uid://c7eai177jnjq4" path="res://Assets/objects/monitorstatic/monitorstatic (4).jpg" id="9_uu4xs"]
+[ext_resource type="Texture2D" uid="uid://c668yt2tf0vtq" path="res://Assets/objects/monitorstatic/monitorstatic (5).jpg" id="10_culeq"]
+[ext_resource type="Texture2D" uid="uid://blky8mawp5lun" path="res://Assets/enemies/evilFish.png" id="12_kpitc"]
+[ext_resource type="AudioStream" uid="uid://ch8atmhcgq6on" path="res://Assets/sounds/uiHoveron.ogg" id="14_culeq"]
+
+[sub_resource type="Animation" id="Animation_vrvnp"]
+resource_name = "BlackToClear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6i2y2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_culeq"]
+resource_name = "fadeToBlack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vrvnp"]
+_data = {
+&"BlackToClear": SubResource("Animation_vrvnp"),
+&"RESET": SubResource("Animation_6i2y2"),
+&"fadeToBlack": SubResource("Animation_culeq")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_po2xu"]
+bg_color = Color(0.27450982, 0.27450982, 0.27450982, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_bottom = 15
+border_color = Color(0.6509804, 0.6509804, 0.6509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17bcf"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_bottom = 15
+border_color = Color(0.87, 0.75472504, 0.40890002, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fma8t"]
+bg_color = Color(0.23, 0.23, 0.23, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_bottom = 15
+border_color = Color(0.73, 0.73, 0.73, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17bcf"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_6i2y2"]
+frames = 5
+speed_scale = 25.0
+frame_0/texture = ExtResource("6_j8h43")
+frame_1/texture = ExtResource("7_uoip4")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("8_kpitc")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("9_uu4xs")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("10_culeq")
+frame_4/duration = 1.0
+
+[node name="respite" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_po2xu")
+
+[node name="fadeRect" type="ColorRect" parent="."]
+z_index = 300
+layout_mode = 0
+offset_right = 1289.0
+offset_bottom = 742.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fadeRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_vrvnp")
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uu4xs")
+autoplay = true
+
+[node name="hoverOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_culeq")
+
+[node name="select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6i2y2")
+
+[node name="Grey Border" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27387285, 0.27387273, 0.2738727, 1)
+
+[node name="WhiteBorder" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.110794
+offset_top = 31.0
+offset_right = -60.444702
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65, 0.65, 0.65, 1)
+
+[node name="Water" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 78.22217
+offset_top = 44.0
+offset_right = -83.555664
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08005681, 0.22171411, 0.36616433, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-144, 679)
+color = Color(0.73574996, 0.70248514, 0.3501248, 1)
+polygon = PackedVector2Array(222.24973, -37.299236, 322, -74.5, 655.6059, -23.129118, 1231.6846, -131.44612, 1340.153, -83.1039, 1340.2441, -40.671375, 1340.4923, -5.5593557, 928.9724, -5.874607, 743.60583, -5.642206, 222.07893, -5.8870273)
+uv = PackedVector2Array(-123, -63.5, 322, -74.5, 657.20264, -13.548721, 1231.6846, -131.44612, 1501.7766, -56.41967, 1756.8638, -88.57352, 2063.397, -11.404297, 2155.5703, 222.93329, 697.92957, 280.8102, -470.3272, 190.77838)
+
+[node name="Glass" type="TextureRect" parent="."]
+z_index = 50
+layout_mode = 0
+offset_left = -88.0
+offset_top = -57.0
+offset_right = 1364.0
+offset_bottom = 779.0
+texture = ExtResource("1_h8wsi")
+
+[node name="coral" type="TextureRect" parent="."]
+modulate = Color(0.47000003, 0.66433346, 1, 1)
+layout_mode = 0
+offset_left = 900.99994
+offset_top = 494.0
+offset_right = 2702.0
+offset_bottom = 2276.0
+rotation = -0.12578325
+scale = Vector2(0.04855458, 0.04855458)
+texture = ExtResource("3_ulady")
+
+[node name="Ambient Particles" parent="." instance=ExtResource("1_ulady")]
+position = Vector2(643.00006, 653.00006)
+scale = Vector2(-0.30203584, -0.30203584)
+
+[node name="ReadyButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 877.99994
+offset_top = 308.0
+offset_right = 1273.0
+offset_bottom = 415.0
+scale = Vector2(0.80974376, 0.80974376)
+theme_override_fonts/font = ExtResource("4_17bcf")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/normal = SubResource("StyleBoxFlat_po2xu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_17bcf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fma8t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_17bcf")
+text = "Ready"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.97, 0.97, 0.97, 1)
+z_index = 100
+layout_mode = 0
+offset_left = 97.00002
+offset_top = 239.0
+offset_right = 697.0
+offset_bottom = 599.0
+scale = Vector2(0.6670362, 0.6670362)
+texture = ExtResource("6_uoip4")
+
+[node name="static" type="TextureRect" parent="TextureRect"]
+self_modulate = Color(1, 1, 1, 0.45490196)
+z_index = -10
+layout_mode = 0
+offset_left = 13.683929
+offset_top = 13.683929
+offset_right = 92.20261
+offset_bottom = 92.31746
+scale = Vector2(7.294696, 4.2510953)
+texture = SubResource("AnimatedTexture_6i2y2")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+z_index = -15
+layout_mode = 0
+offset_left = 5.864563
+offset_top = 11.729095
+offset_right = 45.864563
+offset_bottom = 51.729095
+scale = Vector2(14.522642, 8.553986)
+color = Color(0, 0.03800001, 0.19, 1)
+
+[node name="boss1Img" type="Sprite2D" parent="TextureRect"]
+modulate = Color(1, 1, 1, 0)
+z_index = -15
+position = Vector2(301.33298, 184.3978)
+scale = Vector2(0.12015484, 0.07313975)
+texture = ExtResource("12_kpitc")
+
+[connection signal="mouse_entered" from="ReadyButton" to="." method="_on_ready_button_mouse_entered"]
+[connection signal="pressed" from="ReadyButton" to="." method="_on_ready_button_pressed"]

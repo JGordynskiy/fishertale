@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://dujhggsr73v24"]
+
+[ext_resource type="Script" uid="uid://j8d2v0mn1mx4" path="res://scenes/levels/game_dojo.gd" id="1_84b36"]
+[ext_resource type="Texture2D" uid="uid://p3m3hjt3mbjs" path="res://Assets/backgrounds/blueprint-6.jpg" id="1_kerkt"]
+[ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="1_ug1bs"]
+[ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="2_4fbiy"]
+[ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_ircpa"]
+[ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="3_4fbiy"]
+[ext_resource type="PackedScene" uid="uid://cu8elwjh0e4uc" path="res://scenes/entities/dummy.tscn" id="4_8wjer"]
+
+[node name="game_dojo" type="Node2D"]
+script = ExtResource("1_84b36")
+
+[node name="FPS counter" parent="." instance=ExtResource("2_ircpa")]
+
+[node name="Pause Menu" parent="." instance=ExtResource("1_ug1bs")]
+
+[node name="blueprint" type="Sprite2D" parent="."]
+modulate = Color(0.25839996, 0.3419999, 0.76, 1)
+position = Vector2(9681.001, 1412)
+scale = Vector2(16.690159, 16.690159)
+texture = ExtResource("1_kerkt")
+
+[node name="fish" parent="." instance=ExtResource("2_4fbiy")]
+position = Vector2(350, 537)
+
+[node name="followCam" parent="fish" instance=ExtResource("3_4fbiy")]
+limit_left = -16190
+limit_top = -18485
+limit_right = 34730
+limit_bottom = 21770
+
+[node name="Dummy" parent="." instance=ExtResource("4_8wjer")]
+position = Vector2(7902.9995, -227)
+scale = Vector2(31.962097, 31.962097)
