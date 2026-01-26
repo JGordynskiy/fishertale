@@ -1,6 +1,10 @@
 extends Node
 @onready var current_scene = null
 @onready var inGame = false
+var debug = false
+
+#1 is default, 2 is melee
+var heart = 0
 
 
 @export var speed = 7000

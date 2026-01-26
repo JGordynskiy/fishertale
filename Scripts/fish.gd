@@ -4,7 +4,7 @@ extends CharacterBody2D
 var mult = 1
 
 
-@onready var sprite := $AnimatedSprite2D
+
 @onready var game  = get_owner()# I guess this gets  reference to the game node? but why?
 @onready var bullet = load("res://scenes/bullet.tscn") #!! important!! This loads a scene from res://
 @onready var camera = $followCam
@@ -12,21 +12,30 @@ var mult = 1
 @onready var bubbles = load("res://scenes/particles/bubble_explosion.tscn")
 @onready var deathGore = load("res://scenes/particles/fish_explosion.tscn")
 
+#Roe
 @onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
 
+#Slash
 @onready var slashSpr: AnimatedSprite2D = $slash
 @onready var slashsfx: AudioStreamPlayer = $sounds/slash
 @onready var slashhitbox: Area2D = $slashhitbox
 @onready var slashlandsfx: AudioStreamPlayer = $sounds/slashland
 var slashCount = 0
 
-
+#visual+sound
+@onready var sprite := $AnimatedSprite2D
 @onready var dashVisual1count = 0
 @onready var dashVisual1: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var swimSilent = 1
+@onready var movebubbles: GPUParticles2D = $movebubbles
+@onready var blink: Polygon2D = $AnimatedSprite2D/blink
+var blinkCount = 0
+
+
+
 @onready var rng = RandomNumberGenerator.new()
 var invulnerable = false
-@onready var movebubbles: GPUParticles2D = $movebubbles
+
 
 @onready var evilFish = game.get_node("evilFish") 
 
@@ -46,6 +55,7 @@ var canMove = true
 
 
 func _ready():
+	blink.visible = false
 	$CollisionShape2D.disabled = false
 	$"fish/CollisionShape2D".disabled = false
 	canMove = true
@@ -124,14 +134,12 @@ func shoot():
 	instance.spawnRot = rotation + (PI/2)
 	
 	game.add_child.call_deferred(instance)
-
+	$"AnimatedSprite2D/AnimationPlayer".play("recoil")
+	
 
 	#SPAWN BUBBLE PARTICLES
-	#var instance2 = bubbles.instantiate()
-	#instance2.particleTime = 0.2
-	#instance2.particleCount = 15
-	#instance2.pos = 
-	#game.add_child(instance2)
+	
+	
 func shootPop():
 	$"sounds/pop".play()
 
@@ -143,11 +151,14 @@ func get_input():
 	if Input.is_action_pressed("sprint"):
 		dash()
 	
-	if Input.is_action_just_pressed("altFire"):
-		slash()
+	#if Input.is_action_just_pressed("altFire"):
+		#slash()
 		
 	if Input.is_action_pressed("click"):
-		shoot()
+		if global.heart == 1:
+			shoot()
+		if global.heart == 2:
+			slash()
 	
 	velocity = direction * global.speed * mult
 
@@ -200,6 +211,17 @@ func dash():
 		instance.pos = global_position
 		game.add_child(instance)
 
+func blinker():
+	blinkCount += 1
+	
+	if (blinkCount == 100):
+		
+		rng.randomize()
+		blinkCount = rng.randi_range(-50, 0)
+		blink.visible = true
+		await get_tree().create_timer(0.12, false).timeout
+		blink.visible = false
+
 func _process(delta):
 	
 	#removes inviniciblity frames
@@ -209,6 +231,7 @@ func _process(delta):
 		invulnerable = true
 	else:
 		invulnerable = false
+	blinker()
 	
 	
 	slash_timer -=10

@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_ambience_finished() -> void:
-	$"ambience".play()
+	#$"ambience".play()
 	pass # Replace with function body.
 
 func pauseGame():

@@ -12,6 +12,7 @@ var fanOn = false
 
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	faderect.play("fadein")
@@ -25,6 +26,9 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func boss2clear():
+	$Music/musicInt.stop()
+	$Music/musicLoop.stop()
+	$Music/musicEnd.play()
 	fan.turnOff()
 	var instance = clearpopup.instantiate()
 	add_child(instance)
@@ -44,4 +48,13 @@ func _on_ambience_finished() -> void:
 	$"ambience".play()
 
 func bossStart():
+	
+	await get_tree().create_timer(1, false).timeout
+	
+	$Music/musicInt.play()
 	pass
+
+
+func _on_music_int_finished() -> void:
+	$Music/musicLoop.play()
+	pass # Replace with function body.

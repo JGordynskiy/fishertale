@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dujhggsr73v24"]
+[gd_scene load_steps=14 format=3 uid="uid://dujhggsr73v24"]
 
 [ext_resource type="Script" uid="uid://j8d2v0mn1mx4" path="res://scenes/levels/game_dojo.gd" id="1_84b36"]
 [ext_resource type="Texture2D" uid="uid://p3m3hjt3mbjs" path="res://Assets/backgrounds/blueprint-6.jpg" id="1_kerkt"]
@@ -7,6 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_ircpa"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="3_4fbiy"]
 [ext_resource type="PackedScene" uid="uid://cu8elwjh0e4uc" path="res://scenes/entities/dummy.tscn" id="4_8wjer"]
+[ext_resource type="AudioStream" uid="uid://dvu4f2na7dbsa" path="res://Assets/music/wiibowlingLoop.ogg" id="8_86clx"]
+[ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="8_rnkkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnkkt"]
+size = Vector2(19.948929, 20.171581)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86clx"]
+size = Vector2(20, 20.97081)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blkjw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vor"]
+size = Vector2(20, 76.468155)
 
 [node name="game_dojo" type="Node2D"]
 script = ExtResource("1_84b36")
@@ -17,6 +30,7 @@ script = ExtResource("1_84b36")
 
 [node name="blueprint" type="Sprite2D" parent="."]
 modulate = Color(0.25839996, 0.3419999, 0.76, 1)
+z_index = -500
 position = Vector2(9681.001, 1412)
 scale = Vector2(16.690159, 16.690159)
 texture = ExtResource("1_kerkt")
@@ -25,11 +39,42 @@ texture = ExtResource("1_kerkt")
 position = Vector2(350, 537)
 
 [node name="followCam" parent="fish" instance=ExtResource("3_4fbiy")]
-limit_left = -16190
-limit_top = -18485
-limit_right = 34730
-limit_bottom = 21770
+limit_left = -17445
+limit_top = -19435
+limit_right = 36810
+limit_bottom = 22160
 
 [node name="Dummy" parent="." instance=ExtResource("4_8wjer")]
 position = Vector2(7902.9995, -227)
 scale = Vector2(31.962097, 31.962097)
+
+[node name="wiibowling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_86clx")
+autoplay = true
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rnkkt")
+autoplay = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["objects"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-20945.797, 1713.0206)
+scale = Vector2(344.4591, 2097.9043)
+shape = SubResource("RectangleShape2D_rnkkt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(9711.59, -20195.002)
+rotation = -1.5707964
+scale = Vector2(75.116234, 2596.9824)
+shape = SubResource("RectangleShape2D_86clx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7456, 24852)
+scale = Vector2(6383.0693, 261.79916)
+shape = SubResource("RectangleShape2D_blkjw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(38320.004, 4874.249)
+scale = Vector2(149.50159, 639.4099)
+shape = SubResource("RectangleShape2D_u8vor")

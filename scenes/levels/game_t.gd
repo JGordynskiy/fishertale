@@ -121,7 +121,7 @@ func _on_calmfirst_finished() -> void:
 	pass # Replace with function body.
 
 func transition():
-	print("transition!")
+	
 	global.curBoss = 1
 	var tween = create_tween()
 	tween.tween_property(calmloop, "volume_db", -79, 0.5)

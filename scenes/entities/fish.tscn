@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b0m4623tpxvua"]
+[gd_scene load_steps=46 format=3 uid="uid://b0m4623tpxvua"]
 
 [ext_resource type="Script" uid="uid://bhiwhge6dfr8p" path="res://Scripts/fish.gd" id="1_8g0i4"]
 [ext_resource type="Texture2D" uid="uid://loab5wse0qu7" path="res://Assets/fishIdle1.png" id="2_6lgmd"]
@@ -105,6 +105,40 @@ tracks/2/keys = {
 "points": PackedFloat32Array(0.22, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, 0)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("blink:offset:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-54.905, -0.05, 0, 0.05, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("blink:offset:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.05, 0, 0.05, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_8itkn"]
 resource_name = "counterSpin"
@@ -172,10 +206,49 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1)
 }
 
+[sub_resource type="Animation" id="Animation_80fr0"]
+resource_name = "recoil"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 0), Vector2(0, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("blink:offset:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-54.905, -0.05, 0, 0.05, 0, 0, -0.016666668, -9.150834, 0, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blink:offset:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.05, 0, 0.05, 0, 0, -0.016666668, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_81hvq"]
 _data = {
 &"RESET": SubResource("Animation_rbg1i"),
 &"counterSpin": SubResource("Animation_8itkn"),
+&"recoil": SubResource("Animation_80fr0"),
 &"spin": SubResource("Animation_gfhab"),
 &"transSpin": SubResource("Animation_v4axp")
 }
@@ -403,7 +476,17 @@ scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_nub35")
 animation = &"idle"
 autoplay = "idle"
+offset = Vector2(-500, 0)
 flip_h = true
+
+[node name="blink" type="Polygon2D" parent="AnimatedSprite2D"]
+visible = false
+position = Vector2(2090.9092, -127.27272)
+scale = Vector2(8.17054, 5.6178904)
+color = Color(1, 0.67058825, 0.34117648, 1)
+offset = Vector2(-54.905, 0)
+polygon = PackedVector2Array(-134, -65, -141.86224, 3.236414, -214.18417, 21.845793, -143.53122, 42.88248, -118.496704, 114.08358, -79.00234, 86.65595, -46.73111, 58.255447, -40.055237, 17.800274, -52.294342, -25.89131, -76.799995, -48.800003)
+uv = PackedVector2Array(-134, -65, -222, 24, -137, 84, -54, 20)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dylvrepm3tkw"]
+[gd_scene load_steps=22 format=3 uid="uid://dylvrepm3tkw"]
 
 [ext_resource type="Script" uid="uid://bww8vkou1mqo1" path="res://Scripts/game2.gd" id="1_ee6yk"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="1_f04mu"]
@@ -14,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="8_oevex"]
 [ext_resource type="PackedScene" uid="uid://cwhh0mgm82iav" path="res://scenes/spike.tscn" id="13_hshte"]
 [ext_resource type="Texture2D" uid="uid://b8t1paljw5m18" path="res://Assets/tutMouse2.png" id="14_q6hs2"]
+[ext_resource type="AudioStream" uid="uid://cph2tykgpd0qa" path="res://Assets/music/boss2int.ogg" id="15_d1bqq"]
+[ext_resource type="AudioStream" uid="uid://wu7dmc3tupoa" path="res://Assets/music/boss2loop.ogg" id="16_u637n"]
+[ext_resource type="AudioStream" uid="uid://bf7m2afsgnkkc" path="res://Assets/music/boss2out.ogg" id="17_vnlqn"]
 
 [sub_resource type="Animation" id="Animation_qirlt"]
 length = 0.001
@@ -78,6 +81,7 @@ script = ExtResource("1_ee6yk")
 script = ExtResource("3_b1pko")
 
 [node name="Wallfish" parent="." instance=ExtResource("2_1lsou")]
+z_index = 300
 position = Vector2(22877.002, -20737)
 rotation = -1.5707964
 scale = Vector2(3.5921154, 3.5921154)
@@ -157,3 +161,19 @@ position = Vector2(145.00018, -24740.998)
 rotation = -0.30237585
 scale = Vector2(2.795344, 2.795344)
 texture = ExtResource("14_q6hs2")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="musicInt" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("15_d1bqq")
+volume_db = -5.0
+
+[node name="musicLoop" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("16_u637n")
+volume_db = -5.0
+
+[node name="musicEnd" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("17_vnlqn")
+volume_db = -5.0
+
+[connection signal="finished" from="Music/musicInt" to="." method="_on_music_int_finished"]

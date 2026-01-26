@@ -19,12 +19,6 @@ var tutStage = 0
 #@onready var fish = root_level.get_node("fish")
 
 
-
-
-
-
-
-
 const MAX_ZOOM = 0.05
 const MIN_ZOOM = 0.12
 # Called when the node enters the scene tree for the first time.

@@ -3,13 +3,14 @@ extends CharacterBody2D
 
 var iFrames = 0.0
 var boss2hp = 100
-
+var rng = RandomNumberGenerator.new()
 
 var active = false 
 var cooldown = 120
 
 @onready var game2: Node2D = $".."
 
+@onready var bullet = load("res://scenes/enemy_bullet.tscn")
 @onready var rock = load("res://scenes/objects/rockattack.tscn")
 
 
@@ -54,16 +55,46 @@ func attackSchedule(delta):
 		cooldown -= 60*delta
 		if cooldown < 0:
 			cooldown = 120
-			for i in range(4):
-				rockAttack()
-				await get_tree().create_timer(0.2, false).timeout
+			rng.randomize()
+			if (randi_range(1, 2) == 1):
+				for i in range(3):
+					rockAttack()
+					await get_tree().create_timer(0.3, false).timeout
+				cooldown += 20
+			else:
+				for i in range(3):
+					bulletAttack()
+					await get_tree().create_timer(0.2, false).timeout
+				cooldown -= 30
 		
 	
+
 func summon():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", Vector2(16541.0, -20737.0), 3)
 	active = true
 
+func bulletAttack():
+	var instance = bullet.instantiate()
+	instance.z_index = 200
+	rng.randomize()
+	var rot = randf_range(-1, 1)
+	instance.range = 1500
+	rng.randomize()
+	instance.spawnPos = Vector2(global_position.x, global_position.y +randf_range(-5000, 5000))
+	
+	if instance.spawnPos.y > -17400 && rot < 0:
+		rot *= -1
+	if instance.spawnPos.y < -24400 && rot > 0:
+		rot *= -1
+		
+	instance.spawnRot = rot
+	instance.dir = rot
+	instance.shotspeed = 15000
+	
+	game2.add_child(instance)
+	
+	
 func rockAttack():
 	var instance = rock.instantiate()
 	instance.startx = -5500
@@ -73,6 +104,8 @@ func rockAttack():
 	
 	game2.add_child(instance)
 	pass
+	
+
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("playerBullet"):

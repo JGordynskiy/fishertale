@@ -1,15 +1,31 @@
 extends Control
 
-@onready var panel: Panel = $Panel
-@onready var animation_player: AnimationPlayer = $Panel/AnimationPlayer
+@onready var panel: Panel = $BLACKSCREEN
+@onready var animation_player: AnimationPlayer = $BLACKSCREEN/AnimationPlayer
 @onready var menumusic: AudioStreamPlayer = $sounds/menumusic
 @onready var menumusicloop: AudioStreamPlayer = $sounds/menumusicloop
 @onready var foosh: AudioStreamPlayer = $sounds/ui/foosh
 var skip = false
 
+@onready var initial_buttons: VBoxContainer = $InitialButtons
+@onready var final_buttons: BoxContainer = $finalButtons
+@onready var mode_buttons: HBoxContainer = $modeButtons
+
+#heart buttons
+@onready var normal: TextureButton = $modeButtons/normal
+@onready var melee: TextureButton = $modeButtons/melee
+
+
+var menuStage = 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
+	$modeButtonsPanel.visible = false
+	$"choose a heart".visible = false
+	mode_buttons.visible = false
+	initial_buttons.visible = true
+	final_buttons.visible = false
 	menumusic.volume_db = 0
 	await get_tree().create_timer(0.5).timeout
 	menumusic.play()
@@ -19,12 +35,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("sprint") || skip:
+	if (Input.is_action_pressed("sprint") || skip) && menuStage == 2:
 		$Label.show()
 	else:
 		$Label.hide()
 	
 	pass
+
+func _on_play_pressed() -> void:
+	$modeButtonsPanel.visible = true
+	$"choose a heart".visible = true
+	$sounds/ui/select.play()
+	menuStage = 2
+	initial_buttons.visible = false
+	final_buttons.visible = true
+	mode_buttons.visible = true
+	pass # Replace with function body.
 
 
 func onStartPressed() -> void:
@@ -71,17 +97,39 @@ func _on_options_mouse_entered() -> void:
 func _on_exit_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
 	pass # Replace with function body
-#func _on_button_mouse_exited() -> void:
-	#$sounds/ui/hoveroff.play()
-	#pass # Replace with function body.
-#func _on_options_mouse_exited() -> void:
-	#$sounds/ui/hoveroff.play()
-	#pass # Replace with function body.
-#func _on_exit_mouse_exited() -> void:
-	#$sounds/ui/hoveroff.play()
-	#pass # Replace with function body.
+
+func _on_play_mouse_entered() -> void:
+	$sounds/ui/hoveron.play()
+	pass # Replace with function body.
 
 
 func _on_menumusic_finished() -> void:
 	menumusicloop.play()
+	pass # Replace with function body.
+
+
+func _on_normal_mouse_entered() -> void:
+	$sounds/ui/hoveron.play()
+	$modeButtonsPanel/normalTip.visible = true
+	pass # Replace with function body.
+func _on_normal_mouse_exited() -> void:
+	$modeButtonsPanel/normalTip.visible = false
+	pass # Replace with function body.
+	
+func _on_melee_mouse_entered() -> void:
+	$sounds/ui/hoveron.play()
+	$modeButtonsPanel/meleeTip.visible = true
+	pass # Replace with function body.
+func _on_melee_mouse_exited() -> void:
+	$modeButtonsPanel/meleeTip.visible = false
+	pass # Replace with function body.
+
+
+func _on_normal_pressed() -> void:
+	global.heart = 1
+	onStartPressed()
+	pass # Replace with function body.
+func _on_melee_pressed() -> void:
+	global.heart = 2
+	onStartPressed()
 	pass # Replace with function body.

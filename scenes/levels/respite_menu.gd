@@ -29,7 +29,7 @@ func _ready() -> void:
 	transitioning = false
 	fadeRect.play("BlackToClear")
 	
-	print_debug(global.curBoss)
+	
 	if global.curBoss == 0 || global.curBoss == 1:
 		boss1img.modulate.a = 255
 	else:
@@ -140,7 +140,7 @@ func _on_health_pressed() -> void:
 	select.play()
 	global.hp += 1
 	global.roe -= int(global.healthCost)
-	global.healthCost += 0.5
+	#global.healthCost += 0.5
 	pass # Replace with function body.
 
 

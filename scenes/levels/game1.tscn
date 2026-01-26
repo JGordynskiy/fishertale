@@ -191,7 +191,6 @@ layer = 3
 [node name="FPS counter" parent="." instance=ExtResource("12_gvrma")]
 
 [node name="faderect" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="faderect" type="ColorRect" parent="faderect"]
 self_modulate = Color(0, 0, 0, 1)

@@ -9,4 +9,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("one"):
+		global.heart = 1
+	if Input.is_action_just_pressed("two"):
+		global.heart = 2
 	pass
