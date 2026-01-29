@@ -144,9 +144,9 @@ rotation = 0.5359249
 scale = Vector2(2.360991, 2.360991)
 
 [node name="Object2" parent="Background/NavigationRegion2D/Hazards" instance=ExtResource("6_i5lao")]
-position = Vector2(-3785.1743, -33653.96)
-rotation = -0.99099314
-scale = Vector2(13.709708, 13.709708)
+position = Vector2(-5001.2656, -38747.613)
+rotation = -0.95917934
+scale = Vector2(18.269064, 18.269064)
 
 [node name="fish" parent="." instance=ExtResource("2_qtp2c")]
 z_index = 600
@@ -191,6 +191,7 @@ layer = 3
 [node name="FPS counter" parent="." instance=ExtResource("12_gvrma")]
 
 [node name="faderect" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="faderect" type="ColorRect" parent="faderect"]
 self_modulate = Color(0, 0, 0, 1)

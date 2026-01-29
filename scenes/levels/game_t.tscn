@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dcqxpeyuf7pqo"]
+[gd_scene load_steps=23 format=3 uid="uid://dcqxpeyuf7pqo"]
 
 [ext_resource type="Script" uid="uid://c7ecq3qk63hnj" path="res://scenes/levels/game_t.gd" id="1_hb3pr"]
 [ext_resource type="PackedScene" uid="uid://kufc7apr17a3" path="res://scenes/background_tut.tscn" id="2_yljmy"]
@@ -24,60 +24,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yljmy"]
 size = Vector2(20, 82.62999)
-
-[sub_resource type="Animation" id="Animation_qirlt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_cu3vh"]
-resource_name = "fadein"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_iy4g1"]
-resource_name = "fadeout"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy4g1"]
-_data = {
-&"RESET": SubResource("Animation_qirlt"),
-&"fadein": SubResource("Animation_cu3vh"),
-&"fadeout": SubResource("Animation_iy4g1")
-}
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_un2io"]
 vertices = PackedVector2Array(-18978.781, 7930.078, -10216.82, 5586.0703, -7975.0234, 7353.6563, -10235.781, 12656.406, -19517.71, 9468.594, 5572.211, -5697.0234, 10159.703, -5791.742, 8799.172, 880.3281, 1814.7188, -447.85156, -2132.5313, -3921, -3333.4375, -1262.9922, -4161.3984, -1547.5, -16939.773, -79.10156, -19086.906, 7075.297, -19045.047, 6695.922, -19171.25, 6408.4297, -19107.813, 5838.961, -25846.219, 6699.3594, -35520.4, 14260.18, -32685.602, 1277.3984, -25287.102, -325.96094, -24002.313, 3881.8594, -19250.313, 5783.3906, -19286.547, 5497, -21497.844, 10722.844, -20867.531, 10323.578, -20857.477, 10327.5, -20852.156, 10313.852, -22260.953, 10766.133, -24117.063, 9897.672, -25692.633, 8777.43, -21029.11, 3959.1016, -19210.094, 6101.367)
@@ -159,25 +105,6 @@ stream = ExtResource("7_inl3r")
 
 [node name="calmactivity" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_nefry")
-
-[node name="faderect" type="CanvasLayer" parent="."]
-layer = 5
-
-[node name="faderect" type="ColorRect" parent="faderect"]
-self_modulate = Color(0, 0, 0, 1)
-z_index = 805
-offset_left = 56459.0
-offset_top = 40909.996
-offset_right = 56499.0
-offset_bottom = 40949.996
-scale = Vector2(-5314.712, -3301.3088)
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="faderect/faderect"]
-libraries = {
-&"": SubResource("AnimationLibrary_iy4g1")
-}
 
 [node name="Ambient Particles" parent="." instance=ExtResource("8_srh48")]
 z_index = 100

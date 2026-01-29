@@ -4,21 +4,21 @@ extends Node
 var debug = false
 
 #1 is default, 2 is melee
-var heart = 0
+var heart = 1
 
 
 @export var speed = 7000
 @export var shot_rate = 400 # 400 as default, reduce to increase
 @export var slash_rate = 400
-@export var shot_damage = 1.5 # 1.5 default
+@export var shot_damage = 31.5 # 1.5 default
 @export var slash_damage = shot_damage*3  # 3 default
 var max_hp = 5
 var hp = max_hp
 
 #upgrades and costs
 var roe = 0
-var damageCost = 5
-var rateCost = 5
+var damageCost = 4
+var rateCost = 4
 var healthCost = 1
 
 var accuracy = 0# 0.1 default, decrease to increase
@@ -43,6 +43,8 @@ func _ready() -> void:
 	globalSignals.connect("gameRto1", transition_Rone)
 	globalSignals.connect("game1toR", transition_OneR)
 	globalSignals.connect("gameRto2", transition_Rtwo)
+	globalSignals.connect("game2toR", transition_twoR)
+	globalSignals.connect("gameRto3", transition_Rthree)
 	
 	
 	var root = get_tree().root
@@ -83,6 +85,7 @@ func _process(delta: float) -> void:
 	
 func transition_TutR():
 	await get_tree().create_timer(1.5, false).timeout
+	curBoss = 1
 	goto_scene("res://scenes/levels/respite_menu.tscn")
 	pass
 
@@ -92,9 +95,17 @@ func transition_Rone():
 	pass
 func transition_OneR():
 	await get_tree().create_timer(1.5, false).timeout
+	curBoss = 2
 	goto_scene("res://scenes/levels/respite_menu.tscn")
 	pass
 func transition_Rtwo():
 	await get_tree().create_timer(1, false).timeout
 	goto_scene("res://scenes/levels/game2.tscn")
 	pass
+func transition_twoR():
+	curBoss = 3
+	await get_tree().create_timer(1, false).timeout
+	goto_scene("res://scenes/levels/respite_menu.tscn")
+func transition_Rthree():
+	await get_tree().create_timer(1, false).timeout
+	goto_scene("res://scenes/levels/game_dojo.tscn")

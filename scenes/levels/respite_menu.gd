@@ -2,9 +2,9 @@ extends Control
 @onready var readyB: Button = $ReadyButton
 @onready var hover_on: AudioStreamPlayer = $hoverOn
 @onready var music: AudioStreamPlayer = $Music
-@onready var fadeRect: AnimationPlayer = $fadeRect/AnimationPlayer
-@onready var fade_rect: ColorRect = $fadeRect
+
 @onready var select: AudioStreamPlayer = $select
+@onready var theFadeRect = load("res://scenes/ui/fade_rect.tscn")
 
 #buttons
 @onready var damage: Button = $upgrades/Damage
@@ -27,7 +27,10 @@ var transitioning = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	transitioning = false
-	fadeRect.play("BlackToClear")
+	
+	var thunkfade = theFadeRect.instantiate()
+	thunkfade.type = false
+	add_child(thunkfade)
 	
 	
 	if global.curBoss == 0 || global.curBoss == 1:
@@ -39,7 +42,8 @@ func _ready() -> void:
 		boss2img.modulate.a = 255
 	else:
 		boss2img.modulate.a = 0	
-		
+	#await get_tree().create_timer(0.5, false).timeout
+	music.play()
 		
 	
 
@@ -86,8 +90,10 @@ func _on_ready_button_pressed() -> void:
 		transitioning = true
 		var tween = create_tween()
 		tween.tween_property(music, "volume_db", -99, 1)
-		fade_rect.z_index = 300
-		fadeRect.play("fadeToBlack")
+	
+		var thunkfade = theFadeRect.instantiate()
+		thunkfade.type = true
+		add_child(thunkfade)
 		
 		if global.curBoss == 1 || global.curBoss == 0:
 			print_debug("Emitting gameRto1")

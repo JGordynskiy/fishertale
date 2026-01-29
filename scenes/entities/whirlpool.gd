@@ -26,14 +26,16 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	print_debug(global.curBoss)
 	if (area.name == "fish"):
 		global.pausable = false
 		if cam.tutorial:
-			
 			globalSignals.emit_signal("gameTtoR")
-			await get_tree().create_timer(0.6, false).timeout
-			$"../faderect/faderect/AnimationPlayer".play("fadein")
-		else:
-			globalSignals.emit_signal("game1toR")
-		global.pausable = true
+			return
+		match global.curBoss:
+			1:
+				globalSignals.emit_signal("game1toR")
+				global.pausable = true
+			2: 
+				globalSignals.emit_signal("game2toR")
 	pass # Replace with function body.

@@ -8,6 +8,8 @@ extends Node2D
 
 var enemyCount = 3
 
+@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
+
 @onready var animation_player: AnimationPlayer = $faderect/faderect/AnimationPlayer
 
 @onready var crate = load("res://scenes/object.tscn")
@@ -16,12 +18,16 @@ var enemyCount = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = false
+	add_child(thunkfade)
+	
 	globalSignals.gameOver.connect(gameOver)
 	globalSignals.gameTtoR.connect(transition)
 	$"hpBar/Panel".visible = false
 	camera.reset_smoothing()
 	#await get_tree().create_timer(0.5).timeout
-	animation_player.play("fadeout")
+	
 	calmactivity.volume_db = -79
 	calmactivity.play()
 	calmfirst.play()
@@ -121,9 +127,15 @@ func _on_calmfirst_finished() -> void:
 	pass # Replace with function body.
 
 func transition():
+	global.pausable = false
 	
-	global.curBoss = 1
 	var tween = create_tween()
 	tween.tween_property(calmloop, "volume_db", -79, 0.5)
 	tween.tween_property(calmfirst, "volume_db", -79, 0.5)
 	tween.tween_property(calmactivity, "volume_db", -79, 0.5)
+	
+	await get_tree().create_timer(0.5, false).timeout
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	add_child(thunkfade)
+	

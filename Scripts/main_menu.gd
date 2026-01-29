@@ -2,6 +2,7 @@ extends Control
 
 @onready var panel: Panel = $BLACKSCREEN
 @onready var animation_player: AnimationPlayer = $BLACKSCREEN/AnimationPlayer
+@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
 @onready var menumusic: AudioStreamPlayer = $sounds/menumusic
 @onready var menumusicloop: AudioStreamPlayer = $sounds/menumusicloop
 @onready var foosh: AudioStreamPlayer = $sounds/ui/foosh
@@ -10,6 +11,8 @@ var skip = false
 @onready var initial_buttons: VBoxContainer = $InitialButtons
 @onready var final_buttons: BoxContainer = $finalButtons
 @onready var mode_buttons: HBoxContainer = $modeButtons
+@onready var back_button: Button = $modeButtonsPanel/BackButton
+
 
 #heart buttons
 @onready var normal: TextureButton = $modeButtons/normal
@@ -27,9 +30,13 @@ func _ready() -> void:
 	initial_buttons.visible = true
 	final_buttons.visible = false
 	menumusic.volume_db = 0
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = false
+	add_child(thunkfade)
 	await get_tree().create_timer(0.5).timeout
 	menumusic.play()
-	animation_player.play("fade away")
+	
+	
 	pass # Replace with function body.
 
 
@@ -59,7 +66,11 @@ func onStartPressed() -> void:
 		skip = true
 	global.hp = global.max_hp
 	$sounds/ui/select.play()
-	animation_player.play("fadein")
+	
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	add_child(thunkfade)
+	
 	var tween = create_tween()
 	tween.tween_property(menumusic, "volume_db", -79, 0.5)
 	var tween2 = create_tween()
@@ -123,6 +134,19 @@ func _on_melee_mouse_entered() -> void:
 func _on_melee_mouse_exited() -> void:
 	$modeButtonsPanel/meleeTip.visible = false
 	pass # Replace with function body.
+	
+func _on_back_button_mouse_entered() -> void:
+	$sounds/ui/hoveron.play()
+	pass # Replace with function body.
+func _on_back_button_pressed() -> void:
+	$modeButtonsPanel.visible = false
+	$"choose a heart".visible = false
+	$sounds/ui/select.play()
+	menuStage = 1
+	initial_buttons.visible = true
+	final_buttons.visible = false
+	mode_buttons.visible = false
+	
 
 
 func _on_normal_pressed() -> void:

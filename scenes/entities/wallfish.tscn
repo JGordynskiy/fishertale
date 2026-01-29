@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5nhpv0faw0iy"]
+[gd_scene load_steps=14 format=3 uid="uid://5nhpv0faw0iy"]
 
 [ext_resource type="Script" uid="uid://dh66ittx627cd" path="res://scenes/entities/wallfish.gd" id="1_o4yae"]
 [ext_resource type="Texture2D" uid="uid://d1y38voa2h44i" path="res://Assets/enemies/WallFish/WallfishNorm.png" id="1_txqjo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddrd1ggr8s6p" path="res://Assets/enemies/WallFish/wallFishblink2.png" id="3_kap7c"]
 [ext_resource type="Texture2D" uid="uid://cge7w1mshyhwi" path="res://Assets/enemies/WallFish/wallfishBlink3.png" id="4_fymjy"]
 [ext_resource type="Texture2D" uid="uid://dy1skvv7gnhfb" path="res://scenes/levels/wallFishblink2.png" id="6_kap7c"]
+[ext_resource type="AudioStream" uid="uid://rtowf2k8mbcn" path="res://Assets/sounds/enemyBoss1death.ogg" id="7_fymjy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nmtqf"]
 animations = [{
@@ -38,6 +39,27 @@ size = Vector2(20, 35.30876)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyq5u"]
 size = Vector2(20, 9.2517185)
+
+[sub_resource type="Curve" id="Curve_fymjy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nmtqf"]
+curve = SubResource("Curve_fymjy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_olcya"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100.345, 1, 0)
+direction = Vector3(0, 1000, 0)
+spread = 5.0
+flatness = 1.0
+initial_velocity_min = 282.15
+initial_velocity_max = 649.5
+gravity = Vector3(0, -980, 0)
+scale_min = 100.0
+scale_max = 150.0
+scale_curve = SubResource("CurveTexture_nmtqf")
 
 [node name="wallfish" type="CharacterBody2D" groups=["dangerObj", "enemies", "enemyHitbox", "objects"]]
 script = ExtResource("1_o4yae")
@@ -76,5 +98,25 @@ z_index = -10
 position = Vector2(-1363, 6)
 scale = Vector2(0.46934372, 0.32714492)
 texture = ExtResource("6_kap7c")
+
+[node name="deathParticles" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0.71033335, 0.20999998, 1)
+z_index = -100
+position = Vector2(-24.000004, 393.00006)
+scale = Vector2(25.67757, -2.8444722)
+emitting = false
+amount = 360
+lifetime = 3.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.81
+randomness = 1.0
+fixed_fps = 0
+visibility_rect = Rect2(-9999, -9999, 99900, 99900)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_olcya")
+
+[node name="deathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fymjy")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

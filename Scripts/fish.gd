@@ -61,10 +61,17 @@ func _ready():
 	canMove = true
 	canShoot = true
 	sprite.play("idle")
+	
+	#kills fish and flashes screne red on death/dmg
 	globalSignals.gameOver.connect(death)
 	globalSignals.takeDmg.connect(takeDamage)
-	globalSignals.game1toR.connect(transition)
+	
+	#makes fish spin into whirlpool
 	globalSignals.gameTtoR.connect(transition)
+	globalSignals.game1toR.connect(transition)
+	globalSignals.game2toR.connect(transition)
+	
+	#plays sound and reduces slash timer on succesful slash
 	globalSignals.slashSuccess.connect(slashSuccess)
 	$Sprite2D.self_modulate.a = 0
 	pass
@@ -120,7 +127,8 @@ func slash():
 func shoot():
 	if (shot_timer > 0 || !canShoot):
 		return
-	$"sounds/shoot".pitch_scale = 1
+	rng.randomize()
+	$"sounds/shoot".pitch_scale = rng.randf_range(0.9, 1.1)
 	$"sounds/shoot".play()
 	shot_timer = global.shot_rate
 	
@@ -141,6 +149,8 @@ func shoot():
 	
 	
 func shootPop():
+	rng.randomize()
+	$"sounds/pop".pitch_scale = randf_range(0.9, 1.1)
 	$"sounds/pop".play()
 
 #Takes care of movement, as well as sprinting
@@ -187,14 +197,8 @@ func takeDamage():
 			instance.pos = global_position
 		
 			game.add_child(instance)
-		
-			
-		
 		iFrameCount = 0
-			
-		
-		
-	pass
+	
 	
 func dash():
 	if (dashCount > dashCool && canMove):
@@ -214,7 +218,7 @@ func dash():
 func blinker():
 	blinkCount += 1
 	
-	if (blinkCount == 100):
+	if (blinkCount == 100 && iFrameCount > iFrames):
 		
 		rng.randomize()
 		blinkCount = rng.randi_range(-50, 0)
@@ -267,11 +271,12 @@ func _process(delta):
 	# iFrame visibility
 	if iFrameCount < iFrames:
 		sprite.self_modulate.a = 0.5
-		sprite.speed_scale = 3
+		
 		
 	else:
 		sprite.self_modulate.a = 1
 		sprite.speed_scale = 1
+	
 	if global.hp > 0 || canMove:
 		look_at(get_global_mouse_position())
 	if velocity.length() > 0:
@@ -324,23 +329,25 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func slashSuccess():
 	if (!camera.tutorial):
-		#Gives chance based Roe
-		rng.randomize()
-		var rand = rng.randi_range(1,2)
-		if (rand == 1):
-			var instance = roePopup.instantiate()
-			rng.randomize()
-			var randRoe = rng.randi_range(1,3)
-			instance.actualText = "+"+str(randRoe)
-			
-			global.roe+= randRoe
-			
-			instance.global_position = global_position
-			rng.randomize()
-			instance.global_position.x += randf_range(-1000,1000)
-			rng.randomize()
-			instance.global_position.y += randf_range(-1000,1000)
-			game.add_child(instance)
+		pass
+		
+		## Gives chance based Roe
+		#rng.randomize()
+		#var rand = rng.randi_range(1,2)
+		#if (rand == 1):
+			#var instance = roePopup.instantiate()
+			#rng.randomize()
+			#var randRoe = rng.randi_range(1,3)
+			#instance.actualText = "+"+str(randRoe)
+			#
+			#global.roe+= randRoe
+			#
+			#instance.global_position = global_position
+			#rng.randomize()
+			#instance.global_position.x += randf_range(-1000,1000)
+			#rng.randomize()
+			#instance.global_position.y += randf_range(-1000,1000)
+			#game.add_child(instance)
 			
 	slashlandsfx.pitch_scale = rng.randf_range(1, 1.4)
 	slashlandsfx.play()

@@ -23,6 +23,9 @@ func _process(delta: float) -> void:
 	pass
 	
 func turnOn():
+	if game2.fanOn:
+		return
+	game2.fanOn = true
 	fan_startup.play()
 	animation.play("spin")
 	animation.speed_scale = 0
@@ -30,8 +33,6 @@ func turnOn():
 	tween.tween_property(animation, "speed_scale", 1, 2)
 	
 	await get_tree().create_timer(1, false).timeout
-	game2.fanOn = true
-	
 	
 	#await get_tree().create_timer(1.5, false).timeout
 	particles.emitting = true

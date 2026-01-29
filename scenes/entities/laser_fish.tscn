@@ -1,0 +1,291 @@
+[gd_scene load_steps=13 format=3 uid="uid://dlqmunvanqxus"]
+
+[ext_resource type="Texture2D" uid="uid://cpvn6l3j80dmy" path="res://Assets/enemies/laser/laserTile.png" id="1_hll5x"]
+[ext_resource type="Script" uid="uid://c0d1dvfhyh2l1" path="res://scenes/entities/laser_fish.gd" id="1_vpuyx"]
+[ext_resource type="AudioStream" uid="uid://dar0wniqumocu" path="res://Assets/sounds/lasercharge.ogg" id="2_41bec"]
+[ext_resource type="AudioStream" uid="uid://cj6pr7qsvm0en" path="res://Assets/sounds/enemie/laserBlast.ogg" id="2_hrlvu"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hll5x"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 38.41
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 1000.0
+linear_accel_max = 1000.0
+scale_min = 140.0
+scale_max = 140.0
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_s8s5e"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_quvlu"]
+resource_name = "fadeOut"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.083333336, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_hrlvu"]
+resource_name = "laserIn"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.06666667, -0.02043488, 1.9, -0.46666667, -0.31633425, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(14.139331, 0, 0, 0.11111112, -2.1898885, 1, -0.16666667, 0.38240272, 0, 0),
+"times": PackedFloat32Array(0, 0.6666667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(14.139331, 0, 0, 0.11111112, -2.1898885, 1, -0.16666667, 0.38240272, 0, 0),
+"times": PackedFloat32Array(0, 0.6666667)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(14.139331, 0, 0, 0.11111112, -2.1898885, 1, -0.16666667, 0.38240272, 0, 0),
+"times": PackedFloat32Array(0, 0.6666667)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.11111112, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.6666667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_quvlu"]
+_data = {
+&"RESET": SubResource("Animation_s8s5e"),
+&"fadeOut": SubResource("Animation_quvlu"),
+&"laserIn": SubResource("Animation_hrlvu")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hll5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrlvu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpuyx"]
+
+[node name="laserFish" type="CharacterBody2D" groups=["objects"]]
+scale = Vector2(12, 12)
+script = ExtResource("1_vpuyx")
+
+[node name="laserBlast" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(2.7495773, 6.453456)
+stream = ExtResource("2_hrlvu")
+volume_db = 10.0
+max_distance = 99999.0
+
+[node name="laserCharge" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(2.7495773, 6.4534554)
+stream = ExtResource("2_41bec")
+volume_db = 5.0
+max_distance = 99999.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(45, -203)
+color = Color(0.9971387, 0.6054926, 0.6831415, 1)
+offset = Vector2(178, 135)
+polygon = PackedVector2Array(-374, 48, -357, 19, -277, -18, -179, -23, -124, 9, -94, 67, -24, -13, -38, 171, -93, 102, -136, 141, -163, 149, -233, 151, -276, 149, -336, 139, -372, 94, -417, 68)
+uv = PackedVector2Array(-389, 29, -277, -18, -179, -23, -124, 9, -94, 67, -24, -13, -38, 171, -93, 102, -136, 141, -163, 149, -233, 151, -276, 149, -338, 114, -391, 67, -408, 42)
+
+[node name="invulenrablePolygon" type="Polygon2D" parent="."]
+z_index = -10
+position = Vector2(47.16666, -225.91667)
+scale = Vector2(1.1013844, 1.1013844)
+color = Color(0.9050328, 0.7067926, 0, 1)
+offset = Vector2(178, 135)
+polygon = PackedVector2Array(-374, 48, -357, 19, -277, -18, -179, -23, -124, 9, -101.278366, 56.87973, -31.215042, -19.766235, -48.61737, 180.1337, -102.94295, 115.66937, -136, 141, -163, 149, -233, 151, -276, 149, -336, 139, -372, 94, -417, 68)
+uv = PackedVector2Array(-389, 29, -277, -18, -179, -23, -124, 9, -94, 67, -24, -13, -38, 171, -93, 102, -136, 141, -163, 149, -233, 151, -276, 149, -338, 114, -391, 67, -408, 42)
+
+[node name="laserRay" type="RayCast2D" parent="."]
+scale = Vector2(11.213895, 2.1255193)
+target_position = Vector2(-99999, 50)
+
+[node name="fishDetector" type="RayCast2D" parent="."]
+scale = Vector2(2.7495773, 6.4534554)
+target_position = Vector2(-999999, 0)
+
+[node name="laserTelegraph" type="GPUParticles2D" parent="."]
+z_index = -10
+position = Vector2(-55, 0)
+scale = Vector2(2.1189368, 1.2719063)
+emitting = false
+amount = 50
+lifetime = 16.0
+one_shot = true
+speed_scale = 8.0
+explosiveness = 0.55
+fixed_fps = 0
+visibility_rect = Rect2(-9999, -9999, 99999, 99999)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_hll5x")
+
+[node name="laser" type="Line2D" parent="."]
+z_index = -100
+scale = Vector2(1.9, 1e-05)
+points = PackedVector2Array(0, 0, -1354.2106, 0)
+width = 25.39
+texture = ExtResource("1_hll5x")
+texture_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="laser"]
+libraries = {
+&"": SubResource("AnimationLibrary_quvlu")
+}
+
+[node name="hurtbox" type="Area2D" parent="." groups=["dangerObj", "enemies", "enemyHitbox", "objects"]]
+scale = Vector2(7.8417873, 7.8417873)
+
+[node name="hurtBox" type="CollisionShape2D" parent="hurtbox" groups=["objects"]]
+position = Vector2(-1.7853074, 0)
+scale = Vector2(1.6280742, 1.0414606)
+shape = SubResource("CircleShape2D_hll5x")
+debug_color = Color(0.91123164, 0, 0.072628535, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" groups=["objects"]]
+position = Vector2(22.28446, 0.9670413)
+rotation = 1.712478
+scale = Vector2(0.6947922, 0.09506961)
+shape = SubResource("RectangleShape2D_hrlvu")
+debug_color = Color(0.9182245, 0.2353065, 0.41794148, 0.41960785)
+
+[node name="hitBox" type="CollisionShape2D" parent="." groups=["objects"]]
+position = Vector2(-12.91667, -2.5)
+scale = Vector2(11.434756, 7.109457)
+shape = SubResource("CircleShape2D_vpuyx")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

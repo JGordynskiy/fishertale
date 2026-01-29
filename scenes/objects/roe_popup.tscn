@@ -53,6 +53,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_worii"]
 resource_name = "popup"
+length = 1.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,7 +63,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0.020463329, -0.25, 0, 0.25, 0, 1.0470815, -0.08833333, -0.17110303, 0, 0, 1.0470815, -0.08833333, -0.17110303, 0, 0, 0.020463329, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.7, 0.96666664)
+"times": PackedFloat32Array(0, 0.3, 1.2333333, 1.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -73,7 +74,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0.020463329, -0.25, 0, 0.25, 0, 1.0470815, -0.39666665, -0.029144645, 0, 0, 1.0470815, -0.39666665, -0.029144645, 0, 0, 0.020463329, 0, 1.148941, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.7, 0.96666664)
+"times": PackedFloat32Array(0, 0.3, 1.2333333, 1.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -84,7 +85,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(761.6053, -0.25, 0, 0.13333334, -22.641785, -36.60788, -0.39666665, 139.51567, 0, 0, -36.60788, -0.39666665, 139.51567, 0, 0, 761.6053, -0.046607196, -670.9293, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.7, 0.96666664)
+"times": PackedFloat32Array(0, 0.3, 1.2333333, 1.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -95,7 +96,7 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(313.53326, -0.25, 0, 0.033333335, -247.32104, -15.070953, -0.08833333, 54.767372, 0, 0, -15.070953, -0.08833333, 54.767372, 0, 0, 313.53326, -0.028463066, -381.87122, 0.25, 0),
-"times": PackedFloat32Array(0, 0.16666667, 0.7, 0.96666664)
+"times": PackedFloat32Array(0, 0.16666667, 1.2333333, 1.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o11px"]
@@ -119,7 +120,7 @@ theme_override_colors/default_color = Color(1, 0.5186667, 0.24000001, 1)
 theme_override_fonts/normal_font = ExtResource("1_oejh3")
 theme_override_font_sizes/normal_font_size = 500
 bbcode_enabled = true
-text = " +"
+text = " +1"
 fit_content = true
 autowrap_mode = 0
 tab_size = 24
@@ -129,7 +130,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1148.0001, 253.00002)
 scale = Vector2(0.49153745, 0.49153745)
 texture = ExtResource("2_34nfh")
-offset = Vector2(482.16064, -20.34436)
+offset = Vector2(-2600, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dylvrepm3tkw"]
+[gd_scene load_steps=18 format=3 uid="uid://dylvrepm3tkw"]
 
 [ext_resource type="Script" uid="uid://bww8vkou1mqo1" path="res://Scripts/game2.gd" id="1_ee6yk"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="1_f04mu"]
@@ -17,60 +17,6 @@
 [ext_resource type="AudioStream" uid="uid://cph2tykgpd0qa" path="res://Assets/music/boss2int.ogg" id="15_d1bqq"]
 [ext_resource type="AudioStream" uid="uid://wu7dmc3tupoa" path="res://Assets/music/boss2loop.ogg" id="16_u637n"]
 [ext_resource type="AudioStream" uid="uid://bf7m2afsgnkkc" path="res://Assets/music/boss2out.ogg" id="17_vnlqn"]
-
-[sub_resource type="Animation" id="Animation_qirlt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_cu3vh"]
-resource_name = "fadein"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_iy4g1"]
-resource_name = "fadeout"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy4g1"]
-_data = {
-&"RESET": SubResource("Animation_qirlt"),
-&"fadein": SubResource("Animation_cu3vh"),
-&"fadeout": SubResource("Animation_iy4g1")
-}
 
 [node name="Game2" type="Node2D"]
 script = ExtResource("1_ee6yk")
@@ -101,26 +47,6 @@ limit_smoothed = true
 [node name="hpBar" parent="." instance=ExtResource("2_f04mu")]
 
 [node name="Pause Menu" parent="." instance=ExtResource("6_33nkf")]
-
-[node name="faderect" type="CanvasLayer" parent="."]
-layer = 136
-visible = false
-
-[node name="faderect" type="ColorRect" parent="faderect"]
-self_modulate = Color(0, 0, 0, 1)
-z_index = 805
-offset_left = 33187.004
-offset_top = -5831.0
-offset_right = 33227.004
-offset_bottom = -5791.0
-scale = Vector2(-1134.1254, -704.4781)
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="faderect/faderect"]
-libraries = {
-&"": SubResource("AnimationLibrary_iy4g1")
-}
 
 [node name="ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_oevex")
@@ -166,14 +92,14 @@ texture = ExtResource("14_q6hs2")
 
 [node name="musicInt" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("15_d1bqq")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="musicLoop" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("16_u637n")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="musicEnd" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("17_vnlqn")
-volume_db = -5.0
+volume_db = -10.0
 
 [connection signal="finished" from="Music/musicInt" to="." method="_on_music_int_finished"]

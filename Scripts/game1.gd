@@ -2,9 +2,13 @@ extends Node2D
 
 @onready var pause_menu: Control = $"Pause Menu/CanvasLayer"
 @onready var fadeanimation_player: AnimationPlayer = $faderect/faderect/AnimationPlayer
+@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
 @onready var whirlpool = load("res://scenes/entities/whirlpool.tscn")
 @onready var camera: Camera2D = $fish/followCam
+@onready var rng = RandomNumberGenerator.new()
 
+#roe popup
+@onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
 
 @onready var fish = get_node("fish") 
 @onready var boss1 = get_node("evilFish") 
@@ -28,7 +32,10 @@ func _ready() -> void:
 	globalSignals.boss1death.connect(spawnPortal)
 	globalSignals.gameOver.connect(gameOver)
 	globalSignals.game1toR.connect(fadeaway)
-	fadeanimation_player.play("fadeout")
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = false
+	add_child(thunkfade)
+	
 	
 	$"ambience".play()
 	await get_tree().create_timer(0.25, false).timeout
@@ -88,13 +95,27 @@ func gameOver():
 	#pass # Replace with function body.
 
 func spawnPortal():
+	#"clear!" text
 	var instance = clearpopup.instantiate()
 	add_child(instance)
-	global.curBoss = 2
+	
+	
+	#adding ROE
+	var roeP = roePopup.instantiate()
+	roeP.global_position = fish.global_position
+	roeP.actualText = "+"+str(20)
+	global.roe += 20
+	rng.randomize()
+	roeP.global_position.x += randf_range(-1000,1000)
+	rng.randomize()
+	roeP.global_position.y += randf_range(-1000,1000)
+	add_child(roeP)
 	
 	boss_1_loop.stop()
 	boss_1_looplowpass.stop()
 	boss_1_end.play()
+	
+	
 	await get_tree().create_timer(2, false).timeout
 	var portal = whirlpool.instantiate()
 	portal.visible = false
@@ -112,5 +133,7 @@ func _on_boss_1_int_finished() -> void:
 	pass # Replace with function body.
 	
 func fadeaway():
-	await get_tree().create_timer(0.25, false).timeout
-	fadeanimation_player.play("fadein")
+	await get_tree().create_timer(0.5, false).timeout
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	add_child(thunkfade)

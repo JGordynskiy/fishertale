@@ -20,6 +20,9 @@ signal gameTtoR
 signal gameRto1
 signal game1toR
 signal gameRto2
+signal game2toR
+signal gameRto3
+
 
 #Boss2
 signal boss2Start

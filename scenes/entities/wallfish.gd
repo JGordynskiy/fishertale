@@ -41,13 +41,16 @@ func _process(delta: float) -> void:
 		game2.fanSpeed = 60
 	if boss2hp <= 10 && boss2hp > 0:
 		game2.fanSpeed = 75
-	if boss2hp <= 0 && boss2hp > -50:
+	if boss2hp <= 0 && boss2hp > -99:
 		
 		boss2hp = -100
 		globalSignals.emit_signal("boss2death")
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "global_position", Vector2(25541.0, -20737.0), 3)
 		active = false
+		$deathSFX.play()
+		$deathParticles.emitting = true
+		
 	pass
 	
 func attackSchedule(delta):

@@ -6,24 +6,30 @@ var fanOn = false
 @onready var wallfish: CharacterBody2D = $Wallfish
 @onready var fan: Node2D = $fan
 
-@onready var faderect: AnimationPlayer = $faderect/faderect/AnimationPlayer
+@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
 @onready var clearpopup = load("res://scenes/ui/clearpopup.tscn")
+@onready var rng = RandomNumberGenerator.new()
+@onready var whirlpool = load("res://scenes/entities/whirlpool.tscn")
+
+#roe popup
+@onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
 
 
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	faderect.play("fadein")
-	global.curBoss = 2
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = false
+	add_child(thunkfade)
+	
+	globalSignals.game2toR.connect(fadeaway)
 	globalSignals.connect("boss2death", boss2clear)
 	global.pausable = true
 	globalSignals.boss2Start.connect(bossStart)
 	
 	#pause_menu.pausable = true
 	$"ambience".play()
-	pass # Replace with function body.
+	pass 
 
 func boss2clear():
 	$Music/musicInt.stop()
@@ -32,6 +38,25 @@ func boss2clear():
 	fan.turnOff()
 	var instance = clearpopup.instantiate()
 	add_child(instance)
+	
+	#roe popup
+	var roeP = roePopup.instantiate()
+	roeP.global_position = fish.global_position
+	roeP.actualText = "+"+str(20)
+	global.roe += 20
+	rng.randomize()
+	roeP.global_position.x += randf_range(-1000,1000)
+	rng.randomize()
+	roeP.global_position.y += randf_range(-1000,1000)
+	add_child(roeP)
+	
+	#sapawning portal
+	await get_tree().create_timer(2, false).timeout
+	var portal = whirlpool.instantiate()
+	global.whirlPoolPos = Vector2(17000, -20000)
+	portal.global_position = global.whirlPoolPos
+	add_child(portal)
+	
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,3 +83,11 @@ func bossStart():
 func _on_music_int_finished() -> void:
 	$Music/musicLoop.play()
 	pass # Replace with function body.
+
+func fadeaway():
+	await get_tree().create_timer(0.5, false).timeout
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	add_child(thunkfade)
+	
+	

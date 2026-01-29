@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dh8ia8258s6eo" path="res://Scripts/cannon.gd" id="1_xuqfy"]
 
 [node name="Cannon" type="Node2D" groups=["objects"]]
+rotation = -1.5707964
 script = ExtResource("1_xuqfy")
 
 [node name="Polygon2D3" type="Polygon2D" parent="."]

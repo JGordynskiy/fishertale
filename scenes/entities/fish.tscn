@@ -155,6 +155,44 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_80fr0"]
+resource_name = "recoil"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1000, 0), Vector2(0, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("blink:offset:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-120, -0.05, 0, 0, 1.1395264, 0, 0, -3.4757366, 0, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blink:offset:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.05, 0, 0.05, 0, 0, -0.016666668, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+
 [sub_resource type="Animation" id="Animation_gfhab"]
 resource_name = "spin"
 length = 0.5
@@ -204,44 +242,6 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 2),
 "points": PackedFloat32Array(0.22, -0.25, 0, 0.25, 0, 1e-05, -0.16666667, 0.036665, 0, 0),
 "times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="Animation" id="Animation_80fr0"]
-resource_name = "recoil"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.099999994),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-500, 0), Vector2(0, 0)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("blink:offset:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-54.905, -0.05, 0, 0.05, 0, 0, -0.016666668, -9.150834, 0, 0),
-"times": PackedFloat32Array(0, 0.1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("blink:offset:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0, -0.05, 0, 0.05, 0, 0, -0.016666668, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.1)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_81hvq"]
@@ -480,7 +480,6 @@ offset = Vector2(-500, 0)
 flip_h = true
 
 [node name="blink" type="Polygon2D" parent="AnimatedSprite2D"]
-visible = false
 position = Vector2(2090.9092, -127.27272)
 scale = Vector2(8.17054, 5.6178904)
 color = Color(1, 0.67058825, 0.34117648, 1)

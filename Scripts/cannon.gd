@@ -31,26 +31,28 @@ func _process(delta: float) -> void:
 		#modulate.s -= 50*delta
 	
 	if Input.is_action_just_pressed("DEBUGcannonshoot"):
-		print(cannonShooting)
-		cannonShooting = !cannonShooting
-		if cannonShooting:
-			modulate.a = 1
-		else:
-			modulate.a = 0.25
+		#print(cannonShooting)
+		#cannonShooting = !cannonShooting
+		#if cannonShooting:
+			#modulate.a = 1
+		#else:
+			#modulate.a = 0.25
+		shoot(0)
 		
 	if cannonShooting:
-		look_at(fish.global_position)
-	if(cannonShooting && !coolingDown):
-		
-		
-		shoot(0)
-		shoot(0.5)
-		if shootTime < 0.1:
-			shootTime = 1
-		shootTime -=0.05
-		coolingDown = true
-		await get_tree().create_timer(shootTime).timeout
-		coolingDown = false
+		global_rotation = global_position.angle_to_point(fish.global_position) + PI
+		#look_at(fish.global_position)
+	#if(cannonShooting && !coolingDown):
+		#
+		#
+		#shoot(0)
+		#shoot(0.5)
+		#if shootTime < 0.1:
+			#shootTime = 1
+		#shootTime -=0.05
+		#coolingDown = true
+		#await get_tree().create_timer(shootTime).timeout
+		#coolingDown = false
 		
 	pass
 
