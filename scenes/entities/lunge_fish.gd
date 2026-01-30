@@ -11,6 +11,9 @@ extends CharacterBody2D
 @onready var danger: CollisionShape2D = $lungeFish/danger
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
+#roe popup
+@onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
+
 var invuln = false
 
 @onready var navAgent: NavigationAgent2D = $NavigationAgent2D
@@ -90,6 +93,15 @@ func _on_lunge_fish_area_entered(area: Area2D) -> void:
 		death.play()
 		particles.emitting = true
 		danger.set_deferred("disabled", true)
+		$CollisionShape2D.set_deferred("disabled", true)
+		
+		#roe Popup
+		var roeP = roePopup.instantiate()
+		roeP.global_position = global_position
+		roeP.actualText = "+"+str(2)
+		global.roe += 2
+		game.add_child(roeP)
+		
 		await get_tree().create_timer(1, false).timeout
 		queue_free()
 		

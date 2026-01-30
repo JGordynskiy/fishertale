@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dfc7lldewp5pq"]
+[gd_scene load_steps=64 format=3 uid="uid://dfc7lldewp5pq"]
 
 [ext_resource type="Texture2D" uid="uid://b5sek51ovhatj" path="res://Assets/objects/glassOverlay.png" id="1_h8wsi"]
 [ext_resource type="Script" uid="uid://6mulj1la2v3j" path="res://scenes/levels/respite_menu.gd" id="1_po2xu"]
@@ -32,6 +32,14 @@
 [ext_resource type="Texture2D" uid="uid://cge7w1mshyhwi" path="res://Assets/enemies/WallFish/wallfishBlink3.png" id="25_8yh1e"]
 [ext_resource type="Texture2D" uid="uid://f22v7c03m886" path="res://Assets/objects/roeIcon.png" id="27_855ro"]
 [ext_resource type="PackedScene" uid="uid://djy2i1xu1j0um" path="res://scenes/ui/menu_hp_bar.tscn" id="31_1dcgu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwa20"]
+bg_color = Color(0.3, 0.1843, 0.033000007, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.72, 0.72, 0.72, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_855ro"]
 texture = ExtResource("5_c4lf3")
@@ -217,6 +225,21 @@ frame_3/duration = 1.0
 frame_4/texture = ExtResource("10_culeq")
 frame_4/duration = 1.0
 
+[sub_resource type="Animation" id="Animation_v85fi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_sejpb"]
 resource_name = "blinking"
 length = 20.0
@@ -232,21 +255,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_v85fi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wbjcc"]
@@ -463,6 +471,28 @@ stream = ExtResource("14_culeq")
 [node name="select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_6i2y2")
 
+[node name="upgradePanel" type="Panel" parent="."]
+z_index = 5
+layout_mode = 0
+offset_left = 595.0
+offset_top = 40.0
+offset_right = 1303.6829
+offset_bottom = 305.57507
+scale = Vector2(0.84446996, 0.84446996)
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwa20")
+
+[node name="Label" type="Label" parent="upgradePanel"]
+z_index = 50
+layout_mode = 0
+offset_left = 127.890854
+offset_top = 29.604372
+offset_right = 527.89087
+offset_bottom = 80.604385
+scale = Vector2(1.1735598, 1.1735598)
+theme_override_fonts/font = ExtResource("10_vrvnp")
+theme_override_font_sizes/font_size = 50
+text = "Upgrades"
+
 [node name="Grey Border" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -527,6 +557,7 @@ offset_top = -57.0
 offset_right = 1362.0
 offset_bottom = 779.0
 scale = Vector2(0.9976918, 0.9853597)
+pivot_offset = Vector2(637.47144, 280.10074)
 texture = ExtResource("1_h8wsi")
 
 [node name="seaweed2" type="TextureRect" parent="."]
@@ -570,26 +601,26 @@ scale = Vector2(-0.30203584, -0.30203584)
 z_index = 50
 layout_mode = 0
 offset_left = 755.00006
-offset_top = 77.000015
+offset_top = 411.0
 offset_right = 1150.0001
-offset_bottom = 184.00002
+offset_bottom = 518.0
 scale = Vector2(1.1245619, 1.1245619)
 theme_override_fonts/font = ExtResource("4_17bcf")
-theme_override_font_sizes/font_size = 61
+theme_override_font_sizes/font_size = 55
 theme_override_styles/normal = SubResource("StyleBoxFlat_po2xu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_17bcf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fma8t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_17bcf")
-text = "Ready"
+text = "Ready->"
 
 [node name="upgrades" type="HBoxContainer" parent="."]
 z_index = 50
 layout_mode = 0
-offset_left = 627.0
-offset_top = 396.0
-offset_right = 1503.0
-offset_bottom = 1068.0
-scale = Vector2(0.16277583, 0.16277583)
+offset_left = 677.0
+offset_top = 127.00001
+offset_right = 3781.0
+offset_bottom = 887.0
+scale = Vector2(0.14629182, 0.14629182)
 theme_override_constants/separation = 194
 
 [node name="Damage" type="Button" parent="upgrades"]
@@ -730,13 +761,14 @@ texture = ExtResource("6_uoip4")
 [node name="Label" type="Label" parent="enemyMonitor"]
 z_index = -10
 layout_mode = 0
-offset_left = 166.40771
+offset_left = 91.74446
 offset_top = 56.968414
-offset_right = 430.40775
+offset_right = 594.74445
 offset_bottom = 123.968414
+scale = Vector2(0.8308934, 0.8308934)
 theme_override_fonts/font = ExtResource("10_vrvnp")
 theme_override_font_sizes/font_size = 66
-text = "NEXT"
+text = "INCOMING"
 
 [node name="static" type="TextureRect" parent="enemyMonitor"]
 self_modulate = Color(1, 1, 1, 0.49411765)
@@ -783,10 +815,14 @@ autoplay = "default"
 
 [node name="Roe" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 280.00003
+offset_top = 215.0
+offset_right = 320.00003
+offset_bottom = 255.0
+scale = Vector2(0.62435806, 0.6292351)
 
 [node name="roeAmount" type="RichTextLabel" parent="Roe"]
+z_index = 10
 layout_mode = 0
 offset_left = 584.0
 offset_top = 113.0
@@ -802,10 +838,11 @@ text = "0"
 visible = false
 z_index = 50
 layout_mode = 0
-offset_left = 512.0
-offset_top = 209.0
-offset_right = 923.0
-offset_bottom = 371.0
+offset_left = 752.77313
+offset_top = 93.76466
+offset_right = 1151.8154
+offset_bottom = 243.86311
+scale = Vector2(1.1587497, 1.1587497)
 theme_override_colors/default_color = Color(1, 0.9826667, 0.48000002, 1)
 theme_override_fonts/normal_font = ExtResource("4_17bcf")
 theme_override_font_sizes/normal_font_size = 25
@@ -828,10 +865,11 @@ flat = true
 [node name="hpbar" type="Control" parent="."]
 z_index = 50
 anchors_preset = 0
-offset_left = 1052.0
-offset_top = 371.0
-offset_right = 1092.0
-offset_bottom = 411.0
+offset_left = 517.0
+offset_top = 234.00003
+offset_right = 557.0
+offset_bottom = 274.00003
+rotation = -1.5707964
 scale = Vector2(0.03480081, 0.03480081)
 
 [node name="menuHpBar" parent="hpbar" instance=ExtResource("31_1dcgu")]

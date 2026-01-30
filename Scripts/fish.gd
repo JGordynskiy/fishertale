@@ -74,7 +74,14 @@ func _ready():
 	#plays sound and reduces slash timer on succesful slash
 	globalSignals.slashSuccess.connect(slashSuccess)
 	$Sprite2D.self_modulate.a = 0
-	pass
+	
+	#ensure slash sizes are correct
+	$slashhitbox/CollisionShape2D.position = Vector2(global.slash_x, 0)
+	$slashhitbox/CollisionShape2D.scale.x = global.slash_scale
+	$slash.position.x = global.slash_x*1.8 + 300
+	
+	
+	
 
 func death():
 	canShoot = false
@@ -142,6 +149,8 @@ func shoot():
 	instance.spawnRot = rotation + (PI/2)
 	
 	game.add_child.call_deferred(instance)
+	$"AnimatedSprite2D/AnimationPlayer".stop()
+	$"AnimatedSprite2D/AnimationPlayer".play("RESET")
 	$"AnimatedSprite2D/AnimationPlayer".play("recoil")
 	
 
@@ -190,13 +199,27 @@ func takeDamage():
 		
 		global.hp -= 1
 		if global.hp >0:
+			
+			
 			$"sounds/damage".play()
 			var instance = bubbles.instantiate()
 			instance.particleTime = 10.0
 			instance.particleCount = 60
 			instance.pos = global_position
-		
 			game.add_child(instance)
+			
+			
+			##pausing game upon tkaing damage
+			#global.camZoom *= 2
+			#global.pausable = false
+			#get_tree().paused = true
+			#await get_tree().physics_frame
+			#await get_tree().create_timer(pauseTime, true).timeout
+			#get_tree().paused = false
+			#global.pausable = true
+			#global.camZoom *= 0.5
+			
+			
 		iFrameCount = 0
 	
 	
@@ -227,6 +250,12 @@ func blinker():
 		blink.visible = false
 
 func _process(delta):
+	#shows fire if debug damage
+	if (global.shot_damage > 30):
+		$fireParticles.emitting = true
+	else:
+		$fireParticles.emitting = false
+	
 	
 	#removes inviniciblity frames
 	iFrameCount += 60*delta
@@ -326,7 +355,8 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 		dangerTouching -= 1
 	
 	pass 
-
+	
+#for slash sound effect + roe
 func slashSuccess():
 	if (!camera.tutorial):
 		pass
@@ -353,4 +383,3 @@ func slashSuccess():
 	slashlandsfx.play()
 	slash_timer /= 5
 	
-#for slash sound effect + roe

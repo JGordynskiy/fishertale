@@ -13,6 +13,8 @@ config_version=5
 config/name="Fishertale"
 run/main_scene="uid://cjdpo2qo6jcen"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.10080001, 0.11004001, 0.18, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

@@ -79,6 +79,7 @@ func onStartPressed() -> void:
 	await get_tree().create_timer(2).timeout
 	global.inGame = true
 	if skip:
+		global.roe = 6
 		global.curBoss = 1
 		global.goto_scene("res://scenes/levels/respite_menu.tscn")
 	else:

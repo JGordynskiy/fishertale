@@ -212,7 +212,7 @@ autoplay = "spin"
 scale = Vector2(2.604945, 2.604945)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(10.450413, 10.450413)
+scale = Vector2(52.262924, 52.262924)
 shape = SubResource("CircleShape2D_lc5bf")
 
 [node name="spawn" type="AnimationPlayer" parent="."]

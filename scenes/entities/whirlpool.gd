@@ -8,12 +8,14 @@ extends Node2D
 @onready var cam = $"../fish/followCam"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visible = false
+	spawn.play("spawn")
 	whirlpoolnoise.play()
 	whirlpoolspawn.play()
-	spawn.play("spawn")
+	
 	spawnsplosion.emitting = true
 	await get_tree().create_timer(0.05, false).timeout
-	show()
+	visible = true
 	
 	await get_tree().create_timer(1, false).timeout
 	vortex.emitting = true

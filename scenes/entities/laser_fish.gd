@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var fish = get_node("../fish")
 var rng = RandomNumberGenerator.new()
 
+@onready var navAgent: NavigationAgent2D = $NavigationAgent2D
+
 var laserEmitting = false
 
 var iFrames = 0
@@ -17,6 +19,9 @@ func _ready() -> void:
 	pass 
 
 func _process(delta: float) -> void:
+	
+	var laserLength = global_position.distance_to(laserRay.get_collision_point())
+	laser.points = PackedVector2Array([Vector2(0, 0), Vector2(laserLength/22*-1, 0)])
 	
 	
 	iFrames -= 60*delta
@@ -36,7 +41,7 @@ func _process(delta: float) -> void:
 	#invulnerability Visual
 	$invulenrablePolygon.visible = !laserEmitting
 	
-	if coolDown < 0:
+	if coolDown < 0 && global.hp > 0:
 		attackSchedule()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -56,7 +61,7 @@ func attackSchedule():
 	pass
 	
 func sweepLaser():
-	$laserTelegraph.restart()
+	
 	$laserTelegraph.emitting = false
 	rng.randomize()
 	var sweepRange = randf_range(0.4, 0.8)
@@ -66,7 +71,7 @@ func sweepLaser():
 		parity = randi_range(-1, 1)
 	
 	
-	coolDown = 120
+	coolDown = 100
 	$laser.visible = false
 	$laser.modulate.a = 1
 	$laser/AnimationPlayer.play("RESET")
@@ -76,12 +81,12 @@ func sweepLaser():
 	await get_tree().create_timer(0.5, false).timeout #time from rotation to telegraph
 	
 	#telegraphing the laser
+	$laserTelegraph.restart()
 	$laserTelegraph.emitting = true
 	$laserCharge.play()
 	
 	# setting the laser correctly!
-	var laserLength = global_position.distance_to(laserRay.get_collision_point())
-	laser.points = PackedVector2Array([Vector2(0, 0), Vector2(laserLength*-1, 0)])
+	
 	
 	await get_tree().create_timer(1, false).timeout #telegraph time
 	

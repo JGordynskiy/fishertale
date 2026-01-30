@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dujhggsr73v24"]
+[gd_scene load_steps=20 format=3 uid="uid://dujhggsr73v24"]
 
 [ext_resource type="Script" uid="uid://j8d2v0mn1mx4" path="res://scenes/levels/game_dojo.gd" id="1_84b36"]
 [ext_resource type="Texture2D" uid="uid://p3m3hjt3mbjs" path="res://Assets/backgrounds/blueprint-6.jpg" id="1_kerkt"]
 [ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="1_ug1bs"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="2_4fbiy"]
 [ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_ircpa"]
+[ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="2_lwffo"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="3_4fbiy"]
 [ext_resource type="PackedScene" uid="uid://cu8elwjh0e4uc" path="res://scenes/entities/dummy.tscn" id="4_8wjer"]
 [ext_resource type="AudioStream" uid="uid://dvu4f2na7dbsa" path="res://Assets/music/wiibowlingLoop.ogg" id="8_86clx"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://1jlslaopwk34" path="res://scenes/cannon.tscn" id="10_blkjw"]
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="11_u8vor"]
 [ext_resource type="PackedScene" uid="uid://dlqmunvanqxus" path="res://scenes/entities/laser_fish.tscn" id="12_2r338"]
+[ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="12_qlfcy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u8vor"]
 vertices = PackedVector2Array(-15309.656, 10464.8125, -16811.14, 10430.219, -17144.813, -12462.57, -14921.609, -11982.406, -14218.578, -9942.3125, -14627.609, 7858.422, -12783.844, 6798.5313, -13317.992, -9763, -11436.32, -9763, -10700.047, 7163.0625, -17232.852, -19003.023, 36570.938, -19114.969, 36352.047, 22032.96, -11365, -13748.172, -17232.594, 21841.031, -16783.398, 10683.203, -15396.352, 10711.867, -15260.102, 10996.242, -13744.727, 12283.953, -11511.547, 12313.047, -10175.383, 11245.109, -9977.828, 8775.25, -14338.203, -13666.9375, -14932.172, -12179.5, -17141.703, -12641.281, -12184.172, -14026.281, -11365, -11977.844)
@@ -32,7 +34,10 @@ size = Vector2(20, 76.468155)
 [node name="game_dojo" type="Node2D"]
 script = ExtResource("1_84b36")
 
+[node name="GameOver" parent="." instance=ExtResource("2_lwffo")]
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_u8vor")
 
 [node name="hpBar" parent="." instance=ExtResource("11_u8vor")]
@@ -52,6 +57,7 @@ texture = ExtResource("1_kerkt")
 position = Vector2(350, 537)
 
 [node name="followCam" parent="fish" instance=ExtResource("3_4fbiy")]
+zoom = Vector2(0.1, 0.1)
 limit_left = -17445
 limit_top = -19435
 limit_right = 36810
@@ -92,6 +98,9 @@ position = Vector2(38320.004, 4874.249)
 scale = Vector2(149.50159, 639.4099)
 shape = SubResource("RectangleShape2D_u8vor")
 
+[node name="laserFish" parent="." instance=ExtResource("12_2r338")]
+position = Vector2(10455, 0)
+
 [node name="objects" type="Node" parent="."]
 
 [node name="Cannon" parent="objects" instance=ExtResource("10_blkjw")]
@@ -99,5 +108,20 @@ position = Vector2(-13620, -11678)
 rotation = -3.1415925
 scale = Vector2(12.187502, 12.187502)
 
-[node name="laserFish" parent="." instance=ExtResource("12_2r338")]
-position = Vector2(10803.002, 29)
+[node name="Object" parent="objects" instance=ExtResource("12_qlfcy")]
+position = Vector2(7214, -6440)
+
+[node name="Object4" parent="objects" instance=ExtResource("12_qlfcy")]
+position = Vector2(10997, 6653.0005)
+rotation = -1.781221
+scale = Vector2(1.5461056, 1.5461056)
+
+[node name="Object2" parent="objects" instance=ExtResource("12_qlfcy")]
+position = Vector2(-3063.9993, 13974)
+rotation = 0.58122283
+scale = Vector2(5.1754947, 5.1754947)
+
+[node name="Object3" parent="objects" instance=ExtResource("12_qlfcy")]
+position = Vector2(29611, 9330.001)
+rotation = 1.8556294
+scale = Vector2(5.1754947, 5.1754947)

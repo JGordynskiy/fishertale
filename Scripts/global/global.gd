@@ -9,9 +9,16 @@ var heart = 1
 
 @export var speed = 7000
 @export var shot_rate = 400 # 400 as default, reduce to increase
-@export var slash_rate = 400
-@export var shot_damage = 31.5 # 1.5 default
+
+@export var shot_damage = 1.5 # 1.5 default
+
 @export var slash_damage = shot_damage*3  # 3 default
+@export var slash_rate = 400
+
+
+var slash_x = 50 # for every 200 slash_x moves, slash_scale moves by 15
+var slash_scale = 65
+
 var max_hp = 5
 var hp = max_hp
 
@@ -24,7 +31,7 @@ var healthCost = 1
 var accuracy = 0# 0.1 default, decrease to increase
 var bulletRange = 200 
 var pausable = false
-@export var camZoom = 0.06 # 0.06 default
+@export var camZoom = 0.06 # 0.06 default, dmgSplash stops working at 0.01!
 @export var curBoss = 0
 
 var whirlPoolPos : Vector2

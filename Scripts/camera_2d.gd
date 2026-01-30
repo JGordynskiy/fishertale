@@ -26,8 +26,7 @@ func _ready() -> void:
 	enabled = true
 	globalSignals.game1toR.connect(disableCam)
 	globalSignals.gameOver.connect(deathZoom)
-	zoom.x = global.camZoom
-	zoom.y = global.camZoom
+	
 	pass # Replace with function body.
 
 func disableCam():
@@ -77,7 +76,7 @@ func tutorialCutscene():
 			limit_left = -10715
 			limit_top = -20600
 			limit_right =11545 
-			limit_bottom = 3720
+			limit_bottom = 7520
 		if tutStage == 4:
 			limit_left = -36855
 			limit_top = -6660
@@ -91,6 +90,7 @@ func _process(delta: float) -> void:
 	
 	
 	
+
 	
 	# moves the camera according to the mouse
 	if global.hp > 0:

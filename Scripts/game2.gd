@@ -6,6 +6,9 @@ var fanOn = false
 @onready var wallfish: CharacterBody2D = $Wallfish
 @onready var fan: Node2D = $fan
 
+@onready var music_loop: AudioStreamPlayer = $Music/musicLoop
+
+
 @onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
 @onready var clearpopup = load("res://scenes/ui/clearpopup.tscn")
 @onready var rng = RandomNumberGenerator.new()
@@ -24,12 +27,19 @@ func _ready() -> void:
 	
 	globalSignals.game2toR.connect(fadeaway)
 	globalSignals.connect("boss2death", boss2clear)
+	globalSignals.gameOver.connect(gameOver)
 	global.pausable = true
 	globalSignals.boss2Start.connect(bossStart)
 	
 	#pause_menu.pausable = true
 	$"ambience".play()
 	pass 
+
+func gameOver():
+	var tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(music_loop, "volume_db", -50, 4)
+	tween.tween_property(music_loop, "pitch_scale", 0.2, 2)
 
 func boss2clear():
 	$Music/musicInt.stop()
@@ -42,8 +52,8 @@ func boss2clear():
 	#roe popup
 	var roeP = roePopup.instantiate()
 	roeP.global_position = fish.global_position
-	roeP.actualText = "+"+str(20)
-	global.roe += 20
+	roeP.actualText = "+"+str(10)
+	global.roe += 10
 	rng.randomize()
 	roeP.global_position.x += randf_range(-1000,1000)
 	rng.randomize()

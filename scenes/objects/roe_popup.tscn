@@ -120,7 +120,7 @@ theme_override_colors/default_color = Color(1, 0.5186667, 0.24000001, 1)
 theme_override_fonts/normal_font = ExtResource("1_oejh3")
 theme_override_font_sizes/normal_font_size = 500
 bbcode_enabled = true
-text = " +1"
+text = "+1"
 fit_content = true
 autowrap_mode = 0
 tab_size = 24
@@ -130,7 +130,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1148.0001, 253.00002)
 scale = Vector2(0.49153745, 0.49153745)
 texture = ExtResource("2_34nfh")
-offset = Vector2(-2600, 0)
+offset = Vector2(-3200, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b0m4623tpxvua"]
+[gd_scene load_steps=49 format=3 uid="uid://b0m4623tpxvua"]
 
 [ext_resource type="Script" uid="uid://bhiwhge6dfr8p" path="res://Scripts/fish.gd" id="1_8g0i4"]
 [ext_resource type="Texture2D" uid="uid://loab5wse0qu7" path="res://Assets/fishIdle1.png" id="2_6lgmd"]
@@ -456,6 +456,26 @@ scale_curve = SubResource("CurveTexture_5adjs")
 color = Color(1, 1, 1, 0.3137255)
 color_ramp = SubResource("GradientTexture1D_sscus")
 
+[sub_resource type="Curve" id="Curve_80fr0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.47391307, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sscus"]
+curve = SubResource("Curve_80fr0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5adjs"]
+particle_flag_disable_z = true
+direction = Vector3(5, -5, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 464.28998
+initial_velocity_max = 464.28998
+gravity = Vector3(0, -10000, 0)
+scale_min = 134.94
+scale_max = 134.94
+scale_curve = SubResource("CurveTexture_sscus")
+color = Color(1, 0.5733334, 0.19999999, 1)
+
 [node name="fish" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -1)
 scale = Vector2(1.25, 1.25)
@@ -567,8 +587,8 @@ position = Vector2(832.79987, 0)
 scale = Vector2(1.6885457, 2.910761)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slashhitbox" groups=["playerSlash"]]
-position = Vector2(50.694584, 0)
-scale = Vector2(64.950005, 32.47125)
+position = Vector2(50, 0)
+scale = Vector2(65, 32.471)
 shape = SubResource("CircleShape2D_bfml3")
 disabled = true
 debug_color = Color(0.9054175, 0.27341783, 0.35639855, 0.41960785)
@@ -576,7 +596,7 @@ debug_color = Color(0.9054175, 0.27341783, 0.35639855, 0.41960785)
 [node name="slash" type="AnimatedSprite2D" parent="."]
 z_index = 300
 position = Vector2(832.7999, 0)
-scale = Vector2(3.3314834, 3.4266567)
+scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_o23v1")
 animation = &"slash"
 frame = 5
@@ -592,6 +612,13 @@ lifetime = 2.5
 fixed_fps = 0
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_akm6d")
+
+[node name="fireParticles" type="GPUParticles2D" parent="."]
+position = Vector2(9.599976, 0)
+scale = Vector2(3.4999995, 3.4999995)
+emitting = false
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_5adjs")
 
 [connection signal="area_entered" from="fish" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="fish" to="." method="_on_area_2d_area_exited"]

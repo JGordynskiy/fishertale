@@ -161,7 +161,7 @@ func dash(delta):
 	$chargeSFX.play()
 	rng.randomize()
 	makePath()
-	moveSpeed = orgSpeed *rng.randf_range(4,6)
+	moveSpeed = orgSpeed *rng.randf_range(3,5)
 	
 	await get_tree().create_timer(0.4, false).timeout
 

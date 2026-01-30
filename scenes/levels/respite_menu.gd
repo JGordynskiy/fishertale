@@ -56,6 +56,12 @@ func _process(delta: float) -> void:
 		global.roe += 1
 	
 	
+	#ready Button
+	if global.curBoss == 3:
+		$ReadyButton.disabled = true
+	else:
+		$ReadyButton.disabled = false
+	
 	#damage
 	damage.text = str(global.damageCost)
 	if global.roe < global.damageCost:
@@ -98,8 +104,9 @@ func _on_ready_button_pressed() -> void:
 		if global.curBoss == 1 || global.curBoss == 0:
 			print_debug("Emitting gameRto1")
 			globalSignals.emit_signal("gameRto1")
-		if global.curBoss == 2:
+		elif global.curBoss == 2:
 			globalSignals.emit_signal("gameRto2")
+		
 	pass # Replace with function body.
 
 
@@ -120,7 +127,7 @@ func _on_roe_button_mouse_exited() -> void:
 #DAMAGE
 func _on_damage_pressed() -> void:
 	select.play()
-	global.shot_damage += 1.5
+	global.shot_damage += 0.5
 	global.roe -= global.damageCost
 	global.damageCost += 1
 	pass # Replace with function body.
@@ -131,8 +138,14 @@ func _on_damage_mouse_entered() -> void:
 	
 #rate
 func _on_rate_pressed() -> void:
+	
 	select.play()
-	global.shot_rate *= 0.8
+	global.shot_rate *= 0.95
+	
+	#melee changes
+	global.slash_scale += 10
+	global.slash_x += 130
+	
 	global.roe -= global.rateCost
 	global.rateCost += 1
 	pass # Replace with function body.

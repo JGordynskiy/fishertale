@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://buy7w360hpg5"]
+[gd_scene load_steps=15 format=3 uid="uid://buy7w360hpg5"]
 
 [ext_resource type="Script" uid="uid://pmpdoibaedk5" path="res://Scripts/projectiles/bullet.gd" id="1_y25gk"]
 [ext_resource type="Texture2D" uid="uid://bshja12nkim5b" path="res://Assets/fishBullet/fishBulletpop1.png" id="2_qncy5"]
@@ -9,6 +9,24 @@
 [ext_resource type="Texture2D" uid="uid://bjkqed2g03jsf" path="res://Assets/fishBullet/fly3.png" id="7_s437g"]
 [ext_resource type="Texture2D" uid="uid://3cjf8xtbkdb3" path="res://Assets/fishBullet/fly4.png" id="8_iqq7w"]
 [ext_resource type="Texture2D" uid="uid://chmths1lovp7m" path="res://Assets/fishBullet/fly5.png" id="9_6umxm"]
+
+[sub_resource type="Curve" id="Curve_k76ql"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_in4mv"]
+curve = SubResource("Curve_k76ql")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s437g"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 0)
+initial_velocity_min = 2000.0
+initial_velocity_max = 4000.0
+gravity = Vector3(0, -500, 0)
+scale_min = 100.0
+scale_max = 100.0
+scale_curve = SubResource("CurveTexture_in4mv")
+color = Color(1, 0.844, 0.48000002, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6jwkh"]
 radius = 332.0241
@@ -55,6 +73,17 @@ scale = Vector2(0.65, 0.65)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_y25gk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -127.69232)
+rotation = -2.3749168
+scale = Vector2(1.7232234, 1.7232234)
+emitting = false
+amount = 5
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_s437g")
 
 [node name="Area2D" type="Area2D" parent="." groups=["playerBullet"]]
 

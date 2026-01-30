@@ -89,9 +89,9 @@ shape = SubResource("RectangleShape2D_yljmy")
 [node name="trigger4" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trigger4"]
-position = Vector2(-7533, 3680)
-rotation = 3.1415927
-scale = Vector2(265.1824, -11.929243)
+position = Vector2(-8917, 6971)
+rotation = -4.712389
+scale = Vector2(283.1812, -14.30965)
 shape = SubResource("RectangleShape2D_yljmy")
 
 [node name="Pause Menu" parent="." instance=ExtResource("5_uvv3c")]
@@ -178,15 +178,15 @@ rotation = 0.37169135
 [node name="hpBar" parent="." instance=ExtResource("18_un2io")]
 
 [node name="lungeFish" parent="." instance=ExtResource("19_o2a71")]
-position = Vector2(-24968, 2905)
+position = Vector2(-22026, 2769.0002)
 scale = Vector2(0.69735014, 0.69735014)
 
 [node name="lungeFish2" parent="." instance=ExtResource("19_o2a71")]
-position = Vector2(-25742.002, 11914.001)
+position = Vector2(-29136, 12140)
 scale = Vector2(0.69735014, 0.69735014)
 
 [node name="lungeFish3" parent="." instance=ExtResource("19_o2a71")]
-position = Vector2(-30407, 7303)
+position = Vector2(-33213, 7891)
 scale = Vector2(0.69735014, 0.69735014)
 
 [connection signal="area_entered" from="trigger1" to="." method="_on_trigger_1_area_entered"]

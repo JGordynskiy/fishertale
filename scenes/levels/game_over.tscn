@@ -1,11 +1,29 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckvml63hdsptk"]
+[gd_scene load_steps=21 format=3 uid="uid://ckvml63hdsptk"]
 
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_lpwf7"]
 [ext_resource type="Script" uid="uid://dn67wjet7fw7d" path="res://Scripts/gameover.gd" id="1_qy7gw"]
+[ext_resource type="Texture2D" uid="uid://c668yt2tf0vtq" path="res://Assets/objects/monitorstatic/monitorstatic (5).jpg" id="2_i47r0"]
 [ext_resource type="FontFile" uid="uid://cao7skrrs3un5" path="res://Assets/fonts/Urban Shadow Sans Serif.otf" id="2_org1n"]
+[ext_resource type="Texture2D" uid="uid://cup65kdgdo3v7" path="res://Assets/objects/monitorstatic/monitorstatic (1).jpg" id="2_qfkai"]
+[ext_resource type="Texture2D" uid="uid://ccknesb8jaccu" path="res://Assets/objects/monitorstatic/monitorstatic (2).jpg" id="3_ecavu"]
+[ext_resource type="Texture2D" uid="uid://sw1qsnsik5vs" path="res://Assets/objects/monitorstatic/monitorstatic (3).jpg" id="4_pr6bw"]
 [ext_resource type="AudioStream" uid="uid://ch8atmhcgq6on" path="res://Assets/sounds/uiHoveron.ogg" id="4_trggy"]
+[ext_resource type="Texture2D" uid="uid://c7eai177jnjq4" path="res://Assets/objects/monitorstatic/monitorstatic (4).jpg" id="5_3bldl"]
 [ext_resource type="AudioStream" uid="uid://cfuurh6fhfc7" path="res://Assets/sounds/uiHoveroff.ogg" id="5_i47r0"]
 [ext_resource type="AudioStream" uid="uid://dc6du6htd3uph" path="res://Assets/sounds/uiSelect.ogg" id="6_nesse"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_181lf"]
+frames = 5
+speed_scale = 24.0
+frame_0/texture = ExtResource("2_qfkai")
+frame_1/texture = ExtResource("3_ecavu")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_pr6bw")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_3bldl")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("2_i47r0")
+frame_4/duration = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy7gw"]
 bg_color = Color(0.067656614, 0.13840568, 0.41978937, 1)
@@ -97,8 +115,9 @@ _data = {
 layer = 10
 script = ExtResource("1_qy7gw")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.2622, 0.32154, 0.46, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -107,7 +126,7 @@ grow_vertical = 2
 scale = Vector2(1.0000043, 1.0000141)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.05433341, 0.10799139, 0.26628348, 1)
+texture = SubResource("AnimatedTexture_181lf")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
 layout_mode = 1

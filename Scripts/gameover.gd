@@ -35,18 +35,26 @@ func _on_retry_pressed() -> void:
 		await get_tree().create_timer(0.3).timeout
 		global.hp = global.max_hp
 		global.goto_scene("res://scenes/levels/game_t.tscn")
-	
+	if global.debug:
+		$"sounds/ui/select".play()
+		await get_tree().create_timer(0.3).timeout
+		global.hp = global.max_hp
+		global.goto_scene("res://scenes/levels/dojo.tscn")
+		
 	$"sounds/ui/select".play()
 	await get_tree().create_timer(0.3).timeout
 	global.hp = global.max_hp
 	
-	global.damageCost = 5
-	global.rateCost = 5
-	global.healthCost = 1
-	
-	global.shot_damage = 1.5
-	global.shot_rate = 400
-	global.roe = 0
+	#global.damageCost = 5
+	#global.rateCost = 5
+	#global.healthCost = 1
+	#
+	#global.shot_damage = 1.5
+	#global.shot_rate = 400
+	if global.curBoss != 1:
+		global.roe -= 2
+		if global.roe < 0:
+			global.roe = 0
 	global.goto_scene("res://scenes/levels/respite_menu.tscn")
 	
 	pass # Replace with function body.

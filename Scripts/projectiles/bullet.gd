@@ -24,6 +24,7 @@ var popping = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$GPUParticles2D.emitting = true
 	#print(dir)
 	soundPlayed = 0
 	scale.x = 1*sqrt(global.shot_damage)
