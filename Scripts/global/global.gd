@@ -6,15 +6,12 @@ var debug = false
 #1 is default, 2 is melee
 var heart = 1
 
-
+## STATS MUST BE CHANGED IN MAIN_MENU.GD
 @export var speed = 7000
 @export var shot_rate = 400 # 400 as default, reduce to increase
-
 @export var shot_damage = 1.5 # 1.5 default
-
 @export var slash_damage = shot_damage*3  # 3 default
 @export var slash_rate = 400
-
 
 var slash_x = 50 # for every 200 slash_x moves, slash_scale moves by 15
 var slash_scale = 65
@@ -47,10 +44,13 @@ var whirlPoolPos : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	globalSignals.connect("gameTtoR", transition_TutR)
+	
 	globalSignals.connect("gameRto1", transition_Rone)
 	globalSignals.connect("game1toR", transition_OneR)
+	
 	globalSignals.connect("gameRto2", transition_Rtwo)
 	globalSignals.connect("game2toR", transition_twoR)
+	
 	globalSignals.connect("gameRto3", transition_Rthree)
 	
 	
@@ -71,7 +71,8 @@ func wait(time : float):
 	await get_tree().create_timer(time).timeout
 	
 func _deferred_goto_scene(path):
-	current_scene.free()
+	if is_instance_valid(current_scene):
+		current_scene.free()
 	var s = load(path)
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)
@@ -115,4 +116,4 @@ func transition_twoR():
 	goto_scene("res://scenes/levels/respite_menu.tscn")
 func transition_Rthree():
 	await get_tree().create_timer(1, false).timeout
-	goto_scene("res://scenes/levels/game_dojo.tscn")
+	goto_scene("res://scenes/levels/game3.tscn")

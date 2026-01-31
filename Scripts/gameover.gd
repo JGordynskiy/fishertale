@@ -2,7 +2,8 @@ extends CanvasLayer
 
 @onready var pause_menu: Control = %"Pause Menu/CanvasLayer"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
+@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
+@onready var game  = get_owner()
 
 @onready var cam = $"../fish/followCam"
 
@@ -32,7 +33,10 @@ func onDeath():
 func _on_retry_pressed() -> void:
 	if cam.tutorial:
 		$"sounds/ui/select".play()
-		await get_tree().create_timer(0.3).timeout
+		var thunkfade = fadeRect.instantiate()
+		thunkfade.type = false
+		game.add_child(thunkfade)
+		await get_tree().create_timer(1.3).timeout
 		global.hp = global.max_hp
 		global.goto_scene("res://scenes/levels/game_t.tscn")
 	if global.debug:

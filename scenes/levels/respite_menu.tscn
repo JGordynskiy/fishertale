@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dfc7lldewp5pq"]
+[gd_scene load_steps=70 format=3 uid="uid://dfc7lldewp5pq"]
 
 [ext_resource type="Texture2D" uid="uid://b5sek51ovhatj" path="res://Assets/objects/glassOverlay.png" id="1_h8wsi"]
 [ext_resource type="Script" uid="uid://6mulj1la2v3j" path="res://scenes/levels/respite_menu.gd" id="1_po2xu"]
@@ -225,6 +225,14 @@ frame_3/duration = 1.0
 frame_4/texture = ExtResource("10_culeq")
 frame_4/duration = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsp48"]
+bg_color = Color(0, 0, 0, 0.54901963)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.64, 0.42239997, 0.095999986, 1)
+
 [sub_resource type="Animation" id="Animation_v85fi"]
 length = 0.001
 tracks/0/type = "value"
@@ -417,6 +425,25 @@ _data = {
 &"transSpin": SubResource("Animation_v4axp")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xr4ur"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjf50"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xa0o"]
+bg_color = Color(0, 0, 0, 0.54901963)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.10980392, 0.33333334, 0.72156864, 1)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_je7jv"]
 animations = [{
 "frames": [{
@@ -442,6 +469,17 @@ animations = [{
 "name": &"default",
 "speed": 18.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6qin"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nidn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yh1e"]
 content_margin_left = 25.0
@@ -709,13 +747,66 @@ offset_bottom = 51.729095
 scale = Vector2(14.522642, 8.667504)
 color = Color(0.060000002, 0.064666666, 0.2, 1)
 
+[node name="stats" type="Control" parent="FriendlyMonitor"]
+visible = false
+anchors_preset = 0
+offset_left = 433.2238
+offset_top = 405.0965
+offset_right = 473.2238
+offset_bottom = 445.0965
+
+[node name="backG" type="Panel" parent="FriendlyMonitor/stats"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -8.958982
+offset_top = -15.312606
+offset_right = 295.37238
+offset_bottom = 221.55608
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsp48")
+
+[node name="theFish" type="Label" parent="FriendlyMonitor/stats"]
+layout_mode = 0
+offset_left = 10.530212
+offset_top = 11.672462
+offset_right = 670.5302
+offset_bottom = 103.67246
+scale = Vector2(0.37122026, 0.35440293)
+theme_override_colors/font_color = Color(1, 0.748, 0.37, 1)
+theme_override_fonts/font = ExtResource("10_vrvnp")
+theme_override_font_sizes/font_size = 91
+text = "Stats"
+
+[node name="DmgText" type="Label" parent="FriendlyMonitor/stats"]
+layout_mode = 0
+offset_left = 10.530234
+offset_top = 89.62924
+offset_right = 223.53023
+offset_bottom = 151.62924
+scale = Vector2(0.6861399, 0.6861399)
+theme_override_fonts/font = ExtResource("4_17bcf")
+theme_override_font_sizes/font_size = 61
+text = "DMG:"
+
+[node name="rate" type="Label" parent="FriendlyMonitor/stats"]
+layout_mode = 0
+offset_left = 10.530234
+offset_top = 157.09186
+offset_right = 490.53024
+offset_bottom = 219.09186
+scale = Vector2(0.39610147, 0.39610147)
+theme_override_fonts/font = ExtResource("4_17bcf")
+theme_override_font_sizes/font_size = 61
+text = "shot rate:"
+
 [node name="Panel" type="Control" parent="FriendlyMonitor"]
 anchors_preset = 0
 offset_left = 283.34296
-offset_top = 238.36784
+offset_top = 238.36783
 offset_right = 323.34296
 offset_bottom = 278.36786
 scale = Vector2(0.26575914, 0.26575914)
+mouse_filter = 2
+mouse_behavior_recursive = 1
 
 [node name="blink" type="Polygon2D" parent="FriendlyMonitor/Panel"]
 visible = false
@@ -747,6 +838,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_81hvq")
 }
 
+[node name="friendlyMonitorBox" type="Button" parent="FriendlyMonitor"]
+z_index = 500
+layout_mode = 0
+offset_right = 601.16675
+offset_bottom = 358.30136
+theme_override_styles/normal = SubResource("StyleBoxFlat_xr4ur")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tjf50")
+
 [node name="enemyMonitor" type="TextureRect" parent="."]
 modulate = Color(0.97, 0.97, 0.97, 1)
 z_index = 100
@@ -758,7 +857,7 @@ offset_bottom = 711.0
 scale = Vector2(0.45779315, 0.45779315)
 texture = ExtResource("6_uoip4")
 
-[node name="Label" type="Label" parent="enemyMonitor"]
+[node name="incoming" type="Label" parent="enemyMonitor"]
 z_index = -10
 layout_mode = 0
 offset_left = 91.74446
@@ -782,6 +881,152 @@ scale = Vector2(7.294696, 4.2510953)
 texture = SubResource("AnimatedTexture_6i2y2")
 expand_mode = 1
 
+[node name="hints" type="Control" parent="enemyMonitor"]
+visible = false
+anchors_preset = 0
+offset_left = 43.687813
+offset_top = -45.87223
+offset_right = 83.68781
+offset_bottom = -5.8722305
+scale = Vector2(0.97878414, 0.97878414)
+
+[node name="backG" type="Panel" parent="enemyMonitor/hints"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 595.82117
+offset_top = 42.8808
+offset_right = 1334.7434
+offset_bottom = 431.90533
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xa0o")
+
+[node name="boss3" type="RichTextLabel" parent="enemyMonitor/hints"]
+clip_contents = false
+layout_mode = 0
+offset_left = 618.1923
+offset_top = 75.87922
+offset_right = 1440.3733
+offset_bottom = 493.524
+scale = Vector2(0.8193567, 0.8193567)
+theme_override_colors/default_color = Color(1, 1, 0.45999998, 1)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Omega-12"
+
+[node name="boss3Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss3"]
+layout_mode = 0
+offset_left = 3.1755981
+offset_top = 98.4394
+offset_right = 940.0716
+offset_bottom = 516.08417
+scale = Vector2(0.8193567, 0.8193567)
+theme_override_colors/default_color = Color(1, 1, 0.45882353, 1)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Chemicals are good for you"
+
+[node name="boss3Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss3"]
+layout_mode = 0
+offset_left = 5.777588
+offset_top = 179.09644
+offset_right = 827.95856
+offset_bottom = 596.7412
+scale = Vector2(1.0525964, 1.0525964)
+theme_override_fonts/normal_font = ExtResource("4_17bcf")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Coursing with energy from the nearby lab.
+
+Invulnerable until it shoots it's laser."
+scroll_active = false
+
+[node name="boss2" type="RichTextLabel" parent="enemyMonitor/hints"]
+visible = false
+clip_contents = false
+layout_mode = 0
+offset_left = 636.0462
+offset_top = 73.647484
+offset_right = 1458.227
+offset_bottom = 491.29227
+scale = Vector2(0.8193567, 0.8193567)
+theme_override_colors/default_color = Color(1, 1, 0.45999998, 1)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Wallfish"
+
+[node name="boss2Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss2"]
+layout_mode = 0
+offset_left = 3.1755981
+offset_top = 98.4394
+offset_right = 825.35657
+offset_bottom = 516.08417
+scale = Vector2(0.8193567, 0.8193567)
+theme_override_colors/default_color = Color(1, 1, 0.45882353, 1)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Hates industry"
+
+[node name="boss2Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss2"]
+layout_mode = 0
+offset_left = 5.777588
+offset_top = 179.09644
+offset_right = 827.95856
+offset_bottom = 596.7412
+scale = Vector2(1.0525964, 1.0525964)
+theme_override_fonts/normal_font = ExtResource("4_17bcf")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Guards the lab's industrial fans, keeping them off.
+
+Summons rocks and bullets at intruders."
+scroll_active = false
+
+[node name="boss1" type="RichTextLabel" parent="enemyMonitor/hints"]
+visible = false
+clip_contents = false
+layout_mode = 0
+offset_left = 621.8396
+offset_top = 67.64783
+offset_right = 1444.0205
+offset_bottom = 485.2926
+scale = Vector2(0.8193567, 0.8193567)
+theme_override_colors/default_color = Color(1, 1, 0.45999998, 1)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Ghoti"
+
+[node name="boss1Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss1"]
+layout_mode = 0
+offset_left = 3.1755981
+offset_top = 98.4394
+offset_right = 825.35657
+offset_bottom = 516.08417
+scale = Vector2(0.8193567, 0.8193567)
+theme_override_colors/default_color = Color(1, 1, 0.45882353, 1)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Pronounced \"fish\""
+
+[node name="boss1Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss1"]
+layout_mode = 0
+offset_left = 5.777588
+offset_top = 179.09644
+offset_right = 827.95856
+offset_bottom = 596.7412
+scale = Vector2(1.0525964, 1.0525964)
+theme_override_fonts/normal_font = ExtResource("4_17bcf")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Lost everything in the flood, including it's sanity.
+
+Charges and shoots at anything that moves."
+scroll_active = false
+
 [node name="ScreenBackg" type="ColorRect" parent="enemyMonitor"]
 z_index = -15
 layout_mode = 0
@@ -792,13 +1037,7 @@ offset_bottom = 51.729095
 scale = Vector2(14.522642, 8.553986)
 color = Color(0, 0, 0, 1)
 
-[node name="boss1Img" type="Sprite2D" parent="enemyMonitor"]
-z_index = -15
-position = Vector2(301.33298, 239.86707)
-scale = Vector2(0.106971644, 0.06511497)
-texture = ExtResource("12_kpitc")
-
-[node name="Control" type="Control" parent="enemyMonitor"]
+[node name="bossImages" type="Control" parent="enemyMonitor"]
 anchors_preset = 0
 offset_left = 307.99936
 offset_top = 231.5456
@@ -806,12 +1045,28 @@ offset_right = 347.99936
 offset_bottom = 271.5456
 scale = Vector2(0.9649123, 0.7826087)
 
-[node name="boss2img" type="AnimatedSprite2D" parent="enemyMonitor/Control"]
+[node name="boss2img" type="AnimatedSprite2D" parent="enemyMonitor/bossImages"]
 z_index = -15
 rotation = -0.00047314167
 scale = Vector2(0.114897095, 0.14153935)
 sprite_frames = SubResource("SpriteFrames_je7jv")
 autoplay = "default"
+
+[node name="boss1Img" type="Sprite2D" parent="enemyMonitor/bossImages"]
+z_index = -15
+position = Vector2(-6.9088745, 10.633057)
+scale = Vector2(0.110861525, 0.08320246)
+texture = ExtResource("12_kpitc")
+
+[node name="enemyMonitorBox" type="Button" parent="enemyMonitor"]
+z_index = 500
+layout_mode = 0
+offset_left = -4.368828
+offset_top = -2.69413e-05
+offset_right = 598.5235
+offset_bottom = 358.2404
+theme_override_styles/normal = SubResource("StyleBoxFlat_i6qin")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1nidn")
 
 [node name="Roe" type="Control" parent="."]
 anchors_preset = 0
@@ -866,9 +1121,9 @@ flat = true
 z_index = 50
 anchors_preset = 0
 offset_left = 517.0
-offset_top = 234.00003
+offset_top = 202.0
 offset_right = 557.0
-offset_bottom = 274.00003
+offset_bottom = 242.0
 rotation = -1.5707964
 scale = Vector2(0.03480081, 0.03480081)
 
@@ -882,5 +1137,9 @@ scale = Vector2(0.03480081, 0.03480081)
 [connection signal="pressed" from="upgrades/rate" to="." method="_on_rate_pressed"]
 [connection signal="mouse_entered" from="upgrades/health" to="." method="_on_health_mouse_entered"]
 [connection signal="pressed" from="upgrades/health" to="." method="_on_health_pressed"]
+[connection signal="mouse_entered" from="FriendlyMonitor/friendlyMonitorBox" to="." method="_on_friendly_monitor_box_mouse_entered"]
+[connection signal="mouse_exited" from="FriendlyMonitor/friendlyMonitorBox" to="." method="_on_friendly_monitor_box_mouse_exited"]
+[connection signal="mouse_entered" from="enemyMonitor/enemyMonitorBox" to="." method="_on_enemy_monitor_box_mouse_entered"]
+[connection signal="mouse_exited" from="enemyMonitor/enemyMonitorBox" to="." method="_on_enemy_monitor_box_mouse_exited"]
 [connection signal="mouse_entered" from="Roe/RoeButton" to="." method="_on_roe_button_mouse_entered"]
 [connection signal="mouse_exited" from="Roe/RoeButton" to="." method="_on_roe_button_mouse_exited"]

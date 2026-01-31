@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://bie3bqytav1ta"]
+
+[ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="1_rhr0n"]
+[ext_resource type="Script" uid="uid://raip1p1ewomr" path="res://scenes/levels/game_3.gd" id="1_xv74u"]
+[ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="2_oytuy"]
+[ext_resource type="Texture2D" uid="uid://cq2j1tnduua1x" path="res://Assets/backgrounds/gamelab.png" id="3_mowe4"]
+[ext_resource type="Texture2D" uid="uid://i5e72pexso7u" path="res://Assets/backgrounds/gamelabFore.png" id="4_mowe4"]
+[ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="4_oytuy"]
+[ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="6_v7put"]
+[ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="7_xv74u"]
+[ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="8_xb6vp"]
+[ext_resource type="PackedScene" uid="uid://dlqmunvanqxus" path="res://scenes/entities/laser_fish.tscn" id="10_xb6vp"]
+
+[node name="game3" type="Node2D"]
+script = ExtResource("1_xv74u")
+
+[node name="Pause Menu" parent="." instance=ExtResource("6_v7put")]
+
+[node name="hpBar" parent="." instance=ExtResource("7_xv74u")]
+
+[node name="GameOver" parent="." instance=ExtResource("8_xb6vp")]
+
+[node name="fish" parent="." instance=ExtResource("1_rhr0n")]
+position = Vector2(7615, -1951.0001)
+
+[node name="followCam" parent="fish" instance=ExtResource("2_oytuy")]
+limit_left = -350
+limit_top = -19415
+limit_right = 36090
+limit_bottom = 770
+
+[node name="background" type="StaticBody2D" parent="." groups=["objects"]]
+z_index = -500
+position = Vector2(11290, -9986)
+scale = Vector2(6.436667, 6.436667)
+
+[node name="backg" type="Sprite2D" parent="background"]
+texture = ExtResource("3_mowe4")
+
+[node name="foreg" type="Sprite2D" parent="background"]
+z_index = 500
+position = Vector2(-4.9715176, 2.7964783)
+texture = ExtResource("4_mowe4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background" groups=["objects"]]
+visible = false
+z_index = 500
+polygon = PackedVector2Array(-1640.4453, 1476.3853, -278.64774, 1476.6628, 156.91345, 612.27344, 184.5675, 569.2387, 211.28943, 545.624, 247.64368, 534.59344, 277.31738, 546.55615, 297.20337, 569.2387, 299.84448, 605.59296, 288.3479, 664.0083, -119.889465, 1476.6953, 3695.3909, 1477.4728, 3700.957, 574.324, 1744.5364, 580.4246, 1746.2454, 384.20508, 3702.1172, 386.13806, 3693.8372, -1249.7151, 3928.5862, -1341.9988, 3899.6892, 1479.0264, 3772.76, 1720.611, -1667.7887, 1749.6633, -1887.3123, 1314.8109, -1752.6152, -1333.6094, -1757.276, -1535.1113, 3723.8215, -1503.2625, 3688.555, -1252.3562, 1685.5281, -1252.4147, 2286.2764, -459.70996, 2313.9304, -424.9093, 2331.3308, -380.01038, 2335.37, -340.70422, 2333.0398, -326.41113, 2320.1448, -311.96265, 2303.366, -302.17505, 2284.7227, -301.2428, 2243.863, -313.36096, 2178.612, -370.9994, 1504.9177, -1252.4199, -1642.9312, -1252.5115, -1641.7124, -342.38007, 311.1858, -344.89893, 307.61255, -146.1936, -1641.4497, -146.06165, -1639.5132, 1300.207)
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oytuy")
+autoplay = true
+
+[node name="laserFish" parent="." instance=ExtResource("10_xb6vp")]
+position = Vector2(18661, -9234)

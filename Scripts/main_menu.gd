@@ -1,7 +1,7 @@
 extends Control
 
-@onready var panel: Panel = $BLACKSCREEN
-@onready var animation_player: AnimationPlayer = $BLACKSCREEN/AnimationPlayer
+
+
 @onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
 @onready var menumusic: AudioStreamPlayer = $sounds/menumusic
 @onready var menumusicloop: AudioStreamPlayer = $sounds/menumusicloop
@@ -24,6 +24,7 @@ var menuStage = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
+	
 	$modeButtonsPanel.visible = false
 	$"choose a heart".visible = false
 	mode_buttons.visible = false
@@ -42,6 +43,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	
 	if (Input.is_action_pressed("sprint") || skip) && menuStage == 2:
 		$Label.show()
 	else:
@@ -78,12 +81,31 @@ func onStartPressed() -> void:
 	foosh.play()
 	await get_tree().create_timer(2).timeout
 	global.inGame = true
+	
+	## reset stats, just in case!
+	global.speed = 7000
+	global.shot_rate = 400 # 400 as default, reduce to increase
+	global.shot_damage = 1.5 # 1.5 default
+	global.slash_damage = global.shot_damage*3  # 3 default
+	global.slash_rate = 400
+	
+	global.max_hp = 5
+	global.hp = global.max_hp
+	
+	global.damageCost = 4
+	global.rateCost = 4
+	global.healthCost = 1
+	
+	global.curBoss = 0
 	if skip:
 		global.roe = 6
 		global.curBoss = 1
 		global.goto_scene("res://scenes/levels/respite_menu.tscn")
 	else:
 		global.goto_scene("res://scenes/levels/game_t.tscn")
+		
+	if is_instance_valid($"."):
+		free()
 	pass # Replace with function body.
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dujhggsr73v24"]
+[gd_scene load_steps=19 format=3 uid="uid://dujhggsr73v24"]
 
 [ext_resource type="Script" uid="uid://j8d2v0mn1mx4" path="res://scenes/levels/game_dojo.gd" id="1_84b36"]
 [ext_resource type="Texture2D" uid="uid://p3m3hjt3mbjs" path="res://Assets/backgrounds/blueprint-6.jpg" id="1_kerkt"]
@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="8_rnkkt"]
 [ext_resource type="PackedScene" uid="uid://1jlslaopwk34" path="res://scenes/cannon.tscn" id="10_blkjw"]
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="11_u8vor"]
-[ext_resource type="PackedScene" uid="uid://dlqmunvanqxus" path="res://scenes/entities/laser_fish.tscn" id="12_2r338"]
 [ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="12_qlfcy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u8vor"]
@@ -57,7 +56,6 @@ texture = ExtResource("1_kerkt")
 position = Vector2(350, 537)
 
 [node name="followCam" parent="fish" instance=ExtResource("3_4fbiy")]
-zoom = Vector2(0.1, 0.1)
 limit_left = -17445
 limit_top = -19435
 limit_right = 36810
@@ -97,9 +95,6 @@ shape = SubResource("RectangleShape2D_blkjw")
 position = Vector2(38320.004, 4874.249)
 scale = Vector2(149.50159, 639.4099)
 shape = SubResource("RectangleShape2D_u8vor")
-
-[node name="laserFish" parent="." instance=ExtResource("12_2r338")]
-position = Vector2(10455, 0)
 
 [node name="objects" type="Node" parent="."]
 

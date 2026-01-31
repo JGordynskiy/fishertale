@@ -16,8 +16,8 @@ extends Control
 
 #upgrade cost
 
-@onready var boss1img: Sprite2D = $enemyMonitor/boss1Img
-@onready var boss2img: AnimatedSprite2D = $enemyMonitor/Control/boss2img
+@onready var boss1img: Sprite2D = $enemyMonitor/bossImages/boss1Img
+@onready var boss2img: AnimatedSprite2D = $enemyMonitor/bossImages/boss2img
 
 
 
@@ -46,6 +46,30 @@ func _ready() -> void:
 	music.play()
 		
 	
+## BOSS DESCRIPTIONS
+func _on_enemy_monitor_box_mouse_entered() -> void:
+	$enemyMonitor/hints.visible = true
+func _on_enemy_monitor_box_mouse_exited() -> void:
+	$enemyMonitor/hints.visible = false
+	
+## FISH STATS
+func _on_friendly_monitor_box_mouse_entered() -> void:
+	$FriendlyMonitor/stats/DmgText.text = "DMG: "+str(global.shot_damage)
+	
+	if global.heart == 1:
+		$FriendlyMonitor/stats/rate.visible = true
+		$FriendlyMonitor/stats/rate.text = "Shot Rate: "+str(int(global.shot_rate))
+	if global.heart == 2:
+		$FriendlyMonitor/stats/rate.visible = false	
+	
+	$FriendlyMonitor/stats.visible = true
+	pass # Replace with function body.
+func _on_friendly_monitor_box_mouse_exited() -> void:
+	$FriendlyMonitor/stats.visible = false
+	pass # Replace with function body.
+
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -56,8 +80,30 @@ func _process(delta: float) -> void:
 		global.roe += 1
 	
 	
-	#ready Button
+	## BOSS DESCRIPTIONS
+	
+	#boss 1
+	if global.curBoss == 1:
+		$enemyMonitor/hints/boss1.visible = true
+	else:
+		$enemyMonitor/hints/boss1.visible = false
+	
+	#boss 2
+	if global.curBoss == 2:
+		$enemyMonitor/hints/boss2.visible = true
+	else:
+		$enemyMonitor/hints/boss2.visible = false
+		
+	#boss 3	
 	if global.curBoss == 3:
+		$enemyMonitor/hints/boss3.visible = true
+	else:
+		$enemyMonitor/hints/boss3.visible = false
+	
+	
+	
+	#ready Button
+	if global.curBoss > 3:
 		$ReadyButton.disabled = true
 	else:
 		$ReadyButton.disabled = false
@@ -102,10 +148,12 @@ func _on_ready_button_pressed() -> void:
 		add_child(thunkfade)
 		
 		if global.curBoss == 1 || global.curBoss == 0:
-			print_debug("Emitting gameRto1")
+			
 			globalSignals.emit_signal("gameRto1")
 		elif global.curBoss == 2:
 			globalSignals.emit_signal("gameRto2")
+		elif global.curBoss == 3:
+			globalSignals.emit_signal("gameRto3")
 		
 	pass # Replace with function body.
 
@@ -140,7 +188,7 @@ func _on_damage_mouse_entered() -> void:
 func _on_rate_pressed() -> void:
 	
 	select.play()
-	global.shot_rate *= 0.95
+	global.shot_rate *= 0.92
 	
 	#melee changes
 	global.slash_scale += 10

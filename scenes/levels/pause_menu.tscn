@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dugevekwvryul"]
+[gd_scene load_steps=30 format=3 uid="uid://dugevekwvryul"]
 
 [ext_resource type="Script" uid="uid://b04nmqqrhv5os" path="res://Scripts/pause_menu.gd" id="1_lx1ke"]
 [ext_resource type="FontFile" uid="uid://cao7skrrs3un5" path="res://Assets/fonts/Urban Shadow Sans Serif.otf" id="1_unjiy"]
+[ext_resource type="AudioStream" uid="uid://dc6du6htd3uph" path="res://Assets/sounds/uiSelect.ogg" id="2_c05mf"]
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_gjocd"]
 [ext_resource type="AudioStream" uid="uid://c1m2d6l5801he" path="res://Assets/sounds/uiPause.ogg" id="4_enuq8"]
 [ext_resource type="AudioStream" uid="uid://crnqw7h7g42yk" path="res://Assets/sounds/uiUnpause.ogg" id="5_ovdqo"]
@@ -10,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://sw1qsnsik5vs" path="res://Assets/objects/monitorstatic/monitorstatic (3).jpg" id="8_c05mf"]
 [ext_resource type="Texture2D" uid="uid://c7eai177jnjq4" path="res://Assets/objects/monitorstatic/monitorstatic (4).jpg" id="9_h343x"]
 [ext_resource type="Texture2D" uid="uid://c668yt2tf0vtq" path="res://Assets/objects/monitorstatic/monitorstatic (5).jpg" id="10_fugxs"]
+[ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="12_h343x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjocd"]
 bg_color = Color(0.50430816, 0.6980982, 0.8339052, 1)
@@ -109,6 +111,83 @@ frame_3/duration = 1.0
 frame_4/texture = ExtResource("10_fugxs")
 frame_4/duration = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h343x"]
+bg_color = Color(0.23529412, 0.27058825, 0.41960785, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.23519999, 0.27216, 0.42, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46qna"]
+bg_color = Color(0.026177606, 0.07163545, 0.254907, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.02745098, 0.07058824, 0.25490198, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqgkn"]
+bg_color = Color(0.12543598, 0.22955105, 0.64107025, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.1254902, 0.23137255, 0.6392157, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h343x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fugxs"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvgg1"]
+bg_color = Color(0.067656614, 0.13840568, 0.41978937, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.06666667, 0.13725491, 0.41960785, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4kp2"]
+bg_color = Color(0.026177606, 0.07163545, 0.254907, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.02745098, 0.07058824, 0.25490198, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c05mf"]
+bg_color = Color(0.12543598, 0.22955105, 0.64107025, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.1254902, 0.23137255, 0.6392157, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [node name="Pause Menu" type="CanvasLayer"]
 process_mode = 3
 scale = Vector2(17.912304, 17.912304)
@@ -127,12 +206,15 @@ scale = Vector2(0.047094256, 0.047094256)
 size_flags_horizontal = 4
 script = ExtResource("1_lx1ke")
 
+[node name="select" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("2_c05mf")
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 layout_mode = 1
-offset_left = 78.77302
-offset_top = 195.88785
-offset_right = 1734.7731
-offset_bottom = 472.88785
+offset_left = 60.754
+offset_top = 78.99714
+offset_right = 1716.754
+offset_bottom = 355.99713
 scale = Vector2(0.5429802, 0.5429802)
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_gjocd")
@@ -140,20 +222,20 @@ theme_override_font_sizes/font_size = 276
 text = "PAUSED"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer"]
+[node name="Label2" type="Label" parent="CanvasLayer/Label"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 179.63087
-offset_top = 391.56387
-offset_right = 3905.6309
-offset_bottom = 668.56384
+offset_left = -642.2513
+offset_top = 221.87405
+offset_right = 3083.749
+offset_bottom = 498.87402
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.18606153, 0.18606153)
+scale = Vector2(0.33887324, 0.33887324)
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_gjocd")
 theme_override_font_sizes/font_size = 276
@@ -228,10 +310,10 @@ text = "Quit
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 z_index = -60
 layout_mode = 0
-offset_left = -1819.1123
-offset_top = -1024.4069
-offset_right = -1779.1123
-offset_bottom = -984.40686
+offset_left = -372.8034
+offset_top = -231.79501
+offset_right = -360.36948
+offset_bottom = -218.46564
 scale = Vector2(144.42242, 81.28765)
 color = Color(0.06, 0.06, 0.06, 0.47843137)
 
@@ -258,3 +340,82 @@ offset_bottom = -76.77574
 scale = Vector2(20.840425, 12.145077)
 texture = SubResource("AnimatedTexture_46qna")
 expand_mode = 1
+
+[node name="Quit" type="Button" parent="CanvasLayer"]
+layout_mode = 0
+offset_left = 392.23767
+offset_top = 461.91348
+offset_right = 681.2377
+offset_bottom = 662.91345
+scale = Vector2(0.69899803, 0.69899803)
+theme_override_fonts/font = ExtResource("1_unjiy")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_h343x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46qna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vqgkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h343x")
+text = "Quit
+"
+
+[node name="areyousure" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="areyousure"]
+layout_mode = 0
+offset_left = -7.884483
+offset_top = -3.5042145
+offset_right = 32.115517
+offset_bottom = 36.495785
+scale = Vector2(2.1700687, 1.2170416)
+theme_override_styles/panel = SubResource("StyleBoxFlat_fugxs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="areyousure/Panel"]
+layout_mode = 0
+offset_left = 14.395124
+offset_top = 22.782084
+offset_right = 742.39514
+offset_bottom = 223.78209
+scale = Vector2(0.015753191, 0.02553127)
+theme_override_constants/separation = 169
+
+[node name="reallyQuit" type="Button" parent="areyousure/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unjiy")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_cvgg1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4kp2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c05mf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h343x")
+text = "Quit
+"
+
+[node name="nvm" type="Button" parent="areyousure/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unjiy")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_cvgg1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4kp2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c05mf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h343x")
+text = "Nvm"
+
+[node name="Label" type="Label" parent="areyousure"]
+layout_mode = 0
+offset_left = 14.3559675
+offset_top = 10.67468
+offset_right = 3774.356
+offset_bottom = 557.6747
+scale = Vector2(0.011054341, 0.011464901)
+theme_override_fonts/font = ExtResource("12_h343x")
+theme_override_font_sizes/font_size = 271
+text = "Are you sure
+ you want to quit?"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Quit" to="CanvasLayer" method="_on_quit_pressed"]
+[connection signal="pressed" from="areyousure/Panel/HBoxContainer/reallyQuit" to="CanvasLayer" method="_on_really_quit_pressed"]
+[connection signal="pressed" from="areyousure/Panel/HBoxContainer/nvm" to="CanvasLayer" method="_on_nvm_pressed"]

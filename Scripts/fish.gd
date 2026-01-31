@@ -36,7 +36,7 @@ var blinkCount = 0
 @onready var rng = RandomNumberGenerator.new()
 var invulnerable = false
 
-
+#only for Boss1
 @onready var evilFish = game.get_node("evilFish") 
 
 @export var slash_timer = 0
