@@ -42,6 +42,11 @@ func _ready() -> void:
 		boss2img.modulate.a = 255
 	else:
 		boss2img.modulate.a = 0	
+	
+	if global.curBoss == 3:
+		$enemyMonitor/bossImages/boss3img.modulate.a = 255
+	else:
+		$enemyMonitor/bossImages/boss3img.modulate.a = 0	
 	#await get_tree().create_timer(0.5, false).timeout
 	music.play()
 		

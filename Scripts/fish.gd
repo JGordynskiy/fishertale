@@ -70,6 +70,7 @@ func _ready():
 	globalSignals.gameTtoR.connect(transition)
 	globalSignals.game1toR.connect(transition)
 	globalSignals.game2toR.connect(transition)
+	globalSignals.game3toR.connect(transition)
 	
 	#plays sound and reduces slash timer on succesful slash
 	globalSignals.slashSuccess.connect(slashSuccess)

@@ -52,6 +52,7 @@ func _ready() -> void:
 	globalSignals.connect("game2toR", transition_twoR)
 	
 	globalSignals.connect("gameRto3", transition_Rthree)
+	globalSignals.connect("game3toR", transition_threeR)
 	
 	
 	var root = get_tree().root
@@ -101,6 +102,8 @@ func transition_Rone():
 	await get_tree().create_timer(1, false).timeout
 	goto_scene("res://scenes/levels/game1.tscn")
 	pass
+	
+	
 func transition_OneR():
 	await get_tree().create_timer(1.5, false).timeout
 	curBoss = 2
@@ -110,6 +113,8 @@ func transition_Rtwo():
 	await get_tree().create_timer(1, false).timeout
 	goto_scene("res://scenes/levels/game2.tscn")
 	pass
+	
+	
 func transition_twoR():
 	curBoss = 3
 	await get_tree().create_timer(1, false).timeout
@@ -117,3 +122,9 @@ func transition_twoR():
 func transition_Rthree():
 	await get_tree().create_timer(1, false).timeout
 	goto_scene("res://scenes/levels/game3.tscn")
+	
+	
+func transition_threeR():
+	curBoss = 4
+	await get_tree().create_timer(1.5, false).timeout
+	goto_scene("res://scenes/levels/respite_menu.tscn")

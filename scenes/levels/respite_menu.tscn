@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dfc7lldewp5pq"]
+[gd_scene load_steps=71 format=3 uid="uid://dfc7lldewp5pq"]
 
 [ext_resource type="Texture2D" uid="uid://b5sek51ovhatj" path="res://Assets/objects/glassOverlay.png" id="1_h8wsi"]
 [ext_resource type="Script" uid="uid://6mulj1la2v3j" path="res://scenes/levels/respite_menu.gd" id="1_po2xu"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://eeur1srsqrcy" path="res://Assets/enemies/WallFish/wallfishblink1.png" id="23_c4lf3"]
 [ext_resource type="Texture2D" uid="uid://ddrd1ggr8s6p" path="res://Assets/enemies/WallFish/wallFishblink2.png" id="24_855ro"]
 [ext_resource type="Texture2D" uid="uid://cge7w1mshyhwi" path="res://Assets/enemies/WallFish/wallfishBlink3.png" id="25_8yh1e"]
+[ext_resource type="Texture2D" uid="uid://ci8dkded6hay0" path="res://Assets/enemies/laserFish.png" id="26_v85fi"]
 [ext_resource type="Texture2D" uid="uid://f22v7c03m886" path="res://Assets/objects/roeIcon.png" id="27_855ro"]
 [ext_resource type="PackedScene" uid="uid://djy2i1xu1j0um" path="res://scenes/ui/menu_hp_bar.tscn" id="31_1dcgu"]
 
@@ -1044,6 +1045,12 @@ offset_top = 231.5456
 offset_right = 347.99936
 offset_bottom = 271.5456
 scale = Vector2(0.9649123, 0.7826087)
+
+[node name="boss3img" type="Sprite2D" parent="enemyMonitor/bossImages"]
+z_index = -15
+position = Vector2(4.5276184, -11.164673)
+scale = Vector2(0.2104796, 0.25950944)
+texture = ExtResource("26_v85fi")
 
 [node name="boss2img" type="AnimatedSprite2D" parent="enemyMonitor/bossImages"]
 z_index = -15

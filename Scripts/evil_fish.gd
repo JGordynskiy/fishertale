@@ -31,7 +31,7 @@ var dashing = false
 var rng = RandomNumberGenerator.new()
 var iFrames = 0
 var randInt = 0
-var pathPos :Vector2
+var pathPos : Vector2
 # Called when the node enters the scene tree for the first time.
 signal boss1death
 var dead = false
@@ -115,8 +115,8 @@ func _physics_process(delta: float) -> void:
 		$Sprite2D.flip_v = true
 	else:
 		$Sprite2D.flip_v = false
+		
 	#Navigation
-	
 	if boss1hp > 0 && global.hp>0 && coolDown < 400:
 		pathPos = navAgent.get_next_path_position()
 		var dir = (pathPos - global_position).normalized()
@@ -161,7 +161,7 @@ func dash(delta):
 	$chargeSFX.play()
 	rng.randomize()
 	makePath()
-	moveSpeed = orgSpeed *rng.randf_range(3,5)
+	moveSpeed = orgSpeed *rng.randf_range(4,5)
 	
 	await get_tree().create_timer(0.4, false).timeout
 
@@ -248,7 +248,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	makePath()
+	#makePath()
 	pass # Replace with function body.
 
 

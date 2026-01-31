@@ -14,6 +14,7 @@ signal actuallyTakeDmg
 # boss Deaths
 signal boss1death
 signal boss2death
+signal boss3death
 
 #Scene transition
 signal gameTtoR
@@ -22,6 +23,7 @@ signal game1toR
 signal gameRto2
 signal game2toR
 signal gameRto3
+signal game3toR
 
 
 #Boss2

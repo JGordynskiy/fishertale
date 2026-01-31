@@ -69,6 +69,7 @@ animations = [{
 }]
 
 [node name="Bullet" type="CharacterBody2D" groups=["playerBullet"]]
+position = Vector2(0, 505)
 scale = Vector2(0.65, 0.65)
 collision_layer = 2
 collision_mask = 2

@@ -35,9 +35,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			globalSignals.emit_signal("gameTtoR")
 			return
 		match global.curBoss:
+			0:
+				print_debug("Curboss = 0. Whirlpool works doe")
 			1:
 				globalSignals.emit_signal("game1toR")
 				global.pausable = true
 			2: 
 				globalSignals.emit_signal("game2toR")
+			3:
+				globalSignals.emit_signal("game3toR")
 	pass # Replace with function body.

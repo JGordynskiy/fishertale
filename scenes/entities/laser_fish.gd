@@ -7,26 +7,41 @@ var rng = RandomNumberGenerator.new()
 
 @onready var navAgent: NavigationAgent2D = $NavigationAgent2D
 
+var dead = false
+
 var laserEmitting = false
 
 var iFrames = 0
-var coolDown = 30
-var boss3hp = 200
+var coolDown = 300
+var boss3hp = 150
+var moveSpeed = 7500
+var speed = 0
 
+
+var pathPos : Vector2
 
 func _ready() -> void:
+	$alive.visible = true
+	$dead.visible = false
+	#Shoots laser twice, then begins normal attacks
 	laser.visible = false
+	await get_tree().create_timer(1, false).timeout
+	sweepLaser()
+	coolDown = 999
+	await get_tree().create_timer(4, false).timeout
+	sweepLaser()
+	coolDown = 100
 	pass 
 
-func _process(delta: float) -> void:
-	
+func _physics_process(delta: float) -> void:
+	#setting the laser
 	var laserLength = global_position.distance_to(laserRay.get_collision_point())
 	laser.points = PackedVector2Array([Vector2(0, 0), Vector2(laserLength/22*-1, 0)])
 	
 	
 	iFrames -= 60*delta
 	coolDown -= 30*delta
-	#print_debug(coolDown)
+
 	#invulernability frames
 	if iFrames > 0:
 		modulate.v = 0.5
@@ -35,25 +50,64 @@ func _process(delta: float) -> void:
 	pass
 	
 	# take Damage from laser
-	if fishRay.get_collider().is_in_group("player") && laserEmitting:
-		globalSignals.takeDmg.emit()
+	if $fishDetector.get_collider() != null:
+		if $fishDetector.get_collider().is_in_group("player") && laserEmitting:
+			globalSignals.takeDmg.emit()
 	
 	#invulnerability Visual
-	$invulenrablePolygon.visible = !laserEmitting
+	if !laserEmitting && boss3hp > 0:
+		$invulenrablePolygon.visible = true
+	else:
+		$invulenrablePolygon.visible = false
 	
-	if coolDown < 0 && global.hp > 0:
-		attackSchedule()
+	#Navigation + movement
+	if (boss3hp > 0 && global.hp > 0):
+		pathPos = navAgent.get_next_path_position()
+		var dir = (pathPos - global_position).normalized()
+		velocity = dir*speed
+
+	#align fishfinder (check if in line of sight)
+	$fishFinder.global_rotation = $fishFinder.global_position.angle_to_point(fish.global_position)
+	
+	#attack schedule
+	if coolDown < 0 && global.hp > 0 && boss3hp > 0:
+		if ($fishFinder.get_collider().is_in_group("player")):
+			attackSchedule()
+		else:
+			follow()
+			
+	if (speed > 0):
+		speed -= 3500*delta
+		global_rotation = global_position.angle_to_point(fish.global_position) + PI
+	move_and_slide()
+	
+	
+func follow():
+	coolDown = 50
+	makePath()
+	speed = moveSpeed
+
+func makePath():
+	navAgent.target_position = fish.global_position
+		
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if (!laserEmitting):
 		return
+	if (boss3hp <= 0):
+		return
 	if area.is_in_group("playerBullet"):
 		if iFrames < 0:
 			iFrames = 10
+			boss3hp -= global.shot_damage
+			
 	if area.is_in_group("playerSlash"):
 		if iFrames < 0:
 			globalSignals.slashSuccess.emit()
 			iFrames = 10
+			boss3hp -= global.slash_damage
+	if boss3hp <= 0:
+			boss3death()
 	pass 
 
 func attackSchedule():
@@ -61,7 +115,8 @@ func attackSchedule():
 	pass
 	
 func sweepLaser():
-	
+	coolDown = 100
+	#speed = 0
 	$laserTelegraph.emitting = false
 	rng.randomize()
 	var sweepRange = randf_range(0.4, 0.8)
@@ -69,9 +124,8 @@ func sweepLaser():
 	while (parity == 0):
 		rng.randomize()
 		parity = randi_range(-1, 1)
-	
-	
-	coolDown = 100
+	if dead:
+		return
 	$laser.visible = false
 	$laser.modulate.a = 1
 	$laser/AnimationPlayer.play("RESET")
@@ -84,7 +138,8 @@ func sweepLaser():
 	$laserTelegraph.restart()
 	$laserTelegraph.emitting = true
 	$laserCharge.play()
-	
+	if dead:
+		return
 	# setting the laser correctly!
 	
 	
@@ -97,14 +152,44 @@ func sweepLaser():
 	laserEmitting = true
 	$laserTelegraph.restart()
 	$laserTelegraph.emitting = false
-	
+	if dead:
+		return
 	
 	
 	var tween2 = create_tween()
 	tween2.tween_property(self, "global_rotation", global_rotation+2*sweepRange*parity, 1)
-	
-	
+	$steam1.emitting = true
+	$steam2.emitting = true
 	await get_tree().create_timer(1, false).timeout # laser time length
 	$laser/AnimationPlayer.play("fadeOut")
 	laserEmitting = false
+	$steam1.emitting = false
+	$steam2.emitting = false
+	if dead:
+		return
+
+func boss3death():
+	dead = true
+	#removing hitboxes
+	$hurtbox/hurtBox.set_deferred("disabled", true)
+	$hurtbox/CollisionShape2D.set_deferred("disabled", true)
+	$hitBox.set_deferred("disabled", true)
 	
+	speed = 0
+	laserEmitting = false
+	$laser.visible  = false
+	$deathParticle1.emitting = true
+	await get_tree().create_timer(2, false).timeout
+	$deathParticle1.emitting = false
+	await get_tree().create_timer(1, false).timeout
+	$deathSploison.play()
+	$deathparticle2.restart()
+	$deathparticle2.emitting = true
+	globalSignals.emit_signal("boss3death")
+	$alive.visible = false
+	$dead.visible = true
+	pass
+
+func _on_navigation_agent_2d_navigation_finished() -> void:
+	makePath()
+	pass # Replace with function body.
