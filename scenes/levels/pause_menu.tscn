@@ -119,7 +119,7 @@ corner_radius_bottom_left = 25
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h343x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fugxs"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0.80784315)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvgg1"]
 bg_color = Color(0.067656614, 0.13840568, 0.41978937, 1)

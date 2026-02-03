@@ -563,7 +563,8 @@ max_polyphony = 2
 
 [node name="deathPop" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("14_gfhab")
-volume_db = -16.095
+volume_db = -10.0
+pitch_scale = 0.5
 max_polyphony = 2
 
 [node name="swim" type="AudioStreamPlayer" parent="sounds"]

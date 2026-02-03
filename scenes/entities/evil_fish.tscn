@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2f2njwjm1mdb"]
+[gd_scene load_steps=17 format=3 uid="uid://d2f2njwjm1mdb"]
 
 [ext_resource type="Texture2D" uid="uid://blky8mawp5lun" path="res://Assets/enemies/evilFish.png" id="1_6w7tp"]
 [ext_resource type="Script" uid="uid://xxhxnplho05k" path="res://Scripts/evil_fish.gd" id="1_xuvw8"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://d4bgvenxd8xyu" path="res://Assets/sounds/enemyChargeup.ogg" id="4_s5mj2"]
 [ext_resource type="AudioStream" uid="uid://dnuqcywlrghpa" path="res://Assets/sounds/enemyBlast.ogg" id="5_4rtmy"]
 [ext_resource type="AudioStream" uid="uid://rtowf2k8mbcn" path="res://Assets/sounds/enemyBoss1death.ogg" id="6_4rtmy"]
+[ext_resource type="AudioStream" uid="uid://ciq4jol2lk73d" path="res://Assets/sounds/enemie/bossdmgtake.ogg" id="7_0w853"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4rtmy"]
 particle_flag_disable_z = true
@@ -207,6 +208,11 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_ncq60")
 }
+
+[node name="dmgTake" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0w853")
+volume_db = 15.0
+max_distance = 99999.0
 
 [connection signal="area_entered" from="evilFish" to="." method="_on_area_2d_area_entered"]
 [connection signal="link_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_link_reached"]

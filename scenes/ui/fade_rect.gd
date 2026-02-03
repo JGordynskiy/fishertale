@@ -7,10 +7,8 @@ var type : bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if (type):
-		print_debug("fading out")
 		animation_player.play("fadein")
 	if (!type):
-		print_debug("fading in")
 		animation_player.play("fadeout")
 	await get_tree().create_timer(2, false).timeout
 	queue_free()

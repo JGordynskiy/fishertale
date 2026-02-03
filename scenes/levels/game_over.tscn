@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckvml63hdsptk"]
+[gd_scene load_steps=22 format=3 uid="uid://ckvml63hdsptk"]
 
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_lpwf7"]
 [ext_resource type="Script" uid="uid://dn67wjet7fw7d" path="res://Scripts/gameover.gd" id="1_qy7gw"]
@@ -25,13 +25,21 @@ frame_3/duration = 1.0
 frame_4/texture = ExtResource("2_i47r0")
 frame_4/duration = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfkai"]
+bg_color = Color(0.13, 0.13, 0.13, 0.5647059)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.59, 0.59, 0.59, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy7gw"]
-bg_color = Color(0.067656614, 0.13840568, 0.41978937, 1)
+bg_color = Color(0.07680001, 0.35903993, 0.48, 1)
 border_width_left = 25
 border_width_top = 25
 border_width_right = 25
 border_width_bottom = 25
-border_color = Color(0.06666667, 0.13725491, 0.41960785, 1)
+border_color = Color(0.078431375, 0.36078432, 0.47843137, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -128,6 +136,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_181lf")
 
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 288.99875
+offset_top = 102.99855
+offset_right = 996.9957
+offset_bottom = 294.99585
+theme_override_styles/panel = SubResource("StyleBoxFlat_qfkai")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
@@ -135,15 +151,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -294.0012
-offset_top = 35.994934
-offset_right = 571.9988
-offset_bottom = 236.99493
+offset_left = -287.00122
+offset_top = 57.99463
+offset_right = 578.9988
+offset_bottom = 258.99463
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6399988, 0.6399988)
 size_flags_horizontal = 4
 theme_override_constants/separation = 200
+alignment = 1
 
 [node name="Retry" type="Button" parent="ColorRect/HBoxContainer"]
 layout_mode = 2
@@ -171,10 +188,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -284.50125
-offset_top = 144.99796
-offset_right = 284.49878
-offset_bottom = 211.99796
+offset_left = -277.50128
+offset_top = 166.99763
+offset_right = 291.49872
+offset_bottom = 233.99763
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_lpwf7")

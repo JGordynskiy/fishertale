@@ -53,6 +53,7 @@ animations = [{
 
 [node name="SuperBullet" type="CharacterBody2D" groups=["dangerObj"]]
 scale = Vector2(2.7256799, 2.7256799)
+collision_layer = 2
 script = ExtResource("1_etkvm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

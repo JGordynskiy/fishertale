@@ -237,6 +237,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			boss1hp -= global.shot_damage
 			iFrames = 10
 			$Sprite2D.self_modulate.s = 0.5
+			
+			#rng.randomize()
+			#$dmgTake.pitch_scale = randf_range(0.8, 1.2)
+			#$dmgTake.play()
 	if area.is_in_group("playerSlash"):
 		if iFrames < 0 && boss1hp > 0:
 			boss1hp -= global.slash_damage

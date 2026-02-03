@@ -70,6 +70,7 @@ func unpause():
 
 func _on_quit_pressed() -> void:
 	$"../areyousure".visible = true
+	$".".visible = false
 	$select.play()
 	pass # Replace with function body.
 
@@ -81,12 +82,12 @@ func _on_really_quit_pressed() -> void:
 	add_child(thunkfade)
 	
 	global.curBoss = 0
-	get_tree().paused = false
+	
 	global.pausable = false
 	
-	
-	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
+	get_tree().paused = false
+	await get_tree().create_timer(0.5).timeout
 	
 	get_tree().change_scene_to_file.call_deferred("res://scenes/levels/main_menu.tscn")
 	
@@ -94,11 +95,13 @@ func _on_really_quit_pressed() -> void:
 
 
 func _on_nvm_pressed() -> void:
+	$".".visible = true
 	$"../areyousure".visible = false
 	$select.play()
 	pass # Replace with function body.
 
 
 func _on_continue_pressed() -> void:
-	unpause()
+	if global.pausable:
+		unpause()
 	pass # Replace with function body.
