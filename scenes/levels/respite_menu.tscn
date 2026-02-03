@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dfc7lldewp5pq"]
+[gd_scene load_steps=73 format=3 uid="uid://dfc7lldewp5pq"]
 
 [ext_resource type="Texture2D" uid="uid://b5sek51ovhatj" path="res://Assets/objects/glassOverlay.png" id="1_h8wsi"]
 [ext_resource type="Script" uid="uid://6mulj1la2v3j" path="res://scenes/levels/respite_menu.gd" id="1_po2xu"]
@@ -437,6 +437,9 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5p8p"]
+draw_center = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xa0o"]
 bg_color = Color(0, 0, 0, 0.54901963)
 border_width_left = 15
@@ -481,6 +484,9 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mokga"]
+draw_center = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yh1e"]
 content_margin_left = 25.0
@@ -761,7 +767,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_left = -8.958982
 offset_top = -15.312606
-offset_right = 295.37238
+offset_right = 343.34576
 offset_bottom = 221.55608
 theme_override_styles/panel = SubResource("StyleBoxFlat_bsp48")
 
@@ -846,6 +852,7 @@ offset_right = 601.16675
 offset_bottom = 358.30136
 theme_override_styles/normal = SubResource("StyleBoxFlat_xr4ur")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tjf50")
+theme_override_styles/focus = SubResource("StyleBoxFlat_k5p8p")
 
 [node name="enemyMonitor" type="TextureRect" parent="."]
 modulate = Color(0.97, 0.97, 0.97, 1)
@@ -871,7 +878,7 @@ theme_override_font_sizes/font_size = 66
 text = "INCOMING"
 
 [node name="static" type="TextureRect" parent="enemyMonitor"]
-self_modulate = Color(1, 1, 1, 0.49411765)
+self_modulate = Color(1, 1, 1, 0.39215687)
 z_index = -10
 layout_mode = 0
 offset_left = 13.683929
@@ -901,6 +908,7 @@ offset_bottom = 431.90533
 theme_override_styles/panel = SubResource("StyleBoxFlat_0xa0o")
 
 [node name="boss3" type="RichTextLabel" parent="enemyMonitor/hints"]
+visible = false
 clip_contents = false
 layout_mode = 0
 offset_left = 618.1923
@@ -937,7 +945,7 @@ scale = Vector2(1.0525964, 1.0525964)
 theme_override_fonts/normal_font = ExtResource("4_17bcf")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "Coursing with energy from the nearby lab.
+text = "A rogue science experiment from the nearby lab.
 
 Invulnerable until it shoots it's laser."
 scroll_active = false
@@ -986,7 +994,6 @@ Summons rocks and bullets at intruders."
 scroll_active = false
 
 [node name="boss1" type="RichTextLabel" parent="enemyMonitor/hints"]
-visible = false
 clip_contents = false
 layout_mode = 0
 offset_left = 621.8396
@@ -1023,7 +1030,7 @@ scale = Vector2(1.0525964, 1.0525964)
 theme_override_fonts/normal_font = ExtResource("4_17bcf")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "Lost everything in the flood, including it's sanity.
+text = "Particularly unfond of the color orange.
 
 Charges and shoots at anything that moves."
 scroll_active = false
@@ -1074,6 +1081,7 @@ offset_right = 598.5235
 offset_bottom = 358.2404
 theme_override_styles/normal = SubResource("StyleBoxFlat_i6qin")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1nidn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mokga")
 
 [node name="Roe" type="Control" parent="."]
 anchors_preset = 0

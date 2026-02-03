@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dugevekwvryul"]
+[gd_scene load_steps=26 format=3 uid="uid://dugevekwvryul"]
 
 [ext_resource type="Script" uid="uid://b04nmqqrhv5os" path="res://Scripts/pause_menu.gd" id="1_lx1ke"]
 [ext_resource type="FontFile" uid="uid://cao7skrrs3un5" path="res://Assets/fonts/Urban Shadow Sans Serif.otf" id="1_unjiy"]
@@ -12,37 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://c7eai177jnjq4" path="res://Assets/objects/monitorstatic/monitorstatic (4).jpg" id="9_h343x"]
 [ext_resource type="Texture2D" uid="uid://c668yt2tf0vtq" path="res://Assets/objects/monitorstatic/monitorstatic (5).jpg" id="10_fugxs"]
 [ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="12_h343x"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjocd"]
-bg_color = Color(0.50430816, 0.6980982, 0.8339052, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx1ke"]
-bg_color = Color(0.12599999, 0.31500003, 0.45, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlnuo"]
-bg_color = Color(0.5058824, 0.69803923, 0.8352941, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enuq8"]
 
 [sub_resource type="Animation" id="Animation_dlnuo"]
 length = 0.001
@@ -100,7 +69,7 @@ _data = {
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_46qna"]
 frames = 5
-speed_scale = 25.0
+speed_scale = 30.0
 frame_0/texture = ExtResource("6_cvgg1")
 frame_1/texture = ExtResource("7_a4kp2")
 frame_1/duration = 1.0
@@ -112,12 +81,12 @@ frame_4/texture = ExtResource("10_fugxs")
 frame_4/duration = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h343x"]
-bg_color = Color(0.23529412, 0.27058825, 0.41960785, 1)
+bg_color = Color(0.1554, 0.20390996, 0.42, 1)
 border_width_left = 25
 border_width_top = 25
 border_width_right = 25
 border_width_bottom = 25
-border_color = Color(0.23519999, 0.27216, 0.42, 1)
+border_color = Color(0.15686275, 0.20392157, 0.41960785, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -136,12 +105,12 @@ corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqgkn"]
-bg_color = Color(0.12543598, 0.22955105, 0.64107025, 1)
+bg_color = Color(0.16799998, 0.3024, 0.84, 1)
 border_width_left = 25
 border_width_top = 25
 border_width_right = 25
 border_width_bottom = 25
-border_color = Color(0.1254902, 0.23137255, 0.6392157, 1)
+border_color = Color(0.16862746, 0.3019608, 0.8392157, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -212,100 +181,15 @@ stream = ExtResource("2_c05mf")
 [node name="Label" type="Label" parent="CanvasLayer"]
 layout_mode = 1
 offset_left = 60.754
-offset_top = 78.99714
+offset_top = 83.197266
 offset_right = 1716.754
-offset_bottom = 355.99713
+offset_bottom = 360.19727
 scale = Vector2(0.5429802, 0.5429802)
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_gjocd")
 theme_override_font_sizes/font_size = 276
 text = "PAUSED"
 horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer/Label"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -642.2513
-offset_top = 221.87405
-offset_right = 3083.749
-offset_bottom = 498.87402
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.33887324, 0.33887324)
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_gjocd")
-theme_override_font_sizes/font_size = 276
-text = "esc to continue"
-horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 250.77734
-offset_top = 213.5403
-offset_right = 1450.7773
-offset_bottom = 1172.5403
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.29186675, 0.25275046)
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/separation = 159
-
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-process_mode = 2
-visible = false
-clip_contents = true
-custom_minimum_size = Vector2(1200, 400)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
-theme_override_colors/font_focus_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_pressed_color = Color(0.40432662, 0.70529413, 0.9734008, 1)
-theme_override_colors/font_hover_color = Color(0.031769015, 0.2745285, 0.4496572, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_disabled_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_outline_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("1_unjiy")
-theme_override_font_sizes/font_size = 300
-theme_override_styles/normal = SubResource("StyleBoxFlat_gjocd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_lx1ke")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dlnuo")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_enuq8")
-keep_pressed_outside = true
-text = "Continue"
-
-[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
-visible = false
-clip_contents = true
-custom_minimum_size = Vector2(1200, 400)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
-theme_override_colors/font_focus_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_pressed_color = Color(0.40432662, 0.70529413, 0.9734008, 1)
-theme_override_colors/font_hover_color = Color(0.031769015, 0.2745285, 0.4496572, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_disabled_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_outline_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("1_unjiy")
-theme_override_font_sizes/font_size = 300
-theme_override_styles/normal = SubResource("StyleBoxFlat_gjocd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_lx1ke")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dlnuo")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_enuq8")
-keep_pressed_outside = true
-text = "Quit
-"
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 z_index = -60
@@ -341,13 +225,17 @@ scale = Vector2(20.840425, 12.145077)
 texture = SubResource("AnimatedTexture_46qna")
 expand_mode = 1
 
-[node name="Quit" type="Button" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 layout_mode = 0
-offset_left = 392.23767
-offset_top = 461.91348
-offset_right = 681.2377
-offset_bottom = 662.91345
-scale = Vector2(0.69899803, 0.69899803)
+offset_left = 182.22937
+offset_top = 352.70905
+offset_right = 1131.2294
+offset_bottom = 553.70905
+scale = Vector2(0.70918936, 0.70918936)
+theme_override_constants/separation = 144
+
+[node name="Quit" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_unjiy")
 theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxFlat_h343x")
@@ -356,6 +244,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_vqgkn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h343x")
 text = "Quit
 "
+
+[node name="continue" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_unjiy")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_h343x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46qna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vqgkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h343x")
+text = "Unpause"
 
 [node name="areyousure" type="Control" parent="."]
 visible = false
@@ -416,6 +314,7 @@ text = "Are you sure
  you want to quit?"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/Quit" to="CanvasLayer" method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Quit" to="CanvasLayer" method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/continue" to="CanvasLayer" method="_on_continue_pressed"]
 [connection signal="pressed" from="areyousure/Panel/HBoxContainer/reallyQuit" to="CanvasLayer" method="_on_really_quit_pressed"]
 [connection signal="pressed" from="areyousure/Panel/HBoxContainer/nvm" to="CanvasLayer" method="_on_nvm_pressed"]

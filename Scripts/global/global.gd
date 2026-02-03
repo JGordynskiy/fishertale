@@ -26,7 +26,7 @@ var rateCost = 4
 var healthCost = 1
 
 var accuracy = 0# 0.1 default, decrease to increase
-var bulletRange = 200 
+var bulletRange = 250 
 var pausable = false
 @export var camZoom = 0.06 # 0.06 default, dmgSplash stops working at 0.01!
 @export var curBoss = 0

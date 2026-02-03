@@ -52,8 +52,8 @@ func boss2clear():
 	#roe popup
 	var roeP = roePopup.instantiate()
 	roeP.global_position = fish.global_position
-	roeP.actualText = "+"+str(10)
-	global.roe += 10
+	roeP.actualText = "+"+str(12)
+	global.roe += 12
 	rng.randomize()
 	roeP.global_position.x += randf_range(-1000,1000)
 	rng.randomize()

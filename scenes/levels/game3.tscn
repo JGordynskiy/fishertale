@@ -84,6 +84,37 @@ position = Vector2(18661, -9234)
 scale = Vector2(12, 12)
 navigation_polygon = SubResource("NavigationPolygon_lrvpm")
 
+[node name="alarmFlash1" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.3372549)
+offset_left = 582.0
+offset_top = -18190.0
+offset_right = 621.89514
+offset_bottom = -18149.535
+scale = Vector2(286.82697, 440.44632)
+color = Color(1, 0, 0, 1)
+
+[node name="alarmFlash2" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.3372549)
+offset_left = 12019.999
+offset_top = -18160.0
+offset_right = 12060.783
+offset_bottom = -18119.535
+scale = Vector2(286.82697, 440.44632)
+color = Color(1, 0, 0, 1)
+
+[node name="alarmFlash3" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.3372549)
+offset_left = 23718.0
+offset_top = -18190.0
+offset_right = 23757.895
+offset_bottom = -18149.535
+scale = Vector2(286.82697, 440.44632)
+color = Color(1, 0, 0, 1)
+
 [node name="laserFish" parent="." instance=ExtResource("10_xb6vp")]
+z_index = 300
 position = Vector2(18661, -9234)
 scale = Vector2(14.574766, 14.574766)

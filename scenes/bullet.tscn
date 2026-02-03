@@ -72,7 +72,7 @@ animations = [{
 position = Vector2(0, 505)
 scale = Vector2(0.65, 0.65)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_y25gk")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -105,4 +105,5 @@ offset = Vector2(71.2, 0)
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

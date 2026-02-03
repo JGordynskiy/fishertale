@@ -63,6 +63,7 @@ scale = Vector2(15.4447, -14.07353)
 shape = SubResource("CircleShape2D_v2l1h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="area2d" groups=["dangerObj"]]
+process_mode = 3
 position = Vector2(392.78082, 4.491716)
 scale = Vector2(0.595, 0.595)
 sprite_frames = SubResource("SpriteFrames_oarcu")

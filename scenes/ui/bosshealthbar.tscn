@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://df3qjfdbfmxtg"]
+[gd_scene load_steps=6 format=3 uid="uid://df3qjfdbfmxtg"]
 
 [ext_resource type="Script" uid="uid://djym14i1vkpyf" path="res://scenes/ui/boss1healthbar.gd" id="1_3dfc5"]
 [ext_resource type="Texture2D" uid="uid://0u3obyrl87sb" path="res://Assets/pixelart_skull.png" id="2_48l5p"]
@@ -20,7 +20,10 @@ expand_margin_right = 15.0
 expand_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dfc5"]
-bg_color = Color(0.62, 0.155, 0.17049998, 1)
+bg_color = Color(0.62, 0.155, 0.155, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48l5p"]
+bg_color = Color(0.5285001, 0.6, 0.21000002, 0.7137255)
 
 [node name="bosshealthbar" type="CanvasLayer"]
 script = ExtResource("1_3dfc5")
@@ -42,6 +45,16 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_3dfc5")
 step = 0.5
 value = 99.0
 show_percentage = false
+
+[node name="Panel" type="Panel" parent="ProgressBar"]
+visible = false
+layout_mode = 0
+offset_left = 7.777954
+offset_top = -0.022949219
+offset_right = 72.76727
+offset_bottom = 108.34326
+scale = Vector2(7.5218887, 0.74455786)
+theme_override_styles/panel = SubResource("StyleBoxFlat_48l5p")
 
 [node name="Sprite2D" type="Sprite2D" parent="ProgressBar"]
 position = Vector2(-39.546112, 37.794556)

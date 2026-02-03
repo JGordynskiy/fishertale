@@ -44,8 +44,11 @@ func _ready() -> void:
 
 func pop():
 	popping = true
+	
 	animated_sprite.play("pop")
 	if soundPlayed == 0:
+		#rng.randomize()
+		#global_rotation = rng.randf_range(0, 2*PI)
 		soundPlayed = 1
 		fish.shootPop()
 	velocity = Vector2(0, 0)
@@ -71,6 +74,14 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group("objects"):
+		curRange = range+10
+		
+	pass # Replace with function body.
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	
+	if area.is_in_group("objects"):
 		curRange = range+10
 		
 	pass # Replace with function body.

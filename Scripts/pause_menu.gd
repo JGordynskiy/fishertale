@@ -2,9 +2,9 @@ extends Control
 
 @export var paused = false
 #var pausable = false
-
+@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
+@onready var game  = get_owner()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -76,14 +76,29 @@ func _on_quit_pressed() -> void:
 
 func _on_really_quit_pressed() -> void:
 	$select.play()
-	await get_tree().create_timer(0.3).timeout
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	add_child(thunkfade)
+	
 	global.curBoss = 0
 	get_tree().paused = false
+	global.pausable = false
+	
+	
+	
+	await get_tree().create_timer(1).timeout
+	
 	get_tree().change_scene_to_file.call_deferred("res://scenes/levels/main_menu.tscn")
+	
 	pass # Replace with function body.
 
 
 func _on_nvm_pressed() -> void:
 	$"../areyousure".visible = false
 	$select.play()
+	pass # Replace with function body.
+
+
+func _on_continue_pressed() -> void:
+	unpause()
 	pass # Replace with function body.

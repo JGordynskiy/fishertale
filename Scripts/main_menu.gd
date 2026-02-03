@@ -85,7 +85,7 @@ func onStartPressed() -> void:
 	## reset stats, just in case!
 	global.speed = 7000
 	global.shot_rate = 400 # 400 as default, reduce to increase
-	global.shot_damage = 51.5 # 1.5 default
+	global.shot_damage = 1.5 # 1.5 default
 	global.slash_damage = global.shot_damage*3  # 3 default
 	global.slash_rate = 400
 	

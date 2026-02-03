@@ -67,6 +67,10 @@ func _on_quit_pressed() -> void:
 	$"sounds/ui/select".play()
 	await get_tree().create_timer(0.3).timeout
 	global.goto_scene("res://scenes/levels/main_menu.tscn")
+	
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	game.add_child(thunkfade)
 	pass # Replace with function body.
 
 func _on_retry_mouse_entered() -> void:

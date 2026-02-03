@@ -161,7 +161,7 @@ func dash(delta):
 	$chargeSFX.play()
 	rng.randomize()
 	makePath()
-	moveSpeed = orgSpeed *rng.randf_range(4,5)
+	moveSpeed = orgSpeed *rng.randf_range(3.5,4.5)
 	
 	await get_tree().create_timer(0.4, false).timeout
 
@@ -186,7 +186,7 @@ func superBullet():
 	instance.spawnPos = global_position
 	instance.spawnRot = global_rotation
 	instance.dir = global_rotation
-	instance.shotspeed = 15000
+	instance.shotspeed = 10000
 	game.add_child(instance)
 	
 	
@@ -196,7 +196,7 @@ func shoot(rot):
 	instance.spawnPos = global_position
 	instance.spawnRot = global_rotation +rot+PI
 	instance.dir = global_rotation + rot+PI
-	instance.shotspeed = 15000
+	instance.shotspeed = 10000
 	
 	game.add_child(instance)
 	

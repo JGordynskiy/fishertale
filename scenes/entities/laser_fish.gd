@@ -1,8 +1,12 @@
 extends CharacterBody2D
+
+@onready var bullet = load("res://scenes/enemy_bullet.tscn")
+
 @onready var fishRay: RayCast2D = $fishDetector
 @onready var laserRay: RayCast2D = $laserRay
 @onready var laser: Line2D = $laser
 @onready var fish = get_node("../fish")
+@onready var game = get_node("..")
 var rng = RandomNumberGenerator.new()
 
 @onready var navAgent: NavigationAgent2D = $NavigationAgent2D
@@ -13,7 +17,7 @@ var laserEmitting = false
 
 var iFrames = 0
 var coolDown = 300
-var boss3hp = 150
+var boss3hp = 100
 var moveSpeed = 7500
 var speed = 0
 
@@ -36,7 +40,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#setting the laser
 	var laserLength = global_position.distance_to(laserRay.get_collision_point())
-	laser.points = PackedVector2Array([Vector2(0, 0), Vector2(laserLength/22*-1, 0)])
+	laser.points = PackedVector2Array([Vector2(0, 0), Vector2(laserLength/28*-1, 0)])
 	
 	
 	iFrames -= 60*delta
@@ -81,7 +85,17 @@ func _physics_process(delta: float) -> void:
 		global_rotation = global_position.angle_to_point(fish.global_position) + PI
 	move_and_slide()
 	
-	
+func shoot(rot):
+	var instance = bullet.instantiate()
+	instance.range = 1500
+	instance.spawnPos = global_position
+	instance.spawnRot = global_rotation +rot+PI
+	instance.dir = global_rotation + rot+PI
+	instance.shotspeed = 11000
+	instance.z_index = 200
+	game.add_child(instance)
+	pass
+
 func follow():
 	coolDown = 50
 	makePath()
@@ -92,14 +106,15 @@ func makePath():
 		
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if (!laserEmitting):
-		return
+	
 	if (boss3hp <= 0):
 		return
 	if area.is_in_group("playerBullet"):
-		if iFrames < 0:
+		if iFrames < 0 && laserEmitting:
 			iFrames = 10
 			boss3hp -= global.shot_damage
+		elif !laserEmitting:
+			shoot(area.global_rotation-global_rotation+(PI/2))
 			
 	if area.is_in_group("playerSlash"):
 		if iFrames < 0:

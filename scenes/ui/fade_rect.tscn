@@ -57,6 +57,8 @@ _data = {
 }
 
 [node name="fadeRect" type="CanvasLayer"]
+process_mode = 3
+layer = 2
 script = ExtResource("1_p1g1j")
 
 [node name="faderect" type="ColorRect" parent="."]

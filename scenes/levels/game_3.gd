@@ -40,6 +40,7 @@ func spawnPortal():
 	
 	var portal = whirlpool.instantiate()
 	global.whirlPoolPos = Vector2(17000, -9000)
+	portal.z_index = 400
 	portal.global_position = global.whirlPoolPos
 	add_child(portal)
 	pass

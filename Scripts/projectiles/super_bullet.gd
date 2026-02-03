@@ -59,7 +59,7 @@ func shoot(rot):
 	instance.spawnPos = global_position
 	instance.spawnRot = rot
 	instance.dir = rot
-	instance.shotspeed = 15000
+	instance.shotspeed = 10000
 	
 	game.add_child(instance)
 

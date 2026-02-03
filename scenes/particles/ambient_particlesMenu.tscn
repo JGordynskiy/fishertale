@@ -42,6 +42,6 @@ texture = ExtResource("1_qy3wa")
 lifetime = 6.8
 preprocess = 7.85
 fixed_fps = 0
-visibility_rect = Rect2(0, 0, 0, 0)
+visibility_rect = Rect2(-99999, -99999, 999999, 999999)
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_5jy3v")
