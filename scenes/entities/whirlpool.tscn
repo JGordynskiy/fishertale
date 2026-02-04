@@ -209,7 +209,7 @@ libraries = {
 autoplay = "spin"
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(2.604945, 2.604945)
+scale = Vector2(0.60960335, 0.60960335)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(52.262924, 52.262924)

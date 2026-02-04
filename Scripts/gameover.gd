@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 func onDeath():
 	global.pausable = false
 	
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(3).timeout
 	show()
 	animation_player.play("fadein")
 	await get_tree().create_timer(1).timeout
@@ -79,5 +79,22 @@ func _on_retry_mouse_entered() -> void:
 
 
 func _on_quit_mouse_entered() -> void:
+	$"sounds/ui/hoveron".play()
+	pass # Replace with function body.
+
+
+func _on_quitmaybe_pressed() -> void:
+	$"sounds/ui/select".play()
+	$really.visible = true
+	pass # Replace with function body.
+
+
+func _on_nvm_pressed() -> void:
+	$"sounds/ui/select".play()
+	$really.visible = false
+	pass # Replace with function body.
+
+
+func _on_nvm_mouse_entered() -> void:
 	$"sounds/ui/hoveron".play()
 	pass # Replace with function body.

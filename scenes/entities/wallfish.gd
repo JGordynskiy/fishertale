@@ -12,6 +12,7 @@ var cooldown = 120
 
 @onready var bullet = load("res://scenes/enemy_bullet.tscn")
 @onready var rock = load("res://scenes/objects/rockattack.tscn")
+@onready var fish = get_node("../fish")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -60,7 +61,8 @@ func attackSchedule(delta):
 		if cooldown < 0:
 			cooldown = 120
 			rng.randomize()
-			if (randi_range(1, 2) == 1):
+			var rand = randi_range(1, 3)
+			if (rand == 1 || rand == 2):
 				for i in range(3):
 					rockAttack()
 					await get_tree().create_timer(0.3, false).timeout
@@ -77,24 +79,26 @@ func summon():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", Vector2(16541.0, -20737.0), 3)
 	active = true
+	cooldown = 180
 
 func bulletAttack():
 	var instance = bullet.instantiate()
 	instance.z_index = 200
 	rng.randomize()
-	var rot = randf_range(-1, 1)
+	
+	
+	
 	instance.range = 1500
 	rng.randomize()
 	instance.spawnPos = Vector2(global_position.x, global_position.y +randf_range(-5000, 5000))
+	var rot = instance.spawnPos.angle_to_point(fish.global_position)+PI
 	
-	if instance.spawnPos.y > -17400 && rot < 0:
-		rot *= -1
-	if instance.spawnPos.y < -24400 && rot > 0:
-		rot *= -1
-		
+	
+	
 	instance.spawnRot = rot
 	instance.dir = rot
-	instance.shotspeed = 15000
+	instance.shotspeed = 10000
+	
 	
 	game2.add_child(instance)
 	
@@ -103,8 +107,8 @@ func rockAttack():
 	var instance = rock.instantiate()
 	instance.startx = -5500
 	instance.endx = 30000
-	instance.yrange1 = -13000
-	instance.yrange2 = -26000
+	instance.yrange1 = fish.global_position.y - 4000
+	instance.yrange2 = fish.global_position.y + 4000
 	
 	game2.add_child(instance)
 	pass

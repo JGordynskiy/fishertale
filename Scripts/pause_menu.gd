@@ -85,10 +85,10 @@ func _on_really_quit_pressed() -> void:
 	
 	global.pausable = false
 	
-	await get_tree().create_timer(0.5).timeout
-	get_tree().paused = false
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
 	
+	
+	get_tree().paused = false
 	get_tree().change_scene_to_file.call_deferred("res://scenes/levels/main_menu.tscn")
 	
 	pass # Replace with function body.

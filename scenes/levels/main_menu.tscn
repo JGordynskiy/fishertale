@@ -156,33 +156,26 @@ offset_bottom = -123.30408
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.61289495, 0.61289495)
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 script = ExtResource("1_towmw")
 
 [node name="Control" type="Control" parent="."]
 z_index = 500
 anchors_preset = 0
-offset_left = 1016.4874
-offset_top = 1150.2787
-offset_right = 1056.4873
-offset_bottom = 1190.2787
+offset_left = 1023.01385
+offset_top = 1156.805
+offset_right = 1063.0137
+offset_bottom = 1196.805
 
 [node name="Ambient Particles Menu" parent="Control" instance=ExtResource("2_ohdsy")]
 z_index = 300
 
 [node name="fishertale" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -615.31226
-offset_top = -417.2047
-offset_right = 5009.6885
-offset_bottom = 182.79529
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 365.4786
+offset_top = 115.84365
+offset_right = 5990.479
+offset_bottom = 715.8436
 scale = Vector2(0.23107316, 0.23593824)
 theme_override_font_sizes/font_size = 381
 text = "Fishertale"
@@ -212,8 +205,7 @@ vertical_alignment = 1
 
 [node name="Background" type="Panel" parent="."]
 z_index = -50
-layout_mode = 1
-anchors_preset = -1
+layout_mode = 0
 anchor_right = 1.092
 anchor_bottom = 1.016
 offset_left = -79.94844
@@ -227,9 +219,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_lars7")
 
 [node name="choose a heart" type="Label" parent="."]
 layout_mode = 0
-offset_left = 496.007
+offset_left = 505.7963
 offset_top = 868.0118
-offset_right = 1526.007
+offset_right = 1535.7963
 offset_bottom = 948.012
 scale = Vector2(0.89537436, 0.89537436)
 pivot_offset = Vector2(528.6387, 42.42157)
@@ -252,10 +244,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 247.80463
-offset_top = -77.831665
-offset_right = 921.65607
-offset_bottom = -10.831543
+offset_left = 257.5943
+offset_top = -110.463684
+offset_right = 931.44574
+offset_bottom = -43.463562
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85478735, 0.85478735)
@@ -265,10 +257,10 @@ text = "Skip Tutorial"
 
 [node name="modeButtonsPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 533.5335
-offset_top = 554.7443
-offset_right = 647.8038
-offset_bottom = 588.5016
+offset_left = 543.3231
+offset_top = 517.2175
+offset_right = 657.5934
+offset_bottom = 550.9748
 scale = Vector2(8.41, 8.41)
 theme_override_styles/panel = SubResource("StyleBoxFlat_7gp8n")
 
@@ -292,7 +284,7 @@ offset_left = 1.5258789e-05
 offset_top = 42.851803
 offset_right = 534.93555
 offset_bottom = 204.46432
-scale = Vector2(0.5721891, 0.5721891)
+scale = Vector2(0.63188696, 0.63188696)
 theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
 theme_override_fonts/normal_font = ExtResource("4_pwqr4")
 theme_override_fonts/bold_font = ExtResource("2_towmw")
@@ -322,7 +314,7 @@ offset_left = 6.40094
 offset_top = 51.207012
 offset_right = 560.1883
 offset_bottom = 276.1148
-scale = Vector2(0.573295, 0.573295)
+scale = Vector2(0.63294786, 0.63294786)
 theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
 theme_override_fonts/normal_font = ExtResource("4_pwqr4")
 theme_override_fonts/bold_font = ExtResource("2_towmw")
@@ -333,11 +325,11 @@ text = "Slash in front of you with Left-click
 
 [node name="BackButton" type="Button" parent="modeButtonsPanel"]
 layout_mode = 0
-offset_left = 39.38347
-offset_top = -13.774513
-offset_right = 1326.9418
-offset_bottom = 408.7056
-scale = Vector2(0.02893025, 0.02893025)
+offset_left = 40.3535
+offset_top = -14.550545
+offset_right = 1327.9119
+offset_bottom = 407.92957
+scale = Vector2(0.025625868, 0.025625868)
 theme_override_colors/font_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("4_geflf")
 theme_override_font_sizes/font_size = 250
@@ -348,15 +340,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_2arew")
 text = "Back"
 
 [node name="modeButtons" type="HBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -298.78162
-offset_top = 595.53436
-offset_right = 4457.2183
-offset_bottom = 1555.5344
+offset_left = -288.99207
+offset_top = 561.27075
+offset_right = 4467.008
+offset_bottom = 1521.2708
 grow_horizontal = 2
 scale = Vector2(0.19738539, 0.19738539)
 theme_override_constants/separation = 1000
@@ -375,8 +366,7 @@ texture_hover = ExtResource("9_djhkt")
 
 [node name="finalButtons" type="BoxContainer" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -416,12 +406,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.07
 anchor_bottom = 1.0
-offset_left = 853.32745
+offset_left = 828.85345
 offset_top = 618.74066
-offset_right = 340.0039
+offset_right = 315.53003
 offset_bottom = 1083.3395
-grow_horizontal = 0
-grow_vertical = 2
 scale = Vector2(0.21233284, 0.21233284)
 theme_override_constants/separation = 539
 

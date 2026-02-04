@@ -44,7 +44,7 @@ var invulnerable = false
 @export var shot_timer = 0
 var dangerTouching = 0
 
-var iFrames = 90
+var iFrames = 60
 var iFrameCount = iFrames
 
 var dashCool = 60
@@ -76,10 +76,10 @@ func _ready():
 	globalSignals.slashSuccess.connect(slashSuccess)
 	$Sprite2D.self_modulate.a = 0
 	
-	#ensure slash sizes are correct
-	$slashhitbox/CollisionShape2D.position = Vector2(global.slash_x, 0)
-	$slashhitbox/CollisionShape2D.scale.x = global.slash_scale
-	$slash.position.x = global.slash_x*1.8 + 300
+	##ensure slash sizes are correct
+	#$slashhitbox/CollisionShape2D.position = Vector2(global.slash_x, 0)
+	#$slashhitbox/CollisionShape2D.scale.x = global.slash_scale
+	#$slash.position.x = global.slash_x*1.8 + 300
 	
 	
 	
@@ -174,11 +174,13 @@ func get_input():
 	#if Input.is_action_just_pressed("altFire"):
 		#slash()
 		
+	if Input.is_action_just_pressed("click"):
+		if global.heart == 2:
+			slash()	
+			
 	if Input.is_action_pressed("click"):
 		if global.heart == 1:
 			shoot()
-		if global.heart == 2:
-			slash()
 	
 	velocity = direction * global.speed * mult
 
@@ -229,7 +231,7 @@ func dash():
 		$"sounds/woosh".play()
 		dashVisual1count = 1
 		if iFrameCount > 76:
-			iFrameCount = 75
+			iFrameCount = iFrames * 0.8
 		#game.add_child(cloud.instantiate())
 		mult = 5
 		dashCount = 0

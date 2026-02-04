@@ -65,6 +65,7 @@ func _process(delta: float) -> void:
 	pass
 	
 	move_and_slide()
+	
 func makePath():
 	navAgent.target_position = fish.global_position
 
@@ -105,4 +106,8 @@ func _on_lunge_fish_area_entered(area: Area2D) -> void:
 		await get_tree().create_timer(1, false).timeout
 		queue_free()
 		
+	pass # Replace with function body.
+func _on_timer_timeout() -> void:
+	makePath()
+	$Timer.start()
 	pass # Replace with function body.

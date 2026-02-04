@@ -3,6 +3,7 @@ extends Node
 @onready var inGame = false
 var debug = false
 
+var debugCounter = 0
 #1 is default, 2 is melee
 var heart = 1
 

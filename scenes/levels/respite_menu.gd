@@ -164,7 +164,7 @@ func _on_ready_button_pressed() -> void:
 
 
 func _on_ready_button_mouse_entered() -> void:
-	if !transitioning:
+	if !transitioning && !$ReadyButton.disabled:
 		hover_on.play()
 	pass # Replace with function body.
 

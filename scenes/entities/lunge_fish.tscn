@@ -25,6 +25,7 @@ scale_max = 215.29
 scale_curve = SubResource("CurveTexture_5o7j4")
 
 [node name="lungeFish" type="CharacterBody2D" groups=["objects"]]
+collision_layer = 2
 script = ExtResource("1_1k1au")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -42,13 +43,15 @@ shape = SubResource("CapsuleShape2D_1k1au")
 debug_color = Color(0.8529746, 0.3114638, 0.52358174, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 1000.0
-target_desired_distance = 1000.0
+path_desired_distance = 200.0
+target_desired_distance = 500.0
+path_max_distance = 500.0
 path_postprocessing = 1
+debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
-debug_path_custom_point_size = 50.0
-debug_path_custom_line_width = 20.0
+debug_path_custom_point_size = 150.0
+debug_path_custom_line_width = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(269, 0)
@@ -73,5 +76,10 @@ scale = Vector2(55.219242, 55.219242)
 stream = ExtResource("3_5o7j4")
 max_distance = 11000.0
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="area_entered" from="lungeFish" to="." method="_on_lunge_fish_area_entered"]
 [connection signal="link_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_link_reached"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

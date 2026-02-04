@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b234r62u8yqlp" path="res://Assets/sounds/rockDestroy.mp3" id="4_oup5i"]
 
 [sub_resource type="Curve" id="Curve_2ghs7"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9922779, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9137931, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_e0jvj"]

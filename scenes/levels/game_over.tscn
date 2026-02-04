@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckvml63hdsptk"]
+[gd_scene load_steps=23 format=3 uid="uid://ckvml63hdsptk"]
 
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_lpwf7"]
 [ext_resource type="Script" uid="uid://dn67wjet7fw7d" path="res://Scripts/gameover.gd" id="1_qy7gw"]
@@ -70,6 +70,9 @@ corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_org1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecavu"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_org1n"]
 bg_color = Color(0.026177606, 0.07163545, 0.254907, 1)
@@ -146,15 +149,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qfkai")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -287.00122
-offset_top = 57.99463
-offset_right = 578.9988
-offset_bottom = 258.99463
+anchors_preset = -1
+anchor_right = 0.4329992
+anchor_bottom = 0.17866632
+offset_left = 354.9985
+offset_top = 413.9942
+offset_right = 666.7596
+offset_bottom = 486.35443
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6399988, 0.6399988)
@@ -172,16 +173,15 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lw2kh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
 text = "Retry"
 
-[node name="Quit" type="Button" parent="ColorRect/HBoxContainer"]
+[node name="quitmaybe" type="Button" parent="ColorRect/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_org1n")
 theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxFlat_qy7gw")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_org1n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdwfc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lw2kh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
-text = "Quit
-"
+text = "Quit"
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 1
@@ -198,11 +198,64 @@ theme_override_fonts/font = ExtResource("1_lpwf7")
 theme_override_font_sizes/font_size = 66
 text = "GAME OVER"
 
-[node name="Control" type="Control" parent="."]
+[node name="really" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="really"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 721.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ecavu")
+
+[node name="Label" type="Label" parent="really"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 384.0
+offset_top = 175.0
+offset_right = 871.0
+offset_bottom = 242.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_lpwf7")
+theme_override_font_sizes/font_size = 66
+text = "Give up?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="really"]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 431.00003
+offset_right = 1147.0
+offset_bottom = 632.0
+scale = Vector2(0.5859864, 0.5859864)
+theme_override_constants/separation = 150
+
+[node name="nvm" type="Button" parent="really/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_org1n")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_qy7gw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_org1n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lw2kh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
+text = "Nvm
+"
+
+[node name="Quit" type="Button" parent="really/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_org1n")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_qy7gw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_org1n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lw2kh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
+text = "Quit
+"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -224,5 +277,9 @@ stream = ExtResource("6_nesse")
 
 [connection signal="mouse_entered" from="ColorRect/HBoxContainer/Retry" to="." method="_on_retry_mouse_entered"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
-[connection signal="mouse_entered" from="ColorRect/HBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
-[connection signal="pressed" from="ColorRect/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="ColorRect/HBoxContainer/quitmaybe" to="." method="_on_retry_mouse_entered"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/quitmaybe" to="." method="_on_quitmaybe_pressed"]
+[connection signal="mouse_entered" from="really/HBoxContainer/nvm" to="." method="_on_nvm_mouse_entered"]
+[connection signal="pressed" from="really/HBoxContainer/nvm" to="." method="_on_nvm_pressed"]
+[connection signal="mouse_entered" from="really/HBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="really/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

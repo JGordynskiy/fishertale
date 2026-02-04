@@ -117,10 +117,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			shoot(area.global_rotation-global_rotation+(PI/2))
 			
 	if area.is_in_group("playerSlash"):
-		if iFrames < 0:
+		if iFrames < 0 && laserEmitting:
 			globalSignals.slashSuccess.emit()
 			iFrames = 10
 			boss3hp -= global.slash_damage
+		elif !laserEmitting:
+			shoot(area.global_rotation-global_rotation+(PI/2))
 	if boss3hp <= 0:
 			boss3death()
 	pass 
@@ -189,7 +191,8 @@ func boss3death():
 	$hurtbox/hurtBox.set_deferred("disabled", true)
 	$hurtbox/CollisionShape2D.set_deferred("disabled", true)
 	$hitBox.set_deferred("disabled", true)
-	
+	$fishDetector.enabled = false
+
 	speed = 0
 	laserEmitting = false
 	$laser.visible  = false

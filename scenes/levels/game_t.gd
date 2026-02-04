@@ -34,7 +34,7 @@ func _ready() -> void:
 	camera.tutorial = true
 	camera.tutStage = 0
 	
-	global.pausable = false
+	global.pausable = true
 	pass # Replace with function body.
 
 
