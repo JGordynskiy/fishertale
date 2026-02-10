@@ -14,6 +14,7 @@ var rng = RandomNumberGenerator.new()
 var dead = false
 
 var laserEmitting = false
+var turreting = false
 
 var iFrames = 0
 var coolDown = 300
@@ -27,14 +28,14 @@ var pathPos : Vector2
 func _ready() -> void:
 	$alive.visible = true
 	$dead.visible = false
-	#Shoots laser twice, then begins normal attacks
-	laser.visible = false
-	await get_tree().create_timer(1, false).timeout
-	sweepLaser()
-	coolDown = 999
-	await get_tree().create_timer(4, false).timeout
-	sweepLaser()
-	coolDown = 100
+	##Shoots laser twice, then begins normal attacks
+	#laser.visible = false
+	#await get_tree().create_timer(1, false).timeout
+	#sweepLaser()
+	#coolDown = 999
+	#await get_tree().create_timer(4, false).timeout
+	#sweepLaser()
+	coolDown = 25
 	pass 
 
 func _physics_process(delta: float) -> void:
@@ -74,12 +75,17 @@ func _physics_process(delta: float) -> void:
 	$fishFinder.global_rotation = $fishFinder.global_position.angle_to_point(fish.global_position)
 	
 	#attack schedule
-	if coolDown < 0 && global.hp > 0 && boss3hp > 0:
-		if ($fishFinder.get_collider().is_in_group("player")):
-			attackSchedule()
-		else:
-			follow()
-			
+	rng.randomize()
+	var rand = rng.randi_range(1, 4)
+	
+	if coolDown < 0:
+		if global.hp > 0 && boss3hp > 0:
+			if ($fishFinder.get_collider().is_in_group("player")):
+				attackSchedule()
+			else:
+				follow()
+
+
 	if (speed > 0):
 		speed -= 3500*delta
 		global_rotation = global_position.angle_to_point(fish.global_position) + PI
@@ -103,7 +109,6 @@ func follow():
 
 func makePath():
 	navAgent.target_position = fish.global_position
-		
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
@@ -122,13 +127,31 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			iFrames = 10
 			boss3hp -= global.slash_damage
 		elif !laserEmitting:
-			shoot(area.global_rotation-global_rotation+(PI/2))
+			shoot(area.global_rotation-global_rotation+(PI))
 	if boss3hp <= 0:
 			boss3death()
 	pass 
 
 func attackSchedule():
-	sweepLaser()
+	rng.randomize()
+	var rando = rng.randi_range(1,8)
+	match rando:
+		1:
+			sweepLaser()
+		2:
+			sweepLaser()
+		3:
+			sweepLaser()
+		4:
+			sweepLaser()
+		5:
+			$"../enemies/laserTurret".shoot()
+		6:
+			$"../enemies/laserTurret2".shoot()
+		7:
+			$"../enemies/laserTurret3".shoot()
+		8:
+			$"../enemies/laserTurret4".shoot()
 	pass
 	
 func sweepLaser():
@@ -197,9 +220,9 @@ func boss3death():
 	laserEmitting = false
 	$laser.visible  = false
 	$deathParticle1.emitting = true
-	await get_tree().create_timer(2, false).timeout
-	$deathParticle1.emitting = false
 	await get_tree().create_timer(1, false).timeout
+	$deathParticle1.emitting = false
+	await get_tree().create_timer(0.5, false).timeout
 	$deathSploison.play()
 	$deathparticle2.restart()
 	$deathparticle2.emitting = true

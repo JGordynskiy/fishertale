@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://b0m4623tpxvua"]
+[gd_scene load_steps=50 format=3 uid="uid://b0m4623tpxvua"]
 
 [ext_resource type="Script" uid="uid://bhiwhge6dfr8p" path="res://Scripts/fish.gd" id="1_8g0i4"]
 [ext_resource type="Texture2D" uid="uid://loab5wse0qu7" path="res://Assets/fishIdle1.png" id="2_6lgmd"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://67yt0m10uiha" path="res://Assets/fishBullet/slash/slash3.png" id="21_acutr"]
 [ext_resource type="Texture2D" uid="uid://bb6sm81122jne" path="res://Assets/fishBullet/slash/slash4.png" id="22_gm1cm"]
 [ext_resource type="Texture2D" uid="uid://biljmjygnte0k" path="res://Assets/bubble.png" id="23_80fr0"]
+[ext_resource type="Texture2D" uid="uid://b11g6oumaka6a" path="res://Assets/ui/crosshair.png" id="24_sscus"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex20v"]
 
@@ -584,20 +585,20 @@ libraries = {
 }
 
 [node name="slashhitbox" type="Area2D" parent="." groups=["playerSlash"]]
-position = Vector2(832.79987, 0)
-scale = Vector2(1.6885457, 2.910761)
+position = Vector2(5.5997925, 0)
+scale = Vector2(1.3104092, 1.3104092)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slashhitbox" groups=["playerSlash"]]
-position = Vector2(50, 0)
-scale = Vector2(65, 32.471)
+position = Vector2(742.4347, -2.486035)
+scale = Vector2(68.5235, 53.730816)
 shape = SubResource("CircleShape2D_bfml3")
 disabled = true
 debug_color = Color(0.9054175, 0.27341783, 0.35639855, 0.41960785)
 
-[node name="slash" type="AnimatedSprite2D" parent="."]
+[node name="slash" type="AnimatedSprite2D" parent="slashhitbox"]
 z_index = 300
-position = Vector2(832.7999, 0)
-scale = Vector2(3.5, 3.5)
+position = Vector2(761.8597, -2.486035)
+scale = Vector2(2.02878, 1.8617731)
 sprite_frames = SubResource("SpriteFrames_o23v1")
 animation = &"slash"
 frame = 5
@@ -620,6 +621,14 @@ scale = Vector2(3.4999995, 3.4999995)
 emitting = false
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_5adjs")
+
+[node name="crosshair" type="CanvasLayer" parent="."]
+visible = false
+scale = Vector2(0.75, 0.75)
+transform = Transform2D(0.75, 0, 0, 0.75, 0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="crosshair"]
+texture = ExtResource("24_sscus")
 
 [connection signal="area_entered" from="fish" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="fish" to="." method="_on_area_2d_area_exited"]

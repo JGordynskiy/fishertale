@@ -31,9 +31,11 @@ func _ready() -> void:
 	var thunkfade = theFadeRect.instantiate()
 	thunkfade.type = false
 	add_child(thunkfade)
+	if global.curBoss == 0:
+		print_debug("set curBoss to 1. You better be debugging!")
+		global.curBoss = 1
 	
-	
-	if global.curBoss == 0 || global.curBoss == 1:
+	if global.curBoss == 1:
 		boss1img.modulate.a = 255
 	else:
 		boss1img.modulate.a = 0
@@ -59,19 +61,28 @@ func _on_enemy_monitor_box_mouse_exited() -> void:
 	
 ## FISH STATS
 func _on_friendly_monitor_box_mouse_entered() -> void:
-	$FriendlyMonitor/stats/DmgText.text = "DMG: "+str(global.shot_damage)
+	if global.heart == 1:
+		$FriendlyMonitor/stats/DmgText.text = "DMG: "+str(global.shot_damage)
+	if global.heart == 2:
+		$FriendlyMonitor/stats/DmgText.text = "DMG: "+str(global.shot_damage*2)
+	$FriendlyMonitor/stats.visible = true
 	
 	if global.heart == 1:
 		$FriendlyMonitor/stats/rate.visible = true
+		$FriendlyMonitor/stats/slashSize.visible = false
+		
+		
 		$FriendlyMonitor/stats/rate.text = "Shot Rate: "+str(int(global.shot_rate))
 	if global.heart == 2:
-		$FriendlyMonitor/stats/rate.visible = false	
+		$FriendlyMonitor/stats/rate.visible = false
+		$FriendlyMonitor/stats/slashSize.visible = true
+		
+		
+		$FriendlyMonitor/stats/slashSize.text = "Range: "+str(global.slash_scale*100)
 	
-	$FriendlyMonitor/stats.visible = true
-	pass # Replace with function body.
 func _on_friendly_monitor_box_mouse_exited() -> void:
 	$FriendlyMonitor/stats.visible = false
-	pass # Replace with function body.
+
 
 
 
@@ -83,6 +94,20 @@ func _process(delta: float) -> void:
 	#DEBUG
 	if Input.is_action_just_pressed("DEBUGcannonshoot"):
 		global.roe += 1
+	
+	## HEART DEPENDENT HINTS
+	if global.heart == 1:
+		$upgradeHints/rate/heart1.visible = true
+		$upgradeHints/dmg/RichTextLabel.text = "+ 0.5 Damage"
+	else: 
+		$upgradeHints/rate/heart1.visible = false
+		
+	if global.heart == 2:
+		$upgradeHints/rate/heart2.visible = true
+		$upgradeHints/dmg/RichTextLabel.text = "+ 1.0 Damage"
+		
+	else: 
+		$upgradeHints/rate/heart2.visible = false
 	
 	
 	## BOSS DESCRIPTIONS
@@ -153,7 +178,6 @@ func _on_ready_button_pressed() -> void:
 		add_child(thunkfade)
 		
 		if global.curBoss == 1 || global.curBoss == 0:
-			
 			globalSignals.emit_signal("gameRto1")
 		elif global.curBoss == 2:
 			globalSignals.emit_signal("gameRto2")
@@ -187,6 +211,7 @@ func _on_damage_pressed() -> void:
 func _on_damage_mouse_entered() -> void:
 	if damage.disabled == false:
 		hover_on.play()
+		$upgradeHints/dmg.visible = true
 	pass # Replace with function body.
 	
 #rate
@@ -196,8 +221,7 @@ func _on_rate_pressed() -> void:
 	global.shot_rate *= 0.92
 	
 	#melee changes
-	global.slash_scale += 10
-	global.slash_x += 130
+	global.slash_scale *= 1.06
 	
 	global.roe -= global.rateCost
 	global.rateCost += 1
@@ -205,6 +229,7 @@ func _on_rate_pressed() -> void:
 func _on_rate_mouse_entered() -> void:
 	if rate.disabled == false:
 		hover_on.play()
+		$upgradeHints/rate.visible = true
 	pass # Replace with function body.
 
 #health
@@ -219,4 +244,20 @@ func _on_health_pressed() -> void:
 func _on_health_mouse_entered() -> void:
 	if health.disabled == false:
 		hover_on.play()
+		$upgradeHints/health.visible = true
+	pass # Replace with function body.
+
+
+func _on_health_mouse_exited() -> void:
+	$upgradeHints/health.visible = false
+	pass # Replace with function body.
+
+
+func _on_rate_mouse_exited() -> void:
+	$upgradeHints/rate.visible = false
+	pass # Replace with function body.
+
+
+func _on_damage_mouse_exited() -> void:
+	$upgradeHints/dmg.visible = false
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://daallqpv0d4ul"]
+[gd_scene load_steps=24 format=3 uid="uid://daallqpv0d4ul"]
 
 [ext_resource type="Script" uid="uid://crx37ouyvqali" path="res://Scripts/game1.gd" id="1_bo462"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="2_qtp2c"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="11_kxvvm"]
 [ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="12_gvrma"]
 [ext_resource type="Script" uid="uid://d2pyurfm2p1mm" path="res://scenes/levels/cutscene_cam.gd" id="13_3sf34"]
+[ext_resource type="PackedScene" uid="uid://biicf0ynypd15" path="res://scenes/ui/stopwatch.tscn" id="14_6mlny"]
 [ext_resource type="AudioStream" uid="uid://cwsvlsljhvcbu" path="res://Assets/music/boss1end.ogg" id="14_nu4re"]
 [ext_resource type="AudioStream" uid="uid://bko8bas1376gv" path="res://Assets/music/boss1loop.ogg" id="14_oi55c"]
 [ext_resource type="AudioStream" uid="uid://ck787pu1kc7l5" path="res://Assets/music/boss1looplowpass.ogg" id="16_aln2l"]
@@ -135,6 +136,9 @@ layer = 0
 layer = 3
 
 [node name="FPS counter" parent="." instance=ExtResource("12_gvrma")]
+
+[node name="stopwatch" parent="." instance=ExtResource("14_6mlny")]
+visible = false
 
 [node name="cutsceneCam" type="Camera2D" parent="."]
 ignore_rotation = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bie3bqytav1ta"]
+[gd_scene load_steps=16 format=3 uid="uid://bie3bqytav1ta"]
 
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="1_rhr0n"]
 [ext_resource type="Script" uid="uid://raip1p1ewomr" path="res://scenes/levels/game_3.gd" id="1_xv74u"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="8_xb6vp"]
 [ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="9_lrvpm"]
 [ext_resource type="PackedScene" uid="uid://dlqmunvanqxus" path="res://scenes/entities/laser_fish.tscn" id="10_xb6vp"]
+[ext_resource type="PackedScene" uid="uid://bnopjo50vxu7w" path="res://scenes/entities/laser_turret.tscn" id="14_xfp6f"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lrvpm"]
 vertices = PackedVector2Array(690.28906, -303.5703, 426.04688, -702.0781, 1335.1719, -714.1094, 1316.8125, 110.921875, 662.28125, -194.57813, 262.27344, 67.328125, 537.5781, -202.64844, 1286.9922, 303.2422, 1269.2109, 676.5625, -441.97656, 671.9375, -384.7422, 393.3125, 263.97656, 334.71875, -386.28906, 211.64063, -1422.2109, -292.90625, -1447.1094, -701.28125, 161.14063, -692.4297, -398.8125, -354.0625, -885.9922, 693.3828, -1438.4609, 682.1172, -1400.2422, -39.976563, -578.1797, 182.28125, -412.8672, -64.64844, -441.1875, 166.75)
@@ -113,6 +114,30 @@ offset_right = 23757.895
 offset_bottom = -18149.535
 scale = Vector2(286.82697, 440.44632)
 color = Color(1, 0, 0, 1)
+
+[node name="enemies" type="Node2D" parent="."]
+position = Vector2(18661, -9234)
+scale = Vector2(14.574766, 14.574766)
+
+[node name="laserTurret" parent="enemies" instance=ExtResource("14_xfp6f")]
+position = Vector2(-1194.5303, -572.5649)
+rotation = 0.47122827
+scale = Vector2(0.06861173, 0.06861173)
+
+[node name="laserTurret2" parent="enemies" instance=ExtResource("14_xfp6f")]
+position = Vector2(1103.4138, -578.80865)
+rotation = 2.6608276
+scale = Vector2(0.06861173, 0.06861173)
+
+[node name="laserTurret3" parent="enemies" instance=ExtResource("14_xfp6f")]
+position = Vector2(-1219.3682, 585.66986)
+rotation = -0.42095447
+scale = Vector2(0.06861173, 0.06861173)
+
+[node name="laserTurret4" parent="enemies" instance=ExtResource("14_xfp6f")]
+position = Vector2(1115.8328, 601.176)
+rotation = -2.683948
+scale = Vector2(0.06861173, 0.06861173)
 
 [node name="laserFish" parent="." instance=ExtResource("10_xb6vp")]
 z_index = 300

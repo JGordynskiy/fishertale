@@ -9,7 +9,7 @@ extends Node2D
 
 #roe popup
 @onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
-
+@onready var xtraRoe = 0
 @onready var fish = get_node("fish") 
 @onready var boss1 = get_node("evilFish") 
 @onready var clearpopup = load("res://scenes/ui/clearpopup.tscn")
@@ -24,6 +24,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	global.stopwatch = 0
 	
 	camera.tutorial = false
 	globalSignals.justPaused.connect(pauseGame)
@@ -32,6 +33,7 @@ func _ready() -> void:
 	globalSignals.boss1death.connect(spawnPortal)
 	globalSignals.gameOver.connect(gameOver)
 	globalSignals.game1toR.connect(fadeaway)
+	globalSignals.boss1death.connect(bossDeath)
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = false
 	add_child(thunkfade)
@@ -50,12 +52,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if boss1.boss1hp > 0 && global.hp > 0:
+		global.stopwatch += delta
 	pass
 
-func _on_ambience_finished() -> void:
-	#$"ambience".play()
-	pass # Replace with function body.
-
+func bossDeath():
+	if global.stopwatch < 45:
+		xtraRoe = 5
+	
 func pauseGame():
 	boss_1_loop.volume_db = -79
 	boss_1_looplowpass.volume_db = -4

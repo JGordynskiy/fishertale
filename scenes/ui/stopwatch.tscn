@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://biicf0ynypd15"]
+
+[ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="1_62mog"]
+[ext_resource type="Script" uid="uid://cmaypjuheqmpl" path="res://scenes/ui/stopwatch.gd" id="1_dv5po"]
+
+[node name="stopwatch" type="CanvasLayer"]
+script = ExtResource("1_dv5po")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 980.0
+offset_top = 648.0
+offset_right = 1572.9126
+offset_bottom = 816.3801
+scale = Vector2(0.5582609, 0.5582609)
+theme_override_colors/default_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/normal_font = ExtResource("1_62mog")
+theme_override_font_sizes/normal_font_size = 50
+text = "Time: "

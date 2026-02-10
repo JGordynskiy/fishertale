@@ -47,7 +47,6 @@ path_desired_distance = 200.0
 target_desired_distance = 500.0
 path_max_distance = 500.0
 path_postprocessing = 1
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 debug_path_custom_point_size = 150.0
@@ -55,7 +54,7 @@ debug_path_custom_line_width = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(269, 0)
-scale = Vector2(44.396603, 44.396603)
+scale = Vector2(22.852972, 22.852972)
 shape = SubResource("CircleShape2D_1k1au")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

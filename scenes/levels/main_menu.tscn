@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bgrx8hjsatu6r" path="res://Assets/ui/meleeHeartHover.png" id="9_djhkt"]
 [ext_resource type="Texture2D" uid="uid://bf812fmgxgyfr" path="res://Assets/ui/meleeHeartPressed.png" id="10_djhkt"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lars7"]
+texture = ExtResource("2_geflf")
+modulate_color = Color(0.46, 0.46, 0.46, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_cbtn6"]
 font = ExtResource("2_towmw")
 font_size = 600
@@ -35,45 +39,36 @@ shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(45.365, 76.825)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lars7"]
-texture = ExtResource("2_geflf")
-modulate_color = Color(0.46, 0.46, 0.46, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12l0x"]
+bg_color = Color(0.50430816, 0.6980982, 0.8339052, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
-[sub_resource type="Animation" id="Animation_djhkt"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(868.0118, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p348b"]
+bg_color = Color(0.12599999, 0.31500003, 0.45, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
-[sub_resource type="Animation" id="Animation_y2ttv"]
-resource_name = "bob"
-length = 10.0
-loop_mode = 2
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 2),
-"points": PackedFloat32Array(868.0118, -0.25, 0, 3, 0, 900, -3, 0, 3, 0, 868.012, -3, 0, 0, 0),
-"times": PackedFloat32Array(0, 5, 10)
-}
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13qgu"]
+bg_color = Color(0.5058824, 0.69803923, 0.8352941, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p8l7r"]
-_data = {
-&"RESET": SubResource("Animation_djhkt"),
-&"bob": SubResource("Animation_y2ttv")
-}
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13qgu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gp8n"]
 bg_color = Color(0, 0, 0, 0.44705883)
@@ -114,36 +109,41 @@ corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2arew"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12l0x"]
-bg_color = Color(0.50430816, 0.6980982, 0.8339052, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="Animation" id="Animation_djhkt"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(868.0118, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p348b"]
-bg_color = Color(0.12599999, 0.31500003, 0.45, 1)
-border_width_left = 25
-border_width_top = 25
-border_width_right = 25
-border_width_bottom = 25
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="Animation" id="Animation_y2ttv"]
+resource_name = "bob"
+length = 10.0
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 2),
+"points": PackedFloat32Array(425, -0.25, 0, 3, 0, 350, -3, 0, 3, 0, 425, -3, 0, 0, 0),
+"times": PackedFloat32Array(0.16666667, 5, 10)
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13qgu"]
-bg_color = Color(0.5058824, 0.69803923, 0.8352941, 1)
-border_width_left = 25
-border_width_top = 25
-border_width_right = 25
-border_width_bottom = 25
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13qgu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p8l7r"]
+_data = {
+&"RESET": SubResource("Animation_djhkt"),
+&"bob": SubResource("Animation_y2ttv")
+}
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
@@ -159,16 +159,28 @@ scale = Vector2(0.61289495, 0.61289495)
 size_flags_horizontal = 4
 script = ExtResource("1_towmw")
 
-[node name="Control" type="Control" parent="."]
-z_index = 500
+[node name="Background" type="Panel" parent="."]
+z_index = -500
+layout_mode = 0
+anchor_right = 1.092
+anchor_bottom = 1.016
+offset_left = -79.94844
+offset_top = -115.84367
+offset_right = -238.74048
+offset_bottom = -132.41968
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0997503, 1.1024427)
+theme_override_styles/panel = SubResource("StyleBoxTexture_lars7")
+
+[node name="particles" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 1023.01385
 offset_top = 1156.805
 offset_right = 1063.0137
 offset_bottom = 1196.805
 
-[node name="Ambient Particles Menu" parent="Control" instance=ExtResource("2_ohdsy")]
-z_index = 300
+[node name="Ambient Particles Menu" parent="particles" instance=ExtResource("2_ohdsy")]
 
 [node name="fishertale" type="Label" parent="."]
 layout_mode = 1
@@ -203,40 +215,6 @@ label_settings = SubResource("LabelSettings_geflf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Background" type="Panel" parent="."]
-z_index = -50
-layout_mode = 0
-anchor_right = 1.092
-anchor_bottom = 1.016
-offset_left = -79.94844
-offset_top = -115.84367
-offset_right = -238.74048
-offset_bottom = -132.41968
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.0997503, 1.1024427)
-theme_override_styles/panel = SubResource("StyleBoxTexture_lars7")
-
-[node name="choose a heart" type="Label" parent="."]
-layout_mode = 0
-offset_left = 505.7963
-offset_top = 868.0118
-offset_right = 1535.7963
-offset_bottom = 948.012
-scale = Vector2(0.89537436, 0.89537436)
-pivot_offset = Vector2(528.6387, 42.42157)
-theme_override_colors/font_color = Color(1, 0.9813334, 0.44, 1)
-theme_override_fonts/font = ExtResource("2_towmw")
-theme_override_font_sizes/font_size = 80
-text = "Choose a heart"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="choose a heart"]
-libraries = {
-&"": SubResource("AnimationLibrary_p8l7r")
-}
-autoplay = "bob"
-speed_scale = 1.5
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -254,151 +232,6 @@ scale = Vector2(0.85478735, 0.85478735)
 theme_override_fonts/font = ExtResource("4_pwqr4")
 theme_override_font_sizes/font_size = 31
 text = "Skip Tutorial"
-
-[node name="modeButtonsPanel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 543.3231
-offset_top = 517.2175
-offset_right = 657.5934
-offset_bottom = 550.9748
-scale = Vector2(8.41, 8.41)
-theme_override_styles/panel = SubResource("StyleBoxFlat_7gp8n")
-
-[node name="normalTip" type="RichTextLabel" parent="modeButtonsPanel"]
-visible = false
-layout_mode = 0
-offset_left = 115.046295
-offset_top = 4.6561737
-offset_right = 486.02042
-offset_bottom = 166.26869
-scale = Vector2(0.15845902, 0.15845902)
-theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
-theme_override_fonts/normal_font = ExtResource("2_towmw")
-theme_override_fonts/bold_font = ExtResource("2_towmw")
-theme_override_font_sizes/normal_font_size = 32
-text = "Normal Heart"
-
-[node name="normalTip" type="RichTextLabel" parent="modeButtonsPanel/normalTip"]
-layout_mode = 0
-offset_left = 1.5258789e-05
-offset_top = 42.851803
-offset_right = 534.93555
-offset_bottom = 204.46432
-scale = Vector2(0.63188696, 0.63188696)
-theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
-theme_override_fonts/normal_font = ExtResource("4_pwqr4")
-theme_override_fonts/bold_font = ExtResource("2_towmw")
-theme_override_font_sizes/normal_font_size = 32
-text = "
-Shoot bullets with Left-click"
-
-[node name="meleeTip" type="RichTextLabel" parent="modeButtonsPanel"]
-visible = false
-layout_mode = 0
-offset_left = 115.046295
-offset_top = 4.268157
-offset_right = 490.13773
-offset_bottom = 229.17596
-scale = Vector2(0.15154739, 0.15154739)
-theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
-theme_override_fonts/normal_font = ExtResource("2_towmw")
-theme_override_fonts/bold_font = ExtResource("2_towmw")
-theme_override_font_sizes/normal_font_size = 32
-text = "Melee heart
-
-"
-
-[node name="meleeTip" type="RichTextLabel" parent="modeButtonsPanel/meleeTip"]
-layout_mode = 0
-offset_left = 6.40094
-offset_top = 51.207012
-offset_right = 560.1883
-offset_bottom = 276.1148
-scale = Vector2(0.63294786, 0.63294786)
-theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
-theme_override_fonts/normal_font = ExtResource("4_pwqr4")
-theme_override_fonts/bold_font = ExtResource("2_towmw")
-theme_override_font_sizes/normal_font_size = 32
-text = "Slash in front of you with Left-click
-
-(Difficult)"
-
-[node name="BackButton" type="Button" parent="modeButtonsPanel"]
-layout_mode = 0
-offset_left = 40.3535
-offset_top = -14.550545
-offset_right = 1327.9119
-offset_bottom = 407.92957
-scale = Vector2(0.025625868, 0.025625868)
-theme_override_colors/font_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("4_geflf")
-theme_override_font_sizes/font_size = 250
-theme_override_styles/normal = SubResource("StyleBoxFlat_y2ttv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_djhkt")
-theme_override_styles/hover = SubResource("StyleBoxFlat_p8l7r")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2arew")
-text = "Back"
-
-[node name="modeButtons" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -288.99207
-offset_top = 561.27075
-offset_right = 4467.008
-offset_bottom = 1521.2708
-grow_horizontal = 2
-scale = Vector2(0.19738539, 0.19738539)
-theme_override_constants/separation = 1000
-
-[node name="normal" type="TextureButton" parent="modeButtons"]
-layout_mode = 2
-texture_normal = ExtResource("6_7gp8n")
-texture_pressed = ExtResource("7_y2ttv")
-texture_hover = ExtResource("7_gdcvq")
-
-[node name="melee" type="TextureButton" parent="modeButtons"]
-layout_mode = 2
-texture_normal = ExtResource("8_y2ttv")
-texture_pressed = ExtResource("10_djhkt")
-texture_hover = ExtResource("9_djhkt")
-
-[node name="finalButtons" type="BoxContainer" parent="."]
-visible = false
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -132.35834
-offset_top = -335.13947
-offset_right = 867.64154
-offset_bottom = 64.86047
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.355, 0.355)
-alignment = 1
-vertical = true
-
-[node name="start" type="Button" parent="finalButtons"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
-theme_override_colors/font_focus_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_pressed_color = Color(0.40432662, 0.70529413, 0.9734008, 1)
-theme_override_colors/font_hover_color = Color(0.031769015, 0.2745285, 0.4496572, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_disabled_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_colors/font_outline_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("4_geflf")
-theme_override_font_sizes/font_size = 300
-theme_override_styles/normal = SubResource("StyleBoxFlat_12l0x")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_p348b")
-theme_override_styles/hover = SubResource("StyleBoxFlat_13qgu")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_13qgu")
-text = "Start"
 
 [node name="InitialButtons" type="VBoxContainer" parent="."]
 visible = false
@@ -471,18 +304,158 @@ stream = ExtResource("8_cn35j")
 [node name="menumusicloop" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("9_cn35j")
 
-[connection signal="mouse_entered" from="modeButtonsPanel/BackButton" to="." method="_on_back_button_mouse_entered"]
-[connection signal="pressed" from="modeButtonsPanel/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="mouse_entered" from="modeButtons/normal" to="." method="_on_normal_mouse_entered"]
-[connection signal="mouse_exited" from="modeButtons/normal" to="." method="_on_normal_mouse_exited"]
-[connection signal="pressed" from="modeButtons/normal" to="." method="_on_normal_pressed"]
-[connection signal="mouse_entered" from="modeButtons/melee" to="." method="_on_melee_mouse_entered"]
-[connection signal="mouse_exited" from="modeButtons/melee" to="." method="_on_melee_mouse_exited"]
-[connection signal="pressed" from="modeButtons/melee" to="." method="_on_melee_pressed"]
-[connection signal="mouse_entered" from="finalButtons/start" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="finalButtons/start" to="." method="onStartPressed"]
+[node name="IntialMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 543.3232
+offset_top = 517.2175
+offset_right = 583.3232
+offset_bottom = 557.2175
+
+[node name="SecondMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 543.3232
+offset_top = 517.2175
+offset_right = 583.3232
+offset_bottom = 557.2175
+
+[node name="modeButtonsPanel" type="Panel" parent="SecondMenu"]
+layout_mode = 0
+offset_right = 114.27026
+offset_bottom = 33.757263
+scale = Vector2(8.41, 8.41)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7gp8n")
+
+[node name="normalTip" type="RichTextLabel" parent="SecondMenu/modeButtonsPanel"]
+visible = false
+layout_mode = 0
+offset_left = 116.98636
+offset_top = 4.6561737
+offset_right = 487.96048
+offset_bottom = 166.26869
+scale = Vector2(0.15845902, 0.15845902)
+theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
+theme_override_fonts/normal_font = ExtResource("2_towmw")
+theme_override_fonts/bold_font = ExtResource("2_towmw")
+theme_override_font_sizes/normal_font_size = 32
+text = "Normal Heart"
+
+[node name="normalTip" type="RichTextLabel" parent="SecondMenu/modeButtonsPanel/normalTip"]
+layout_mode = 0
+offset_left = 1.5258789e-05
+offset_top = 42.851803
+offset_right = 534.93555
+offset_bottom = 204.46432
+scale = Vector2(0.63188696, 0.63188696)
+theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
+theme_override_fonts/normal_font = ExtResource("4_pwqr4")
+theme_override_fonts/bold_font = ExtResource("2_towmw")
+theme_override_font_sizes/normal_font_size = 32
+text = "
+Shoot bullets with Left-click"
+
+[node name="meleeTip" type="RichTextLabel" parent="SecondMenu/modeButtonsPanel"]
+visible = false
+layout_mode = 0
+offset_left = 116.59835
+offset_top = 4.8501787
+offset_right = 491.6898
+offset_bottom = 229.75798
+scale = Vector2(0.15154739, 0.15154739)
+theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
+theme_override_fonts/normal_font = ExtResource("2_towmw")
+theme_override_fonts/bold_font = ExtResource("2_towmw")
+theme_override_font_sizes/normal_font_size = 32
+text = "Melee heart
+
+"
+
+[node name="meleeTip" type="RichTextLabel" parent="SecondMenu/modeButtonsPanel/meleeTip"]
+layout_mode = 0
+offset_left = 6.40094
+offset_top = 51.207012
+offset_right = 560.1883
+offset_bottom = 276.1148
+scale = Vector2(0.63294786, 0.63294786)
+theme_override_colors/default_color = Color(1, 0.949, 0.49, 1)
+theme_override_fonts/normal_font = ExtResource("4_pwqr4")
+theme_override_fonts/bold_font = ExtResource("2_towmw")
+theme_override_font_sizes/normal_font_size = 32
+text = "Slash in front of you with Left-click
+
+(Difficult)"
+
+[node name="BackButton" type="Button" parent="SecondMenu/modeButtonsPanel"]
+layout_mode = 0
+offset_left = 40.3535
+offset_top = -14.550545
+offset_right = 1327.9119
+offset_bottom = 407.92957
+scale = Vector2(0.025625868, 0.025625868)
+theme_override_colors/font_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("4_geflf")
+theme_override_font_sizes/font_size = 250
+theme_override_styles/normal = SubResource("StyleBoxFlat_y2ttv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_djhkt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p8l7r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2arew")
+text = "Back"
+
+[node name="modeButtons" type="HBoxContainer" parent="SecondMenu"]
+z_index = 100
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 123.58087
+offset_top = 44.053223
+offset_right = 4879.581
+offset_bottom = 1004.0532
+grow_horizontal = 2
+scale = Vector2(0.19738539, 0.19738539)
+theme_override_constants/separation = 1000
+
+[node name="normal" type="TextureButton" parent="SecondMenu/modeButtons"]
+layout_mode = 2
+texture_normal = ExtResource("6_7gp8n")
+texture_pressed = ExtResource("7_y2ttv")
+texture_hover = ExtResource("7_gdcvq")
+
+[node name="melee" type="TextureButton" parent="SecondMenu/modeButtons"]
+layout_mode = 2
+texture_normal = ExtResource("8_y2ttv")
+texture_pressed = ExtResource("10_djhkt")
+texture_hover = ExtResource("9_djhkt")
+
+[node name="choose a heart" type="Label" parent="SecondMenu"]
+layout_mode = 0
+offset_left = -55.474434
+offset_top = 868.0118
+offset_right = 974.5256
+offset_bottom = 948.0119
+scale = Vector2(1.076737, 1.076737)
+pivot_offset = Vector2(528.6387, 42.42157)
+theme_override_colors/font_color = Color(1, 0.9813334, 0.44, 1)
+theme_override_fonts/font = ExtResource("2_towmw")
+theme_override_font_sizes/font_size = 80
+text = "Choose a heart"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SecondMenu/choose a heart"]
+libraries = {
+&"": SubResource("AnimationLibrary_p8l7r")
+}
+autoplay = "bob"
+speed_scale = 1.5
+
 [connection signal="mouse_entered" from="InitialButtons/play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="InitialButtons/play" to="." method="_on_play_pressed"]
 [connection signal="mouse_entered" from="InitialButtons/Exit" to="." method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="InitialButtons/Exit" to="." method="onExitPressed"]
 [connection signal="finished" from="sounds/menumusic" to="." method="_on_menumusic_finished"]
+[connection signal="mouse_entered" from="SecondMenu/modeButtonsPanel/BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="SecondMenu/modeButtonsPanel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="SecondMenu/modeButtons/normal" to="." method="_on_normal_mouse_entered"]
+[connection signal="mouse_exited" from="SecondMenu/modeButtons/normal" to="." method="_on_normal_mouse_exited"]
+[connection signal="pressed" from="SecondMenu/modeButtons/normal" to="." method="_on_normal_pressed"]
+[connection signal="mouse_entered" from="SecondMenu/modeButtons/melee" to="." method="_on_melee_mouse_entered"]
+[connection signal="mouse_exited" from="SecondMenu/modeButtons/melee" to="." method="_on_melee_mouse_exited"]
+[connection signal="pressed" from="SecondMenu/modeButtons/melee" to="." method="_on_melee_pressed"]

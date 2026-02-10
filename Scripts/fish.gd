@@ -16,7 +16,7 @@ var mult = 1
 @onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
 
 #Slash
-@onready var slashSpr: AnimatedSprite2D = $slash
+
 @onready var slashsfx: AudioStreamPlayer = $sounds/slash
 @onready var slashhitbox: Area2D = $slashhitbox
 @onready var slashlandsfx: AudioStreamPlayer = $sounds/slashland
@@ -77,9 +77,7 @@ func _ready():
 	$Sprite2D.self_modulate.a = 0
 	
 	##ensure slash sizes are correct
-	#$slashhitbox/CollisionShape2D.position = Vector2(global.slash_x, 0)
-	#$slashhitbox/CollisionShape2D.scale.x = global.slash_scale
-	#$slash.position.x = global.slash_x*1.8 + 300
+	slashhitbox.scale = Vector2(global.slash_scale, global.slash_scale)
 	
 	
 	
@@ -113,13 +111,13 @@ func slash():
 	$"AnimatedSprite2D/AnimationPlayer".play("RESET")
 	if (slashCount == 0):
 		slashCount = 1
-		slashSpr.flip_v = false
+		$"slashhitbox/slash".flip_v = false
 		$"AnimatedSprite2D/AnimationPlayer".play("spin")
 	else:
 		slashCount = 0;
-		slashSpr.flip_v = true
+		$"slashhitbox/slash".flip_v = true
 		$"AnimatedSprite2D/AnimationPlayer".play("counterSpin")
-	slashSpr.play("slash")
+	$"slashhitbox/slash".play("slash")
 	rng.randomize()
 	
 	slashsfx.pitch_scale = rng.randf_range(0.6, 1)
@@ -253,6 +251,11 @@ func blinker():
 		blink.visible = false
 
 func _process(delta):
+	##crosshair
+	#$crosshair/Sprite2D.position = get_local_mouse_position()
+	#if $crosshair.scale.x < 0.75:
+		#$crosshair.scale.x += 1*delta
+		#$crosshair.scale.y += 1*delta
 	#shows fire if debug damage
 	if (global.shot_damage > 30):
 		$fireParticles.emitting = true

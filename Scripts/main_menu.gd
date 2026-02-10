@@ -9,14 +9,13 @@ extends Control
 var skip = false
 
 @onready var initial_buttons: VBoxContainer = $InitialButtons
-@onready var final_buttons: BoxContainer = $finalButtons
-@onready var mode_buttons: HBoxContainer = $modeButtons
-@onready var back_button: Button = $modeButtonsPanel/BackButton
+@onready var mode_buttons: HBoxContainer = $SecondMenu/modeButtons
+@onready var back_button: Button = $SecondMenu/modeButtonsPanel/BackButton
 
 
 #heart buttons
-@onready var normal: TextureButton = $modeButtons/normal
-@onready var melee: TextureButton = $modeButtons/melee
+@onready var normal: TextureButton = $SecondMenu/modeButtons/normal
+@onready var melee: TextureButton = $SecondMenu/modeButtons/melee
 
 
 var menuStage = 1
@@ -25,11 +24,10 @@ var menuStage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
 	
-	$modeButtonsPanel.visible = false
-	$"choose a heart".visible = false
+	$SecondMenu/modeButtonsPanel.visible = false
+	$"SecondMenu/choose a heart".visible = false
 	mode_buttons.visible = false
 	initial_buttons.visible = true
-	final_buttons.visible = false
 	menumusic.volume_db = 0
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = false
@@ -44,7 +42,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	
 	if (Input.is_action_pressed("sprint") || skip) && menuStage == 2:
 		$Label.show()
 	else:
@@ -53,12 +50,12 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_play_pressed() -> void:
-	$modeButtonsPanel.visible = true
-	$"choose a heart".visible = true
+	$SecondMenu/modeButtonsPanel.visible = true
+	$"SecondMenu/choose a heart".visible = true
 	$sounds/ui/select.play()
 	menuStage = 2
 	initial_buttons.visible = false
-	final_buttons.visible = true
+	
 	mode_buttons.visible = true
 	pass # Replace with function body.
 
@@ -145,30 +142,30 @@ func _on_menumusic_finished() -> void:
 
 func _on_normal_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
-	$modeButtonsPanel/normalTip.visible = true
+	$SecondMenu/modeButtonsPanel/normalTip.visible = true
 	pass # Replace with function body.
 func _on_normal_mouse_exited() -> void:
-	$modeButtonsPanel/normalTip.visible = false
+	$SecondMenu/modeButtonsPanel/normalTip.visible = false
 	pass # Replace with function body.
 	
 func _on_melee_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
-	$modeButtonsPanel/meleeTip.visible = true
+	$SecondMenu/modeButtonsPanel/meleeTip.visible = true
 	pass # Replace with function body.
 func _on_melee_mouse_exited() -> void:
-	$modeButtonsPanel/meleeTip.visible = false
+	$SecondMenu/modeButtonsPanel/meleeTip.visible = false
 	pass # Replace with function body.
 	
 func _on_back_button_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
 	pass # Replace with function body.
 func _on_back_button_pressed() -> void:
-	$modeButtonsPanel.visible = false
-	$"choose a heart".visible = false
+	$SecondMenu/modeButtonsPanel.visible = false
+	$"SecondMenu/choose a heart".visible = false
 	$sounds/ui/select.play()
 	menuStage = 1
 	initial_buttons.visible = true
-	final_buttons.visible = false
+	
 	mode_buttons.visible = false
 	
 

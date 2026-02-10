@@ -11,14 +11,15 @@ var heart = 1
 @export var speed = 7000
 @export var shot_rate = 400 # 400 as default, reduce to increase
 @export var shot_damage = 1.5 # 1.5 default
-@export var slash_damage = shot_damage*3  # 3 default
+@export var slash_damage = shot_damage*2  # 2 default
 @export var slash_rate = 400
 
-var slash_x = 50 # for every 200 slash_x moves, slash_scale moves by 15
-var slash_scale = 65
+var slash_scale = 1.2
 
 var max_hp = 5
 var hp = max_hp
+
+var stopwatch = 0
 
 #upgrades and costs
 var roe = 0

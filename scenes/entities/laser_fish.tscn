@@ -326,6 +326,7 @@ emitting = false
 amount = 250
 lifetime = 5.0
 one_shot = true
+speed_scale = 2.0
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_yifll")
 
@@ -335,7 +336,7 @@ scale = Vector2(65.357445, 25.686255)
 emitting = false
 amount = 150
 lifetime = 3.0
-speed_scale = 2.0
+speed_scale = 4.0
 process_material = SubResource("ParticleProcessMaterial_3l436")
 
 [node name="steam2" type="GPUParticles2D" parent="."]
