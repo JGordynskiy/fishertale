@@ -3,6 +3,7 @@ extends Node2D
 @onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
 @onready var fish = get_node("fish")
 @onready var whirlpool = load("res://scenes/entities/whirlpool.tscn")
+@onready var clearpopup = load("res://scenes/ui/clearpopup.tscn")
 
 @onready var rng = RandomNumberGenerator.new()
 
@@ -16,8 +17,27 @@ func _ready() -> void:
 	
 	globalSignals.connect("boss3death", spawnPortal)
 	globalSignals.connect("game3toR", transition)
-	pass 
+	globalSignals.connect("gameOver", gameOver)
 	
+	await get_tree().create_timer(0.5, false).timeout
+	$musicint.play()
+	pass 
+func gameOver():
+	$musicint.stop()
+	var tween = get_tree().create_tween()
+	tween.tween_property($musicloop, "pitch_scale", 0, 1)
+	await get_tree().create_timer(1, false).timeout
+	$musicloop.stop()
+	
+	
+func clear():
+	var instance = clearpopup.instantiate()
+	add_child(instance)
+	
+	$musicint.stop()
+	$musicloop.stop()
+	
+	$musicend.play()
 func transition():
 	global.pausable = false
 	await get_tree().create_timer(1, false).timeout
@@ -26,6 +46,7 @@ func transition():
 	add_child(thunkfade)
 func spawnPortal():
 	#give roe
+	clear()
 	var roeP = roePopup.instantiate()
 	roeP.global_position = fish.global_position
 	roeP.actualText = "+"+str(15)
@@ -45,6 +66,13 @@ func spawnPortal():
 	add_child(portal)
 	pass
 
+## MUSIC
+
 
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_musicint_finished() -> void:
+	$musicloop.play()
+	pass # Replace with function body.

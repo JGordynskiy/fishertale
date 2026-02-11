@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bie3bqytav1ta"]
+[gd_scene load_steps=19 format=3 uid="uid://bie3bqytav1ta"]
 
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="1_rhr0n"]
 [ext_resource type="Script" uid="uid://raip1p1ewomr" path="res://scenes/levels/game_3.gd" id="1_xv74u"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="9_lrvpm"]
 [ext_resource type="PackedScene" uid="uid://dlqmunvanqxus" path="res://scenes/entities/laser_fish.tscn" id="10_xb6vp"]
 [ext_resource type="PackedScene" uid="uid://bnopjo50vxu7w" path="res://scenes/entities/laser_turret.tscn" id="14_xfp6f"]
+[ext_resource type="AudioStream" uid="uid://dlsnl77g337ux" path="res://Assets/music/boss3int.ogg" id="15_keobj"]
+[ext_resource type="AudioStream" uid="uid://cgewu8yaj23gb" path="res://Assets/music/boss3loop.ogg" id="16_perse"]
+[ext_resource type="AudioStream" uid="uid://pxg5n1eynj6y" path="res://Assets/music/boss3nd.ogg" id="17_mlfca"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lrvpm"]
 vertices = PackedVector2Array(690.28906, -303.5703, 426.04688, -702.0781, 1335.1719, -714.1094, 1316.8125, 110.921875, 662.28125, -194.57813, 262.27344, 67.328125, 537.5781, -202.64844, 1286.9922, 303.2422, 1269.2109, 676.5625, -441.97656, 671.9375, -384.7422, 393.3125, 263.97656, 334.71875, -386.28906, 211.64063, -1422.2109, -292.90625, -1447.1094, -701.28125, 161.14063, -692.4297, -398.8125, -354.0625, -885.9922, 693.3828, -1438.4609, 682.1172, -1400.2422, -39.976563, -578.1797, 182.28125, -412.8672, -64.64844, -441.1875, 166.75)
@@ -34,7 +37,7 @@ script = ExtResource("3_xfp6f")
 
 [node name="fish" parent="." instance=ExtResource("1_rhr0n")]
 z_index = 500
-position = Vector2(7615, -1951.0001)
+position = Vector2(7071.001, -14352)
 
 [node name="followCam" parent="fish" instance=ExtResource("2_oytuy")]
 limit_left = -350
@@ -85,41 +88,11 @@ position = Vector2(18661, -9234)
 scale = Vector2(12, 12)
 navigation_polygon = SubResource("NavigationPolygon_lrvpm")
 
-[node name="alarmFlash1" type="ColorRect" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.3372549)
-offset_left = 582.0
-offset_top = -18190.0
-offset_right = 621.89514
-offset_bottom = -18149.535
-scale = Vector2(286.82697, 440.44632)
-color = Color(1, 0, 0, 1)
-
-[node name="alarmFlash2" type="ColorRect" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.3372549)
-offset_left = 12019.999
-offset_top = -18160.0
-offset_right = 12060.783
-offset_bottom = -18119.535
-scale = Vector2(286.82697, 440.44632)
-color = Color(1, 0, 0, 1)
-
-[node name="alarmFlash3" type="ColorRect" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.3372549)
-offset_left = 23718.0
-offset_top = -18190.0
-offset_right = 23757.895
-offset_bottom = -18149.535
-scale = Vector2(286.82697, 440.44632)
-color = Color(1, 0, 0, 1)
-
 [node name="enemies" type="Node2D" parent="."]
 position = Vector2(18661, -9234)
 scale = Vector2(14.574766, 14.574766)
 
-[node name="laserTurret" parent="enemies" instance=ExtResource("14_xfp6f")]
+[node name="laserTurret1" parent="enemies" instance=ExtResource("14_xfp6f")]
 position = Vector2(-1194.5303, -572.5649)
 rotation = 0.47122827
 scale = Vector2(0.06861173, 0.06861173)
@@ -141,5 +114,19 @@ scale = Vector2(0.06861173, 0.06861173)
 
 [node name="laserFish" parent="." instance=ExtResource("10_xb6vp")]
 z_index = 300
-position = Vector2(18661, -9234)
+position = Vector2(17666, -9007.999)
 scale = Vector2(14.574766, 14.574766)
+
+[node name="musicint" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_keobj")
+volume_db = -5.0
+
+[node name="musicloop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_perse")
+volume_db = -5.0
+
+[node name="musicend" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_mlfca")
+volume_db = -5.0
+
+[connection signal="finished" from="musicint" to="." method="_on_musicint_finished"]

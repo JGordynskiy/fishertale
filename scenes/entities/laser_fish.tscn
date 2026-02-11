@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cj6pr7qsvm0en" path="res://Assets/sounds/enemie/laserBlast.ogg" id="2_hrlvu"]
 [ext_resource type="Texture2D" uid="uid://nfnx741ix3dy" path="res://Assets/enemies/laserFishdead.png" id="4_iluj3"]
 [ext_resource type="Texture2D" uid="uid://ci8dkded6hay0" path="res://Assets/enemies/laserFish.png" id="4_s8s5e"]
-[ext_resource type="AudioStream" uid="uid://cessjy0ar4vg2" path="res://Assets/sounds/enemie/normExplosion.ogg" id="5_quvlu"]
+[ext_resource type="AudioStream" uid="uid://rtowf2k8mbcn" path="res://Assets/sounds/enemyBoss1death.ogg" id="6_iluj3"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hll5x"]
 particle_flag_disable_z = true
@@ -316,7 +316,8 @@ process_material = SubResource("ParticleProcessMaterial_hll5x")
 [node name="deathSploison" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-55.083336, 0.5)
 scale = Vector2(65.357445, 25.686255)
-stream = ExtResource("5_quvlu")
+stream = ExtResource("6_iluj3")
+volume_db = 5.0
 max_distance = 99999.0
 
 [node name="deathparticle2" type="GPUParticles2D" parent="."]
@@ -386,12 +387,18 @@ position = Vector2(19.308949, -0.09564148)
 rotation = 1.5685529
 scale = Vector2(-0.2580011, 0.18205301)
 shape = SubResource("RectangleShape2D_hrlvu")
+disabled = true
 debug_color = Color(0.9182245, 0.2353065, 0.41794148, 0.41960785)
+
+[node name="shootTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [node name="hitBox" type="CollisionShape2D" parent="." groups=["objects"]]
 position = Vector2(-57.000004, 4.25)
-scale = Vector2(9.321794, 4.964109)
+scale = Vector2(0.44046825, 0.23456134)
 shape = SubResource("CircleShape2D_vpuyx")
+disabled = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1000.0
@@ -404,4 +411,5 @@ debug_path_custom_point_size = 185.15
 debug_path_custom_line_width = 50.0
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="shootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]

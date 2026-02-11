@@ -18,7 +18,11 @@ var turreting = false
 
 var iFrames = 0
 var coolDown = 300
-var boss3hp = 100
+var laserCoolDown = 250
+
+const boss3maxHP = 100
+var boss3hp = boss3maxHP
+
 var moveSpeed = 7500
 var speed = 0
 
@@ -43,6 +47,7 @@ func _physics_process(delta: float) -> void:
 	var laserLength = global_position.distance_to(laserRay.get_collision_point())
 	laser.points = PackedVector2Array([Vector2(0, 0), Vector2(laserLength/28*-1, 0)])
 	
+	bossScaling()
 	
 	iFrames -= 60*delta
 	coolDown -= 30*delta
@@ -78,20 +83,36 @@ func _physics_process(delta: float) -> void:
 	rng.randomize()
 	var rand = rng.randi_range(1, 4)
 	
+	if global.hp > 0 && boss3hp > 0:
+		laserSchedule(delta)
+	
 	if coolDown < 0:
 		if global.hp > 0 && boss3hp > 0:
 			if ($fishFinder.get_collider().is_in_group("player")):
 				attackSchedule()
+				pass
 			else:
 				follow()
+				pass
 
 
 	if (speed > 0):
 		speed -= 3500*delta
 		global_rotation = global_position.angle_to_point(fish.global_position) + PI
 	move_and_slide()
-	
+func bossScaling():
+	if boss3hp > boss3maxHP*0.8:
+		$shootTimer.wait_time = 2.0
+	elif boss3hp > boss3maxHP *0.6:
+		$shootTimer.wait_time = 1.6
+	elif boss3hp > boss3maxHP *0.4:
+		$shootTimer.wait_time = 1.2
+	elif boss3hp > boss3maxHP *0.2:
+		$shootTimer.wait_time = 0.8
+
 func shoot(rot):
+	if !global.hp > 0 || boss3hp <= 0:
+		return
 	var instance = bullet.instantiate()
 	instance.range = 1500
 	instance.spawnPos = global_position
@@ -118,48 +139,90 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if iFrames < 0 && laserEmitting:
 			iFrames = 10
 			boss3hp -= global.shot_damage
-		elif !laserEmitting:
-			shoot(area.global_rotation-global_rotation+(PI/2))
+		#elif !laserEmitting:
+			#shoot(area.global_rotation-global_rotation+(PI/2))
 			
 	if area.is_in_group("playerSlash"):
 		if iFrames < 0 && laserEmitting:
 			globalSignals.slashSuccess.emit()
 			iFrames = 10
 			boss3hp -= global.slash_damage
-		elif !laserEmitting:
-			shoot(area.global_rotation-global_rotation+(PI))
+		#elif !laserEmitting:
+			#shoot(area.global_rotation-global_rotation+(PI))
 	if boss3hp <= 0:
 			boss3death()
 	pass 
 
 func attackSchedule():
 	rng.randomize()
-	var rando = rng.randi_range(1,8)
+	var rando = rng.randi_range(1,1)
 	match rando:
 		1:
 			sweepLaser()
+
+func setLaserCooldown():
+	if boss3hp > boss3maxHP*0.8:
+		laserCoolDown = 250
+	elif boss3hp > boss3maxHP *0.6:
+		laserCoolDown = 220
+	elif boss3hp > boss3maxHP *0.4:
+		laserCoolDown = 190
+	else:
+		laserCoolDown = 160
+
+func laserSchedule(delta):
+	
+	if laserCoolDown > 0:
+		laserCoolDown -= 60*delta
+		return
+	rng.randomize()
+	var rand = rng.randi_range(1,8)
+	
+	## setting laser cooldown
+	setLaserCooldown()
+	match rand:
+		1:
+			$"../enemies/laserTurret1".shoot()
 		2:
-			sweepLaser()
-		3:
-			sweepLaser()
-		4:
-			sweepLaser()
-		5:
-			$"../enemies/laserTurret".shoot()
-		6:
 			$"../enemies/laserTurret2".shoot()
+		3:
+			$"../enemies/laserTurret3".shoot()
+			await get_tree().create_timer(0.5, false).timeout
+			$"../enemies/laserTurret4".shoot()
+		4:
+			$"../enemies/laserTurret2".shoot()
+			await get_tree().create_timer(0.5, false).timeout
+			$"../enemies/laserTurret1".shoot()
+		5:
+			$"../enemies/laserTurret2".shoot()
+			await get_tree().create_timer(0.5, false).timeout
+			$"../enemies/laserTurret1".shoot()
+			$"../enemies/laserTurret4".shoot()
+		6:
+			$"../enemies/laserTurret4".shoot()
+			$"../enemies/laserTurret1".shoot()
 		7:
+			$"../enemies/laserTurret2".shoot()
 			$"../enemies/laserTurret3".shoot()
 		8:
-			$"../enemies/laserTurret4".shoot()
-	pass
+			$"../enemies/laserTurret2".shoot()
+			$"../enemies/laserTurret3".shoot()
+			await get_tree().create_timer(0.5, false).timeout
+			$"../enemies/laserTurret1".shoot()
+	
+			
+			
 	
 func sweepLaser():
 	coolDown = 100
 	#speed = 0
 	$laserTelegraph.emitting = false
 	rng.randomize()
-	var sweepRange = randf_range(0.4, 0.8)
+	var sweepRange : float
+	if boss3hp < boss3maxHP*0.3:
+		sweepRange = randf_range(0.2, 1.2)
+	else:
+		sweepRange = randf_range(0.4, 0.8)
 	var parity = 0
 	while (parity == 0):
 		rng.randomize()
@@ -233,4 +296,9 @@ func boss3death():
 
 func _on_navigation_agent_2d_navigation_finished() -> void:
 	makePath()
+	pass # Replace with function body.
+
+
+func _on_shoot_timer_timeout() -> void:
+	shoot(global_position.angle_to_point(fish.global_position) - global_rotation)
 	pass # Replace with function body.

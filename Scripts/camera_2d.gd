@@ -11,8 +11,9 @@ var maxCamDist = 3000
 var tutorial = false
 var tutStage = 0
 
-
+var rng = RandomNumberGenerator.new()
 @onready var fish: CharacterBody2D = $".."
+var rotLock = true
 
 @onready var dmgSplash = load("res://scenes/damage_splash.tscn")
 
@@ -45,6 +46,17 @@ func disableCam():
 func takeDamage():
 	if tutStage < 3 && tutorial:
 		global.hp +=1
+	
+	#for i in range(10):
+		#rng.randomize()
+		#offset.x = randf_range(-1000, 1000)
+		#rng.randomize()
+		#offset.y = randf_range(-1000, 1000)
+	#var tween = get_tree().create_tween()
+	#var tween2 = get_tree().create_tween()
+	#tween.tween_property(self, "offset.x", 0, 0.5)
+	#tween2.tween_property(self, "offset.x", 0, 0.5)
+	
 	var instance = dmgSplash.instantiate()
 	var game = get_tree().get_current_scene()
 	game.add_child.call_deferred(instance)
@@ -88,7 +100,8 @@ func _process(delta: float) -> void:
 	#TUTORIAL ONLY
 	tutorialCutscene()
 	
-	
+	if rotLock:
+		global_rotation = 0
 	
 
 	

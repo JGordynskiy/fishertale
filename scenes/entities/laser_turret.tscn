@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnopjo50vxu7w"]
+[gd_scene load_steps=6 format=3 uid="uid://bnopjo50vxu7w"]
 
 [ext_resource type="Texture2D" uid="uid://d27ke1b07k5jc" path="res://Assets/enemies/laserTurret.png" id="1_4ywlk"]
 [ext_resource type="Script" uid="uid://bxptnthro0omi" path="res://scenes/entities/laser_turret.gd" id="1_q7yen"]
+[ext_resource type="AudioStream" uid="uid://du06u4x2lepnh" path="res://Assets/sounds/laserShoot.ogg" id="3_8lpfo"]
+[ext_resource type="AudioStream" uid="uid://d0j6c4nelrigq" path="res://Assets/sounds/warningbeep.ogg" id="3_urlmi"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_q7yen"]
 b = Vector2(50000, 0)
@@ -19,8 +21,15 @@ default_color = Color(1, 0, 0, 1)
 texture = ExtResource("1_4ywlk")
 
 [node name="Area2D" type="Area2D" parent="." groups=["dangerObj"]]
-monitorable = false
+scale = Vector2(1.1662405, 46.485874)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_q7yen")
+disabled = true
 debug_color = Color(0.91370267, 0.21486238, 0.5053108, 0.41960785)
+
+[node name="shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8lpfo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_urlmi")

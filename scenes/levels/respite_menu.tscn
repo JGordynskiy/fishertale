@@ -1177,8 +1177,9 @@ scale = Vector2(0.9649123, 0.7826087)
 
 [node name="boss3img" type="Sprite2D" parent="enemyMonitor/bossImages"]
 z_index = -15
-position = Vector2(4.5276184, -11.164673)
-scale = Vector2(0.2104796, 0.25950944)
+position = Vector2(-13.583019, -5.5823364)
+rotation = 0.24735393
+scale = Vector2(0.1776218, 0.21899763)
 texture = ExtResource("26_v85fi")
 
 [node name="boss2img" type="AnimatedSprite2D" parent="enemyMonitor/bossImages"]
@@ -1193,6 +1194,18 @@ z_index = -15
 position = Vector2(-6.9088745, 10.633057)
 scale = Vector2(0.110861525, 0.08320246)
 texture = ExtResource("12_kpitc")
+
+[node name="HoverHint" type="Label" parent="enemyMonitor/bossImages/boss1Img"]
+offset_left = 3288.7263
+offset_top = -3247.6416
+offset_right = 5533.409
+offset_bottom = -2440.3428
+scale = Vector2(1.6150286, 2.7507327)
+theme_override_colors/font_color = Color(0.2744, 0.4029201, 0.56, 1)
+theme_override_fonts/font = ExtResource("4_17bcf")
+theme_override_font_sizes/font_size = 300
+text = "<- Hover for info"
+autowrap_mode = 2
 
 [node name="enemyMonitorBox" type="Button" parent="enemyMonitor"]
 z_index = 500

@@ -60,6 +60,7 @@ limit_left = -17445
 limit_top = -19435
 limit_right = 36810
 limit_bottom = 22160
+limit_smoothed = true
 
 [node name="Dummy" parent="." instance=ExtResource("4_8wjer")]
 position = Vector2(-12532.998, 9736)

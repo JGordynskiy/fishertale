@@ -78,7 +78,7 @@ func _on_friendly_monitor_box_mouse_entered() -> void:
 		$FriendlyMonitor/stats/slashSize.visible = true
 		
 		
-		$FriendlyMonitor/stats/slashSize.text = "Range: "+str(global.slash_scale*100)
+		$FriendlyMonitor/stats/slashSize.text = "Range: "+str(snapped(global.slash_scale*100, 0.1))
 	
 func _on_friendly_monitor_box_mouse_exited() -> void:
 	$FriendlyMonitor/stats.visible = false

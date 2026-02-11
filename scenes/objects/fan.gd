@@ -54,7 +54,7 @@ func turnOff():
 	
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if (area.is_in_group("player") || area.is_in_group("playerBullet")):
+	if (area.is_in_group("player") || area.is_in_group("playerBullet") || area.is_in_group("playerSlash")):
 		if (wallfish.boss2hp > 0 && !game2.fanOn):
 			
 			
