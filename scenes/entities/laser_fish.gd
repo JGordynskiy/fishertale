@@ -88,11 +88,11 @@ func _physics_process(delta: float) -> void:
 	
 	if coolDown < 0:
 		if global.hp > 0 && boss3hp > 0:
-			if ($fishFinder.get_collider().is_in_group("player")):
-				attackSchedule()
+			if ($fishFinder.get_collider().is_in_group("objects")):
+				follow()
 				pass
 			else:
-				follow()
+				attackSchedule()
 				pass
 
 
@@ -102,13 +102,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 func bossScaling():
 	if boss3hp > boss3maxHP*0.8:
-		$shootTimer.wait_time = 2.0
+		$shootTimer.wait_time = 2.5
 	elif boss3hp > boss3maxHP *0.6:
-		$shootTimer.wait_time = 1.6
+		$shootTimer.wait_time = 2.0
 	elif boss3hp > boss3maxHP *0.4:
-		$shootTimer.wait_time = 1.2
+		$shootTimer.wait_time = 1.8
 	elif boss3hp > boss3maxHP *0.2:
-		$shootTimer.wait_time = 0.8
+		$shootTimer.wait_time = 1.2
 
 func shoot(rot):
 	if !global.hp > 0 || boss3hp <= 0:
@@ -116,9 +116,13 @@ func shoot(rot):
 	var instance = bullet.instantiate()
 	instance.range = 1500
 	instance.spawnPos = global_position
-	instance.spawnRot = global_rotation +rot+PI
-	instance.dir = global_rotation + rot+PI
-	instance.shotspeed = 11000
+	rng.randomize()
+	var rand =  randf_range(-0.2, 0.2)
+	instance.spawnRot = global_rotation +rot+PI + rand
+	instance.dir = global_rotation + rot+PI + rand
+	instance.shotspeed = 10000
+	instance.scale.x = 1.4
+	instance.scale.y = 1.4
 	instance.z_index = 200
 	game.add_child(instance)
 	pass
@@ -197,16 +201,16 @@ func laserSchedule(delta):
 			$"../enemies/laserTurret2".shoot()
 			await get_tree().create_timer(0.5, false).timeout
 			$"../enemies/laserTurret1".shoot()
-			$"../enemies/laserTurret4".shoot()
+			$"../enemies/laserTurret3".shoot()
 		6:
 			$"../enemies/laserTurret4".shoot()
-			$"../enemies/laserTurret1".shoot()
-		7:
 			$"../enemies/laserTurret2".shoot()
+		7:
+			$"../enemies/laserTurret1".shoot()
 			$"../enemies/laserTurret3".shoot()
 		8:
 			$"../enemies/laserTurret2".shoot()
-			$"../enemies/laserTurret3".shoot()
+			$"../enemies/laserTurret4".shoot()
 			await get_tree().create_timer(0.5, false).timeout
 			$"../enemies/laserTurret1".shoot()
 	

@@ -95,15 +95,17 @@ scale = Vector2(283.1812, -14.30965)
 shape = SubResource("RectangleShape2D_yljmy")
 
 [node name="Pause Menu" parent="." instance=ExtResource("5_uvv3c")]
-layer = 2
 
 [node name="calmloop" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_uq1e6")
 
 [node name="calmfirst" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("7_inl3r")
 
 [node name="calmactivity" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("8_nefry")
 
 [node name="Ambient Particles" parent="." instance=ExtResource("8_srh48")]

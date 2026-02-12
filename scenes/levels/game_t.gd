@@ -24,6 +24,9 @@ func _ready() -> void:
 	
 	globalSignals.gameOver.connect(gameOver)
 	globalSignals.gameTtoR.connect(transition)
+	
+	globalSignals.justPaused.connect(pauseGame)
+	globalSignals.justUnPaused.connect(unpauseGame)
 	$"hpBar/Panel".visible = false
 	camera.reset_smoothing()
 	#await get_tree().create_timer(0.5).timeout
@@ -37,6 +40,14 @@ func _ready() -> void:
 	global.pausable = true
 	pass # Replace with function body.
 
+func pauseGame():
+	$calmloop.bus = "lowpass"
+	$calmfirst.bus = "lowpass"
+	$calmactivity.bus = "lowpass"
+func unpauseGame():
+	$calmloop.bus = "Master"
+	$calmfirst.bus = "Master"
+	$calmactivity.bus = "Master"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

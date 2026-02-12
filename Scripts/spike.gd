@@ -16,9 +16,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	isIn = true
 	if body.name == "fish":
-		print("firstone")
+		
 		if body.invulnerable == false:
-			print("secondone")
+			
 			
 			body.canMove = false
 			body.position.x = body.position.x - 3000

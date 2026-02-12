@@ -19,14 +19,29 @@ func _ready() -> void:
 	globalSignals.connect("game3toR", transition)
 	globalSignals.connect("gameOver", gameOver)
 	
+	globalSignals.justPaused.connect(pauseGame)
+	globalSignals.justUnPaused.connect(unpauseGame)
+	
 	await get_tree().create_timer(0.5, false).timeout
 	$musicint.play()
 	pass 
+	
+func pauseGame():
+	$musicint.bus = "lowpass"
+	$musicloop.bus = "lowpass"
+	$musicend.bus = "lowpass"
+
+	
+func unpauseGame():
+	$musicint.bus = "Master"
+	$musicloop.bus = "Master"
+	$musicend.bus = "Master"
+	
 func gameOver():
 	$musicint.stop()
 	var tween = get_tree().create_tween()
-	tween.tween_property($musicloop, "pitch_scale", 0, 1)
-	await get_tree().create_timer(1, false).timeout
+	tween.tween_property($musicloop, "pitch_scale", 0, 2)
+	await get_tree().create_timer(2, false).timeout
 	$musicloop.stop()
 	
 	
@@ -60,7 +75,7 @@ func spawnPortal():
 	await get_tree().create_timer(3, false).timeout
 	
 	var portal = whirlpool.instantiate()
-	global.whirlPoolPos = Vector2(17000, -9000)
+	global.whirlPoolPos = Vector2(17000, -2500)
 	portal.z_index = 400
 	portal.global_position = global.whirlPoolPos
 	add_child(portal)

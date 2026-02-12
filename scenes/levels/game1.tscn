@@ -125,7 +125,6 @@ position = Vector2(16036, 16186)
 
 [node name="Pause Menu" parent="." instance=ExtResource("8_cu3vh")]
 unique_name_in_owner = true
-layer = 2
 
 [node name="hpBar" parent="." instance=ExtResource("10_iy4g1")]
 layer = 0

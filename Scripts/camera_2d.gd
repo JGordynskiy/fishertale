@@ -25,7 +25,7 @@ const MIN_ZOOM = 0.12
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enabled = true
-	globalSignals.game1toR.connect(disableCam)
+	
 	globalSignals.gameOver.connect(deathZoom)
 	
 	pass # Replace with function body.

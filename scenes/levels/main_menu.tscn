@@ -181,6 +181,7 @@ offset_right = 1063.0137
 offset_bottom = 1196.805
 
 [node name="Ambient Particles Menu" parent="particles" instance=ExtResource("2_ohdsy")]
+scale = Vector2(1.1861187, 1.1861187)
 
 [node name="fishertale" type="Label" parent="."]
 layout_mode = 1

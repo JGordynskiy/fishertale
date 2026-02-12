@@ -7,6 +7,7 @@ var type : bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if (type):
+		$faderect.self_modulate.a = 0
 		animation_player.play("fadein")
 	if (!type):
 		animation_player.play("fadeout")

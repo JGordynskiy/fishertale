@@ -159,6 +159,7 @@ corner_radius_bottom_left = 25
 
 [node name="Pause Menu" type="CanvasLayer"]
 process_mode = 3
+layer = 2
 scale = Vector2(17.912304, 17.912304)
 transform = Transform2D(17.912304, 0, 0, 17.912304, 0, 0)
 

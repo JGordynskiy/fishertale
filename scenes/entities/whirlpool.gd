@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	
-	if (area.name == "fish"):
+	if (area.name == "fish" && global.hp > 0):
 		global.pausable = false
 		if cam.tutorial:
 			globalSignals.emit_signal("gameTtoR")

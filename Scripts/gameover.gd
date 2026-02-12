@@ -31,6 +31,8 @@ func onDeath():
 
 
 func _on_retry_pressed() -> void:
+	
+	
 	if cam.tutorial:
 		$"sounds/ui/select".play()
 		var thunkfade = fadeRect.instantiate()
@@ -46,15 +48,12 @@ func _on_retry_pressed() -> void:
 		global.goto_scene("res://scenes/levels/dojo.tscn")
 		
 	$"sounds/ui/select".play()
-	await get_tree().create_timer(0.3).timeout
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	game.add_child(thunkfade)
+	await get_tree().create_timer(0.6).timeout
 	global.hp = global.max_hp
 	
-	#global.damageCost = 5
-	#global.rateCost = 5
-	#global.healthCost = 1
-	#
-	#global.shot_damage = 1.5
-	#global.shot_rate = 400
 	if global.curBoss != 1:
 		global.roe -= 2
 		if global.roe < 0:
@@ -65,12 +64,14 @@ func _on_retry_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	$"sounds/ui/select".play()
-	await get_tree().create_timer(0.3).timeout
-	global.goto_scene("res://scenes/levels/main_menu.tscn")
-	
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = true
 	game.add_child(thunkfade)
+	
+	await get_tree().create_timer(0.3).timeout
+	global.goto_scene("res://scenes/levels/main_menu.tscn")
+	
+	
 	pass # Replace with function body.
 
 func _on_retry_mouse_entered() -> void:

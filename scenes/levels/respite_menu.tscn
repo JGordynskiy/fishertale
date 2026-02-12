@@ -703,7 +703,7 @@ layout_mode = 0
 offset_left = -320.85413
 offset_top = 133.0
 offset_right = 152.14587
-offset_bottom = 230.0
+offset_bottom = 203.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_17777")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/dmg"]
@@ -723,7 +723,7 @@ layout_mode = 0
 offset_left = -320.85413
 offset_top = 133.0
 offset_right = 152.14587
-offset_bottom = 230.0
+offset_bottom = 201.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_28hqb")
 
 [node name="heart1" type="RichTextLabel" parent="upgradeHints/rate"]
@@ -734,8 +734,7 @@ offset_right = 452.0
 offset_bottom = 141.0
 theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 25
-text = "- 10% Shot Delay
-"
+text = "+ 15% range"
 
 [node name="heart2" type="RichTextLabel" parent="upgradeHints/rate"]
 layout_mode = 0
@@ -753,7 +752,7 @@ layout_mode = 0
 offset_left = -320.85413
 offset_top = 133.0
 offset_right = 152.14587
-offset_bottom = 230.0
+offset_bottom = 201.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_noa7g")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/health"]

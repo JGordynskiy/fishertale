@@ -14,7 +14,7 @@
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_181lf"]
 frames = 5
-speed_scale = 24.0
+speed_scale = 30.0
 frame_0/texture = ExtResource("2_qfkai")
 frame_1/texture = ExtResource("3_ecavu")
 frame_1/duration = 1.0
@@ -123,12 +123,12 @@ _data = {
 }
 
 [node name="GameOver" type="CanvasLayer"]
-layer = 10
+layer = 2
 script = ExtResource("1_qy7gw")
 
 [node name="ColorRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(0.2622, 0.32154, 0.46, 1)
+self_modulate = Color(0.24480002, 0.27336, 0.34, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

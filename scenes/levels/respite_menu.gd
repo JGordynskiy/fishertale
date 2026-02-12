@@ -26,6 +26,9 @@ var transitioning = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	## DEBUG!!!
+	global.curBoss = 3
+	
 	transitioning = false
 	
 	var thunkfade = theFadeRect.instantiate()
@@ -36,6 +39,7 @@ func _ready() -> void:
 		global.curBoss = 1
 	
 	if global.curBoss == 1:
+		global.hp = 5
 		boss1img.modulate.a = 255
 	else:
 		boss1img.modulate.a = 0
@@ -72,7 +76,7 @@ func _on_friendly_monitor_box_mouse_entered() -> void:
 		$FriendlyMonitor/stats/slashSize.visible = false
 		
 		
-		$FriendlyMonitor/stats/rate.text = "Shot Rate: "+str(int(global.shot_rate))
+		$FriendlyMonitor/stats/rate.text = "Range: "+str(int(global.bulletRange))
 	if global.heart == 2:
 		$FriendlyMonitor/stats/rate.visible = false
 		$FriendlyMonitor/stats/slashSize.visible = true
@@ -218,7 +222,7 @@ func _on_damage_mouse_entered() -> void:
 func _on_rate_pressed() -> void:
 	
 	select.play()
-	global.shot_rate *= 0.92
+	global.bulletRange *= 1.15
 	
 	#melee changes
 	global.slash_scale *= 1.06

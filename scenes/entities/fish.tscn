@@ -478,7 +478,6 @@ scale_curve = SubResource("CurveTexture_sscus")
 color = Color(1, 0.5733334, 0.19999999, 1)
 
 [node name="fish" type="CharacterBody2D" groups=["player"]]
-position = Vector2(0, -1)
 scale = Vector2(1.25, 1.25)
 motion_mode = 1
 slide_on_ceiling = false
@@ -556,6 +555,7 @@ max_polyphony = 2
 
 [node name="dashrecover" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("11_3ig6q")
+volume_db = 5.0
 max_polyphony = 2
 
 [node name="deathSound" type="AudioStreamPlayer" parent="sounds"]

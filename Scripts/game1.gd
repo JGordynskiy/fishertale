@@ -7,6 +7,7 @@ extends Node2D
 @onready var camera: Camera2D = $fish/followCam
 @onready var rng = RandomNumberGenerator.new()
 
+
 #roe popup
 @onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
 @onready var xtraRoe = 0
@@ -23,7 +24,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	global.stopwatch = 0
 	
 	camera.tutorial = false
@@ -61,20 +61,14 @@ func bossDeath():
 		xtraRoe = 5
 	
 func pauseGame():
-	boss_1_loop.volume_db = -79
-	boss_1_looplowpass.volume_db = -4
-	#var tween = create_tween()
-	#tween.set_parallel()
-	#tween.tween_property(boss_1_loop, "volume_db", -79, 0.5)
-	#tween.tween_property(boss_1_looplowpass, "volume_db", -10, 0.2)
-	
+	$Music/boss1int.bus = "lowpass"
+	boss_1_loop.bus = "lowpass"
+	$Music/Boss1end.bus = "lowpass"
+
 func unpauseGame():
-	boss_1_loop.volume_db = -4
-	boss_1_looplowpass.volume_db = -79
-	#var tween = create_tween()
-	#tween.set_parallel()
-	#tween.tween_property(boss_1_loop, "volume_db", -4, 0.5)
-	#tween.tween_property(boss_1_looplowpass, "volume_db", -79, 0.2)
+	$Music/boss1int.bus = "Master"
+	boss_1_loop.bus = "Master"
+	$Music/Boss1end.bus = "Master"
 	
 
 func gameOver():

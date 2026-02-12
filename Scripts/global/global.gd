@@ -13,7 +13,7 @@ var heart = 1
 @export var shot_damage = 1.5 # 1.5 default
 @export var slash_damage = shot_damage*2  # 2 default
 @export var slash_rate = 400
-
+@export var bulletRange = 250 
 var slash_scale = 1.2
 
 var max_hp = 5
@@ -28,7 +28,7 @@ var rateCost = 4
 var healthCost = 1
 
 var accuracy = 0# 0.1 default, decrease to increase
-var bulletRange = 250 
+
 var pausable = false
 @export var camZoom = 0.06 # 0.06 default, dmgSplash stops working at 0.01!
 @export var curBoss = 0

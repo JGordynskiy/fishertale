@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.10080001, 0.11004001, 0.18, 1)
 boot_splash/show_image=false
 boot_splash/image="uid://l2qs8406r1w1"
-config/icon="res://icon.svg"
+config/icon="uid://l2qs8406r1w1"
 config/windows_native_icon="res://Assets/ui/fishicon.ico"
 
 [autoload]
