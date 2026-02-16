@@ -8,7 +8,7 @@ extends Control
 @onready var foosh: AudioStreamPlayer = $sounds/ui/foosh
 var skip = false
 
-@onready var initial_buttons: VBoxContainer = $InitialButtons
+@onready var initial_buttons: VBoxContainer = $IntialMenu/InitialButtons
 @onready var mode_buttons: HBoxContainer = $SecondMenu/modeButtons
 @onready var back_button: Button = $SecondMenu/modeButtonsPanel/BackButton
 
@@ -24,18 +24,20 @@ var menuStage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
 	
-	$SecondMenu/modeButtonsPanel.visible = false
-	$"SecondMenu/choose a heart".visible = false
-	mode_buttons.visible = false
-	initial_buttons.visible = true
-	menumusic.volume_db = 0
+	$SecondMenu.visible = false
+	$"Options Menu".visible = false
+	$IntialMenu.visible = true
+	
+	#menumusic.volume_db = 0
+	
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = false
 	add_child(thunkfade)
+	
 	await get_tree().create_timer(0.5).timeout
 	menumusic.play()
 	
-	
+	setInitialSound()
 	pass # Replace with function body.
 
 
@@ -46,39 +48,20 @@ func _process(delta: float) -> void:
 		$Label.show()
 	else:
 		$Label.hide()
-	
+	if $"Options Menu".visible:
+		soundOptions()
 	pass
 
 func _on_play_pressed() -> void:
-	$SecondMenu/modeButtonsPanel.visible = true
-	$"SecondMenu/choose a heart".visible = true
+	$SecondMenu.visible = true
+	
 	$sounds/ui/select.play()
 	menuStage = 2
 	initial_buttons.visible = false
 	
 	mode_buttons.visible = true
 	pass # Replace with function body.
-
-
-func onStartPressed() -> void:
-	skip = false
-	if Input.is_action_pressed("sprint"):
-		skip = true
-	global.hp = global.max_hp
-	$sounds/ui/select.play()
-	
-	var thunkfade = fadeRect.instantiate()
-	thunkfade.type = true
-	add_child(thunkfade)
-	
-	var tween = create_tween()
-	tween.tween_property(menumusic, "volume_db", -79, 0.5)
-	var tween2 = create_tween()
-	tween2.tween_property(menumusicloop, "volume_db", -79, 0.5)
-	foosh.play()
-	await get_tree().create_timer(2).timeout
-	global.inGame = true
-	
+func resetStats():
 	## reset stats, just in case!
 	global.speed = 7000
 	global.shot_rate = 400 # 400 as default, reduce to increase
@@ -95,6 +78,31 @@ func onStartPressed() -> void:
 	global.roe = 0
 	
 	global.curBoss = 0
+
+func onStartPressed() -> void:
+	
+	resetStats()
+
+	skip = false
+	if Input.is_action_pressed("sprint"):
+		skip = true
+	
+	$sounds/ui/select.play()
+	
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	add_child(thunkfade)
+	
+	var tween = create_tween()
+	tween.tween_property(menumusic, "volume_db", -79, 0.5)
+	var tween2 = create_tween()
+	tween2.tween_property(menumusicloop, "volume_db", -79, 0.5)
+	foosh.play()
+
+	await get_tree().create_timer(2).timeout
+	global.inGame = true
+	
+	
 	if skip:
 		global.roe = 6
 		global.curBoss = 1
@@ -109,12 +117,17 @@ func onStartPressed() -> void:
 
 func onOptionsPressed() -> void:
 	$sounds/ui/select.play()
-	
 	pass # Replace with function body.
 
 
 func onExitPressed() -> void:
 	$sounds/ui/select.play()
+	
+	var thunkfade = fadeRect.instantiate()
+	thunkfade.type = true
+	add_child(thunkfade)
+	
+	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
 	pass # Replace with function body.
 
@@ -138,7 +151,9 @@ func _on_play_mouse_entered() -> void:
 func _on_menumusic_finished() -> void:
 	menumusicloop.play()
 	pass # Replace with function body.
-
+func _on_options_back_mouse_entered() -> void:
+	$sounds/ui/hoveron.play()
+	pass # Replace with function body.
 
 func _on_normal_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
@@ -147,7 +162,7 @@ func _on_normal_mouse_entered() -> void:
 func _on_normal_mouse_exited() -> void:
 	$SecondMenu/modeButtonsPanel/normalTip.visible = false
 	pass # Replace with function body.
-	
+
 func _on_melee_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
 	$SecondMenu/modeButtonsPanel/meleeTip.visible = true
@@ -160,8 +175,8 @@ func _on_back_button_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
 	pass # Replace with function body.
 func _on_back_button_pressed() -> void:
-	$SecondMenu/modeButtonsPanel.visible = false
-	$"SecondMenu/choose a heart".visible = false
+	$SecondMenu.visible = false
+	
 	$sounds/ui/select.play()
 	menuStage = 1
 	initial_buttons.visible = true
@@ -178,3 +193,32 @@ func _on_melee_pressed() -> void:
 	global.heart = 2
 	onStartPressed()
 	pass # Replace with function body.
+
+func setInitialSound():
+	$"Options Menu/volumeControl/MusicSlider".value = global.musicVol
+	$"Options Menu/volumeControl/SFXSlider".value = global.SFXVol
+	
+	
+func soundOptions():
+	var SFXid = AudioServer.get_bus_index("SFX")
+	var Musicid = AudioServer.get_bus_index("Music")
+	
+	AudioServer.set_bus_volume_linear(Musicid, global.musicVol)
+	AudioServer.set_bus_volume_linear(SFXid, global.SFXVol)
+	global.musicVol = $"Options Menu/volumeControl/MusicSlider".value
+	global.SFXVol = $"Options Menu/volumeControl/SFXSlider".value
+	
+	$"Options Menu/volumeControl/MusicSlider/volNum".text = str(snapped(global.musicVol*100, 1)) + "%"
+	$"Options Menu/volumeControl/SFXSlider/volNum".text = str(snapped(global.SFXVol*100, 1)) + "%"
+	
+	pass
+
+func _on_options_pressed() -> void:
+	$sounds/ui/select.play()
+	$"Options Menu".visible = true
+	$IntialMenu.visible = false
+
+func _on_options_back_pressed() -> void:
+	$sounds/ui/select.play()
+	$"Options Menu".visible = false
+	$IntialMenu.visible = true

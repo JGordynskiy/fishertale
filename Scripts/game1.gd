@@ -66,9 +66,9 @@ func pauseGame():
 	$Music/Boss1end.bus = "lowpass"
 
 func unpauseGame():
-	$Music/boss1int.bus = "Master"
-	boss_1_loop.bus = "Master"
-	$Music/Boss1end.bus = "Master"
+	$Music/boss1int.bus = "Music"
+	boss_1_loop.bus = "Music"
+	$Music/Boss1end.bus = "Music"
 	
 
 func gameOver():

@@ -5,6 +5,8 @@ extends Control
 @onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var game  = get_owner()
+@onready var mousePos
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,6 +44,9 @@ func dmgPause():
 	#pausable = true
 
 func pause():
+	
+	mousePos = get_viewport().get_mouse_position()
+	
 	$"../areyousure".visible = false
 	global.pausable = false
 	globalSignals.emit_signal("justPaused")
@@ -55,6 +60,8 @@ func pause():
 	global.pausable = true
 	
 func unpause():
+	
+	Input.warp_mouse(mousePos)
 	$"../areyousure".visible = false
 	global.pausable = false
 	globalSignals.emit_signal("justUnPaused")

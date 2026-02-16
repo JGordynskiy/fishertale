@@ -33,9 +33,9 @@ func pauseGame():
 
 	
 func unpauseGame():
-	$musicint.bus = "Master"
-	$musicloop.bus = "Master"
-	$musicend.bus = "Master"
+	$musicint.bus = "Music"
+	$musicloop.bus = "Music"
+	$musicend.bus = "Music"
 	
 func gameOver():
 	$musicint.stop()

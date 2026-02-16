@@ -5,9 +5,11 @@ var debug = false
 
 var debugCounter = 0
 #1 is default, 2 is melee
-var heart = 1
 
-## STATS MUST BE CHANGED IN MAIN_MENU.GD
+
+## STATS
+# STATS MUST BE CHANGED IN MAIN_MENU.GD
+var heart = 1
 @export var speed = 7000
 @export var shot_rate = 400 # 400 as default, reduce to increase
 @export var shot_damage = 1.5 # 1.5 default
@@ -21,7 +23,7 @@ var hp = max_hp
 
 var stopwatch = 0
 
-#upgrades and costs
+# Upgrades and Costs
 var roe = 0
 var damageCost = 4
 var rateCost = 4
@@ -36,6 +38,9 @@ var pausable = false
 var whirlPoolPos : Vector2
 
 
+## SETTINGS
+@onready var musicVol = 1
+@onready var SFXVol = 1
 
 #signal pause
 #signal unPause
@@ -70,9 +75,6 @@ func goto_scene(path):
 	#We need to do this to avoid crashes
 	_deferred_goto_scene.call_deferred(path)
 	
-func wait(time : float):
-	await get_tree().create_timer(time).timeout
-	
 func _deferred_goto_scene(path):
 	if is_instance_valid(current_scene):
 		current_scene.free()
@@ -85,6 +87,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("DEBUGaddhp"):
 			if global.hp < 5:
 				global.hp += 1
+	if Input.is_action_just_pressed("F11"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 				
 	DisplayServer.window_set_title(str(Engine.get_frames_per_second()))
 	

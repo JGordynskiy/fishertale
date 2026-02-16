@@ -25,15 +25,19 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if ((area.is_in_group("playerBullet")||area.is_in_group("playerSlash")) && canTake):
 		if (area.is_in_group("playerSlash")):
 			globalSignals.slashSuccess.emit()
+		if (area.is_in_group("playerBullet")):
+			area.get_parent().pop()
 		
 		health -= 1
 		if health == 0:
 			
-			collision_polygon_2d.set_deferred("disabled", true)
+			$Area2D/CollisionPolygon2D.set_deferred("disabled", true)
+			$StaticBody2D/CollisionPolygon2D.set_deferred("disabled", true)
+			
 			particles.emitting = true
 			sprite_2d.hide()
 			rock_destroy.play()
-			await get_tree().create_timer(1, false).timeout
+			await get_tree().create_timer(2, false).timeout
 			queue_free()
 		else:
 			rock_hit.play()

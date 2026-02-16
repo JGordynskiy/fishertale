@@ -26,11 +26,13 @@ var transitioning = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	## DEBUG!!!
-	global.curBoss = 3
+	global.pausable = true
+	
 	
 	transitioning = false
 	
+	globalSignals.justPaused.connect(pauseGame)
+	globalSignals.justUnPaused.connect(unpauseGame)
 	var thunkfade = theFadeRect.instantiate()
 	thunkfade.type = false
 	add_child(thunkfade)
@@ -56,7 +58,13 @@ func _ready() -> void:
 	#await get_tree().create_timer(0.5, false).timeout
 	music.play()
 		
+func pauseGame():
+	$Music.bus = "lowpass"
 	
+func unpauseGame():
+	$Music.bus = "Music"
+
+
 ## BOSS DESCRIPTIONS
 func _on_enemy_monitor_box_mouse_entered() -> void:
 	$enemyMonitor/hints.visible = true
@@ -171,6 +179,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_ready_button_pressed() -> void:
+	global.pausable = false
 	if !transitioning:
 		select.play()
 		transitioning = true

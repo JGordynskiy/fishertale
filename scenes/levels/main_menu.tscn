@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cjdpo2qo6jcen"]
+[gd_scene load_steps=35 format=3 uid="uid://cjdpo2qo6jcen"]
 
 [ext_resource type="Script" uid="uid://kdxn5brsro0d" path="res://Scripts/main_menu.gd" id="1_towmw"]
 [ext_resource type="Texture2D" uid="uid://dbnqyj0tbpt3b" path="res://Assets/fishertalebackground.png" id="2_geflf"]
@@ -145,14 +145,22 @@ _data = {
 &"bob": SubResource("Animation_y2ttv")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2arew"]
+bg_color = Color(0, 0, 0, 0.64705884)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.088000014, 0.30159998, 0.8, 1)
+
 [node name="Main menu" type="Control"]
 layout_mode = 3
 anchor_right = 1.764
 anchor_bottom = 1.8230001
-offset_left = 23.0
-offset_top = 22.0
-offset_right = -283.12805
-offset_bottom = -123.30408
+offset_left = 2.000002
+offset_top = -3.0
+offset_right = -164.20776
+offset_bottom = -134.281
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.61289495, 0.61289495)
@@ -161,15 +169,14 @@ script = ExtResource("1_towmw")
 
 [node name="Background" type="Panel" parent="."]
 z_index = -500
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.092
 anchor_bottom = 1.016
-offset_left = -79.94844
-offset_top = -115.84367
-offset_right = -238.74048
-offset_bottom = -132.41968
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -3.263205
+offset_top = 4.894803
+offset_right = -388.3916
+offset_bottom = -129.69409
 scale = Vector2(1.0997503, 1.1024427)
 theme_override_styles/panel = SubResource("StyleBoxTexture_lars7")
 
@@ -223,9 +230,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 257.5943
+offset_left = 186.00244
 offset_top = -110.463684
-offset_right = 931.44574
+offset_right = 859.854
 offset_bottom = -43.463562
 grow_horizontal = 2
 grow_vertical = 2
@@ -234,20 +241,66 @@ theme_override_fonts/font = ExtResource("4_pwqr4")
 theme_override_font_sizes/font_size = 31
 text = "Skip Tutorial"
 
-[node name="InitialButtons" type="VBoxContainer" parent="."]
+[node name="sounds" type="Node" parent="."]
+
+[node name="ui" type="Node" parent="sounds"]
+
+[node name="hoveron" type="AudioStreamPlayer" parent="sounds/ui"]
+stream = ExtResource("5_fkd6t")
+bus = &"SFX"
+
+[node name="hoveroff" type="AudioStreamPlayer" parent="sounds/ui"]
+stream = ExtResource("6_keln3")
+bus = &"SFX"
+
+[node name="select" type="AudioStreamPlayer" parent="sounds/ui"]
+stream = ExtResource("7_crctu")
+bus = &"SFX"
+
+[node name="foosh" type="AudioStreamPlayer" parent="sounds/ui"]
+stream = ExtResource("8_wko7x")
+bus = &"SFX"
+
+[node name="menumusic" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_cn35j")
+max_polyphony = 2
+bus = &"Music"
+parameters/looping = false
+
+[node name="menumusicloop" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("9_cn35j")
+max_polyphony = 2
+bus = &"Music"
+parameters/looping = false
+
+[node name="IntialMenu" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.07
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 828.85345
-offset_top = 618.74066
-offset_right = 315.53003
-offset_bottom = 1083.3395
-scale = Vector2(0.21233284, 0.21233284)
-theme_override_constants/separation = 539
+offset_left = 543.3232
+offset_top = 517.2175
+offset_right = -256.16138
+offset_bottom = 29.368896
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="play" type="Button" parent="InitialButtons"]
+[node name="InitialButtons" type="VBoxContainer" parent="IntialMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.749
+anchor_bottom = 0.87500006
+offset_left = 285.53033
+offset_top = 73.42204
+offset_right = 1157.5356
+offset_bottom = 1610.553
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.21233284, 0.21233284)
+theme_override_constants/separation = 250
+
+[node name="play" type="Button" parent="IntialMenu/InitialButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
@@ -265,7 +318,25 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_13qgu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_13qgu")
 text = "Play"
 
-[node name="Exit" type="Button" parent="InitialButtons"]
+[node name="options" type="Button" parent="IntialMenu/InitialButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
+theme_override_colors/font_focus_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_pressed_color = Color(0.40432662, 0.70529413, 0.9734008, 1)
+theme_override_colors/font_hover_color = Color(0.031769015, 0.2745285, 0.4496572, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_disabled_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_outline_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("4_geflf")
+theme_override_font_sizes/font_size = 300
+theme_override_styles/normal = SubResource("StyleBoxFlat_12l0x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p348b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_13qgu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13qgu")
+text = "Options"
+
+[node name="Exit" type="Button" parent="IntialMenu/InitialButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
@@ -283,36 +354,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_13qgu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_13qgu")
 text = "Exit"
 
-[node name="sounds" type="Node" parent="."]
-
-[node name="ui" type="Node" parent="sounds"]
-
-[node name="hoveron" type="AudioStreamPlayer" parent="sounds/ui"]
-stream = ExtResource("5_fkd6t")
-
-[node name="hoveroff" type="AudioStreamPlayer" parent="sounds/ui"]
-stream = ExtResource("6_keln3")
-
-[node name="select" type="AudioStreamPlayer" parent="sounds/ui"]
-stream = ExtResource("7_crctu")
-
-[node name="foosh" type="AudioStreamPlayer" parent="sounds/ui"]
-stream = ExtResource("8_wko7x")
-
-[node name="menumusic" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource("8_cn35j")
-
-[node name="menumusicloop" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource("9_cn35j")
-
-[node name="IntialMenu" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 543.3232
-offset_top = 517.2175
-offset_right = 583.3232
-offset_bottom = 557.2175
-
 [node name="SecondMenu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 543.3232
 offset_top = 517.2175
@@ -447,11 +490,184 @@ libraries = {
 autoplay = "bob"
 speed_scale = 1.5
 
-[connection signal="mouse_entered" from="InitialButtons/play" to="." method="_on_play_mouse_entered"]
-[connection signal="pressed" from="InitialButtons/play" to="." method="_on_play_pressed"]
-[connection signal="mouse_entered" from="InitialButtons/Exit" to="." method="_on_exit_mouse_entered"]
-[connection signal="pressed" from="InitialButtons/Exit" to="." method="onExitPressed"]
+[node name="Options Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1044.2246
+offset_top = -587.37634
+offset_right = 1044.2246
+offset_bottom = 587.37634
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="optionsBack" type="Button" parent="Options Menu"]
+layout_mode = 0
+offset_left = 882.69617
+offset_top = 440.53226
+offset_right = 1914.997
+offset_bottom = 828.85315
+scale = Vector2(0.28750357, 0.28750357)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
+theme_override_colors/font_focus_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_pressed_color = Color(0.40432662, 0.70529413, 0.9734008, 1)
+theme_override_colors/font_hover_color = Color(0.031769015, 0.2745285, 0.4496572, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_disabled_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_outline_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("4_geflf")
+theme_override_font_sizes/font_size = 250
+theme_override_styles/normal = SubResource("StyleBoxFlat_12l0x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p348b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_13qgu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13qgu")
+text = "Back"
+
+[node name="volumeControl" type="Control" parent="Options Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="volumeBack" type="Panel" parent="Options Menu/volumeControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 571.75806
+offset_top = 683.22003
+offset_right = 1476.6912
+offset_bottom = 1050.3303
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2arew")
+
+[node name="VolumeTitle" type="Label" parent="Options Menu/volumeControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 741.95764
+offset_top = 611.42957
+offset_right = 1391.9576
+offset_bottom = 662.42957
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89443576, 0.89443576)
+theme_override_colors/font_color = Color(1, 0.724, 0.31, 1)
+theme_override_fonts/font = ExtResource("2_towmw")
+theme_override_font_sizes/font_size = 50
+text = "Volume Control"
+
+[node name="MusicLabel" type="Label" parent="Options Menu/volumeControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 675.062
+offset_top = 753.37885
+offset_right = 929.9031
+offset_bottom = 804.37885
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_towmw")
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Options Menu/volumeControl"]
+modulate = Color(0.25, 0.47499996, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 998.119
+offset_top = 738.6945
+offset_right = 1128.2849
+offset_bottom = 766.4318
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.2089026, 3.2089026)
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="volNum" type="Label" parent="Options Menu/volumeControl/MusicSlider"]
+layout_mode = 0
+offset_left = 50.846073
+offset_top = -3.5592384
+offset_right = 92.84607
+offset_bottom = 19.440762
+scale = Vector2(0.5694772, 0.5694772)
+theme_override_fonts/font = ExtResource("4_pwqr4")
+text = "100"
+horizontal_alignment = 1
+
+[node name="SFXLabel" type="Label" parent="Options Menu/volumeControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 648.95636
+offset_top = 905.1178
+offset_right = 948.95636
+offset_bottom = 956.1178
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_towmw")
+theme_override_font_sizes/font_size = 50
+text = "Sounds"
+
+[node name="SFXSlider" type="HSlider" parent="Options Menu/volumeControl"]
+modulate = Color(0.25, 0.47499996, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 998.119
+offset_top = 890.43335
+offset_right = 1128.2849
+offset_bottom = 918.17065
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.2089026, 3.2089026)
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="volNum" type="Label" parent="Options Menu/volumeControl/SFXSlider"]
+layout_mode = 0
+offset_left = 50.846073
+offset_top = -3.5592384
+offset_right = 92.84607
+offset_bottom = 19.440762
+scale = Vector2(0.5694772, 0.5694772)
+theme_override_fonts/font = ExtResource("4_pwqr4")
+text = "100"
+horizontal_alignment = 1
+
 [connection signal="finished" from="sounds/menumusic" to="." method="_on_menumusic_finished"]
+[connection signal="mouse_entered" from="IntialMenu/InitialButtons/play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="IntialMenu/InitialButtons/play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="IntialMenu/InitialButtons/options" to="." method="_on_options_mouse_entered"]
+[connection signal="pressed" from="IntialMenu/InitialButtons/options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="IntialMenu/InitialButtons/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="IntialMenu/InitialButtons/Exit" to="." method="onExitPressed"]
 [connection signal="mouse_entered" from="SecondMenu/modeButtonsPanel/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="SecondMenu/modeButtonsPanel/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="mouse_entered" from="SecondMenu/modeButtons/normal" to="." method="_on_normal_mouse_entered"]
@@ -460,3 +676,5 @@ speed_scale = 1.5
 [connection signal="mouse_entered" from="SecondMenu/modeButtons/melee" to="." method="_on_melee_mouse_entered"]
 [connection signal="mouse_exited" from="SecondMenu/modeButtons/melee" to="." method="_on_melee_mouse_exited"]
 [connection signal="pressed" from="SecondMenu/modeButtons/melee" to="." method="_on_melee_pressed"]
+[connection signal="mouse_entered" from="Options Menu/optionsBack" to="." method="_on_options_back_mouse_entered"]
+[connection signal="pressed" from="Options Menu/optionsBack" to="." method="_on_options_back_pressed"]

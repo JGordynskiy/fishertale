@@ -99,14 +99,17 @@ shape = SubResource("RectangleShape2D_yljmy")
 [node name="calmloop" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("6_uq1e6")
+bus = &"Music"
 
 [node name="calmfirst" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("7_inl3r")
+bus = &"Music"
 
 [node name="calmactivity" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("8_nefry")
+bus = &"Music"
 
 [node name="Ambient Particles" parent="." instance=ExtResource("8_srh48")]
 z_index = 100

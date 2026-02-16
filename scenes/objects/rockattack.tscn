@@ -112,6 +112,7 @@ rotation = -0.41855252
 scale = Vector2(0.99999994, 1)
 stream = ExtResource("5_sekbf")
 max_distance = 50000.0
+bus = &"SFX"
 
 [node name="voosh" type="AudioStreamPlayer2D" parent="Projectile"]
 rotation = -0.41855252
@@ -120,8 +121,10 @@ stream = ExtResource("5_1akex")
 pitch_scale = 0.8
 max_distance = 16000.0
 attenuation = 1.231143
+bus = &"SFX"
 
 [node name="charge" type="AudioStreamPlayer" parent="Projectile"]
 stream = ExtResource("7_ocuhj")
 volume_db = -5.0
 pitch_scale = 1.5
+bus = &"SFX"

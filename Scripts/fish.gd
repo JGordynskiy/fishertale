@@ -208,8 +208,6 @@ func takeDamage():
 			instance.particleCount = 60
 			instance.pos = global_position
 			game.add_child(instance)
-			
-			
 			##pausing game upon tkaing damage
 			#global.camZoom *= 2
 			#global.pausable = false
@@ -219,8 +217,6 @@ func takeDamage():
 			#get_tree().paused = false
 			#global.pausable = true
 			#global.camZoom *= 0.5
-			
-			
 		iFrameCount = 0
 	
 	
@@ -230,7 +226,6 @@ func dash():
 		dashVisual1count = 1
 		if iFrameCount > 76:
 			iFrameCount = iFrames * 0.8
-		#game.add_child(cloud.instantiate())
 		mult = 5
 		dashCount = 0
 		var instance = bubbles.instantiate()

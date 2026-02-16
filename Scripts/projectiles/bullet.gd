@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 
-@onready var timer: Timer = $Timer
+
 
 @onready var animated_sprite: AnimatedSprite2D = $Area2D/AnimatedSprite2D
 @onready var rng = RandomNumberGenerator.new()

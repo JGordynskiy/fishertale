@@ -66,10 +66,12 @@ frame_progress = 0.18906572
 stream = ExtResource("10_070gi")
 volume_db = -5.0
 max_polyphony = 40
+bus = &"SFX"
 
 [node name="pop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_eki6j")
 max_polyphony = 99
+bus = &"SFX"
 
 [node name="superBulletdamage" type="Area2D" parent="." groups=["dangerObj"]]
 scale = Vector2(0.99999994, 0.99999994)

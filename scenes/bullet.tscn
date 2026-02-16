@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://buy7w360hpg5"]
+[gd_scene load_steps=17 format=3 uid="uid://buy7w360hpg5"]
 
 [ext_resource type="Script" uid="uid://pmpdoibaedk5" path="res://Scripts/projectiles/bullet.gd" id="1_y25gk"]
-[ext_resource type="Texture2D" uid="uid://bshja12nkim5b" path="res://Assets/fishBullet/fishBulletpop1.png" id="2_qncy5"]
-[ext_resource type="Texture2D" uid="uid://bfwyvjbk6lfi0" path="res://Assets/fishBullet/fishBulletpop2.png" id="3_tamys"]
-[ext_resource type="Texture2D" uid="uid://bjo2sb1rqmkp5" path="res://Assets/fishBullet/fishBulletpop3.png" id="4_26lx3"]
+[ext_resource type="Texture2D" uid="uid://doqx47w5jgjvx" path="res://Assets/fishBullet/pop1.png" id="2_s437g"]
+[ext_resource type="Texture2D" uid="uid://dvx34dn8dkbbn" path="res://Assets/fishBullet/pop2.png" id="3_iqq7w"]
+[ext_resource type="Texture2D" uid="uid://blitxdmc8hdju" path="res://Assets/fishBullet/pop3.png" id="4_6umxm"]
+[ext_resource type="Texture2D" uid="uid://dnsow0jv37vng" path="res://Assets/fishBullet/pop4.png" id="5_0apvr"]
 [ext_resource type="Texture2D" uid="uid://bffoihedgm3k4" path="res://Assets/fishBullet/fly1.png" id="5_k76ql"]
+[ext_resource type="Texture2D" uid="uid://bm5rk4rkdpe7f" path="res://Assets/fishBullet/pop5.png" id="6_ba0j3"]
 [ext_resource type="Texture2D" uid="uid://b0v6heri2gjpe" path="res://Assets/fishBullet/fly2.png" id="6_in4mv"]
 [ext_resource type="Texture2D" uid="uid://bjkqed2g03jsf" path="res://Assets/fishBullet/fly3.png" id="7_s437g"]
 [ext_resource type="Texture2D" uid="uid://3cjf8xtbkdb3" path="res://Assets/fishBullet/fly4.png" id="8_iqq7w"]
@@ -35,17 +37,23 @@ radius = 332.0241
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qncy5")
+"texture": ExtResource("2_s437g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_tamys")
+"texture": ExtResource("3_iqq7w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_26lx3")
+"texture": ExtResource("4_6umxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0apvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ba0j3")
 }],
 "loop": false,
 "name": &"pop",
-"speed": 15.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -69,8 +77,6 @@ animations = [{
 }]
 
 [node name="Bullet" type="CharacterBody2D" groups=["playerBullet"]]
-position = Vector2(0, 505)
-scale = Vector2(0.65, 0.65)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_y25gk")
@@ -100,10 +106,10 @@ position = Vector2(1.9073486e-06, -456.92307)
 rotation = -1.5996152
 scale = Vector2(0.8099625, 0.8099625)
 sprite_frames = SubResource("SpriteFrames_1cfmv")
-animation = &"shoot"
+animation = &"pop"
+frame = 4
+frame_progress = 1.0
 offset = Vector2(71.2, 0)
-
-[node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -45,9 +45,9 @@ func pauseGame():
 	$calmfirst.bus = "lowpass"
 	$calmactivity.bus = "lowpass"
 func unpauseGame():
-	$calmloop.bus = "Master"
-	$calmfirst.bus = "Master"
-	$calmactivity.bus = "Master"
+	$calmloop.bus = "Music"
+	$calmfirst.bus = "Music"
+	$calmactivity.bus = "Music"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

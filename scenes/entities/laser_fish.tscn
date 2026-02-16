@@ -260,12 +260,14 @@ scale = Vector2(2.7495773, 6.453456)
 stream = ExtResource("2_hrlvu")
 volume_db = 10.0
 max_distance = 99999.0
+bus = &"SFX"
 
 [node name="laserCharge" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(2.7495773, 6.4534554)
 stream = ExtResource("2_41bec")
 volume_db = 5.0
 max_distance = 99999.0
+bus = &"SFX"
 
 [node name="invulenrablePolygon" type="Polygon2D" parent="."]
 z_index = -10

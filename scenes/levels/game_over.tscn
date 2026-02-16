@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckvml63hdsptk"]
+[gd_scene load_steps=24 format=3 uid="uid://ckvml63hdsptk"]
 
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_lpwf7"]
 [ext_resource type="Script" uid="uid://dn67wjet7fw7d" path="res://Scripts/gameover.gd" id="1_qy7gw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c7eai177jnjq4" path="res://Assets/objects/monitorstatic/monitorstatic (4).jpg" id="5_3bldl"]
 [ext_resource type="AudioStream" uid="uid://cfuurh6fhfc7" path="res://Assets/sounds/uiHoveroff.ogg" id="5_i47r0"]
 [ext_resource type="AudioStream" uid="uid://dc6du6htd3uph" path="res://Assets/sounds/uiSelect.ogg" id="6_nesse"]
+[ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="9_ecavu"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_181lf"]
 frames = 5
@@ -197,6 +198,87 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_lpwf7")
 theme_override_font_sizes/font_size = 66
 text = "GAME OVER"
+
+[node name="messages" type="Control" parent="ColorRect"]
+modulate = Color(0.62, 0.62, 0.62, 1)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(641.99725, 642.99097)
+
+[node name="1" type="Label" parent="ColorRect/messages"]
+visible = false
+layout_mode = 0
+offset_left = 394.99832
+offset_top = 628.9912
+offset_right = 1763.9983
+offset_bottom = 679.9912
+scale = Vector2(0.37024325, 0.37024325)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ecavu")
+theme_override_font_sizes/font_size = 50
+text = "Try to dodge the attacks next time."
+horizontal_alignment = 1
+
+[node name="2" type="Label" parent="ColorRect/messages"]
+visible = false
+layout_mode = 0
+offset_left = 331.99854
+offset_top = 628.9912
+offset_right = 2023.9985
+offset_bottom = 679.9912
+scale = Vector2(0.37024325, 0.37024325)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ecavu")
+theme_override_font_sizes/font_size = 50
+text = "You can use left-click to damage the enemy."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Label" parent="ColorRect/messages"]
+visible = false
+layout_mode = 0
+offset_left = 331.99854
+offset_top = 628.9912
+offset_right = 2023.9985
+offset_bottom = 679.9912
+scale = Vector2(0.37024325, 0.37024325)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ecavu")
+theme_override_font_sizes/font_size = 50
+text = "WASD to move."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Label" parent="ColorRect/messages"]
+visible = false
+layout_mode = 0
+offset_left = 331.99854
+offset_top = 628.9912
+offset_right = 2023.9985
+offset_bottom = 679.9912
+scale = Vector2(0.37024325, 0.37024325)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ecavu")
+theme_override_font_sizes/font_size = 50
+text = "Make sure your health stays above zero."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="5" type="Label" parent="ColorRect/messages"]
+visible = false
+layout_mode = 0
+offset_left = 331.99854
+offset_top = 628.9912
+offset_right = 2023.9985
+offset_bottom = 679.9912
+scale = Vector2(0.37024325, 0.37024325)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ecavu")
+theme_override_font_sizes/font_size = 50
+text = "Make sure you're watching the screen."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="really" type="Control" parent="."]
 visible = false

@@ -38,15 +38,15 @@ func _ready() -> void:
 	$"ambience".play()
 	pass 
 func pauseGame():
-	print_debug("Paused")
+	
 	$Music/musicInt.bus = "lowpass"
 	$Music/musicLoop.bus = "lowpass"
 	$Music/musicEnd.bus = "lowpass"
 	
 func unpauseGame():
-	$Music/musicInt.bus = "Master"
-	$Music/musicLoop.bus = "Master"
-	$Music/musicEnd.bus = "Master"
+	$Music/musicInt.bus = "Music"
+	$Music/musicLoop.bus = "Music"
+	$Music/musicEnd.bus = "Music"
 func gameOver():
 	var tween = create_tween()
 	tween.set_parallel()

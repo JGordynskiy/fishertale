@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dfc7lldewp5pq"]
+[gd_scene load_steps=77 format=3 uid="uid://dfc7lldewp5pq"]
 
 [ext_resource type="Texture2D" uid="uid://b5sek51ovhatj" path="res://Assets/objects/glassOverlay.png" id="1_h8wsi"]
 [ext_resource type="Script" uid="uid://6mulj1la2v3j" path="res://scenes/levels/respite_menu.gd" id="1_po2xu"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://ci8dkded6hay0" path="res://Assets/enemies/laserFish.png" id="26_v85fi"]
 [ext_resource type="Texture2D" uid="uid://f22v7c03m886" path="res://Assets/objects/roeIcon.png" id="27_855ro"]
 [ext_resource type="PackedScene" uid="uid://djy2i1xu1j0um" path="res://scenes/ui/menu_hp_bar.tscn" id="31_1dcgu"]
+[ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="34_wbjcc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwa20"]
 bg_color = Color(0.3, 0.1843, 0.033000007, 1)
@@ -532,13 +533,17 @@ grow_vertical = 2
 script = ExtResource("1_po2xu")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("2_uu4xs")
+bus = &"Music"
 
 [node name="hoverOn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_culeq")
+bus = &"SFX"
 
 [node name="select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_6i2y2")
+bus = &"SFX"
 
 [node name="upgradePanel" type="Panel" parent="."]
 z_index = 5
@@ -1278,6 +1283,8 @@ rotation = -1.5707964
 scale = Vector2(0.03480081, 0.03480081)
 
 [node name="menuHpBar" parent="hpbar" instance=ExtResource("31_1dcgu")]
+
+[node name="Pause Menu" parent="." instance=ExtResource("34_wbjcc")]
 
 [connection signal="mouse_entered" from="ReadyButton" to="." method="_on_ready_button_mouse_entered"]
 [connection signal="pressed" from="ReadyButton" to="." method="_on_ready_button_pressed"]

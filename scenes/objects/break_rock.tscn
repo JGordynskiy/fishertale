@@ -42,11 +42,13 @@ polygon = PackedVector2Array(-90, -83, -114, -44, -130, -20, -146, 14, -155, 41,
 [node name="rockHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_e0jvj")
 pitch_scale = 1.5
+bus = &"SFX"
 
 [node name="rockDestroy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_oup5i")
 volume_db = -6.0
 pitch_scale = 1.2
+bus = &"SFX"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 modulate = Color(0.33, 0.31317002, 0.2739, 1)

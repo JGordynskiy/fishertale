@@ -83,6 +83,7 @@ scale = Vector2(0.2715754, 0.85245204)
 [node name="ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_oytuy")
 autoplay = true
+bus = &"SFX"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(18661, -9234)
@@ -126,16 +127,19 @@ scale = Vector2(14.574766, 14.574766)
 process_mode = 3
 stream = ExtResource("15_keobj")
 volume_db = -5.0
+bus = &"Music"
 
 [node name="musicloop" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("16_perse")
 volume_db = -5.0
+bus = &"Music"
 
 [node name="musicend" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("17_mlfca")
 volume_db = -5.0
+bus = &"Music"
 
 [node name="FPS counter" parent="." instance=ExtResource("18_rjglp")]
 

@@ -61,3 +61,4 @@ pitch_scale = 1.5
 autoplay = true
 max_distance = 11000.0
 attenuation = 0.8408968
+bus = &"SFX"

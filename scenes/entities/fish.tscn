@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b0m4623tpxvua"]
+[gd_scene load_steps=49 format=3 uid="uid://b0m4623tpxvua"]
 
 [ext_resource type="Script" uid="uid://bhiwhge6dfr8p" path="res://Scripts/fish.gd" id="1_8g0i4"]
 [ext_resource type="Texture2D" uid="uid://loab5wse0qu7" path="res://Assets/fishIdle1.png" id="2_6lgmd"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://67yt0m10uiha" path="res://Assets/fishBullet/slash/slash3.png" id="21_acutr"]
 [ext_resource type="Texture2D" uid="uid://bb6sm81122jne" path="res://Assets/fishBullet/slash/slash4.png" id="22_gm1cm"]
 [ext_resource type="Texture2D" uid="uid://biljmjygnte0k" path="res://Assets/bubble.png" id="23_80fr0"]
-[ext_resource type="Texture2D" uid="uid://b11g6oumaka6a" path="res://Assets/ui/crosshair.png" id="24_sscus"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex20v"]
 
@@ -538,46 +537,56 @@ libraries = {
 stream = ExtResource("7_21k1a")
 pitch_scale = 1.5
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="pop" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("8_bvcvt")
 pitch_scale = 1.5
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="woosh" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("9_f1s4w")
 volume_db = 5.0
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="damage" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("10_f1s4w")
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="dashrecover" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("11_3ig6q")
 volume_db = 5.0
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="deathSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("12_ex20v")
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="deathPop" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("14_gfhab")
 volume_db = -10.0
 pitch_scale = 0.5
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="swim" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("12_8hrfi")
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="slash" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("16_6j225")
+bus = &"SFX"
 
 [node name="slashland" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("17_8itkn")
 volume_db = 5.0
+bus = &"SFX"
 
 [node name="totalPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -621,14 +630,6 @@ scale = Vector2(3.4999995, 3.4999995)
 emitting = false
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_5adjs")
-
-[node name="crosshair" type="CanvasLayer" parent="."]
-visible = false
-scale = Vector2(0.75, 0.75)
-transform = Transform2D(0.75, 0, 0, 0.75, 0, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="crosshair"]
-texture = ExtResource("24_sscus")
 
 [connection signal="area_entered" from="fish" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="fish" to="." method="_on_area_2d_area_exited"]

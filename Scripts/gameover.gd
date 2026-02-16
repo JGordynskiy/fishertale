@@ -5,10 +5,14 @@ extends CanvasLayer
 @onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
 @onready var game  = get_owner()
 
+var rng = RandomNumberGenerator.new()
+var rand : int
+
 @onready var cam = $"../fish/followCam"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	globalSignals.gameOver.connect(onDeath)
 	hide()
 	pass # Replace with function body.
@@ -20,6 +24,7 @@ func _process(delta: float) -> void:
 	pass
 
 func onDeath():
+	chooseMessage()
 	global.pausable = false
 	
 	await get_tree().create_timer(3).timeout
@@ -61,6 +66,22 @@ func _on_retry_pressed() -> void:
 	global.goto_scene("res://scenes/levels/respite_menu.tscn")
 	
 	pass # Replace with function body.
+func chooseMessage():
+
+	rng.randomize()
+	rand = rng.randi_range(1,4)
+	match rand:
+		1:
+			$"ColorRect/messages/1".visible = true
+		2:	
+			$"ColorRect/messages/2".visible = true
+		3:
+			$"ColorRect/messages/3".visible = true
+		4:
+			$"ColorRect/messages/4".visible = true
+		5:
+			$"ColorRect/messages/5".visible = true
+
 
 func _on_quit_pressed() -> void:
 	$"sounds/ui/select".play()
@@ -68,7 +89,7 @@ func _on_quit_pressed() -> void:
 	thunkfade.type = true
 	game.add_child(thunkfade)
 	
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.8).timeout
 	global.goto_scene("res://scenes/levels/main_menu.tscn")
 	
 	

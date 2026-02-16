@@ -111,11 +111,13 @@ stream = ExtResource("5_f472r")
 volume_db = 5.0
 max_distance = 90000.0
 max_polyphony = 196
+bus = &"SFX"
 
 [node name="fan Startup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_j6gng")
 volume_db = 5.0
 max_distance = 90000.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="finished" from="Fan ambience" to="." method="_on_fan_ambience_finished"]

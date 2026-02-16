@@ -75,9 +75,11 @@ offset = Vector2(-622.773, -13.81)
 stream = ExtResource("10_me7kd")
 volume_db = -5.0
 max_polyphony = 40
+bus = &"SFX"
 
 [node name="pop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_yh3mi")
 max_polyphony = 99
+bus = &"SFX"
 
 [connection signal="body_entered" from="area2d" to="." method="_on_area_2d_body_entered"]

@@ -74,6 +74,7 @@ rotation = -1.5707964
 scale = Vector2(55.219242, 55.219242)
 stream = ExtResource("3_5o7j4")
 max_distance = 11000.0
+bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
