@@ -1,0 +1,215 @@
+[gd_scene load_steps=19 format=3 uid="uid://cth2l3adobs7"]
+
+[ext_resource type="Texture2D" uid="uid://dovm6ow14bwds" path="res://Assets/enemies/lightfish/lightFishMain.png" id="1_8sjaw"]
+[ext_resource type="Script" uid="uid://y6v7mq837sgq" path="res://scenes/entities/light_fish.gd" id="1_noduv"]
+[ext_resource type="Texture2D" uid="uid://by8uaycfr4n0i" path="res://Assets/enemies/lightfish/lightFishidle1.png" id="2_fkode"]
+[ext_resource type="Texture2D" uid="uid://bjo3cypo56sb2" path="res://Assets/enemies/lightfish/lightFishidle2.png" id="3_fn3a5"]
+[ext_resource type="Texture2D" uid="uid://c6uc1gt66qrlr" path="res://Assets/enemies/lightfish/lightFishIdle3.png" id="4_jyhme"]
+[ext_resource type="Texture2D" uid="uid://c8cfdr2s20rs3" path="res://Assets/enemies/lightfish/lightFishSpawning1.png" id="5_jyhme"]
+[ext_resource type="Texture2D" uid="uid://dark5kfs6c0nx" path="res://Assets/enemies/lightfish/LightFishSpawning2.png" id="6_noduv"]
+[ext_resource type="Texture2D" uid="uid://cuy75bae04stp" path="res://Assets/enemies/lightfish/LightFishSpawning3.png" id="7_pxgsf"]
+[ext_resource type="Texture2D" uid="uid://bb5fnm8xr1nk6" path="res://Assets/particles/sparkle.png" id="9_pxgsf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_noduv"]
+animations = [{
+"frames": [{
+"duration": 25.0,
+"texture": ExtResource("1_8sjaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fkode")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fn3a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jyhme")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_fn3a5")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_fkode")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jyhme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_noduv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pxgsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8sjaw")
+}],
+"loop": false,
+"name": &"spawnIn",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8sjaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pxgsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_noduv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jyhme")
+}],
+"loop": false,
+"name": &"spawnOut",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_xp3fx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.3251023, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.3251023, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pxgsf"]
+resource_name = "spawnIn"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0.01, 0, 0, 0, 1.6460149, 4.3251023, -0.3213898, -0.083432674, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0.01, 0, 0, 0, 1.4111598, 4.3251023, -0.3333333, 0.13751602, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_w8n2r"]
+resource_name = "spawnOut"
+length = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4.325, -0.25, 0, 0.033333335, -0.28321755, 0.09384817, -0.033333324, 0.2812082, 0, 0),
+"times": PackedFloat32Array(0, 0.099999994)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4.325, -0.25, 0, 0.03576045, -0.41377848, -0.0065833554, 0, 0.18077672, 0, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w8n2r"]
+_data = {
+&"RESET": SubResource("Animation_xp3fx"),
+&"spawnIn": SubResource("Animation_pxgsf"),
+&"spawnOut": SubResource("Animation_w8n2r")
+}
+
+[sub_resource type="Curve" id="Curve_pxgsf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xp3fx"]
+curve = SubResource("Curve_pxgsf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xp3fx"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 15000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_xp3fx")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxgsf"]
+radius = 159.0
+height = 960.0
+
+[node name="lightFish" type="Node2D" groups=["dangerObj", "objects"]]
+modulate = Color(1, 1, 1, 0.84705883)
+z_index = 300
+script = ExtResource("1_noduv")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(7, -32)
+scale = Vector2(4.3251023, 4.3251023)
+sprite_frames = SubResource("SpriteFrames_noduv")
+animation = &"spawnOut"
+frame = 3
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_w8n2r")
+}
+speed_scale = 0.8
+
+[node name="spawn" type="GPUParticles2D" parent="."]
+scale = Vector2(0.990881, 1)
+emitting = false
+amount = 150
+texture = ExtResource("9_pxgsf")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+visibility_rect = Rect2(-99999, -999999, 999999, 9999999)
+process_material = SubResource("ParticleProcessMaterial_xp3fx")
+
+[node name="hitbox" type="Area2D" parent="." groups=["dangerObj", "enemyHitbox", "objects"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" groups=["dangerObj", "enemyHitbox", "objects"]]
+position = Vector2(0, 551)
+scale = Vector2(4.057997, 4.057997)
+shape = SubResource("CapsuleShape2D_pxgsf")
+disabled = true
+debug_color = Color(0.81335956, 0.37683797, 0.43218288, 0.41960785)

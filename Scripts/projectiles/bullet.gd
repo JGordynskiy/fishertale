@@ -24,6 +24,8 @@ var popping = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$GPUParticles2D.amount = 3 + int(global.shot_damage)
+	
 	$GPUParticles2D.emitting = true
 	#print(dir)
 	soundPlayed = 0
@@ -80,8 +82,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	
 	if area.is_in_group("objects"):
+		curRange = range+10
+	if area.is_in_group("enemyHitbox"):
 		curRange = range+10
 		
 	pass # Replace with function body.

@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv5t54py7aslf"]
+[gd_scene load_steps=3 format=3 uid="uid://dv5t54py7aslf"]
 
 [ext_resource type="Texture2D" uid="uid://dqlggurdsw2l3" path="res://Assets/brown-crate-clipart-lg.png" id="1_pkda2"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_egkf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkda2"]
 size = Vector2(126, 128)
 
-[node name="Object" type="Area2D" groups=["objects"]]
+[node name="Object" type="StaticBody2D" groups=["objects"]]
 scale = Vector2(3.765, 3.765)
 collision_layer = 3
 collision_mask = 3
@@ -16,9 +14,6 @@ collision_mask = 3
 modulate = Color(0.57, 0.79933333, 1, 1)
 texture = ExtResource("1_pkda2")
 
-[node name="Crate" type="StaticBody2D" parent="." groups=["objects"]]
-scale = Vector2(9.955, 9.955)
-physics_material_override = SubResource("PhysicsMaterial_egkf8")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Crate"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+scale = Vector2(9.955001, 9.955001)
 shape = SubResource("RectangleShape2D_pkda2")
