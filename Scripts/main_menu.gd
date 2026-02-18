@@ -195,21 +195,21 @@ func _on_melee_pressed() -> void:
 	pass # Replace with function body.
 
 func setInitialSound():
-	$"Options Menu/volumeControl/MusicSlider".value = global.musicVol
-	$"Options Menu/volumeControl/SFXSlider".value = global.SFXVol
+	$"Options Menu/volumeControl/MusicSlider".value = settings.musicVol
+	$"Options Menu/volumeControl/SFXSlider".value = settings.SFXVol
 	
 	
 func soundOptions():
 	var SFXid = AudioServer.get_bus_index("SFX")
 	var Musicid = AudioServer.get_bus_index("Music")
 	
-	AudioServer.set_bus_volume_linear(Musicid, global.musicVol)
-	AudioServer.set_bus_volume_linear(SFXid, global.SFXVol)
-	global.musicVol = $"Options Menu/volumeControl/MusicSlider".value
-	global.SFXVol = $"Options Menu/volumeControl/SFXSlider".value
+	AudioServer.set_bus_volume_linear(Musicid, settings.musicVol)
+	AudioServer.set_bus_volume_linear(SFXid, settings.SFXVol)
+	settings.musicVol = $"Options Menu/volumeControl/MusicSlider".value
+	settings.SFXVol = $"Options Menu/volumeControl/SFXSlider".value
 	
-	$"Options Menu/volumeControl/MusicSlider/volNum".text = str(snapped(global.musicVol*100, 1)) + "%"
-	$"Options Menu/volumeControl/SFXSlider/volNum".text = str(snapped(global.SFXVol*100, 1)) + "%"
+	$"Options Menu/volumeControl/MusicSlider/volNum".text = str(snapped(settings.musicVol*100, 1)) + "%"
+	$"Options Menu/volumeControl/SFXSlider/volNum".text = str(snapped(settings.SFXVol*100, 1)) + "%"
 	
 	pass
 

@@ -23,6 +23,7 @@ config/windows_native_icon="res://Assets/ui/fishicon.ico"
 
 global="*res://Scripts/global/global.gd"
 globalSignals="*res://Scripts/global/global_signals.gd"
+settings="*res://Scripts/global/settings.gd"
 
 [display]
 

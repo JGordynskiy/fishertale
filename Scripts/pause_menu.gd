@@ -45,7 +45,7 @@ func dmgPause():
 
 func pause():
 	
-	mousePos = get_viewport().get_mouse_position()
+	#mousePos = get_viewport().get_mouse_position()
 	
 	$"../areyousure".visible = false
 	global.pausable = false
@@ -61,7 +61,7 @@ func pause():
 	
 func unpause():
 	
-	Input.warp_mouse(mousePos)
+	#Input.warp_mouse(mousePos)
 	$"../areyousure".visible = false
 	global.pausable = false
 	globalSignals.emit_signal("justUnPaused")

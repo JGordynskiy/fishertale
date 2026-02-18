@@ -34,39 +34,34 @@ func disableCam():
 	enabled = false
 	
 
-#TUTORIAL ONLY
 
 
-
-
-
-
-
-
+func shake(intensity, length):
+	for i in range(length):
+		rng.randomize()
+		offset.x = randf_range(-300*settings.camShake*intensity, 300*settings.camShake*intensity)
+		rng.randomize()
+		offset.y = randf_range(-300*settings.camShake*intensity, 300*settings.camShake*intensity)
+		await get_tree().create_timer(0.01, true).timeout
+	offset.x = 0
+	offset.y = 0
+	
 func takeDamage():
-	if tutStage < 3 && tutorial:
-		global.hp +=1
-	
-	#for i in range(10):
-		#rng.randomize()
-		#offset.x = randf_range(-1000, 1000)
-		#rng.randomize()
-		#offset.y = randf_range(-1000, 1000)
-	#var tween = get_tree().create_tween()
-	#var tween2 = get_tree().create_tween()
-	#tween.tween_property(self, "offset.x", 0, 0.5)
-	#tween2.tween_property(self, "offset.x", 0, 0.5)
-	
 	var instance = dmgSplash.instantiate()
 	var game = get_tree().get_current_scene()
 	game.add_child.call_deferred(instance)
-	pass
+	
+	if tutStage < 3 && tutorial:
+		global.hp +=1
+	shake(1, 10)
+	
 	
 func deathZoom():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "zoom", Vector2(0.1,0.1), 1.5).set_trans(Tween.TRANS_CUBIC)
 	pass
-
+	
+#TUTORIAL ONLY
 func tutorialCutscene():
 	if tutorial:
 		if tutStage == 0:

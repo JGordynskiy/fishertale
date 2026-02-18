@@ -59,6 +59,8 @@ func _physics_process(delta: float) -> void:
 		$Dead.show()
 		$Sprite2D.hide()
 		if !dead:
+			$"../fish/followCam".shake(1, 15)
+			
 			dead = true
 			globalSignals.emit_signal("boss1death")
 			$deathSFX.play()

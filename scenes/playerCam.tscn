@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b30dcmbgp40rx" path="res://Scripts/camera_2d.gd" id="1_uejxg"]
 
 [node name="followCam" type="Camera2D"]
+z_index = 1000
 scale = Vector2(2.9575753, 0.5186387)
 zoom = Vector2(0.06, 0.06)
 limit_left = 0

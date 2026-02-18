@@ -36,7 +36,7 @@ animations = [{
 "speed": 25.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("5_jyhme")
 }, {
 "duration": 1.0,
@@ -184,8 +184,6 @@ position = Vector2(7, -32)
 scale = Vector2(4.3251023, 4.3251023)
 sprite_frames = SubResource("SpriteFrames_noduv")
 animation = &"spawnOut"
-frame = 3
-frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
 libraries = {
