@@ -89,6 +89,7 @@ func _physics_process(delta: float) -> void:
 	if coolDown < 0:
 		if global.hp > 0 && boss3hp > 0:
 			if ($fishFinder.get_collider().is_in_group("objects")):
+				print_debug($fishFinder.get_collider())
 				follow()
 				pass
 			else:
@@ -253,6 +254,7 @@ func sweepLaser():
 	await get_tree().create_timer(1, false).timeout #telegraph time
 	
 	#Actually start the laser
+	shoot(global_position.angle_to_point(fish.global_position) - global_rotation)
 	$laser/AnimationPlayer.play("laserIn")
 	$laserBlast.play()
 	$laser.visible = true
@@ -304,5 +306,5 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
-	shoot(global_position.angle_to_point(fish.global_position) - global_rotation)
+	
 	pass # Replace with function body.

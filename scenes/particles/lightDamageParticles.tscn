@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://yrni27ato13p"]
+
+[ext_resource type="Texture2D" uid="uid://bb5fnm8xr1nk6" path="res://Assets/particles/sparkle.png" id="1_p3or8"]
+
+[sub_resource type="Curve" id="Curve_obonb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xp3fx"]
+curve = SubResource("Curve_obonb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w2jwx"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+spread = 30.0
+initial_velocity_max = 25000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_xp3fx")
+
+[node name="damage" type="GPUParticles2D"]
+rotation = 1.816287
+scale = Vector2(0.990881, 1)
+emitting = false
+amount = 25
+texture = ExtResource("1_p3or8")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+visibility_rect = Rect2(-99999, -999999, 999999, 9999999)
+process_material = SubResource("ParticleProcessMaterial_w2jwx")

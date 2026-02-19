@@ -5,7 +5,7 @@ var mult = 1
 
 
 
-@onready var game  = get_owner()# I guess this gets  reference to the game node? but why?
+@onready var game  = get_owner()
 @onready var bullet = load("res://scenes/bullet.tscn") #!! important!! This loads a scene from res://
 @onready var camera = $followCam
 @onready var cloud = load("res://scenes/particles/dash_cloud.tscn")

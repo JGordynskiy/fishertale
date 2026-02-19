@@ -35,7 +35,7 @@ func disableCam():
 	
 
 
-
+## Shakes the camera. (Intensity 0-3, length 5-20)
 func shake(intensity, length):
 	for i in range(length):
 		rng.randomize()

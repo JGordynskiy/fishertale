@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cth2l3adobs7"]
+[gd_scene load_steps=21 format=3 uid="uid://cth2l3adobs7"]
 
 [ext_resource type="Texture2D" uid="uid://dovm6ow14bwds" path="res://Assets/enemies/lightfish/lightFishMain.png" id="1_8sjaw"]
 [ext_resource type="Script" uid="uid://y6v7mq837sgq" path="res://scenes/entities/light_fish.gd" id="1_noduv"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dark5kfs6c0nx" path="res://Assets/enemies/lightfish/LightFishSpawning2.png" id="6_noduv"]
 [ext_resource type="Texture2D" uid="uid://cuy75bae04stp" path="res://Assets/enemies/lightfish/LightFishSpawning3.png" id="7_pxgsf"]
 [ext_resource type="Texture2D" uid="uid://bb5fnm8xr1nk6" path="res://Assets/particles/sparkle.png" id="9_pxgsf"]
+[ext_resource type="AudioStream" uid="uid://n21w0321fjle" path="res://Assets/sounds/enemie/lightFish/lightfishSpawn.ogg" id="10_xp3fx"]
+[ext_resource type="AudioStream" uid="uid://cro5mrjvjfg35" path="res://Assets/sounds/enemie/lightFish/lightfishDespawn.ogg" id="11_w8n2r"]
+[ext_resource type="AudioStream" uid="uid://b4uqqxpwhqrnv" path="res://Assets/sounds/enemie/lightFish/lightfishDmg.ogg" id="12_17nqx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_noduv"]
 animations = [{
@@ -33,7 +36,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 25.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 4.0,
@@ -154,28 +157,24 @@ _data = {
 &"spawnOut": SubResource("Animation_w8n2r")
 }
 
-[sub_resource type="Curve" id="Curve_pxgsf"]
+[sub_resource type="Curve" id="Curve_obonb"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_xp3fx"]
-curve = SubResource("Curve_pxgsf")
+curve = SubResource("Curve_obonb")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xp3fx"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17nqx"]
 lifetime_randomness = 1.0
 particle_flag_disable_z = true
 spread = 180.0
 initial_velocity_max = 15000.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.5
+scale_min = 0.099999994
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_xp3fx")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxgsf"]
-radius = 159.0
-height = 960.0
-
 [node name="lightFish" type="Node2D" groups=["dangerObj", "objects"]]
-modulate = Color(1, 1, 1, 0.84705883)
 z_index = 300
 script = ExtResource("1_noduv")
 
@@ -183,7 +182,8 @@ script = ExtResource("1_noduv")
 position = Vector2(7, -32)
 scale = Vector2(4.3251023, 4.3251023)
 sprite_frames = SubResource("SpriteFrames_noduv")
-animation = &"spawnOut"
+animation = &"idle"
+frame_progress = 0.43297562
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
 libraries = {
@@ -201,13 +201,32 @@ one_shot = true
 explosiveness = 1.0
 randomness = 0.5
 visibility_rect = Rect2(-99999, -999999, 999999, 9999999)
-process_material = SubResource("ParticleProcessMaterial_xp3fx")
+process_material = SubResource("ParticleProcessMaterial_17nqx")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="spawnSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("10_xp3fx")
+volume_db = 8.0
+max_distance = 20000.0
+attenuation = 0.9012504
+bus = &"SFX"
+
+[node name="despawnSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("11_w8n2r")
+volume_db = 5.0
+max_distance = 20000.0
+attenuation = 0.9
+
+[node name="dmgSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("12_17nqx")
+volume_db = 12.0
+max_distance = 20000.0
+attenuation = 0.9
 
 [node name="hitbox" type="Area2D" parent="." groups=["dangerObj", "enemyHitbox", "objects"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" groups=["dangerObj", "enemyHitbox", "objects"]]
-position = Vector2(0, 551)
-scale = Vector2(4.057997, 4.057997)
-shape = SubResource("CapsuleShape2D_pxgsf")
-disabled = true
-debug_color = Color(0.81335956, 0.37683797, 0.43218288, 0.41960785)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hitbox"]
+polygon = PackedVector2Array(-1274, 1529, -1599, 586, -2412, -671, -2834, -1538, -2520, -1570, -2195, -1158, -1003, -671, -516, -1213, -61, -1451, 459, -1288, 1196, -638, 2063, -920, 2475, -1516, 2821, -1321, 2171, -400, 1164, 1290, 1250, 2612, 622, 1529, 48, 2558, -732, 1691, -1220, 2666)
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

@@ -297,7 +297,7 @@ target_position = Vector2(-999999, 0)
 
 [node name="fishFinder" type="RayCast2D" parent="."]
 modulate = Color(1, 0.72800004, 0.04000002, 1)
-scale = Vector2(-1.0947801, 12.172503)
+scale = Vector2(-1.1736983, 88.76403)
 target_position = Vector2(-99999, 0)
 
 [node name="laserTelegraph" type="GPUParticles2D" parent="."]
