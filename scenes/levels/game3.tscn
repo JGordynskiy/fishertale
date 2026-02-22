@@ -86,6 +86,7 @@ autoplay = true
 bus = &"SFX"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(18661, -9234)
 scale = Vector2(12, 12)
 navigation_polygon = SubResource("NavigationPolygon_lrvpm")

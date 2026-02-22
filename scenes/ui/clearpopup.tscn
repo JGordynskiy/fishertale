@@ -151,3 +151,4 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_ng1dq")
 }
+autoplay = "popup"

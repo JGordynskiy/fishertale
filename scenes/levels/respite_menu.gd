@@ -16,6 +16,7 @@ extends Control
 
 #upgrade cost
 
+
 @onready var boss1img: Sprite2D = $enemyMonitor/bossImages/boss1Img
 @onready var boss2img: AnimatedSprite2D = $enemyMonitor/bossImages/boss2img
 
@@ -26,6 +27,7 @@ var transitioning = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Engine.physics_ticks_per_second = 60
 	global.pausable = true
 	
 	
@@ -42,19 +44,24 @@ func _ready() -> void:
 	
 	if global.curBoss == 1:
 		global.hp = 5
-		boss1img.modulate.a = 255
+		boss1img.modulate.a = 1
 	else:
 		boss1img.modulate.a = 0
 		
 	if global.curBoss == 2:
-		boss2img.modulate.a = 255
+		boss2img.modulate.a = 1
 	else:
 		boss2img.modulate.a = 0	
 	
 	if global.curBoss == 3:
-		$enemyMonitor/bossImages/boss3img.modulate.a = 255
+		$enemyMonitor/bossImages/boss3img.modulate.a = 1
 	else:
 		$enemyMonitor/bossImages/boss3img.modulate.a = 0	
+	
+	if global.curBoss == 4:
+		$enemyMonitor/bossImages/boss4img.modulate.a = 1
+	else:
+		$enemyMonitor/bossImages/boss4img.modulate.a = 0	
 	#await get_tree().create_timer(0.5, false).timeout
 	music.play()
 		
@@ -141,11 +148,17 @@ func _process(delta: float) -> void:
 		$enemyMonitor/hints/boss3.visible = true
 	else:
 		$enemyMonitor/hints/boss3.visible = false
+		
+	#boss 4
+	if global.curBoss == 4:
+		$enemyMonitor/hints/boss4.visible = true
+	else:
+		$enemyMonitor/hints/boss4.visible = false
 	
 	
 	
 	#ready Button
-	if global.curBoss > 3:
+	if global.curBoss > 4:
 		$ReadyButton.disabled = true
 	else:
 		$ReadyButton.disabled = false
@@ -196,6 +209,8 @@ func _on_ready_button_pressed() -> void:
 			globalSignals.emit_signal("gameRto2")
 		elif global.curBoss == 3:
 			globalSignals.emit_signal("gameRto3")
+		elif global.curBoss == 4:
+			globalSignals.emit_signal("gameRto4")
 		
 	pass # Replace with function body.
 
@@ -220,6 +235,7 @@ func _on_damage_pressed() -> void:
 	global.shot_damage += 0.5
 	global.roe -= global.damageCost
 	global.damageCost += 1
+	
 	pass # Replace with function body.
 func _on_damage_mouse_entered() -> void:
 	if damage.disabled == false:

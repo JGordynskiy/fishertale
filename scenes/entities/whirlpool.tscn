@@ -214,6 +214,7 @@ scale = Vector2(0.60960335, 0.60960335)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(52.262924, 52.262924)
 shape = SubResource("CircleShape2D_lc5bf")
+disabled = true
 
 [node name="spawn" type="AnimationPlayer" parent="."]
 libraries = {

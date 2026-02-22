@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv5t54py7aslf"]
+[gd_scene load_steps=4 format=3 uid="uid://dv5t54py7aslf"]
 
 [ext_resource type="Texture2D" uid="uid://dqlggurdsw2l3" path="res://Assets/brown-crate-clipart-lg.png" id="1_pkda2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkda2"]
 size = Vector2(126, 128)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkda2"]
+closed = false
+cull_mode = 2
+polygon = PackedVector2Array(-628.6853, -643.0279, 623.1076, -648.8712, 623.1076, 640.3719, -628.6853, 640.3719)
 
 [node name="Object" type="StaticBody2D" groups=["objects"]]
 scale = Vector2(3.765, 3.765)
@@ -17,3 +22,6 @@ texture = ExtResource("1_pkda2")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 scale = Vector2(9.955001, 9.955001)
 shape = SubResource("RectangleShape2D_pkda2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_pkda2")

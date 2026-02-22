@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcdw2n03020m6"]
+[gd_scene load_steps=7 format=3 uid="uid://dcdw2n03020m6"]
 
 [ext_resource type="Script" uid="uid://doj0074wpqt4" path="res://scenes/projectiles/sparkle_line_attack.gd" id="1_hhnmc"]
+[ext_resource type="Texture2D" uid="uid://cy5n6eyf8mc0n" path="res://Assets/objects/warningLaser.png" id="2_jjdbj"]
 
 [sub_resource type="Animation" id="Animation_jjdbj"]
 length = 0.001
@@ -15,6 +16,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
 }
 
 [sub_resource type="Animation" id="Animation_hhnmc"]
@@ -32,6 +45,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.8]
+}
 
 [sub_resource type="Animation" id="Animation_3w62c"]
 resource_name = "fadeOut"
@@ -47,6 +72,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.8, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y1s64"]
@@ -69,3 +106,12 @@ width = 5.0
 libraries = {
 &"": SubResource("AnimationLibrary_y1s64")
 }
+
+[node name="DirectionalLight2D" type="PointLight2D" parent="Line2D"]
+visible = false
+position = Vector2(1400.0084, 0)
+rotation = 1.5707964
+scale = Vector2(0.84453046, 0.98082817)
+energy = 0.8
+shadow_enabled = true
+texture = ExtResource("2_jjdbj")

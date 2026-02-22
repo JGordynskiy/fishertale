@@ -12,7 +12,7 @@ var debugCounter = 0
 var heart = 1
 @export var speed = 7000
 @export var shot_rate = 400 # 400 as default, reduce to increase
-@export var shot_damage = 1.5 # 1.5 default
+@export var shot_damage = 4.5 # 1.5 default
 @export var slash_damage = shot_damage*2  # 2 default
 @export var slash_rate = 400
 @export var bulletRange = 250 
@@ -32,7 +32,7 @@ var healthCost = 1
 var accuracy = 0# 0.1 default, decrease to increase
 
 var pausable = false
-@export var camZoom = 0.06 # 0.06 default, dmgSplash stops working at 0.01!
+@export var camZoom = 0.06 # 0.06 default
 @export var curBoss = 0
 
 var whirlPoolPos : Vector2
@@ -42,6 +42,9 @@ var whirlPoolPos : Vector2
 @onready var musicVol = 1
 @onready var SFXVol = 1
 
+var infHP = false
+var infRoe = false
+
 #signal pause
 #signal unPause
 
@@ -50,6 +53,10 @@ var whirlPoolPos : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	#debug!
+	curBoss = 4
+	
 	globalSignals.connect("gameTtoR", transition_TutR)
 	
 	globalSignals.connect("gameRto1", transition_Rone)
@@ -61,6 +68,9 @@ func _ready() -> void:
 	globalSignals.connect("gameRto3", transition_Rthree)
 	globalSignals.connect("game3toR", transition_threeR)
 	
+	globalSignals.connect("gameRto4", transition_Rfour)
+	globalSignals.connect("game4toR", transition_fourR)
+	
 	
 	var root = get_tree().root
 	#This gets the last child node of "root" 
@@ -68,6 +78,8 @@ func _ready() -> void:
 	pass
 
 
+func timer(time):
+	await get_tree().create_timer(time, false).timeout
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func goto_scene(path):
@@ -84,9 +96,13 @@ func _deferred_goto_scene(path):
 	get_tree().current_scene = current_scene
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("DEBUGaddhp"):
-			if global.hp < 5:
-				global.hp += 1
+	
+	global.slash_damage = global.shot_damage*2
+	
+	if infHP:
+		global.hp = 5
+	if infRoe:
+		global.roe = 999
 	if Input.is_action_just_pressed("F11"):
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
@@ -118,22 +134,37 @@ func transition_OneR():
 	curBoss = 2
 	goto_scene("res://scenes/levels/respite_menu.tscn")
 	pass
+	
+	
+	
 func transition_Rtwo():
 	await get_tree().create_timer(1, false).timeout
 	goto_scene("res://scenes/levels/game2.tscn")
 	pass
-	
-	
+
 func transition_twoR():
 	curBoss = 3
 	await get_tree().create_timer(1, false).timeout
 	goto_scene("res://scenes/levels/respite_menu.tscn")
+	
+	
+	
 func transition_Rthree():
 	await get_tree().create_timer(1, false).timeout
 	goto_scene("res://scenes/levels/game3.tscn")
 	
-	
 func transition_threeR():
 	curBoss = 4
+	await get_tree().create_timer(1.5, false).timeout
+	goto_scene("res://scenes/levels/respite_menu.tscn")
+
+
+
+func transition_Rfour():
+	await get_tree().create_timer(1.5, false).timeout
+	goto_scene("res://scenes/levels/game4.tscn")
+	
+func transition_fourR():
+	curBoss = 5
 	await get_tree().create_timer(1.5, false).timeout
 	goto_scene("res://scenes/levels/respite_menu.tscn")

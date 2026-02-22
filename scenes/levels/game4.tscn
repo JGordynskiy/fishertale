@@ -1,0 +1,133 @@
+[gd_scene load_steps=18 format=3 uid="uid://dniwn5btd1drm"]
+
+[ext_resource type="Script" uid="uid://43cc73f8fum8" path="res://scenes/levels/game_4.gd" id="1_0b6rn"]
+[ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="2_2dwkm"]
+[ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="2_8aaog"]
+[ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="2_8kelq"]
+[ext_resource type="Texture2D" uid="uid://b2i2f13eh3y42" path="res://Assets/backgrounds/churchFore.png" id="2_lsbcc"]
+[ext_resource type="Script" uid="uid://ny38hfc3r1c6" path="res://scenes/ui/boss4healthbar.gd" id="3_ajj23"]
+[ext_resource type="Texture2D" uid="uid://mgn2kdkvlaig" path="res://Assets/backgrounds/church.png" id="3_ixi2k"]
+[ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="3_ryi7u"]
+[ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="3_yxrd2"]
+[ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="5_13hsg"]
+[ext_resource type="PackedScene" uid="uid://cth2l3adobs7" path="res://scenes/entities/lightFish.tscn" id="9_617rf"]
+[ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="10_b04r2"]
+[ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="13_ajj23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajj23"]
+size = Vector2(20.086098, 55.98082)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kelq"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_617rf"]
+closed = false
+polygon = PackedVector2Array(-17.854492, 20.893555, -191.08691, 73.69922, -327.46875, 126.50488, -438.77734, 267.4453, -472.208, 348.3623, -419.02295, 629.1045, -366.97754, 833.1074, -363.93848, 702.04395, -273.14355, 828.16895, -174.75098, 899.209, 14.436523, 928.46094, 188.80762, 906.0469, 314.93262, 828.16895, 395.8496, 687.2285, 398.5088, 833.1074, 443.1046, 612.3053, 476.3877, 447.51465, 510.19824, 303.91504, 386.73242, 156.89648, 253.76953, 83.19629, 72.93945, 31.53125)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2dwkm"]
+closed = false
+cull_mode = 2
+polygon = PackedVector2Array(29821, -10481, 29402, -11549, 33138, -11549, 32503, -16755, 31484, -17965, 33720, -17246, 33917, -19758, 34103, -17252, 36332, -17955, 35394, -16796, 34760, -11597, 38356, -11567, 38011, -10563)
+
+[node name="game4" type="Node2D"]
+script = ExtResource("1_0b6rn")
+
+[node name="bosshealthbar" parent="." instance=ExtResource("2_2dwkm")]
+script = ExtResource("3_ajj23")
+
+[node name="GameOver" parent="." instance=ExtResource("2_8kelq")]
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_8aaog")]
+
+[node name="hpBar" parent="." instance=ExtResource("3_yxrd2")]
+
+[node name="darkness" type="CanvasModulate" parent="."]
+color = Color(0.171, 0.22259998, 0.3, 1)
+
+[node name="background" type="StaticBody2D" parent="." groups=["objects"]]
+position = Vector2(32512, -29696)
+scale = Vector2(4.9888024, 4.9888024)
+
+[node name="churchFore" type="Sprite2D" parent="background"]
+z_index = 300
+position = Vector2(-2, -2)
+texture = ExtResource("2_lsbcc")
+
+[node name="churchback" type="Sprite2D" parent="background"]
+texture = ExtResource("3_ixi2k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background"]
+position = Vector2(-2, -2.0004883)
+polygon = PackedVector2Array(-5174.1924, 2582.58, -4933.0522, -2479.9575, -3727.753, -4408.6772, 6988.6465, -4740.019, 3871.666, -3297.9897, -3322.0444, -3293.981, -3325.051, 2566.945, 3887.9023, 2570.954, 3874.2725, 5154.139, -5238.536, 4993.3794)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background"]
+position = Vector2(5040.329, -270.72754)
+scale = Vector2(115.46666, 115.46666)
+shape = SubResource("RectangleShape2D_ajj23")
+
+[node name="fish" parent="." instance=ExtResource("3_ryi7u")]
+z_index = 500
+position = Vector2(26922, -33625)
+
+[node name="followCam" parent="fish" instance=ExtResource("5_13hsg")]
+limit_left = 14105
+limit_top = -48510
+limit_right = 53255
+limit_bottom = -15155
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="leftFixture" type="StaticBody2D" parent="objects" groups=["objects"]]
+position = Vector2(22616, -35031)
+scale = Vector2(2.6323123, 2.6323123)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/leftFixture"]
+position = Vector2(9.877247, 496.90146)
+scale = Vector2(47.99066, 47.99066)
+shape = SubResource("CircleShape2D_8kelq")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/leftFixture"]
+occluder = SubResource("OccluderPolygon2D_617rf")
+
+[node name="middleFixture" type="StaticBody2D" parent="objects" groups=["objects"]]
+position = Vector2(33846, -42026)
+scale = Vector2(2.6323123, 2.6323123)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/middleFixture"]
+position = Vector2(9.877247, 496.90146)
+scale = Vector2(47.99066, 47.99066)
+shape = SubResource("CircleShape2D_8kelq")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/middleFixture"]
+occluder = SubResource("OccluderPolygon2D_617rf")
+
+[node name="middleFixture2" type="StaticBody2D" parent="objects" groups=["objects"]]
+position = Vector2(45077.004, -35284)
+scale = Vector2(2.6323123, 2.6323123)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/middleFixture2"]
+position = Vector2(9.877247, 496.90146)
+scale = Vector2(47.99066, 47.99066)
+shape = SubResource("CircleShape2D_8kelq")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/middleFixture2"]
+occluder = SubResource("OccluderPolygon2D_617rf")
+
+[node name="fountain" type="LightOccluder2D" parent="objects"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_2dwkm")
+
+[node name="lightFish" parent="." instance=ExtResource("9_617rf")]
+position = Vector2(24280, -23808)
+yRangeD = -45000
+yRangeU = -18000
+xRangeL = 17000
+xRangeR = 50000
+
+[node name="Ambient Particles" parent="." instance=ExtResource("10_b04r2")]
+position = Vector2(34015, -7986)
+scale = Vector2(1.457446, 1.457446)
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ajj23")
+autoplay = true
+bus = &"SFX"

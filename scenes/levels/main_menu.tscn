@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cjdpo2qo6jcen"]
+[gd_scene load_steps=38 format=3 uid="uid://cjdpo2qo6jcen"]
 
 [ext_resource type="Script" uid="uid://kdxn5brsro0d" path="res://Scripts/main_menu.gd" id="1_towmw"]
 [ext_resource type="Texture2D" uid="uid://dbnqyj0tbpt3b" path="res://Assets/fishertalebackground.png" id="2_geflf"]
@@ -153,6 +153,13 @@ border_width_right = 9
 border_width_bottom = 9
 border_color = Color(0.088000014, 0.30159998, 0.8, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w62eu"]
+bg_color = Color(0, 0, 0, 0.77254903)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5b8e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2ttv"]
+
 [node name="Main menu" type="Control"]
 layout_mode = 3
 anchor_right = 1.764
@@ -224,6 +231,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -274,7 +282,6 @@ bus = &"Music"
 parameters/looping = false
 
 [node name="IntialMenu" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -491,6 +498,7 @@ autoplay = "bob"
 speed_scale = 1.5
 
 [node name="Options Menu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -661,7 +669,124 @@ theme_override_fonts/font = ExtResource("4_pwqr4")
 text = "100"
 horizontal_alignment = 1
 
+[node name="debug Menu" type="Control" parent="."]
+visible = false
+z_index = 300
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="debug Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w62eu")
+
+[node name="Label" type="Label" parent="debug Menu"]
+layout_mode = 0
+offset_left = 1463.5461
+offset_top = 887.59094
+offset_right = 1936.5461
+offset_bottom = 990.59094
+theme_override_colors/font_color = Color(0.28, 0.28, 0.28, 1)
+theme_override_font_sizes/font_size = 75
+text = "left+up+right"
+
+[node name="debugTitle" type="Label" parent="debug Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -615.5
+offset_top = -497.11102
+offset_right = 615.5
+offset_bottom = 51.888977
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Debug Menu
+"
+
+[node name="infHPLabel" type="Label" parent="debug Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -551.4811
+offset_top = -68.5
+offset_right = -41.48108
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.57, 0.57, 1)
+theme_override_font_sizes/font_size = 100
+text = "Inf HP"
+horizontal_alignment = 1
+
+[node name="infHP" type="CheckButton" parent="debug Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -386.21912
+offset_top = 55.474487
+offset_right = -342.21912
+offset_bottom = 79.47449
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.6620927, 3.6620927)
+theme_override_styles/hover = SubResource("StyleBoxFlat_g5b8e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y2ttv")
+
+[node name="infROELabel" type="Label" parent="debug Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.579224
+offset_top = -68.5
+offset_right = 529.5792
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.71833336, 0.35000002, 1)
+theme_override_font_sizes/font_size = 100
+text = "Inf Roe"
+horizontal_alignment = 1
+
+[node name="infROE" type="CheckButton" parent="debug Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 184.84119
+offset_top = 55.474487
+offset_right = 228.84119
+offset_bottom = 79.47449
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.6620927, 3.6620927)
+theme_override_styles/hover = SubResource("StyleBoxFlat_g5b8e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y2ttv")
+
 [connection signal="finished" from="sounds/menumusic" to="." method="_on_menumusic_finished"]
+[connection signal="finished" from="sounds/menumusicloop" to="." method="_on_menumusicloop_finished"]
 [connection signal="mouse_entered" from="IntialMenu/InitialButtons/play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="IntialMenu/InitialButtons/play" to="." method="_on_play_pressed"]
 [connection signal="mouse_entered" from="IntialMenu/InitialButtons/options" to="." method="_on_options_mouse_entered"]
@@ -678,3 +803,5 @@ horizontal_alignment = 1
 [connection signal="pressed" from="SecondMenu/modeButtons/melee" to="." method="_on_melee_pressed"]
 [connection signal="mouse_entered" from="Options Menu/optionsBack" to="." method="_on_options_back_mouse_entered"]
 [connection signal="pressed" from="Options Menu/optionsBack" to="." method="_on_options_back_pressed"]
+[connection signal="pressed" from="debug Menu/infHP" to="." method="_on_inf_hp_pressed"]
+[connection signal="pressed" from="debug Menu/infROE" to="." method="_on_inf_roe_pressed"]

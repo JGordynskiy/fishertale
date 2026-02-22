@@ -8,6 +8,7 @@ extends Node2D
 @onready var cam = $"../fish/followCam"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	visible = false
 	spawn.play("spawn")
 	whirlpoolnoise.play()
@@ -19,6 +20,7 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(1, false).timeout
 	vortex.emitting = true
+	$Area2D/CollisionShape2D.disabled = false
 	pass # Replace with function body.
 
 
@@ -44,4 +46,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				globalSignals.emit_signal("game2toR")
 			3:
 				globalSignals.emit_signal("game3toR")
+			4:
+				globalSignals.emit_signal("game4toR")
 	pass # Replace with function body.

@@ -1,6 +1,5 @@
-extends Node2D
+extends CanvasLayer
 
-@onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 @onready var root_level = get_tree().get_current_scene()
 @onready var fish = root_level.get_node("fish") 
@@ -11,14 +10,14 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	animation_player.play("fade_out")
-	modulate.a = 10
+	$Sprite2D/AnimationPlayer.play("fade_out")
+	$Sprite2D.modulate.a = 1
 	visible = true
 	
 	
 	
 
-	position = fish.position
+	#position = fish.position
 	await get_tree().create_timer(1.5).timeout
 	queue_free()
 	pass 

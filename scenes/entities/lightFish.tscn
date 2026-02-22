@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cth2l3adobs7"]
+[gd_scene load_steps=28 format=3 uid="uid://cth2l3adobs7"]
 
 [ext_resource type="Texture2D" uid="uid://dovm6ow14bwds" path="res://Assets/enemies/lightfish/lightFishMain.png" id="1_8sjaw"]
 [ext_resource type="Script" uid="uid://y6v7mq837sgq" path="res://scenes/entities/light_fish.gd" id="1_noduv"]
 [ext_resource type="Texture2D" uid="uid://by8uaycfr4n0i" path="res://Assets/enemies/lightfish/lightFishidle1.png" id="2_fkode"]
+[ext_resource type="Texture2D" uid="uid://d3620b8ve4rce" path="res://Assets/enemies/lightfish/lightFishDead.png" id="3_2x2ff"]
 [ext_resource type="Texture2D" uid="uid://bjo3cypo56sb2" path="res://Assets/enemies/lightfish/lightFishidle2.png" id="3_fn3a5"]
 [ext_resource type="Texture2D" uid="uid://c6uc1gt66qrlr" path="res://Assets/enemies/lightfish/lightFishIdle3.png" id="4_jyhme"]
 [ext_resource type="Texture2D" uid="uid://c8cfdr2s20rs3" path="res://Assets/enemies/lightfish/lightFishSpawning1.png" id="5_jyhme"]
@@ -12,9 +13,19 @@
 [ext_resource type="AudioStream" uid="uid://n21w0321fjle" path="res://Assets/sounds/enemie/lightFish/lightfishSpawn.ogg" id="10_xp3fx"]
 [ext_resource type="AudioStream" uid="uid://cro5mrjvjfg35" path="res://Assets/sounds/enemie/lightFish/lightfishDespawn.ogg" id="11_w8n2r"]
 [ext_resource type="AudioStream" uid="uid://b4uqqxpwhqrnv" path="res://Assets/sounds/enemie/lightFish/lightfishDmg.ogg" id="12_17nqx"]
+[ext_resource type="Texture2D" uid="uid://c1whd0g47ia0x" path="res://Assets/objects/light.webp" id="13_q5pi1"]
+[ext_resource type="AudioStream" uid="uid://clu6b08u16h5v" path="res://Assets/sounds/enemie/lightFish/lightFishDeath.ogg" id="15_63r4s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_noduv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2x2ff")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 25.0,
 "texture": ExtResource("1_8sjaw")
@@ -174,16 +185,55 @@ scale_min = 0.099999994
 scale_max = 0.5
 scale_curve = SubResource("CurveTexture_xp3fx")
 
+[sub_resource type="Curve" id="Curve_2x2ff"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7257143, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_63r4s"]
+curve = SubResource("Curve_2x2ff")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iro4x"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 2000.0
+initial_velocity_max = 15000.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.39999998
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_63r4s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_63r4s"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1000.0
+emission_ring_inner_radius = 1000.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 98, 0)
+radial_accel_min = -4000.0
+radial_accel_max = -4000.0
+scale_min = 0.19999999
+scale_max = 0.19999999
+
 [node name="lightFish" type="Node2D" groups=["dangerObj", "objects"]]
 z_index = 300
 script = ExtResource("1_noduv")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(5.7791204, 5.7791204)
+color = Color(1, 0.9583334, 0.75, 1)
+shadow_enabled = true
+texture = ExtResource("13_q5pi1")
+texture_scale = 33.33
+height = 1024.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, -32)
 scale = Vector2(4.3251023, 4.3251023)
 sprite_frames = SubResource("SpriteFrames_noduv")
 animation = &"idle"
-frame_progress = 0.43297562
+frame_progress = 0.6208709
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
 libraries = {
@@ -228,5 +278,46 @@ attenuation = 0.9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hitbox"]
 polygon = PackedVector2Array(-1274, 1529, -1599, 586, -2412, -671, -2834, -1538, -2520, -1570, -2195, -1158, -1003, -671, -516, -1213, -61, -1451, 459, -1288, 1196, -638, 2063, -920, 2475, -1516, 2821, -1321, 2171, -400, 1164, 1290, 1250, 2612, 622, 1529, 48, 2558, -732, 1691, -1220, 2666)
+disabled = true
+
+[node name="checker" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="checker"]
+polygon = PackedVector2Array(-1274, 1529, -1599, 586, -2412, -671, -2834, -1538, -2520, -1570, -2195, -1158, -1003, -671, -516, -1213, -61, -1451, 459, -1288, 1196, -638, 2063, -920, 2475, -1516, 2821, -1321, 2171, -400, 1164, 1290, 1250, 2612, 622, 1529, 48, 2558, -732, 1691, -1220, 2666)
+
+[node name="deathPart" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 800
+texture = ExtResource("9_pxgsf")
+lifetime = 4.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.72
+visibility_rect = Rect2(-99999, -99999, 99999, 99999)
+process_material = SubResource("ParticleProcessMaterial_iro4x")
+
+[node name="xtraLight" type="PointLight2D" parent="."]
+scale = Vector2(55.93839, 55.93839)
+color = Color(1, 0.95686275, 0.7490196, 1)
+energy = 0.0
+shadow_enabled = true
+texture = ExtResource("13_q5pi1")
+texture_scale = 1.15
+
+[node name="chargePart" type="GPUParticles2D" parent="."]
+scale = Vector2(9.679395, 9.679395)
+emitting = false
+amount = 150
+texture = ExtResource("9_pxgsf")
+lifetime = 2.1999999999999997
+one_shot = true
+speed_scale = 4.0
+visibility_rect = Rect2(-99999, -99999, 99999, 99999)
+process_material = SubResource("ParticleProcessMaterial_63r4s")
+
+[node name="deathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_63r4s")
+max_distance = 12000.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

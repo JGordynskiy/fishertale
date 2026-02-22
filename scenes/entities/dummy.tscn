@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu8elwjh0e4uc"]
+[gd_scene load_steps=4 format=3 uid="uid://cu8elwjh0e4uc"]
 
 [ext_resource type="Script" uid="uid://d2blk7ygfaxwc" path="res://scenes/entities/dummy.gd" id="1_acb47"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_acb47"]
+closed = false
+cull_mode = 1
+polygon = PackedVector2Array(-16, -70, 39, -73, 61, -25, 65, 37, 30, 66, -29, 67, -67, 36, -73, 3, -61, -41)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_unk06"]
 
 [node name="Dummy" type="Node2D"]
 script = ExtResource("1_acb47")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_acb47")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(159, 9)

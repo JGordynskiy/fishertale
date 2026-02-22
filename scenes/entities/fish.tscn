@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://b0m4623tpxvua"]
+[gd_scene load_steps=50 format=3 uid="uid://b0m4623tpxvua"]
 
 [ext_resource type="Script" uid="uid://bhiwhge6dfr8p" path="res://Scripts/fish.gd" id="1_8g0i4"]
 [ext_resource type="Texture2D" uid="uid://loab5wse0qu7" path="res://Assets/fishIdle1.png" id="2_6lgmd"]
@@ -139,6 +139,18 @@ tracks/5/keys = {
 "points": PackedFloat32Array(0, -0.05, 0, 0.05, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LightOccluder2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-105.45453, 8.2018465e-05)]
+}
 
 [sub_resource type="Animation" id="Animation_8itkn"]
 resource_name = "counterSpin"
@@ -191,6 +203,18 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 2),
 "points": PackedFloat32Array(0, -0.05, 0, 0.05, 0, 0, -0.016666668, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.1)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LightOccluder2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-105.45453, 8.2018465e-05), Vector2(829.0909, -8.138266e-05)]
 }
 
 [sub_resource type="Animation" id="Animation_gfhab"]
@@ -252,6 +276,10 @@ _data = {
 &"spin": SubResource("Animation_gfhab"),
 &"transSpin": SubResource("Animation_v4axp")
 }
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_80fr0"]
+cull_mode = 1
+polygon = PackedVector2Array(-60.800007, -152.80002, -208.80002, -135.20001, -316.80002, -92.00001, -345.18567, -60.881924, -363.27057, -37.95237, -368.7747, 5.5347204, -358.55276, 42.696415, -331.81857, 79.85811, -272.84607, 113.06643, -201.60002, 137.6, -68.00001, 147.20001, -14.939699, 140.74004, 51.109497, 129.6706, 128.80002, 105.600006, 175.20001, 69.600006, 208.00002, 22.400002, 209.85468, 1.6278992, 212.00002, -22.400002, 192.80002, -56.000004, 162.76408, -77.486084, 123.20001, -107.20001, 80.80001, -123.20001, -1.6000001, -147.20001)
 
 [sub_resource type="Animation" id="Animation_bvcvt"]
 length = 0.001
@@ -511,6 +539,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_81hvq")
 }
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+z_index = -100
+position = Vector2(-105.45453, 8.2018465e-05)
+scale = Vector2(4.624652, 4.5990663)
+occluder = SubResource("OccluderPolygon2D_80fr0")
+sdf_collision = false
+
 [node name="fish" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fish" groups=["player"]]
@@ -609,9 +644,6 @@ z_index = 300
 position = Vector2(761.8597, -2.486035)
 scale = Vector2(2.02878, 1.8617731)
 sprite_frames = SubResource("SpriteFrames_o23v1")
-animation = &"slash"
-frame = 5
-frame_progress = 1.0
 
 [node name="movebubbles" type="GPUParticles2D" parent="."]
 z_index = -70

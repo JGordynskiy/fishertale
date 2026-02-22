@@ -78,6 +78,7 @@ animations = [{
 }]
 
 [node name="Bullet" type="CharacterBody2D" groups=["playerBullet"]]
+z_index = 500
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_y25gk")

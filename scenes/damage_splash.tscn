@@ -39,16 +39,17 @@ _data = {
 &"fade_out": SubResource("Animation_b2n6h")
 }
 
-[node name="damageSplash" type="Node2D"]
+[node name="damageSplash" type="CanvasLayer"]
 process_mode = 3
-modulate = Color(0.83, 0.83, 0.83, 1)
 scale = Vector2(6.965, 6.965)
+transform = Transform2D(6.965, 0, 0, 6.965, 0, 0)
 script = ExtResource("1_wwtet")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-process_mode = 3
 z_index = 255
-scale = Vector2(-1.075455, -1.075455)
+position = Vector2(91.02655, 51.54343)
+rotation = -3.1415927
+scale = Vector2(0.022611605, 0.022611605)
 texture = ExtResource("1_1dlyy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]

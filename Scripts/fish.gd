@@ -39,9 +39,9 @@ var invulnerable = false
 #only for Boss1
 @onready var evilFish = game.get_node("evilFish") 
 
-@export var slash_timer = 0
+var slash_timer = 0
 
-@export var shot_timer = 0
+var shot_timer = 0
 var dangerTouching = 0
 
 var iFrames = 60
@@ -71,6 +71,7 @@ func _ready():
 	globalSignals.game1toR.connect(transition)
 	globalSignals.game2toR.connect(transition)
 	globalSignals.game3toR.connect(transition)
+	globalSignals.game4toR.connect(transition)
 	
 	#plays sound and reduces slash timer on succesful slash
 	globalSignals.slashSuccess.connect(slashSuccess)
@@ -245,13 +246,27 @@ func blinker():
 		await get_tree().create_timer(0.12, false).timeout
 		blink.visible = false
 
-func _process(delta):
+func _physics_process(delta):
 	##crosshair
 	#$crosshair/Sprite2D.position = get_local_mouse_position()
 	#if $crosshair.scale.x < 0.75:
 		#$crosshair.scale.x += 1*delta
 		#$crosshair.scale.y += 1*delta
 	#shows fire if debug damage
+	
+	if global.hp < 1:
+		iFrameCount = 9999
+	
+	if dangerTouching > 0:
+		takeDamage()
+	#get_shoot_input()
+	if canMove:
+		get_input()
+	else:
+		velocity = Vector2(0, 0)
+	move_and_slide()
+	
+	
 	if (global.shot_damage > 30):
 		$fireParticles.emitting = true
 	else:
@@ -268,11 +283,11 @@ func _process(delta):
 	blinker()
 	
 	
-	slash_timer -=10
+	slash_timer -= 700*delta
 	shot_timer = shot_timer - 1000*delta
 	#Keeps the speed
 	if mult > 1:
-		mult -= 0.3
+		mult -= 20*delta
 	if mult < 1:
 		mult = 1
 	dashCount += 60*delta
@@ -326,19 +341,7 @@ func _process(delta):
 func _on_swim_finished() -> void:
 	pass
 
-func _physics_process(delta):
-	if global.hp < 1:
-		iFrameCount = 9999
-	
-	
-	if dangerTouching > 0:
-		takeDamage()
-	#get_shoot_input()
-	if canMove:
-		get_input()
-	else:
-		velocity = Vector2(0, 0)
-	move_and_slide()
+
 	
 # take damage from Obstacles
 func _on_area_2d_area_entered(area: Area2D) -> void:

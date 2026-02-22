@@ -28,6 +28,9 @@ func _ready() -> void:
 	$"Options Menu".visible = false
 	$IntialMenu.visible = true
 	
+	global.infHP = false
+	global.infRoe = false
+	
 	#menumusic.volume_db = 0
 	
 	var thunkfade = fadeRect.instantiate()
@@ -50,6 +53,11 @@ func _process(delta: float) -> void:
 		$Label.hide()
 	if $"Options Menu".visible:
 		soundOptions()
+	if (Input.is_action_pressed("left") && Input.is_action_pressed("up") && Input.is_action_just_pressed("right")) :
+		$"debug Menu".visible = !$"debug Menu".visible
+			
+	
+	
 	pass
 
 func _on_play_pressed() -> void:
@@ -149,8 +157,11 @@ func _on_play_mouse_entered() -> void:
 
 
 func _on_menumusic_finished() -> void:
+	print_debug("loop")
 	menumusicloop.play()
-	pass # Replace with function body.
+
+func _on_menumusicloop_finished() -> void:
+	menumusicloop.play()
 func _on_options_back_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
 	pass # Replace with function body.
@@ -222,3 +233,13 @@ func _on_options_back_pressed() -> void:
 	$sounds/ui/select.play()
 	$"Options Menu".visible = false
 	$IntialMenu.visible = true
+
+
+func _on_inf_hp_pressed() -> void:
+	global.infHP = !global.infHP
+	pass # Replace with function body.
+
+
+func _on_inf_roe_pressed() -> void:
+	global.infRoe = !global.infRoe
+	pass # Replace with function body.

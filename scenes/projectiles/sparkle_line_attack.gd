@@ -23,7 +23,7 @@ func shoot():
 	instance.dir = global_rotation
 	instance.global_rotation = randf_range(0, 2*PI)
 	instance.type = 1
-	instance.speed = 40000
+	instance.speed = 50000
 	await get_tree().create_timer(randf_range(0, 0.2), false).timeout
 	game.add_child(instance)
 

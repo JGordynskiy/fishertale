@@ -33,11 +33,6 @@ size = Vector2(20, 76.468155)
 [node name="game_dojo" type="Node2D"]
 script = ExtResource("1_84b36")
 
-[node name="darkness" type="CanvasModulate" parent="."]
-position = Vector2(3717.9998, 7672.9995)
-scale = Vector2(1.25, 1.25)
-color = Color(0.3168, 0.33733332, 0.44, 1)
-
 [node name="GameOver" parent="." instance=ExtResource("2_lwffo")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -59,7 +54,7 @@ texture = ExtResource("1_kerkt")
 
 [node name="fish" parent="." instance=ExtResource("2_4fbiy")]
 z_index = 500
-position = Vector2(3763, 3011.0005)
+position = Vector2(3717.9998, 7672.9995)
 
 [node name="followCam" parent="fish" instance=ExtResource("3_4fbiy")]
 limit_enabled = false
@@ -102,7 +97,7 @@ position = Vector2(38320.004, 4874.249)
 scale = Vector2(149.50159, 639.4099)
 shape = SubResource("RectangleShape2D_u8vor")
 
-[node name="objects" type="Node2D" parent="."]
+[node name="objects" type="Node" parent="."]
 
 [node name="Object" parent="objects" instance=ExtResource("12_qlfcy")]
 position = Vector2(7214, -6440)
@@ -111,23 +106,10 @@ position = Vector2(7214, -6440)
 position = Vector2(-12532.998, 9736)
 scale = Vector2(31.962097, 31.962097)
 
-[node name="Object4" parent="objects" instance=ExtResource("12_qlfcy")]
-position = Vector2(15053.001, 9381)
-rotation = 0.65585
-
-[node name="Object2" parent="objects" instance=ExtResource("12_qlfcy")]
-position = Vector2(-8271, -1287)
-rotation = -0.7803047
-
-[node name="Object3" parent="objects" instance=ExtResource("12_qlfcy")]
-position = Vector2(21415, -5727)
-rotation = 0.36753207
-scale = Vector2(8.087531, 8.087531)
-
 [node name="lightFish" parent="." instance=ExtResource("13_qlfcy")]
-position = Vector2(3494.001, 2203)
+position = Vector2(7604, 8)
 scale = Vector2(0.97832286, 0.97832286)
-yRangeD = -18000
+yRangeD = -17000
 yRangeU = 20000
-xRangeL = -17000
+xRangeL = -15000
 xRangeR = 35000
