@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dfc7lldewp5pq"]
+[gd_scene load_steps=83 format=3 uid="uid://dfc7lldewp5pq"]
 
 [ext_resource type="Texture2D" uid="uid://b5sek51ovhatj" path="res://Assets/objects/glassOverlay.png" id="1_h8wsi"]
 [ext_resource type="Script" uid="uid://6mulj1la2v3j" path="res://scenes/levels/respite_menu.gd" id="1_po2xu"]
@@ -552,6 +552,9 @@ border_width_top = 9
 border_width_right = 9
 border_width_bottom = 9
 border_color = Color(0.8, 0.45333335, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3whj"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="respite" type="Control"]
 layout_mode = 3
@@ -1353,6 +1356,8 @@ scale = Vector2(0.05050725, 0.05050725)
 icon = ExtResource("27_855ro")
 flat = true
 
+[node name="Pause Menu" parent="." instance=ExtResource("34_wbjcc")]
+
 [node name="hpbar" type="Control" parent="."]
 z_index = 50
 anchors_preset = 0
@@ -1365,7 +1370,45 @@ scale = Vector2(0.03480081, 0.03480081)
 
 [node name="menuHpBar" parent="hpbar" instance=ExtResource("31_1dcgu")]
 
-[node name="Pause Menu" parent="." instance=ExtResource("34_wbjcc")]
+[node name="underconstruction" type="Control" parent="."]
+z_index = 500
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 1
+
+[node name="Panel" type="Panel" parent="underconstruction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c3whj")
+
+[node name="Label" type="Label" parent="underconstruction"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -534.5
+offset_top = -106.5
+offset_right = 534.5
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_vrvnp")
+theme_override_font_sizes/font_size = 50
+text = "Under Construction
+
+Use ESC to return to main menu"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="mouse_entered" from="ReadyButton" to="." method="_on_ready_button_mouse_entered"]
 [connection signal="pressed" from="ReadyButton" to="." method="_on_ready_button_pressed"]

@@ -160,8 +160,10 @@ func _process(delta: float) -> void:
 	#ready Button
 	if global.curBoss > 4:
 		$ReadyButton.disabled = true
+		$underconstruction.visible = true
 	else:
 		$ReadyButton.disabled = false
+		$underconstruction.visible = false
 	
 	#damage
 	damage.text = str(global.damageCost)
