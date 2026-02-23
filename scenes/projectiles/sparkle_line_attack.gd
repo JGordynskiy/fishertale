@@ -11,7 +11,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5, false).timeout
 	$Line2D/AnimationPlayer.play("fadeOut")
 	shoot()
-	await get_tree().create_timer(5, false).timeout
+	await get_tree().create_timer(0.5, false).timeout
 	queue_free()
 	pass # Replace with function body.
 

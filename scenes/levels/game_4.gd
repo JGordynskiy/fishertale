@@ -12,7 +12,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Engine.physics_ticks_per_second = 120
+	#Engine.physics_ticks_per_second = 120
 	$fish/followCam.zoom.y = 0.05
 	$fish/followCam.zoom.x = 0.05
 	

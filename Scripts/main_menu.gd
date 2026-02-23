@@ -154,6 +154,10 @@ func _on_exit_mouse_entered() -> void:
 func _on_play_mouse_entered() -> void:
 	$sounds/ui/hoveron.play()
 	pass # Replace with function body.
+func _on_full_screen_button_mouse_entered() -> void:
+	$sounds/ui/hoveron.play()
+	pass # Replace with function body.
+
 
 
 func _on_menumusic_finished() -> void:
@@ -243,3 +247,11 @@ func _on_inf_hp_pressed() -> void:
 func _on_inf_roe_pressed() -> void:
 	global.infRoe = !global.infRoe
 	pass # Replace with function body.
+
+
+func _on_full_screen_button_pressed() -> void:
+	$sounds/ui/select.play()
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

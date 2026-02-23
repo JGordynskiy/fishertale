@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 		game2.fanSpeed = 75
 	if boss2hp <= 0 && boss2hp > -99:
 		
+		$"../fish/followCam".shake(1, 15)
 		boss2hp = -100
 		globalSignals.emit_signal("boss2death")
 		var tween = get_tree().create_tween()

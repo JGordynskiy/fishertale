@@ -164,13 +164,13 @@ func attackSchedule():
 
 func setLaserCooldown():
 	if boss3hp > boss3maxHP*0.8:
-		laserCoolDown = 250
+		laserCoolDown = 350
 	elif boss3hp > boss3maxHP *0.6:
-		laserCoolDown = 220
+		laserCoolDown = 280
 	elif boss3hp > boss3maxHP *0.4:
-		laserCoolDown = 190
+		laserCoolDown = 230
 	else:
-		laserCoolDown = 160
+		laserCoolDown = 200
 
 func laserSchedule(delta):
 	
@@ -276,6 +276,7 @@ func sweepLaser():
 
 func boss3death():
 	dead = true
+	
 	#removing hitboxes
 	$hurtbox/hurtBox.set_deferred("disabled", true)
 	$hurtbox/CollisionShape2D.set_deferred("disabled", true)
@@ -289,6 +290,9 @@ func boss3death():
 	await get_tree().create_timer(1, false).timeout
 	$deathParticle1.emitting = false
 	await get_tree().create_timer(0.5, false).timeout
+	
+	
+	$"../fish/followCam".shake(1, 15)
 	$deathSploison.play()
 	$deathparticle2.restart()
 	$deathparticle2.emitting = true

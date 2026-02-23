@@ -1063,7 +1063,6 @@ offset_bottom = 431.90533
 theme_override_styles/panel = SubResource("StyleBoxFlat_0xa0o")
 
 [node name="boss4" type="RichTextLabel" parent="enemyMonitor/hints"]
-visible = false
 clip_contents = false
 layout_mode = 0
 offset_left = 631.58276
@@ -1075,7 +1074,7 @@ theme_override_colors/default_color = Color(1, 1, 0.45999998, 1)
 theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "light fish"
+text = "Deilopod"
 
 [node name="boss4Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss4"]
 layout_mode = 0
@@ -1088,7 +1087,7 @@ theme_override_colors/default_color = Color(1, 1, 0.45882353, 1)
 theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "placeholder"
+text = "Loves the glory"
 
 [node name="boss4Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss4"]
 layout_mode = 0
@@ -1100,7 +1099,9 @@ scale = Vector2(1.0525964, 1.0525964)
 theme_override_fonts/normal_font = ExtResource("4_17bcf")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "placeholder dialogue"
+text = "A squid turned deity through devout worship.
+
+It can control light, to a degree."
 scroll_active = false
 
 [node name="boss3" type="RichTextLabel" parent="enemyMonitor/hints"]
@@ -1129,7 +1130,7 @@ theme_override_colors/default_color = Color(1, 1, 0.45882353, 1)
 theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "Chemicals are good for you"
+text = "Overengineered"
 
 [node name="boss3Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss3"]
 layout_mode = 0

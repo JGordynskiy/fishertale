@@ -24,7 +24,7 @@ func _ready() -> void:
 	if type == 0:
 		range = 300
 	if type == 1:
-		range = 120
+		range = 50
 		$PointLight2D.shadow_enabled = false
 	if type == 2:
 		range = 300
@@ -37,7 +37,7 @@ func explode():
 	$Node2D.visible = false
 	await get_tree().physics_frame
 	$Node2D/Sprite2D/Area2D/CollisionPolygon2D.disabled = true
-	await get_tree().create_timer(1.5, false).timeout
+	await get_tree().create_timer(1, false).timeout
 	queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -64,18 +64,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		if curRange > 0:
 			$trail.emitting = true
+			
+	
+	
 	move_and_slide()
 	pass
-
-func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	#$trail.emitting = true
-	pass # Replace with function body.
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	await get_tree().create_timer(0.2, false).timeout
-	$trail.emitting = false
-	pass # Replace with function body.
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -83,10 +76,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		curRange = range + 1
 		global_position = body.global_position
 		speed = 0
-
-	if body.is_in_group("objects") && type != 1:
-		curRange = range + 1
-		#global_position = body.global_position
-		speed = 0
+	#if body.is_in_group("objects") && type == 1:
+		#if curRange > 5:
+			#curRange = range + 1
+			#global_position = body.global_position
+			#speed = 0
 	
 		pass # Replace with function body.

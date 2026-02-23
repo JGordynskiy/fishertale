@@ -39,7 +39,7 @@ func _ready() -> void:
 	maxRand = 3
 	
 	# intro theatrics
-	global_position = Vector2(34000, -34000)
+	global_position = Vector2(33800, -34000)
 	await global.timer(3)
 	$chargePart.emitting = true
 	await global.timer(1)
@@ -139,7 +139,7 @@ func bossScaling():
 
 func boss4death():
 	globalSignals.boss4death.emit()
-	
+	$"../fish/followCam".shake(1, 15)
 	sprite.show()
 	$sprite/AnimationPlayer.play("RESET")
 	
@@ -260,11 +260,11 @@ func manyLinesHori(density):
 	var initialY = fish.global_position.y + rng.randf_range(-(density), density)
 	
 	var pos = Vector2(xRangeL - 1500, initialY)
-	for i in range(6):
+	for i in range(5):
 		oneLine(Vector2(pos.x, pos.y -(density*i)), 0)
 		
 	pos = Vector2(xRangeL - 1500, initialY)
-	for i in range(6):
+	for i in range(5):
 		oneLine(Vector2(pos.x, pos.y +(density*i)), 0)
 	
 func manyLinesVert(density):
@@ -273,11 +273,11 @@ func manyLinesVert(density):
 	var initialX = fish.global_position.x + rng.randf_range(-(density), density)
 	
 	var pos = Vector2(initialX, yRangeU+1500)
-	for i in range(8):
+	for i in range(6):
 		oneLine(Vector2(pos.x - (density*i), pos.y ), -(PI/2))
 		
 	pos = Vector2(initialX, yRangeU+1500)
-	for i in range(8):
+	for i in range(6):
 		oneLine(Vector2(pos.x + (density*i), pos.y ), -(PI/2))
 		
 func manyLinesDiag(density):
@@ -286,9 +286,9 @@ func manyLinesDiag(density):
 	var pos = Vector2(fish.global_position.x - fishDistFromBottom, yRangeU+1500)
 	
 	var initialX = pos.x + rng.randf_range(-(density*4), density*4)
-	for i in range(10):
+	for i in range(8):
 		oneLine(Vector2(initialX + (density*i*1.5), pos.y), PI/4*-1)
-	for i in range(10):
+	for i in range(8):
 		oneLine(Vector2(initialX - (density*i*1.5), pos.y), PI/4*-1)
 
 func manyLinesDiag2(density):
@@ -297,9 +297,9 @@ func manyLinesDiag2(density):
 	var pos = Vector2(fish.global_position.x + fishDistFromBottom, yRangeU+1500)
 	
 	var initialX = pos.x + rng.randf_range(-(density*4), density*4)
-	for i in range(10):
+	for i in range(8):
 		oneLine(Vector2(initialX + (density*i*1.5), pos.y), 3*PI/4*-1)
-	for i in range(10):
+	for i in range(8):
 		oneLine(Vector2(initialX - (density*i*1.5), pos.y), 3*PI/4*-1)
 
 func spinnySparkle(dir):
@@ -452,6 +452,7 @@ func _physics_process(delta: float) -> void:
 		sprite.show()
 		sprite.play("dead")
 		$sprite/AnimationPlayer.play("RESET")
+		$hitbox/CollisionPolygon2D.disabled = true
 
 
 # take damage + collision

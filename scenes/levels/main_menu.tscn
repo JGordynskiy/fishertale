@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cjdpo2qo6jcen"]
+[gd_scene load_steps=41 format=3 uid="uid://cjdpo2qo6jcen"]
 
 [ext_resource type="Script" uid="uid://kdxn5brsro0d" path="res://Scripts/main_menu.gd" id="1_towmw"]
 [ext_resource type="Texture2D" uid="uid://dbnqyj0tbpt3b" path="res://Assets/fishertalebackground.png" id="2_geflf"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://orim1bslsd8j" path="res://Assets/music/calm1padsloop.ogg" id="9_cn35j"]
 [ext_resource type="Texture2D" uid="uid://bgrx8hjsatu6r" path="res://Assets/ui/meleeHeartHover.png" id="9_djhkt"]
 [ext_resource type="Texture2D" uid="uid://bf812fmgxgyfr" path="res://Assets/ui/meleeHeartPressed.png" id="10_djhkt"]
+[ext_resource type="Texture2D" uid="uid://bl7pur7i74nwy" path="res://Assets/ui/fullscreen.png" id="19_djhkt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lars7"]
 texture = ExtResource("2_geflf")
@@ -153,6 +154,25 @@ border_width_right = 9
 border_width_bottom = 9
 border_color = Color(0.088000014, 0.30159998, 0.8, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tl0ru"]
+bg_color = Color(0, 0, 0, 0.64705884)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.088000014, 0.8, 0.6694667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rjsf"]
+bg_color = Color(0.5058824, 0.69803923, 0.8352941, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w62eu"]
 bg_color = Color(0, 0, 0, 0.77254903)
 
@@ -189,9 +209,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_lars7")
 
 [node name="particles" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 1023.01385
+offset_left = 1040.9614
 offset_top = 1156.805
-offset_right = 1063.0137
+offset_right = 1080.9612
 offset_bottom = 1196.805
 
 [node name="Ambient Particles Menu" parent="particles" instance=ExtResource("2_ohdsy")]
@@ -199,9 +219,9 @@ scale = Vector2(1.1861187, 1.1861187)
 
 [node name="fishertale" type="Label" parent="."]
 layout_mode = 1
-offset_left = 365.4786
+offset_left = 396.47903
 offset_top = 115.84365
-offset_right = 5990.479
+offset_right = 6021.4795
 offset_bottom = 715.8436
 scale = Vector2(0.23107316, 0.23593824)
 theme_override_font_sizes/font_size = 381
@@ -286,24 +306,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 543.3232
-offset_top = 517.2175
-offset_right = -256.16138
-offset_bottom = 29.368896
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InitialButtons" type="VBoxContainer" parent="IntialMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.749
-anchor_bottom = 0.87500006
-offset_left = 285.53033
-offset_top = 73.42204
-offset_right = 1157.5356
-offset_bottom = 1610.553
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 817.4321
+offset_top = 549.84924
+offset_right = 2938.263
+offset_bottom = 2678.3647
 scale = Vector2(0.21233284, 0.21233284)
 theme_override_constants/separation = 250
 
@@ -364,9 +375,9 @@ text = "Exit"
 [node name="SecondMenu" type="Control" parent="."]
 visible = false
 anchors_preset = 0
-offset_left = 543.3232
+offset_left = 561.27075
 offset_top = 517.2175
-offset_right = 583.3232
+offset_right = 601.27075
 offset_bottom = 557.2175
 
 [node name="modeButtonsPanel" type="Panel" parent="SecondMenu"]
@@ -538,7 +549,8 @@ text = "Back"
 
 [node name="volumeControl" type="Control" parent="Options Menu"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = -394.84744
+offset_right = -354.84744
 offset_bottom = 40.0
 
 [node name="volumeBack" type="Panel" parent="Options Menu/volumeControl"]
@@ -669,6 +681,87 @@ theme_override_fonts/font = ExtResource("4_pwqr4")
 text = "100"
 horizontal_alignment = 1
 
+[node name="Other" type="Control" parent="Options Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="otherBack" type="Panel" parent="Options Menu/Other"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1257.5435
+offset_top = 683.22003
+offset_right = 1923.2368
+offset_bottom = 1050.3303
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tl0ru")
+
+[node name="fullscreenLabel" type="Label" parent="Options Menu/Other"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1321.176
+offset_top = 766.43164
+offset_right = 1653.176
+offset_bottom = 817.43164
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_towmw")
+theme_override_font_sizes/font_size = 35
+text = "Fullscreen"
+
+[node name="fullScreenButton" type="Button" parent="Options Menu/Other"]
+layout_mode = 0
+offset_left = 1740.9183
+offset_top = 744.01
+offset_right = 2252.9185
+offset_bottom = 1256.01
+scale = Vector2(0.23541628, 0.23541628)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
+theme_override_colors/font_focus_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_pressed_color = Color(0.40432662, 0.70529413, 0.9734008, 1)
+theme_override_colors/font_hover_color = Color(0.031769015, 0.2745285, 0.4496572, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_disabled_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_colors/font_outline_color = Color(0.007843138, 0.12941177, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("4_geflf")
+theme_override_font_sizes/font_size = 250
+theme_override_styles/normal = SubResource("StyleBoxFlat_12l0x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p348b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjsf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13qgu")
+icon = ExtResource("19_djhkt")
+icon_alignment = 1
+
+[node name="VolumeTitle" type="Label" parent="Options Menu/Other"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1306.4916
+offset_top = 611.42957
+offset_right = 1956.4916
+offset_bottom = 662.42957
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89443576, 0.89443576)
+theme_override_colors/font_color = Color(1, 0.724, 0.31, 1)
+theme_override_fonts/font = ExtResource("2_towmw")
+theme_override_font_sizes/font_size = 50
+text = "Other"
+horizontal_alignment = 1
+
 [node name="debug Menu" type="Control" parent="."]
 visible = false
 z_index = 300
@@ -684,6 +777,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.263205
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w62eu")
@@ -803,5 +897,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y2ttv")
 [connection signal="pressed" from="SecondMenu/modeButtons/melee" to="." method="_on_melee_pressed"]
 [connection signal="mouse_entered" from="Options Menu/optionsBack" to="." method="_on_options_back_mouse_entered"]
 [connection signal="pressed" from="Options Menu/optionsBack" to="." method="_on_options_back_pressed"]
+[connection signal="mouse_entered" from="Options Menu/Other/fullScreenButton" to="." method="_on_full_screen_button_mouse_entered"]
+[connection signal="pressed" from="Options Menu/Other/fullScreenButton" to="." method="_on_full_screen_button_pressed"]
 [connection signal="pressed" from="debug Menu/infHP" to="." method="_on_inf_hp_pressed"]
 [connection signal="pressed" from="debug Menu/infROE" to="." method="_on_inf_roe_pressed"]

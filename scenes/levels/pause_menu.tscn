@@ -178,6 +178,7 @@ script = ExtResource("1_lx1ke")
 
 [node name="select" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("2_c05mf")
+bus = &"SFX"
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 layout_mode = 1
@@ -209,9 +210,11 @@ libraries = {
 
 [node name="pause" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("4_enuq8")
+bus = &"SFX"
 
 [node name="unpause" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("5_ovdqo")
+bus = &"SFX"
 
 [node name="static" type="TextureRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.49803922)

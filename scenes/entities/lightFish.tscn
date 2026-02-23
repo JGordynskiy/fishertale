@@ -267,12 +267,14 @@ stream = ExtResource("11_w8n2r")
 volume_db = 5.0
 max_distance = 20000.0
 attenuation = 0.9
+bus = &"SFX"
 
 [node name="dmgSFX" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("12_17nqx")
 volume_db = 12.0
 max_distance = 20000.0
 attenuation = 0.9
+bus = &"SFX"
 
 [node name="hitbox" type="Area2D" parent="." groups=["dangerObj", "enemyHitbox", "objects"]]
 

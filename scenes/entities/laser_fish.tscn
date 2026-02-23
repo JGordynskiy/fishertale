@@ -321,6 +321,7 @@ scale = Vector2(65.357445, 25.686255)
 stream = ExtResource("6_iluj3")
 volume_db = 5.0
 max_distance = 99999.0
+bus = &"SFX"
 
 [node name="deathparticle2" type="GPUParticles2D" parent="."]
 position = Vector2(-55.083336, 0.5)
