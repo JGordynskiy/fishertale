@@ -42,7 +42,7 @@ func explode():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if curRange > range:
-		curRange = -1
+		curRange = -100*delta
 		velocity = Vector2(0, 0)
 		explode()
 	else:

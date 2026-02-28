@@ -19,7 +19,6 @@ var spawnMax = 6000
 
 var boss4hp = 200
 
-
 var iFrames = 0
 var rand = 0
 var maxRand = 1
@@ -113,10 +112,10 @@ func attackSchedule():
 		trackingBarrage()
 	
 func bossScaling():
-	if boss4hp <= 150:
-		if boss4hp <= 100:
-			if boss4hp <= 50:
-				if boss4hp <= 25:
+	if boss4hp <= 170:
+		if boss4hp <= 120:
+			if boss4hp <= 90:
+				if boss4hp <= 50:
 					if maxRand == 6:
 						rand = 7
 					maxRand = 7
@@ -336,7 +335,7 @@ func trackLine():
 	var dir = pos.angle_to_point(fish.global_position)
 	dir += rng.randf_range(-0.06, 0.06)
 	oneLine(pos, dir)
-		
+
 
 
 # High Level attacks

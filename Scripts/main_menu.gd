@@ -24,6 +24,7 @@ var menuStage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
 	
+	
 	$SecondMenu.visible = false
 	$"Options Menu".visible = false
 	$IntialMenu.visible = true
@@ -40,7 +41,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	menumusic.play()
 	
-	setInitialSound()
+	setInitialSettings()
+	
 	pass # Replace with function body.
 
 
@@ -53,6 +55,7 @@ func _process(delta: float) -> void:
 		$Label.hide()
 	if $"Options Menu".visible:
 		soundOptions()
+		camShakeOptions()
 	if (Input.is_action_pressed("left") && Input.is_action_pressed("up") && Input.is_action_just_pressed("right")) :
 		$"debug Menu".visible = !$"debug Menu".visible
 			
@@ -110,7 +113,6 @@ func onStartPressed() -> void:
 	await get_tree().create_timer(2).timeout
 	global.inGame = true
 	
-	
 	if skip:
 		global.roe = 6
 		global.curBoss = 1
@@ -134,7 +136,7 @@ func onExitPressed() -> void:
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = true
 	add_child(thunkfade)
-	
+
 	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
 	pass # Replace with function body.
@@ -161,7 +163,6 @@ func _on_full_screen_button_mouse_entered() -> void:
 
 
 func _on_menumusic_finished() -> void:
-	print_debug("loop")
 	menumusicloop.play()
 
 func _on_menumusicloop_finished() -> void:
@@ -209,10 +210,17 @@ func _on_melee_pressed() -> void:
 	onStartPressed()
 	pass # Replace with function body.
 
-func setInitialSound():
+func setInitialSettings():
 	$"Options Menu/volumeControl/MusicSlider".value = settings.musicVol
 	$"Options Menu/volumeControl/SFXSlider".value = settings.SFXVol
 	
+	$"Options Menu/Other/camShakeSlider".value = settings.camShake*100
+	
+
+func camShakeOptions():
+	settings.camShake = $"Options Menu/Other/camShakeSlider".value / 100
+	$"Options Menu/Other/CameraShakeLabelPerc".text = str(settings.camShake*100)
+
 	
 func soundOptions():
 	var SFXid = AudioServer.get_bus_index("SFX")
@@ -225,7 +233,6 @@ func soundOptions():
 	
 	$"Options Menu/volumeControl/MusicSlider/volNum".text = str(snapped(settings.musicVol*100, 1)) + "%"
 	$"Options Menu/volumeControl/SFXSlider/volNum".text = str(snapped(settings.SFXVol*100, 1)) + "%"
-	
 	pass
 
 func _on_options_pressed() -> void:

@@ -182,12 +182,12 @@ bg_color = Color(0, 0, 0, 0.77254903)
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
-anchor_right = 1.764
-anchor_bottom = 1.8230001
+anchor_right = 1.003
+anchor_bottom = 1.0
 offset_left = 2.000002
 offset_top = -3.0
-offset_right = -164.20776
-offset_bottom = -134.281
+offset_right = 809.8723
+offset_bottom = 458.27905
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.61289495, 0.61289495)
@@ -310,11 +310,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InitialButtons" type="VBoxContainer" parent="IntialMenu"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 817.4321
 offset_top = 549.84924
-offset_right = 2938.263
-offset_bottom = 2678.3647
+offset_right = 846.55054
+offset_bottom = 1497.0857
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.21233284, 0.21233284)
 theme_override_constants/separation = 250
 
@@ -490,9 +495,9 @@ texture_hover = ExtResource("9_djhkt")
 
 [node name="choose a heart" type="Label" parent="SecondMenu"]
 layout_mode = 0
-offset_left = -55.474434
+offset_left = -35.89522
 offset_top = 868.0118
-offset_right = 974.5256
+offset_right = 994.1048
 offset_bottom = 948.0119
 scale = Vector2(1.076737, 1.076737)
 pivot_offset = Vector2(528.6387, 42.42157)
@@ -760,6 +765,53 @@ theme_override_colors/font_color = Color(1, 0.724, 0.31, 1)
 theme_override_fonts/font = ExtResource("2_towmw")
 theme_override_font_sizes/font_size = 50
 text = "Other"
+horizontal_alignment = 1
+
+[node name="camShakeSlider" type="HSlider" parent="Options Menu/Other"]
+layout_mode = 0
+offset_left = 1639.7589
+offset_top = 902.2754
+offset_right = 1726.1191
+offset_bottom = 941.43384
+scale = Vector2(3.1551263, 3.1551263)
+step = 10.0
+
+[node name="CameraShakeLabel" type="Label" parent="Options Menu/Other"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1335.8604
+offset_top = 910.0126
+offset_right = 1590.7014
+offset_bottom = 975.0126
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_towmw")
+theme_override_font_sizes/font_size = 35
+text = "Camera
+Shake"
+horizontal_alignment = 1
+
+[node name="CameraShakeLabelPerc" type="Label" parent="Options Menu/Other"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1621.3906
+offset_top = 879.01215
+offset_right = 1876.2317
+offset_bottom = 944.01215
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.66, 0.66, 0.66, 1)
+theme_override_fonts/font = ExtResource("2_towmw")
+theme_override_font_sizes/font_size = 30
+text = "%"
 horizontal_alignment = 1
 
 [node name="debug Menu" type="Control" parent="."]

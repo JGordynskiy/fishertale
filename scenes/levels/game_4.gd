@@ -12,6 +12,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	
 	#Engine.physics_ticks_per_second = 120
 	$fish/followCam.zoom.y = 0.05
 	$fish/followCam.zoom.x = 0.05
@@ -19,14 +21,42 @@ func _ready() -> void:
 	$darkness.visible = false
 	globalSignals.connect("boss4death", clear)
 	globalSignals.connect("game4toR", fadeOut)
+	globalSignals.connect("gameOver", gameOver)
+	
+	globalSignals.connect("justPaused", pauseGame)
+	globalSignals.connect("justUnPaused", unpauseGame)
 	
 	fadeIn()
 	global.pausable = true
+	$Music/musicint.play()
 	await global.timer(1)
 	await flickerOff()
+	
 	pass # Replace with function body.
 
+func gameOver():
+	var tween = get_tree().create_tween()
+	tween.tween_property($Music/musicloop, "pitch_scale", 0, 3)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property($Music/musicint, "pitch_scale", 0, 3)
+	await global.timer(3)
+	$Music/musicloop.stop()
+	$Music/musicint.stop()
+
+func pauseGame():
+	$Music/musicint.bus = "lowpass"
+	$Music/musicloop.bus = "lowpass"
+	$Music/musicend.bus = "lowpass"
+func unpauseGame():
+	$Music/musicint.bus = "Master"
+	$Music/musicloop.bus = "Master"
+	$Music/musicend.bus = "Master"
+
 func clear():
+	$Music/musicint.stop()
+	$Music/musicloop.stop()
+	$Music/musicend.play()
+	
 	var instance = clearPopup.instantiate()
 	add_child(instance)
 	
@@ -102,3 +132,8 @@ func flickerOn():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_musicint_finished() -> void:
+	$Music/musicloop.play()
+	pass # Replace with function body.

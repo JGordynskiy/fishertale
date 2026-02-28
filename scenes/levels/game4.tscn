@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dniwn5btd1drm"]
+[gd_scene load_steps=21 format=3 uid="uid://dniwn5btd1drm"]
 
 [ext_resource type="Script" uid="uid://43cc73f8fum8" path="res://scenes/levels/game_4.gd" id="1_0b6rn"]
 [ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="2_2dwkm"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cth2l3adobs7" path="res://scenes/entities/lightFish.tscn" id="9_617rf"]
 [ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="10_b04r2"]
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="13_ajj23"]
+[ext_resource type="AudioStream" uid="uid://b018hgepvexvd" path="res://Assets/music/boss4int.ogg" id="15_4bexx"]
+[ext_resource type="AudioStream" uid="uid://b6aeisyygxtf3" path="res://Assets/music/boss4end.ogg" id="17_yadk7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajj23"]
 size = Vector2(20.086098, 55.98082)
@@ -33,6 +35,7 @@ polygon = PackedVector2Array(29821, -10481, 29402, -11549, 33138, -11549, 32503,
 script = ExtResource("1_0b6rn")
 
 [node name="FPS counter" parent="." instance=ExtResource("2_l38b5")]
+visible = false
 
 [node name="bosshealthbar" parent="." instance=ExtResource("2_2dwkm")]
 script = ExtResource("3_ajj23")
@@ -46,11 +49,17 @@ script = ExtResource("3_ajj23")
 [node name="darkness" type="CanvasModulate" parent="."]
 color = Color(0.171, 0.22259998, 0.3, 1)
 
+[node name="Ambient Particles" parent="." instance=ExtResource("10_b04r2")]
+z_index = 50
+position = Vector2(34015, -7986)
+scale = Vector2(1.457446, 1.457446)
+
 [node name="background" type="StaticBody2D" parent="." groups=["objects"]]
 position = Vector2(32512, -29696)
 scale = Vector2(4.9888024, 4.9888024)
 
 [node name="churchFore" type="Sprite2D" parent="background"]
+z_index = 100
 position = Vector2(-2, -2)
 texture = ExtResource("2_lsbcc")
 
@@ -119,17 +128,30 @@ visible = false
 occluder = SubResource("OccluderPolygon2D_2dwkm")
 
 [node name="lightFish" parent="." instance=ExtResource("9_617rf")]
-position = Vector2(33864, -34049)
+position = Vector2(33846, -34083)
 yRangeD = -45000
 yRangeU = -18000
 xRangeL = 17000
 xRangeR = 50000
 
-[node name="Ambient Particles" parent="." instance=ExtResource("10_b04r2")]
-position = Vector2(34015, -7986)
-scale = Vector2(1.457446, 1.457446)
-
 [node name="ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ajj23")
 autoplay = true
 bus = &"SFX"
+
+[node name="Music" type="Node" parent="."]
+
+[node name="musicint" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("15_4bexx")
+volume_db = -2.0
+
+[node name="musicloop" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+volume_db = -4.0
+
+[node name="musicend" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+stream = ExtResource("17_yadk7")
+volume_db = -4.0
+
+[connection signal="finished" from="Music/musicint" to="." method="_on_musicint_finished"]

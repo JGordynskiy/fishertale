@@ -115,7 +115,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-500, 0)]
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -125,7 +125,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-54.905, -0.05, 0, 0.05, 0),
+"points": PackedFloat32Array(0, -0.05, 0, 0.05, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/5/type = "bezier"
@@ -149,7 +149,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-105.45453, 8.2018465e-05)]
+"values": [Vector2(843.63635, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_8itkn"]
@@ -305,7 +305,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.485, 0.81641674, 0.97, 0.43137255)]
+"values": [Color(0.485, 0.81641674, 0.97, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_21k1a"]
@@ -499,8 +499,8 @@ flatness = 1.0
 initial_velocity_min = 464.28998
 initial_velocity_max = 464.28998
 gravity = Vector3(0, -10000, 0)
-scale_min = 134.94
-scale_max = 134.94
+scale_min = 75.0
+scale_max = 75.0
 scale_curve = SubResource("CurveTexture_sscus")
 color = Color(1, 0.5733334, 0.19999999, 1)
 
@@ -523,14 +523,13 @@ scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_nub35")
 animation = &"idle"
 autoplay = "idle"
-offset = Vector2(-500, 0)
 flip_h = true
 
 [node name="blink" type="Polygon2D" parent="AnimatedSprite2D"]
+visible = false
 position = Vector2(2090.9092, -127.27272)
 scale = Vector2(8.17054, 5.6178904)
 color = Color(1, 0.67058825, 0.34117648, 1)
-offset = Vector2(-54.905, 0)
 polygon = PackedVector2Array(-134, -65, -141.86224, 3.236414, -214.18417, 21.845793, -143.53122, 42.88248, -118.496704, 114.08358, -79.00234, 86.65595, -46.73111, 58.255447, -40.055237, 17.800274, -52.294342, -25.89131, -76.799995, -48.800003)
 uv = PackedVector2Array(-134, -65, -222, 24, -137, 84, -54, 20)
 
@@ -541,7 +540,7 @@ libraries = {
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
 z_index = -100
-position = Vector2(-105.45453, 8.2018465e-05)
+position = Vector2(843.63635, 0)
 scale = Vector2(4.624652, 4.5990663)
 occluder = SubResource("OccluderPolygon2D_80fr0")
 sdf_collision = false
@@ -556,7 +555,7 @@ scale = Vector2(13.906297, 13.906297)
 shape = SubResource("CircleShape2D_ex20v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.485, 0.81641674, 0.97, 0.43137255)
+self_modulate = Color(0.485, 0.81641674, 0.97, 0)
 z_index = 60
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_wpvan")
@@ -657,8 +656,9 @@ draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_akm6d")
 
 [node name="fireParticles" type="GPUParticles2D" parent="."]
-position = Vector2(9.599976, 0)
-scale = Vector2(3.4999995, 3.4999995)
+z_index = -100
+position = Vector2(206.40001, 0)
+scale = Vector2(1.3744084, 1.3744084)
 emitting = false
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_5adjs")

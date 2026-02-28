@@ -1066,18 +1066,19 @@ offset_bottom = 431.90533
 theme_override_styles/panel = SubResource("StyleBoxFlat_0xa0o")
 
 [node name="boss4" type="RichTextLabel" parent="enemyMonitor/hints"]
+visible = false
 clip_contents = false
 layout_mode = 0
 offset_left = 631.58276
 offset_top = 82.57446
-offset_right = 1453.7637
+offset_right = 1481.6345
 offset_bottom = 500.21924
 scale = Vector2(0.80337787, 0.80337787)
 theme_override_colors/default_color = Color(1, 1, 0.45999998, 1)
 theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "Deilopod"
+text = "Lucelopod"
 
 [node name="boss4Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss4"]
 layout_mode = 0
@@ -1371,6 +1372,7 @@ scale = Vector2(0.03480081, 0.03480081)
 [node name="menuHpBar" parent="hpbar" instance=ExtResource("31_1dcgu")]
 
 [node name="underconstruction" type="Control" parent="."]
+visible = false
 z_index = 500
 layout_mode = 1
 anchors_preset = 15
