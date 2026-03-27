@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://daallqpv0d4ul"]
+[gd_scene load_steps=24 format=3 uid="uid://daallqpv0d4ul"]
 
 [ext_resource type="Script" uid="uid://crx37ouyvqali" path="res://Scripts/game1.gd" id="1_bo462"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="2_qtp2c"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://bko8bas1376gv" path="res://Assets/music/boss1loop.ogg" id="14_oi55c"]
 [ext_resource type="AudioStream" uid="uid://ck787pu1kc7l5" path="res://Assets/music/boss1looplowpass.ogg" id="16_aln2l"]
 [ext_resource type="AudioStream" uid="uid://b2xbghqux8wrc" path="res://Assets/music/boss1int.ogg" id="17_0w3bu"]
+[ext_resource type="PackedScene" uid="uid://dq5rons5tejqv" path="res://scenes/enemy_bullet.tscn" id="19_6mlny"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kxvvm"]
 vertices = PackedVector2Array(-13607.758, -43967.203, -11293.906, -43443.71, -14516.633, -40564.344, -23968.617, -29689.008, -16561.797, -34351.367, -15226.469, -27948.203, -11144.539, -23379.547, -22181.523, -21129.64, 26188.906, -13108.07, 33859.39, -22110.36, 27499.344, -4867.3984, 25597.61, -11004.594, 7335.1484, -39334.86, 7162.5938, -39528, 8308.953, -39528, 25649.25, -15225.398, 19491.75, -38948.508, 21950.14, -39076.28, 25386.203, -36453.438, 24123.227, -16789.227, 22019.742, -17380.531, 12303.797, -21803.102, 11916.156, -23324.54, 16113.57, -37805.453, 24033.781, -9478.57, 24285.047, -3311.5625, 21916.46, -8938.906, 18372.656, -3786.5313, 19812.969, -9530.211, 10819.742, -24448.328, 9308.32, -24873.352, 8670.477, -32931.703, 5063.3438, -5433.0234, 25.890625, -22001.648, 1747.6875, -22360.719, 6238.078, -21877.867, 6625.711, -20356.43, 6625.3203, -26718.727, 7786.8906, -24485.703, 6663.1016, -23389.29, 7722.133, -19232.64, 8714.383, -2740.1875, 9233.547, -18807.633, 13988.3125, -3374.3281, 19902.422, -16840.86, 11878.781, -20291.68, 18338.602, -15314.852, 10755, -19195.258, 17747.29, -13211.367, 16801.32, -2840.6328, 18286.953, -11094.031)
@@ -107,7 +108,7 @@ limit_bottom = -1320
 metadata/_edit_lock_ = true
 
 [node name="evilFish" parent="." instance=ExtResource("6_kxvvm")]
-position = Vector2(20058.002, -12446.001)
+position = Vector2(20332, -13760)
 scale = Vector2(1.2455237, 1.2455237)
 
 [node name="ambience" type="AudioStreamPlayer" parent="."]
@@ -170,6 +171,10 @@ volume_db = -80.0
 [node name="boss1int" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("17_0w3bu")
 bus = &"Music"
+
+[node name="EnemyBullet" parent="." instance=ExtResource("19_6mlny")]
+position = Vector2(66630, -25048)
+rotation = -2.929912
 
 [connection signal="finished" from="ambience" to="." method="_on_ambience_finished"]
 [connection signal="finished" from="Music/Boss1loop" to="." method="_on_boss_1_loop_finished"]

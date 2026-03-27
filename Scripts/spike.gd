@@ -19,11 +19,11 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		if body.invulnerable == false:
 			
-			
-			body.canMove = false
-			body.position.x = body.position.x - 3000
-			await get_tree().create_timer(1, false).timeout
-			body.canMove = true
+			pass
+			#body.canMove = false
+			#body.position.x = body.position.x - 3000
+			#await get_tree().create_timer(1, false).timeout
+			#body.canMove = true
 		
 	pass # Replace with function body.
 

@@ -9,13 +9,13 @@ var fanOn = false
 @onready var music_loop: AudioStreamPlayer = $Music/musicLoop
 
 
-@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
-@onready var clearpopup = load("res://scenes/ui/clearpopup.tscn")
+@onready var fadeRect = preload("res://scenes/ui/fade_rect.tscn")
+@onready var clearpopup = preload("res://scenes/ui/clearpopup.tscn")
 @onready var rng = RandomNumberGenerator.new()
-@onready var whirlpool = load("res://scenes/entities/whirlpool.tscn")
+@onready var whirlpool = preload("res://scenes/entities/whirlpool.tscn")
 
 #roe popup
-@onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
+@onready var roePopup = preload("res://scenes/objects/roe_popup.tscn")
 
 
 

@@ -3,7 +3,7 @@ extends Node2D
 @onready var fish = $"../fish"
 @onready var game = $".."
 
-@onready var damageParticles = load("res://scenes/particles/lightDamageParticles.tscn")
+@onready var damageParticles = preload("res://scenes/particles/lightDamageParticles.tscn")
 
 # Bound for random teleportation
 @export var yRangeD : int
@@ -11,11 +11,11 @@ extends Node2D
 @export var xRangeL : int
 @export var xRangeR : int
 
-@onready var sparkle = load("res://scenes/projectiles/sparkle.tscn")
-@onready var sparkleLine = load("res://scenes/projectiles/sparkle_line_attack.tscn")
+@onready var sparkle = preload("res://scenes/projectiles/sparkle.tscn")
+@onready var sparkleLine = preload("res://scenes/projectiles/sparkle_line_attack.tscn")
 # distance from fish when randomly teleporting
-var spawnMin = 4000
-var spawnMax = 6000
+var spawnMin = 6000
+var spawnMax = 15000
 
 var boss4hp = 200
 
@@ -182,8 +182,15 @@ func newLocation():
 		var rand2 = rng.randi_range(xRangeL, xRangeR)
 		newLoc = Vector2(rand2, rand1)
 		
-		if (oldLoc.distance_to(newLoc) > 2000 && newLoc.distance_to(fish.global_position) > spawnMin && newLoc.distance_to(fish.global_position) < spawnMax):
+		if (oldLoc.distance_to(newLoc) > 4000 && newLoc.distance_to(fish.global_position) > spawnMin && newLoc.distance_to(fish.global_position) < spawnMax):
 			break
+		
+		if (newLoc.distance_to($"../objects/leftFixture".global_position) < 4000):
+			continue
+		if (newLoc.distance_to($"../objects/middleFixture".global_position) < 4000):
+			continue
+		if (newLoc.distance_to($"../objects/rightFixture".global_position) < 4000):
+			continue
 			
 	#print("===Final distance: "+str(global_position.distance_to(fish.global_position)))
 	global_position = newLoc

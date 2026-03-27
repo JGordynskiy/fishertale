@@ -54,6 +54,17 @@ func takeDamage():
 	
 	if tutStage < 3 && tutorial:
 		global.hp +=1
+	
+	shake(1, 10)
+	
+#doesn't differently function rn
+func takeShieldDamage():
+	var instance = dmgSplash.instantiate()
+	var game = get_tree().get_current_scene()
+	game.add_child.call_deferred(instance)
+	
+	if tutStage < 3 && tutorial:
+		global.hp +=1
 	shake(1, 10)
 	
 	

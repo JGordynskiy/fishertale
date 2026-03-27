@@ -13,7 +13,7 @@ var enemyCount = 3
 @onready var animation_player: AnimationPlayer = $faderect/faderect/AnimationPlayer
 
 @onready var crate = load("res://scenes/object.tscn")
-@onready var whirlpool = load("res://scenes/entities/whirlpool.tscn")
+@onready var whirlpool = preload("res://scenes/entities/whirlpool.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +38,9 @@ func _ready() -> void:
 	camera.tutStage = 0
 	
 	global.pausable = true
+	
+	global.shield = 0
+	global.maxShield = 0
 	pass # Replace with function body.
 
 func pauseGame():

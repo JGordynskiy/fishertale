@@ -57,7 +57,7 @@ func _on_retry_pressed() -> void:
 	thunkfade.type = true
 	game.add_child(thunkfade)
 	await get_tree().create_timer(0.6).timeout
-	global.hp = global.max_hp
+	#global.hp = global.max_hp
 	
 	if global.curBoss != 1:
 		global.roe -= 2
@@ -69,7 +69,7 @@ func _on_retry_pressed() -> void:
 func chooseMessage():
 
 	rng.randomize()
-	rand = rng.randi_range(1,4)
+	rand = rng.randi_range(1,7)
 	match rand:
 		1:
 			$"ColorRect/messages/1".visible = true
@@ -81,6 +81,10 @@ func chooseMessage():
 			$"ColorRect/messages/4".visible = true
 		5:
 			$"ColorRect/messages/5".visible = true
+		6:
+			$"ColorRect/messages/6".visible = true
+		7:
+			$"ColorRect/messages/7".visible = true
 
 
 func _on_quit_pressed() -> void:

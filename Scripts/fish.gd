@@ -6,14 +6,16 @@ var mult = 1
 
 
 @onready var game  = get_owner()
-@onready var bullet = load("res://scenes/bullet.tscn") #!! important!! This loads a scene from res://
+@onready var bullet = preload("res://scenes/bullet.tscn") #!! important!! This loads a scene from res://
 @onready var camera = $followCam
-@onready var cloud = load("res://scenes/particles/dash_cloud.tscn")
-@onready var bubbles = load("res://scenes/particles/bubble_explosion.tscn")
-@onready var deathGore = load("res://scenes/particles/fish_explosion.tscn")
+@onready var cloud = preload("res://scenes/particles/dash_cloud.tscn")
+@onready var bubbles = preload("res://scenes/particles/bubble_explosion.tscn")
+@onready var deathGore = preload("res://scenes/particles/fish_explosion.tscn")
+@onready var shieldPart = preload ("res://scenes/particles/shield_particles.tscn")
+@onready var shieldRPart = preload ("res://scenes/particles/shield_recovery_particles.tscn")
 
 #Roe
-@onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
+@onready var roePopup = preload("res://scenes/objects/roe_popup.tscn")
 
 #Slash
 
@@ -46,6 +48,7 @@ var dangerTouching = 0
 
 var iFrames = 60
 var iFrameCount = iFrames
+var shieldRegenRate = 8
 
 var dashCool = 60
 var dashCount = 60
@@ -55,12 +58,16 @@ var canMove = true
 
 
 func _ready():
+	
+	
 	blink.visible = false
 	$CollisionShape2D.disabled = false
 	$"fish/CollisionShape2D".disabled = false
 	canMove = true
 	canShoot = true
 	sprite.play("idle")
+	
+	
 	
 	#kills fish and flashes screne red on death/dmg
 	globalSignals.gameOver.connect(death)
@@ -81,6 +88,22 @@ func _ready():
 	slashhitbox.scale = Vector2(global.slash_scale, global.slash_scale)
 	
 	
+	await global.timer(0.01)
+	global.shieldRegen = global.maxShield*100
+	global.shield = global.maxShield
+	
+func shieldRegen(delta):
+	if global.hp > 0:
+		if global.shieldRegen/100 < global.maxShield:
+			global.shieldRegen += shieldRegenRate*delta
+			
+		if global.shieldRegen > 98.7 && global.shieldRegen < 99:
+			$shieldRecoveryParticles.restart()
+			$shieldRecoveryParticles.emitting = true
+			$sounds/shieldRecover.play()
+			
+		global.shield = floor(global.shieldRegen/100)
+		
 	
 
 func death():
@@ -197,18 +220,18 @@ func takeDamage():
 	if iFrameCount >= iFrames:
 		#global.emit_signal("actuallyTakeDmg")
 		camera.takeDamage()
+		await global.timer(0.01)
 		#await get_tree().create_timer(pauseTime).timeout
 		
-		global.hp -= 1
-		if global.hp >0:
-			
-			
+		
+		if global.hp >1 && global.shield == 0:
 			$"sounds/damage".play()
 			var instance = bubbles.instantiate()
 			instance.particleTime = 10.0
 			instance.particleCount = 60
 			instance.pos = global_position
 			game.add_child(instance)
+			
 			##pausing game upon tkaing damage
 			#global.camZoom *= 2
 			#global.pausable = false
@@ -218,6 +241,25 @@ func takeDamage():
 			#get_tree().paused = false
 			#global.pausable = true
 			#global.camZoom *= 0.5
+		
+		if global.shield > 0:
+			var instance = shieldPart.instantiate()
+			instance.global_position = global_position
+			game.add_child(instance)
+			
+			if global.shield == 1:
+				$sounds/shieldBroken.play()
+			else:
+				$sounds/shieldDamage.play()
+			
+			global.shield -= 1
+			global.shieldRegen = global.shield * 100
+		else:
+			global.hp -= 1
+			global.shieldRegen = 0
+		
+			
+		
 		iFrameCount = 0
 	
 	
@@ -253,6 +295,8 @@ func _physics_process(delta):
 		#$crosshair.scale.x += 1*delta
 		#$crosshair.scale.y += 1*delta
 	#shows fire if debug damage
+	
+	shieldRegen(delta)
 	
 	if global.hp < 1:
 		iFrameCount = 9999
@@ -385,5 +429,5 @@ func slashSuccess():
 			
 	slashlandsfx.pitch_scale = rng.randf_range(1, 1.4)
 	slashlandsfx.play()
-	slash_timer /= 5
+	slash_timer /= 3
 	

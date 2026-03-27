@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var bullet = load("res://scenes/enemy_bullet.tscn")
+@onready var bullet = preload("res://scenes/enemy_bullet.tscn")
 
 @onready var fishRay: RayCast2D = $fishDetector
 @onready var laserRay: RayCast2D = $laserRay
@@ -15,6 +15,8 @@ var dead = false
 
 var laserEmitting = false
 var turreting = false
+var invulnerable = true
+
 
 var iFrames = 0
 var coolDown = 300
@@ -65,7 +67,7 @@ func _physics_process(delta: float) -> void:
 			globalSignals.takeDmg.emit()
 	
 	#invulnerability Visual
-	if !laserEmitting && boss3hp > 0:
+	if invulnerable && boss3hp > 0:
 		$invulenrablePolygon.visible = true
 	else:
 		$invulenrablePolygon.visible = false
@@ -138,14 +140,14 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if (boss3hp <= 0):
 		return
 	if area.is_in_group("playerBullet"):
-		if iFrames < 0 && laserEmitting:
+		if iFrames < 0 && !invulnerable:
 			iFrames = 10
 			boss3hp -= global.shot_damage
 		#elif !laserEmitting:
 			#shoot(area.global_rotation-global_rotation+(PI/2))
 			
 	if area.is_in_group("playerSlash"):
-		if iFrames < 0 && laserEmitting:
+		if iFrames < 0 && !invulnerable:
 			globalSignals.slashSuccess.emit()
 			iFrames = 10
 			boss3hp -= global.slash_damage
@@ -251,6 +253,7 @@ func sweepLaser():
 	await get_tree().create_timer(1, false).timeout #telegraph time
 	
 	#Actually start the laser
+	invulnerable = false
 	shoot(global_position.angle_to_point(fish.global_position) - global_rotation + rng.randf_range(-(PI/6), PI/6))
 	$laser/AnimationPlayer.play("laserIn")
 	$laserBlast.play()
@@ -271,6 +274,8 @@ func sweepLaser():
 	laserEmitting = false
 	$steam1.emitting = false
 	$steam2.emitting = false
+	await global.timer(0.5)
+	invulnerable = true
 	if dead:
 		return
 

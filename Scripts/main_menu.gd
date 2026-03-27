@@ -82,10 +82,14 @@ func resetStats():
 	
 	global.max_hp = 5
 	global.hp = global.max_hp
+	global.savedHp = global.max_hp
+	
+	global.shield = 1
+	global.maxShield = 1
 	
 	global.damageCost = 4
 	global.rateCost = 4
-	global.healthCost = 1
+	global.healthCost = 3
 	global.roe = 0
 	
 	global.curBoss = 0

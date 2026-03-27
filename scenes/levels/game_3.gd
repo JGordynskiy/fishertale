@@ -1,9 +1,9 @@
 extends Node2D
-@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
-@onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
+@onready var fadeRect = preload("res://scenes/ui/fade_rect.tscn")
+@onready var roePopup = preload("res://scenes/objects/roe_popup.tscn")
 @onready var fish = get_node("fish")
-@onready var whirlpool = load("res://scenes/entities/whirlpool.tscn")
-@onready var clearpopup = load("res://scenes/ui/clearpopup.tscn")
+@onready var whirlpool = preload("res://scenes/entities/whirlpool.tscn")
+@onready var clearpopup = preload("res://scenes/ui/clearpopup.tscn")
 
 @onready var rng = RandomNumberGenerator.new()
 

@@ -275,6 +275,7 @@ text = "Skip Tutorial"
 
 [node name="hoveron" type="AudioStreamPlayer" parent="sounds/ui"]
 stream = ExtResource("5_fkd6t")
+volume_db = -6.0
 bus = &"SFX"
 
 [node name="hoveroff" type="AudioStreamPlayer" parent="sounds/ui"]
@@ -283,10 +284,12 @@ bus = &"SFX"
 
 [node name="select" type="AudioStreamPlayer" parent="sounds/ui"]
 stream = ExtResource("7_crctu")
+volume_db = -4.0
 bus = &"SFX"
 
 [node name="foosh" type="AudioStreamPlayer" parent="sounds/ui"]
 stream = ExtResource("8_wko7x")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="menumusic" type="AudioStreamPlayer" parent="sounds"]
@@ -306,6 +309,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.263205
+offset_top = 4.894803
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -315,9 +320,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 817.4321
-offset_top = 549.84924
+offset_top = 655.90356
 offset_right = 846.55054
-offset_bottom = 1497.0857
+offset_bottom = 1047.0894
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.21233284, 0.21233284)
@@ -360,6 +365,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_13qgu")
 text = "Options"
 
 [node name="Exit" type="Button" parent="IntialMenu/InitialButtons"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
@@ -707,6 +713,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tl0ru")
 
 [node name="fullscreenLabel" type="Label" parent="Options Menu/Other"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -724,6 +731,7 @@ theme_override_font_sizes/font_size = 35
 text = "Fullscreen"
 
 [node name="fullScreenButton" type="Button" parent="Options Menu/Other"]
+visible = false
 layout_mode = 0
 offset_left = 1740.9183
 offset_top = 744.01
@@ -784,9 +792,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 1335.8604
-offset_top = 910.0126
+offset_top = 905.0126
 offset_right = 1590.7014
-offset_bottom = 975.0126
+offset_bottom = 980.0126
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_towmw")

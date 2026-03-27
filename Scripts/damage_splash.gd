@@ -10,9 +10,19 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Sprite2D/AnimationPlayer.play("fade_out")
-	$Sprite2D.modulate.a = 1
-	visible = true
+	if global.shield > 0:
+		$normal.hide()
+		$shielded.show()
+	else:
+		$normal.show()
+		$shielded.hide()
+		
+	
+	$normal/AnimationPlayer.play("fade_out")
+	$normal.modulate.a = 1
+	
+	$shielded/AnimationPlayer.play("fade_out")
+	$shielded.modulate.a = 1
 	
 	
 	

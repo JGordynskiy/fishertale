@@ -15,10 +15,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	healthBar.value = boss3.boss3hp
 	
-	if boss3.laserEmitting:
-		$ProgressBar/Panel.visible = false
-	else:
+	if boss3.invulnerable && boss3.boss3hp>0:
 		$ProgressBar/Panel.visible = true
+	else:
+		$ProgressBar/Panel.visible = false
 	
 	if healthBar.value <= 0:
 		hide()

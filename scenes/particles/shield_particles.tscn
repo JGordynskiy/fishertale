@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcs8e4huaa1w6"]
+
+[ext_resource type="Script" uid="uid://cxaxxfw4o8kk5" path="res://scenes/particles/shield_particles.gd" id="1_wg1en"]
+
+[sub_resource type="Curve" id="Curve_a86qo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wg1en"]
+curve = SubResource("Curve_a86qo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wg1en"]
+particle_flag_disable_z = true
+radial_velocity_min = 1500.0
+radial_velocity_max = 4000.0
+gravity = Vector3(0, 98, 0)
+scale_min = 100.0
+scale_max = 100.0
+scale_curve = SubResource("CurveTexture_wg1en")
+color = Color(0.70533335, 0.48000002, 1, 1)
+
+[node name="shieldParticles" type="GPUParticles2D"]
+scale = Vector2(2.8011088, 2.8011088)
+emitting = false
+amount = 150
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_wg1en")
+script = ExtResource("1_wg1en")

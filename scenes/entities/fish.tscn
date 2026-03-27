@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b0m4623tpxvua"]
+[gd_scene load_steps=54 format=3 uid="uid://b0m4623tpxvua"]
 
 [ext_resource type="Script" uid="uid://bhiwhge6dfr8p" path="res://Scripts/fish.gd" id="1_8g0i4"]
 [ext_resource type="Texture2D" uid="uid://loab5wse0qu7" path="res://Assets/fishIdle1.png" id="2_6lgmd"]
@@ -19,10 +19,14 @@
 [ext_resource type="Texture2D" uid="uid://dmwhnleqf1sat" path="res://Assets/fishBullet/slash/slash0.png" id="16_8itkn"]
 [ext_resource type="AudioStream" uid="uid://dlk8f73o0k6te" path="res://Assets/sounds/fish/slashlandsfx.ogg" id="17_8itkn"]
 [ext_resource type="Texture2D" uid="uid://1kbba8ibehto" path="res://Assets/fishBullet/slash/slash-1.png" id="17_80fr0"]
+[ext_resource type="AudioStream" uid="uid://ct1kcm2wri2ek" path="res://Assets/sounds/fish/shieldBroken.ogg" id="18_akm6d"]
 [ext_resource type="Texture2D" uid="uid://c4a6lsfruhh67" path="res://Assets/fishBullet/slash/slash-3.png" id="19_5adjs"]
+[ext_resource type="AudioStream" uid="uid://d07foag2p4ax" path="res://Assets/sounds/fish/shieldRecover.ogg" id="19_acutr"]
+[ext_resource type="AudioStream" uid="uid://mnkcbe8dqd8o" path="res://Assets/sounds/fish/shieldDamageTaken.ogg" id="20_acutr"]
 [ext_resource type="Texture2D" uid="uid://67yt0m10uiha" path="res://Assets/fishBullet/slash/slash3.png" id="21_acutr"]
 [ext_resource type="Texture2D" uid="uid://bb6sm81122jne" path="res://Assets/fishBullet/slash/slash4.png" id="22_gm1cm"]
 [ext_resource type="Texture2D" uid="uid://biljmjygnte0k" path="res://Assets/bubble.png" id="23_80fr0"]
+[ext_resource type="PackedScene" uid="uid://b2ey7eqnfhma2" path="res://scenes/particles/shield_recovery_particles.tscn" id="26_acutr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex20v"]
 
@@ -523,6 +527,7 @@ scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_nub35")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.7050582
 flip_h = true
 
 [node name="blink" type="Polygon2D" parent="AnimatedSprite2D"]
@@ -622,6 +627,20 @@ stream = ExtResource("17_8itkn")
 volume_db = 5.0
 bus = &"SFX"
 
+[node name="shieldBroken" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("18_akm6d")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="shieldRecover" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("19_acutr")
+volume_db = -10.0
+
+[node name="shieldDamage" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("20_acutr")
+volume_db = -10.0
+bus = &"SFX"
+
 [node name="totalPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rbg1i")
@@ -643,6 +662,13 @@ z_index = 300
 position = Vector2(761.8597, -2.486035)
 scale = Vector2(2.02878, 1.8617731)
 sprite_frames = SubResource("SpriteFrames_o23v1")
+
+[node name="shieldRecoveryParticles" parent="." instance=ExtResource("26_acutr")]
+z_index = -10
+scale = Vector2(2.600321, 2.600321)
+speed_scale = 1.0
+local_coords = true
+script = null
 
 [node name="movebubbles" type="GPUParticles2D" parent="."]
 z_index = -70

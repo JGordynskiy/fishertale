@@ -268,15 +268,45 @@ vertical_alignment = 1
 [node name="5" type="Label" parent="ColorRect/messages"]
 visible = false
 layout_mode = 0
-offset_left = 331.99854
+offset_left = 279.99878
 offset_top = 628.9912
-offset_right = 2023.9985
+offset_right = 2197.9988
 offset_bottom = 679.9912
 scale = Vector2(0.37024325, 0.37024325)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("9_ecavu")
 theme_override_font_sizes/font_size = 50
-text = "Make sure you're watching the screen."
+text = "Try to damage the enemy without it damaging you."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="6" type="Label" parent="ColorRect/messages"]
+visible = false
+layout_mode = 0
+offset_left = 294.9987
+offset_top = 628.9912
+offset_right = 2212.9988
+offset_bottom = 679.9912
+scale = Vector2(0.37024325, 0.37024325)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ecavu")
+theme_override_font_sizes/font_size = 50
+text = "Next time, try to focus."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="7" type="Label" parent="ColorRect/messages"]
+visible = false
+layout_mode = 0
+offset_left = 294.9987
+offset_top = 628.9912
+offset_right = 2212.9988
+offset_bottom = 679.9912
+scale = Vector2(0.37024325, 0.37024325)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ecavu")
+theme_override_font_sizes/font_size = 50
+text = "If your health goes to 0, you die."
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dniwn5btd1drm"]
+[gd_scene load_steps=22 format=3 uid="uid://dniwn5btd1drm"]
 
 [ext_resource type="Script" uid="uid://43cc73f8fum8" path="res://scenes/levels/game_4.gd" id="1_0b6rn"]
 [ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="2_2dwkm"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="10_b04r2"]
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="13_ajj23"]
 [ext_resource type="AudioStream" uid="uid://b018hgepvexvd" path="res://Assets/music/boss4int.ogg" id="15_4bexx"]
+[ext_resource type="AudioStream" uid="uid://d2taskqb7ry3t" path="res://Assets/music/boss4loop.ogg" id="16_yadk7"]
 [ext_resource type="AudioStream" uid="uid://b6aeisyygxtf3" path="res://Assets/music/boss4end.ogg" id="17_yadk7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajj23"]
@@ -111,16 +112,16 @@ shape = SubResource("CircleShape2D_8kelq")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="objects/middleFixture"]
 occluder = SubResource("OccluderPolygon2D_617rf")
 
-[node name="middleFixture2" type="StaticBody2D" parent="objects" groups=["objects"]]
+[node name="rightFixture" type="StaticBody2D" parent="objects" groups=["objects"]]
 position = Vector2(45077.004, -35284)
 scale = Vector2(2.6323123, 2.6323123)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/middleFixture2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/rightFixture"]
 position = Vector2(9.877247, 496.90146)
 scale = Vector2(47.99066, 47.99066)
 shape = SubResource("CircleShape2D_8kelq")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/middleFixture2"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/rightFixture"]
 occluder = SubResource("OccluderPolygon2D_617rf")
 
 [node name="fountain" type="LightOccluder2D" parent="objects"]
@@ -143,15 +144,15 @@ bus = &"SFX"
 
 [node name="musicint" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("15_4bexx")
-volume_db = -2.0
+volume_db = 2.0
 
 [node name="musicloop" type="AudioStreamPlayer" parent="Music"]
 process_mode = 3
-volume_db = -4.0
+stream = ExtResource("16_yadk7")
 
 [node name="musicend" type="AudioStreamPlayer" parent="Music"]
 process_mode = 3
 stream = ExtResource("17_yadk7")
-volume_db = -4.0
+volume_db = 2.0
 
 [connection signal="finished" from="Music/musicint" to="." method="_on_musicint_finished"]

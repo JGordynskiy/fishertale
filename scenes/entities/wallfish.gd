@@ -10,8 +10,8 @@ var cooldown = 120
 
 @onready var game2: Node2D = $".."
 
-@onready var bullet = load("res://scenes/enemy_bullet.tscn")
-@onready var rock = load("res://scenes/objects/rockattack.tscn")
+@onready var bullet = preload("res://scenes/enemy_bullet.tscn")
+@onready var rock = preload("res://scenes/objects/rockattack.tscn")
 @onready var fish = get_node("../fish")
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dujhggsr73v24"]
+[gd_scene load_steps=19 format=3 uid="uid://dujhggsr73v24"]
 
 [ext_resource type="Script" uid="uid://j8d2v0mn1mx4" path="res://scenes/levels/game_dojo.gd" id="1_84b36"]
 [ext_resource type="Texture2D" uid="uid://p3m3hjt3mbjs" path="res://Assets/backgrounds/blueprint-6.jpg" id="1_kerkt"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="8_rnkkt"]
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="11_u8vor"]
 [ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="12_qlfcy"]
+[ext_resource type="PackedScene" uid="uid://1jlslaopwk34" path="res://scenes/cannon.tscn" id="13_qlfcy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u8vor"]
 vertices = PackedVector2Array(-17097.14, -10472.1875, -17141.594, -12633.344, -17232.852, -19003.023, 36570.938, -19114.969, 10308.531, -9393.82, 3817.5781, -9506.156, -17090.133, -10469.797, 36352.047, 22032.96, 10007.477, -3650.8828, -17232.594, 21841.031, 4124.2813, -3726.0234, 3488.711, -3942.9688, -10175.383, 11245.109, -14627.609, 7858.422, -12783.844, 6798.5313, -16783.398, 10683.203, -15396.352, 10711.867, -15260.102, 10996.242, -13744.727, 12283.953, -15309.656, 10464.8125, -16811.117, 10430.219, -10700.047, 7163.0625, -9977.828, 8775.25, -11511.547, 12313.047)
@@ -117,3 +118,7 @@ rotation = -0.7803047
 position = Vector2(21415, -5727)
 rotation = 0.36753207
 scale = Vector2(8.087531, 8.087531)
+
+[node name="Cannon" parent="objects" instance=ExtResource("13_qlfcy")]
+position = Vector2(10340, 594)
+scale = Vector2(9.081323, 9.081323)

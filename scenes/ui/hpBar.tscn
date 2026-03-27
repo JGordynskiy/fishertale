@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1u42n22eogqn"]
+[gd_scene load_steps=15 format=3 uid="uid://b1u42n22eogqn"]
 
 [ext_resource type="Script" uid="uid://cv34dkwx5t1ct" path="res://Scripts/projectiles/hp_bar.gd" id="1_ah546"]
 [ext_resource type="Texture2D" uid="uid://b3wbrlpc72r1b" path="res://Assets/healthbarAll.png" id="1_wql2k"]
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_62e5l"]
+[ext_resource type="Script" uid="uid://d4ie3x8v1l027" path="res://scenes/ui/hpbar_shield_bar.gd" id="4_6tq8q"]
 
 [sub_resource type="Animation" id="Animation_62e5l"]
 length = 0.001
@@ -105,6 +106,33 @@ _data = {
 &"spawnIn": SubResource("Animation_ah546")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62e5l"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 55
+border_width_top = 55
+border_width_right = 55
+border_width_bottom = 55
+border_color = Color(0.1254902, 0.03529412, 0.14901961, 1)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tq8q"]
+bg_color = Color(0.7960761, 0.4389318, 0.830999, 1)
+border_width_left = 55
+border_width_top = 55
+border_width_right = 55
+border_width_bottom = 55
+border_color = Color(0.1254902, 0.03529412, 0.14901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0wn7"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_color = Color(0.1254902, 0.03529412, 0.14901961, 1)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lv7s"]
+bg_color = Color(0.7974916, 0.43989998, 0.83, 0.5176471)
+border_color = Color(0.1254902, 0.03529412, 0.14901961, 1)
+
 [sub_resource type="Animation" id="Animation_h0wn7"]
 length = 0.001
 tracks/0/type = "value"
@@ -164,6 +192,33 @@ libraries = {
 &"": SubResource("AnimationLibrary_6tq8q")
 }
 speed_scale = 2.0
+
+[node name="hpbarShieldBar" type="ProgressBar" parent="Panel/Sprite2D"]
+offset_left = -2278.5576
+offset_top = 647.3174
+offset_right = 8702.443
+offset_bottom = 1021.6704
+scale = Vector2(0.415, 0.4991703)
+theme_override_styles/background = SubResource("StyleBoxFlat_62e5l")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6tq8q")
+max_value = 3.0
+step = 1.0
+show_percentage = false
+script = ExtResource("4_6tq8q")
+
+[node name="shieldRegenBar" type="ProgressBar" parent="Panel/Sprite2D/hpbarShieldBar"]
+layout_mode = 0
+offset_left = 62.392048
+offset_top = 62.392395
+offset_right = 26221.951
+offset_bottom = 663.76154
+scale = Vector2(0.415, 0.415)
+theme_override_styles/background = SubResource("StyleBoxFlat_h0wn7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5lv7s")
+max_value = 300.0
+step = 1.0
+value = 100.0
+show_percentage = false
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)

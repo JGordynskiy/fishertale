@@ -12,22 +12,31 @@ var debugCounter = 0
 var heart = 1
 @export var speed = 7000
 @export var shot_rate = 400 # 400 as default, reduce to increase
-@export var shot_damage = 3.5 # 1.5 default
+@export var shot_damage = 1.5 # 1.5 default
 @export var slash_damage = shot_damage*2  # 2 default
 @export var slash_rate = 400
+
 @export var bulletRange = 250 
 var slash_scale = 1.2
 
 var max_hp = 5
 var hp = max_hp
+var savedHp = max_hp
+
+var shield = 0
+var maxShield = 0
+var gameMaxShield = 5
+var shieldRegen = 0
+
 
 var stopwatch = 0
 
-# Upgrades and Costs
+# Upgrades and Costs (CHANGE IN MAIN_MENU.GD)
 var roe = 0
 var damageCost = 4
 var rateCost = 4
-var healthCost = 1
+var healthCost = 3
+
 
 var accuracy = 0# 0.1 default, decrease to increase
 
@@ -39,8 +48,6 @@ var whirlPoolPos : Vector2
 
 
 ## SETTINGS
-@onready var musicVol = 1
-@onready var SFXVol = 1
 
 var infHP = false
 var infRoe = false

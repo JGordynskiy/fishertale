@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	iFrames -= 60*delta
+	iFrames -= 30*delta
 	if iFrames > 0:
 		modulate.v = 0.5
 	else:

@@ -3,6 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	global.maxShield = 3
+	
 	global.debug = true
 	global.pausable = true
 	pass # Replace with function body.

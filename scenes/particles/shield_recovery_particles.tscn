@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2ey7eqnfhma2"]
+
+[ext_resource type="Script" uid="uid://cxaxxfw4o8kk5" path="res://scenes/particles/shield_particles.gd" id="1_c0tyw"]
+
+[sub_resource type="Curve" id="Curve_c0tyw"]
+_data = [Vector2(0.024734981, 0), 0.0, 0.0, 0, 0, Vector2(0.38869256, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c0tyw"]
+curve = SubResource("Curve_c0tyw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c0tyw"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 930.49
+emission_ring_inner_radius = 1000.0
+emission_ring_cone_angle = 90.0
+radial_velocity_min = -4000.0
+radial_velocity_max = -2500.0
+gravity = Vector3(0, 98, 0)
+scale_min = 50.0
+scale_max = 75.0
+scale_curve = SubResource("CurveTexture_c0tyw")
+color = Color(0.70533335, 0.48000002, 1, 1)
+
+[node name="shieldRecoveryParticles" type="GPUParticles2D"]
+scale = Vector2(2.8011088, 2.8011088)
+emitting = false
+amount = 75
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.8
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_c0tyw")
+script = ExtResource("1_c0tyw")

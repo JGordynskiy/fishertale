@@ -244,9 +244,9 @@ speed_scale = 0.8
 [node name="spawn" type="GPUParticles2D" parent="."]
 scale = Vector2(0.990881, 1)
 emitting = false
-amount = 150
+amount = 250
 texture = ExtResource("9_pxgsf")
-lifetime = 2.0
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 randomness = 0.5
@@ -258,14 +258,14 @@ process_material = SubResource("ParticleProcessMaterial_17nqx")
 [node name="spawnSFX" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("10_xp3fx")
 volume_db = 8.0
-max_distance = 20000.0
+max_distance = 40000.0
 attenuation = 0.9012504
 bus = &"SFX"
 
 [node name="despawnSFX" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("11_w8n2r")
 volume_db = 5.0
-max_distance = 20000.0
+max_distance = 40000.0
 attenuation = 0.9
 bus = &"SFX"
 

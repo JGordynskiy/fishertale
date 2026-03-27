@@ -21,10 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://cosns2q8s5qmx" path="res://Assets/ui/arrowIconWhite.png" id="12_je7jv"]
 [ext_resource type="Texture2D" uid="uid://blky8mawp5lun" path="res://Assets/enemies/evilFish.png" id="12_kpitc"]
 [ext_resource type="Texture2D" uid="uid://loab5wse0qu7" path="res://Assets/fishIdle1.png" id="12_sv2wj"]
-[ext_resource type="Texture2D" uid="uid://ccbyi7fe47glt" path="res://Assets/ui/heartIconWhite.png" id="13_15sl1"]
 [ext_resource type="Texture2D" uid="uid://cl78i2o0b0b2d" path="res://Assets/fishIdle2.png" id="13_ek6y8"]
 [ext_resource type="AudioStream" uid="uid://ch8atmhcgq6on" path="res://Assets/sounds/uiHoveron.ogg" id="14_culeq"]
 [ext_resource type="Texture2D" uid="uid://8nbr10e13gd2" path="res://Assets/fishIdle3.png" id="14_fh24y"]
+[ext_resource type="Texture2D" uid="uid://cl5yofs4vyjnb" path="res://Assets/ui/shieldIconWhite.png" id="14_yjxw2"]
 [ext_resource type="Texture2D" uid="uid://chowao8peeyyw" path="res://Assets/fishIdle4.png" id="15_pe3te"]
 [ext_resource type="Texture2D" uid="uid://d1y38voa2h44i" path="res://Assets/enemies/WallFish/WallfishNorm.png" id="22_pe3te"]
 [ext_resource type="Texture2D" uid="uid://eeur1srsqrcy" path="res://Assets/enemies/WallFish/wallfishblink1.png" id="23_c4lf3"]
@@ -790,7 +790,7 @@ layout_mode = 0
 offset_left = -320.85413
 offset_top = 133.0
 offset_right = 152.14587
-offset_bottom = 201.0
+offset_bottom = 234.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_noa7g")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/health"]
@@ -801,7 +801,19 @@ offset_right = 452.0
 offset_bottom = 141.0
 theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 25
-text = "+1 Heal Damage"
+text = "+1 Shield"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/health/RichTextLabel"]
+modulate = Color(0.76533335, 0.56, 1, 1)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 39.0
+offset_right = 701.6012
+offset_bottom = 160.0
+scale = Vector2(0.6294594, 0.6294594)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 25
+text = "Regenerating Health"
 
 [node name="upgrades" type="HBoxContainer" parent="."]
 z_index = 50
@@ -852,7 +864,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_yjxw2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ttrgv")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pt7cu")
 text = "5"
-icon = ExtResource("13_15sl1")
+icon = ExtResource("14_yjxw2")
 alignment = 2
 
 [node name="FriendlyMonitor" type="TextureRect" parent="."]

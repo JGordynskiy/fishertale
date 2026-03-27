@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
-@onready var clearPopup = load("res://scenes/ui/clearpopup.tscn")
-@onready var whirlpool = load("res://scenes/entities/whirlpool.tscn")
-@onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
+@onready var fadeRect = preload("res://scenes/ui/fade_rect.tscn")
+@onready var clearPopup = preload("res://scenes/ui/clearpopup.tscn")
+@onready var whirlpool = preload("res://scenes/entities/whirlpool.tscn")
+@onready var roePopup = preload("res://scenes/objects/roe_popup.tscn")
 
 @onready var fish: CharacterBody2D = $fish
 @onready var lightfish: Node2D = $lightFish
@@ -28,6 +28,7 @@ func _ready() -> void:
 	
 	fadeIn()
 	global.pausable = true
+	await global.timer(0.5)
 	$Music/musicint.play()
 	await global.timer(1)
 	await flickerOff()

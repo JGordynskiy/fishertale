@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var pause_menu: Control = $"Pause Menu/CanvasLayer"
 @onready var fadeanimation_player: AnimationPlayer = $faderect/faderect/AnimationPlayer
-@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
-@onready var whirlpool = load("res://scenes/entities/whirlpool.tscn")
+@onready var fadeRect = preload("res://scenes/ui/fade_rect.tscn")
+@onready var whirlpool = preload("res://scenes/entities/whirlpool.tscn")
 @onready var camera: Camera2D = $fish/followCam
 @onready var rng = RandomNumberGenerator.new()
 
@@ -13,11 +13,10 @@ extends Node2D
 @onready var xtraRoe = 0
 @onready var fish = get_node("fish") 
 @onready var boss1 = get_node("evilFish") 
-@onready var clearpopup = load("res://scenes/ui/clearpopup.tscn")
+@onready var clearpopup = preload("res://scenes/ui/clearpopup.tscn")
 
 @onready var boss_1_loop: AudioStreamPlayer = $Music/Boss1loop
 @onready var boss_1_end: AudioStreamPlayer = $Music/Boss1end
-@onready var boss_1_looplowpass: AudioStreamPlayer = $Music/boss1looplowpass
 @onready var boss_1_int: AudioStreamPlayer = $Music/boss1int
 
 
@@ -45,7 +44,6 @@ func _ready() -> void:
 	boss_1_loop.pitch_scale = 1
 	boss_1_int.play()
 	
-	boss_1_looplowpass.volume_db = -79
 	
 	pass # Replace with function body.
 
@@ -75,10 +73,9 @@ func gameOver():
 	global.pausable = false
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(boss_1_loop, "volume_db", -50, 4)
-	tween.tween_property(boss_1_loop, "pitch_scale", 0.2, 2)
-	boss_1_looplowpass.stop()
-	$"ambience/AnimationPlayer".play("fadeout")
+	tween.tween_property(boss_1_loop, "volume_db", -50, 6)
+	tween.tween_property(boss_1_loop, "pitch_scale", 0.2, 3)
+	#$"ambience/AnimationPlayer".play("fadeout")
 	await get_tree().create_timer(4, false).timeout
 	boss_1_loop.stop()
 	pass
@@ -110,7 +107,6 @@ func spawnPortal():
 	add_child(roeP)
 	
 	boss_1_loop.stop()
-	boss_1_looplowpass.stop()
 	boss_1_end.play()
 	
 	
@@ -127,7 +123,6 @@ func spawnPortal():
 func _on_boss_1_int_finished() -> void:
 	if (boss1.boss1hp > 0):
 		boss_1_loop.play()
-		boss_1_looplowpass.play()
 	pass # Replace with function body.
 	
 func fadeaway():

@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 @onready var game = get_owner()
 @onready var fish = game.get_node("fish") 
-@onready var bullet = load("res://scenes/enemy_bullet.tscn")
-@onready var superbullet = load("res://scenes/super_bullet.tscn")
-@onready var dashParticle = load("res://scenes/particles/evilFishParticles.tscn")
-@onready var dash2Particle = load("res://scenes/particles/evilFishChargeParticle.tscn")
-@onready var deathParticle = load("res://scenes/particles/evilFishdeathParticles.tscn")
+@onready var bullet = preload("res://scenes/enemy_bullet.tscn")
+@onready var superbullet = preload("res://scenes/super_bullet.tscn")
+@onready var dashParticle = preload("res://scenes/particles/evilFishParticles.tscn")
+@onready var dash2Particle = preload("res://scenes/particles/evilFishChargeParticle.tscn")
+@onready var deathParticle = preload("res://scenes/particles/evilFishdeathParticles.tscn")
 @onready var mini_charge: GPUParticles2D = $miniCharge
 @onready var recoil: AnimationPlayer = $Sprite2D/recoil
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -37,6 +37,7 @@ signal boss1death
 var dead = false
 
 func _ready() -> void:
+	look_at(fish.global_position)
 	startTimer = 150
 	moveSpeed = 0
 	coolMult = 1
@@ -54,6 +55,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	@warning_ignore("narrowing_conversion")
 	startTimer -= 10*delta
+	
+	$fishFinder.global_rotation = global_position.angle_to_point(fish.global_position)
 	
 	if boss1hp< 1:
 		$Dead.show()
@@ -85,6 +88,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	##forces the fish to look at the player as long as it's alive
+	var fishFinderC = $fishFinder.get_collider()
 	if (boss1hp > 0):
 		look_at(fish.global_position)
 		
@@ -94,15 +98,15 @@ func _physics_process(delta: float) -> void:
 	if coolDown < 0 && boss1hp>0 && global.hp > 0 && startTimer < 1:
 		randInt = rng.randi_range(1,8)
 		if randInt == 1 || randInt == 2:
-			look_at(fish.global_position)
+			#look_at(fish.global_position)
 			burst()
 		if randInt == 3 || randInt == 4 :
-			look_at(fish.global_position)
+			#look_at(fish.global_position)
 			triAttack()
 		if randInt == 5 ||randInt == 6 || randInt == 7:
 			dash(delta)
 		if randInt == 8:
-			look_at(fish.global_position)
+			#look_at(fish.global_position)
 			superBullet()
 	coolDown -= 50*delta
 	
@@ -147,6 +151,8 @@ func makePath():
 	
 func dash(delta):
 	if dashing:
+		return
+	if fish.velocity == Vector2(0,0):
 		return
 	$chargeup.play()
 	var instance = dashParticle.instantiate()

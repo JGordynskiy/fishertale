@@ -71,14 +71,16 @@ animation = &"shoot"
 frame_progress = 0.8599967
 offset = Vector2(-622.773, -13.81)
 
-[node name="shoot" type="AudioStreamPlayer" parent="."]
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_me7kd")
-volume_db = -5.0
+volume_db = 5.0
+max_distance = 25000.0
 max_polyphony = 40
 bus = &"SFX"
 
-[node name="pop" type="AudioStreamPlayer" parent="."]
+[node name="pop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_yh3mi")
+max_distance = 25000.0
 max_polyphony = 99
 bus = &"SFX"
 

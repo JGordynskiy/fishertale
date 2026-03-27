@@ -30,6 +30,12 @@ func _ready() -> void:
 	Engine.physics_ticks_per_second = 60
 	global.pausable = true
 	
+	if global.hp < 1:
+		global.hp = global.savedHp
+		
+	if global.maxShield == 0:
+		global.shield = 1
+		global.maxShield = 1
 	
 	transitioning = false
 	
@@ -110,9 +116,10 @@ func _on_friendly_monitor_box_mouse_exited() -> void:
 func _process(delta: float) -> void:
 	roe_amount.text = str(global.roe)
 	
-	#DEBUG
-	if Input.is_action_just_pressed("DEBUGcannonshoot"):
-		global.roe += 1
+	global.shield = global.maxShield
+	#global.hp = global.max_hp
+	
+
 	
 	## HEART DEPENDENT HINTS
 	if global.heart == 1:
@@ -186,7 +193,7 @@ func _process(delta: float) -> void:
 	#health
 	health.text = str(int(global.healthCost))
 	
-	if global.roe < global.healthCost || global.hp >= global.max_hp:
+	if global.maxShield == global.gameMaxShield || global.healthCost > global.roe:
 		health.disabled = true
 		pass
 	else:
@@ -195,6 +202,7 @@ func _process(delta: float) -> void:
 
 func _on_ready_button_pressed() -> void:
 	global.pausable = false
+	global.savedHp = global.hp
 	if !transitioning:
 		select.play()
 		transitioning = true
@@ -266,9 +274,9 @@ func _on_rate_mouse_entered() -> void:
 #health
 func _on_health_pressed() -> void:
 	select.play()
-	global.hp += 1
+	global.maxShield += 1
 	global.roe -= int(global.healthCost)
-	#global.healthCost += 0.5
+	global.healthCost += 2
 	pass # Replace with function body.
 
 

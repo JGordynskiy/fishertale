@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://djy2i1xu1j0um"]
+[gd_scene load_steps=6 format=3 uid="uid://djy2i1xu1j0um"]
 
 [ext_resource type="Script" uid="uid://c83244awlji3s" path="res://menu_hp_bar.gd" id="1_7hi0h"]
 [ext_resource type="Texture2D" uid="uid://b3wbrlpc72r1b" path="res://Assets/healthbarAll.png" id="2_i30em"]
+[ext_resource type="Script" uid="uid://d4ie3x8v1l027" path="res://scenes/ui/hpbar_shield_bar.gd" id="3_1qts8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qts8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 55
+border_width_top = 55
+border_width_right = 55
+border_width_bottom = 55
+border_color = Color(0.1254902, 0.03529412, 0.14901961, 1)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcnf4"]
+bg_color = Color(0.7960761, 0.4389318, 0.830999, 1)
+border_width_left = 55
+border_width_top = 55
+border_width_right = 55
+border_width_bottom = 55
+border_color = Color(0.1254902, 0.03529412, 0.14901961, 1)
 
 [node name="menuHpBar" type="Node2D"]
 script = ExtResource("1_7hi0h")
@@ -9,3 +27,17 @@ script = ExtResource("1_7hi0h")
 [node name="hpbarSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_i30em")
 vframes = 6
+
+[node name="hpbarShieldBar" type="ProgressBar" parent="."]
+offset_left = -2408.021
+offset_top = 647.3174
+offset_right = 9259.293
+offset_bottom = 1021.6704
+scale = Vector2(0.415, 0.415)
+theme_override_styles/background = SubResource("StyleBoxFlat_1qts8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qcnf4")
+max_value = 3.0
+step = 1.0
+value = 2.0
+show_percentage = false
+script = ExtResource("3_1qts8")
