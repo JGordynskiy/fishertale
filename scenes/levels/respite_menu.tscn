@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dfc7lldewp5pq"]
+[gd_scene format=3 uid="uid://dfc7lldewp5pq"]
 
 [ext_resource type="Texture2D" uid="uid://b5sek51ovhatj" path="res://Assets/objects/glassOverlay.png" id="1_h8wsi"]
 [ext_resource type="Script" uid="uid://6mulj1la2v3j" path="res://scenes/levels/respite_menu.gd" id="1_po2xu"]
@@ -556,7 +556,7 @@ border_color = Color(0.8, 0.45333335, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3whj"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="respite" type="Control"]
+[node name="respite" type="Control" unique_id=431824304]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -565,20 +565,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_po2xu")
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1432163037]
 process_mode = 3
 stream = ExtResource("2_uu4xs")
 bus = &"Music"
 
-[node name="hoverOn" type="AudioStreamPlayer" parent="."]
+[node name="hoverOn" type="AudioStreamPlayer" parent="." unique_id=313215801]
 stream = ExtResource("14_culeq")
 bus = &"SFX"
 
-[node name="select" type="AudioStreamPlayer" parent="."]
+[node name="select" type="AudioStreamPlayer" parent="." unique_id=683126428]
 stream = ExtResource("4_6i2y2")
 bus = &"SFX"
 
-[node name="upgradePanel" type="Panel" parent="."]
+[node name="upgradePanel" type="Panel" parent="." unique_id=2063988782]
 z_index = 5
 layout_mode = 1
 anchors_preset = -1
@@ -595,7 +595,7 @@ grow_vertical = 2
 scale = Vector2(0.84446996, 0.84446996)
 theme_override_styles/panel = SubResource("StyleBoxFlat_pwa20")
 
-[node name="Label" type="Label" parent="upgradePanel"]
+[node name="Label" type="Label" parent="upgradePanel" unique_id=748887560]
 z_index = 50
 layout_mode = 0
 offset_left = 127.890854
@@ -608,7 +608,7 @@ theme_override_fonts/font = ExtResource("10_vrvnp")
 theme_override_font_sizes/font_size = 100
 text = "Upgrades"
 
-[node name="Grey Border" type="ColorRect" parent="."]
+[node name="Grey Border" type="ColorRect" parent="." unique_id=1854335726]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -617,7 +617,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14, 0.14, 0.14, 1)
 
-[node name="WhiteBorder" type="ColorRect" parent="."]
+[node name="WhiteBorder" type="ColorRect" parent="." unique_id=1437839981]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -630,7 +630,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.65, 0.65, 0.65, 1)
 
-[node name="Background" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="." unique_id=1825283847]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.092
@@ -644,7 +644,7 @@ grow_vertical = 2
 scale = Vector2(0.9041939, 0.88395983)
 theme_override_styles/panel = SubResource("StyleBoxTexture_855ro")
 
-[node name="Water" type="ColorRect" parent="."]
+[node name="Water" type="ColorRect" parent="." unique_id=2037586779]
 modulate = Color(1, 1, 1, 0.79607844)
 layout_mode = 1
 anchors_preset = 15
@@ -658,13 +658,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.08005681, 0.22171411, 0.36616433, 1)
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=2128927022]
 position = Vector2(-144, 679)
 color = Color(0.73574996, 0.70248514, 0.3501248, 1)
 polygon = PackedVector2Array(222.24973, -37.299236, 322, -74.5, 655.6059, -23.129118, 1231.6846, -131.44612, 1340.6144, -83.19619, 1340.2441, -44.43701, 1340.4923, -5.5593557, 928.9724, -5.874607, 743.60583, -5.642206, 222.07893, -5.8870273)
 uv = PackedVector2Array(-123, -63.5, 322, -74.5, 657.20264, -13.548721, 1231.6846, -131.44612, 1501.7766, -56.41967, 1756.8638, -88.57352, 2063.397, -11.404297, 2155.5703, 222.93329, 697.92957, 280.8102, -470.3272, 190.77838)
 
-[node name="Glass" type="TextureRect" parent="."]
+[node name="Glass" type="TextureRect" parent="." unique_id=2023141058]
 z_index = 50
 layout_mode = 0
 offset_left = -90.00001
@@ -675,7 +675,7 @@ scale = Vector2(0.9976918, 0.9853597)
 pivot_offset = Vector2(637.47144, 280.10074)
 texture = ExtResource("1_h8wsi")
 
-[node name="seaweed2" type="TextureRect" parent="."]
+[node name="seaweed2" type="TextureRect" parent="." unique_id=900965255]
 modulate = Color(0.49, 0.7535, 1, 1)
 layout_mode = 0
 offset_left = 988.99994
@@ -686,7 +686,7 @@ rotation = -0.45304978
 scale = Vector2(-0.06091674, 0.05749175)
 texture = ExtResource("7_sejpb")
 
-[node name="seaweed" type="TextureRect" parent="."]
+[node name="seaweed" type="TextureRect" parent="." unique_id=87339356]
 modulate = Color(0.49, 0.7535, 1, 1)
 layout_mode = 0
 offset_left = 235.99998
@@ -697,7 +697,7 @@ rotation = 0.2550313
 scale = Vector2(0.06405654, 0.06405654)
 texture = ExtResource("7_sejpb")
 
-[node name="coral" type="TextureRect" parent="."]
+[node name="coral" type="TextureRect" parent="." unique_id=2142411284]
 modulate = Color(0.47000003, 0.66433346, 1, 1)
 layout_mode = 0
 offset_left = 598.0
@@ -708,11 +708,11 @@ rotation = -0.12607168
 scale = Vector2(0.04855458, 0.04855458)
 texture = ExtResource("3_ulady")
 
-[node name="Ambient Particles" parent="." instance=ExtResource("1_ulady")]
+[node name="Ambient Particles" parent="." unique_id=1419087897 instance=ExtResource("1_ulady")]
 position = Vector2(643.00006, 653.00006)
 scale = Vector2(-0.30203584, -0.30203584)
 
-[node name="ReadyButton" type="Button" parent="."]
+[node name="ReadyButton" type="Button" parent="." unique_id=522582703]
 z_index = 50
 layout_mode = 0
 offset_left = 833.0
@@ -728,14 +728,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fma8t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_17bcf")
 text = "Ready->"
 
-[node name="upgradeHints" type="Control" parent="."]
+[node name="upgradeHints" type="Control" parent="." unique_id=1441458516]
 anchors_preset = 0
 offset_left = 1025.8541
 offset_top = 153.0
 offset_right = 1025.8541
 offset_bottom = 913.0
 
-[node name="dmg" type="Panel" parent="upgradeHints"]
+[node name="dmg" type="Panel" parent="upgradeHints" unique_id=1507094817]
 visible = false
 layout_mode = 0
 offset_left = -320.85413
@@ -744,7 +744,7 @@ offset_right = 152.14587
 offset_bottom = 203.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_17777")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/dmg"]
+[node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/dmg" unique_id=1444915831]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 20.0
@@ -755,7 +755,7 @@ theme_override_font_sizes/normal_font_size = 25
 text = "+ 0.5 Damage
 "
 
-[node name="rate" type="Panel" parent="upgradeHints"]
+[node name="rate" type="Panel" parent="upgradeHints" unique_id=1398609751]
 visible = false
 layout_mode = 0
 offset_left = -320.85413
@@ -764,7 +764,7 @@ offset_right = 152.14587
 offset_bottom = 201.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_28hqb")
 
-[node name="heart1" type="RichTextLabel" parent="upgradeHints/rate"]
+[node name="heart1" type="RichTextLabel" parent="upgradeHints/rate" unique_id=1924631673]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 20.0
@@ -774,7 +774,7 @@ theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 25
 text = "+ 15% range"
 
-[node name="heart2" type="RichTextLabel" parent="upgradeHints/rate"]
+[node name="heart2" type="RichTextLabel" parent="upgradeHints/rate" unique_id=381193618]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 20.0
@@ -784,7 +784,7 @@ theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 25
 text = "+ 10% slash range"
 
-[node name="health" type="Panel" parent="upgradeHints"]
+[node name="health" type="Panel" parent="upgradeHints" unique_id=1151030210]
 visible = false
 layout_mode = 0
 offset_left = -320.85413
@@ -793,7 +793,7 @@ offset_right = 152.14587
 offset_bottom = 234.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_noa7g")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/health"]
+[node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/health" unique_id=1038217883]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 20.0
@@ -803,7 +803,7 @@ theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 25
 text = "+1 Shield"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/health/RichTextLabel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="upgradeHints/health/RichTextLabel" unique_id=1253439638]
 modulate = Color(0.76533335, 0.56, 1, 1)
 layout_mode = 0
 offset_left = 1.0
@@ -815,7 +815,7 @@ theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 25
 text = "Regenerating Health"
 
-[node name="upgrades" type="HBoxContainer" parent="."]
+[node name="upgrades" type="HBoxContainer" parent="." unique_id=859431936]
 z_index = 50
 layout_mode = 0
 offset_left = 654.0
@@ -825,7 +825,7 @@ offset_bottom = 888.0
 scale = Vector2(0.1576508, 0.1576508)
 theme_override_constants/separation = 194
 
-[node name="Damage" type="Button" parent="upgrades"]
+[node name="Damage" type="Button" parent="upgrades" unique_id=830150809]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.97, 0.38800004, 0, 1)
@@ -839,7 +839,7 @@ text = "5"
 icon = ExtResource("11_8yh1e")
 alignment = 2
 
-[node name="rate" type="Button" parent="upgrades"]
+[node name="rate" type="Button" parent="upgrades" unique_id=1447312540]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.97, 0.38800004, 0, 1)
@@ -853,7 +853,7 @@ text = "5"
 icon = ExtResource("12_je7jv")
 alignment = 2
 
-[node name="health" type="Button" parent="upgrades"]
+[node name="health" type="Button" parent="upgrades" unique_id=397427915]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.97, 0.38800004, 0, 1)
@@ -867,7 +867,7 @@ text = "5"
 icon = ExtResource("14_yjxw2")
 alignment = 2
 
-[node name="FriendlyMonitor" type="TextureRect" parent="."]
+[node name="FriendlyMonitor" type="TextureRect" parent="." unique_id=1387386522]
 modulate = Color(0.97, 0.97, 0.97, 1)
 z_index = 100
 layout_mode = 0
@@ -878,7 +878,7 @@ offset_bottom = 439.00003
 scale = Vector2(0.6670362, 0.6670362)
 texture = ExtResource("6_uoip4")
 
-[node name="Label" type="Label" parent="FriendlyMonitor"]
+[node name="Label" type="Label" parent="FriendlyMonitor" unique_id=762986353]
 z_index = -10
 layout_mode = 0
 offset_left = 193.3928
@@ -889,7 +889,7 @@ theme_override_fonts/font = ExtResource("10_vrvnp")
 theme_override_font_sizes/font_size = 66
 text = "YOU"
 
-[node name="static" type="TextureRect" parent="FriendlyMonitor"]
+[node name="static" type="TextureRect" parent="FriendlyMonitor" unique_id=1780894605]
 self_modulate = Color(1, 1, 1, 0.20392157)
 z_index = -10
 layout_mode = 0
@@ -901,7 +901,7 @@ scale = Vector2(7.294696, 4.2510953)
 texture = SubResource("AnimatedTexture_6i2y2")
 expand_mode = 1
 
-[node name="ScreenBackg" type="ColorRect" parent="FriendlyMonitor"]
+[node name="ScreenBackg" type="ColorRect" parent="FriendlyMonitor" unique_id=1529464825]
 z_index = -25
 layout_mode = 0
 offset_left = 5.864563
@@ -911,7 +911,7 @@ offset_bottom = 51.729095
 scale = Vector2(14.522642, 8.667504)
 color = Color(0.060000002, 0.064666666, 0.2, 1)
 
-[node name="stats" type="Control" parent="FriendlyMonitor"]
+[node name="stats" type="Control" parent="FriendlyMonitor" unique_id=739694292]
 visible = false
 anchors_preset = 0
 offset_left = 433.2238
@@ -919,7 +919,7 @@ offset_top = 405.0965
 offset_right = 473.2238
 offset_bottom = 445.0965
 
-[node name="backG" type="Panel" parent="FriendlyMonitor/stats"]
+[node name="backG" type="Panel" parent="FriendlyMonitor/stats" unique_id=797535561]
 show_behind_parent = true
 layout_mode = 0
 offset_left = -8.958982
@@ -928,7 +928,7 @@ offset_right = 343.34576
 offset_bottom = 221.55608
 theme_override_styles/panel = SubResource("StyleBoxFlat_bsp48")
 
-[node name="theFish" type="Label" parent="FriendlyMonitor/stats"]
+[node name="theFish" type="Label" parent="FriendlyMonitor/stats" unique_id=615589903]
 layout_mode = 0
 offset_left = 10.530212
 offset_top = 11.672462
@@ -940,7 +940,7 @@ theme_override_fonts/font = ExtResource("10_vrvnp")
 theme_override_font_sizes/font_size = 91
 text = "Stats"
 
-[node name="DmgText" type="Label" parent="FriendlyMonitor/stats"]
+[node name="DmgText" type="Label" parent="FriendlyMonitor/stats" unique_id=1706120160]
 layout_mode = 0
 offset_left = 10.530234
 offset_top = 89.62924
@@ -951,7 +951,7 @@ theme_override_fonts/font = ExtResource("4_17bcf")
 theme_override_font_sizes/font_size = 61
 text = "DMG:"
 
-[node name="rate" type="Label" parent="FriendlyMonitor/stats"]
+[node name="rate" type="Label" parent="FriendlyMonitor/stats" unique_id=1797303446]
 visible = false
 layout_mode = 0
 offset_left = 10.530234
@@ -963,7 +963,7 @@ theme_override_fonts/font = ExtResource("4_17bcf")
 theme_override_font_sizes/font_size = 61
 text = "shot rate:"
 
-[node name="slashSize" type="Label" parent="FriendlyMonitor/stats"]
+[node name="slashSize" type="Label" parent="FriendlyMonitor/stats" unique_id=1841411250]
 layout_mode = 0
 offset_left = 10.530234
 offset_top = 157.09186
@@ -974,7 +974,7 @@ theme_override_fonts/font = ExtResource("4_17bcf")
 theme_override_font_sizes/font_size = 61
 text = "Range: 100"
 
-[node name="Panel" type="Control" parent="FriendlyMonitor"]
+[node name="Panel" type="Control" parent="FriendlyMonitor" unique_id=1310210985]
 anchors_preset = 0
 offset_left = 283.34296
 offset_top = 238.36783
@@ -984,7 +984,7 @@ scale = Vector2(0.26575914, 0.26575914)
 mouse_filter = 2
 mouse_behavior_recursive = 1
 
-[node name="blink" type="Polygon2D" parent="FriendlyMonitor/Panel"]
+[node name="blink" type="Polygon2D" parent="FriendlyMonitor/Panel" unique_id=1221608852]
 visible = false
 z_index = -20
 position = Vector2(-236.9254, 310.2595)
@@ -994,14 +994,12 @@ offset = Vector2(236.92542, -310.25952)
 polygon = PackedVector2Array(217, -89, 205, -54, 212, 8, 262, 61, 333, 56, 361.0293, 33.846436, 361.0293, -16.92334, 344.10596, -62.052002, 321.54163, -90.257324, 275, -96)
 uv = PackedVector2Array(-199, -31, -211, 4, -182, 39, -144, 32, -122, -3, -141, -38)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FriendlyMonitor/Panel/blink"]
-libraries = {
-&"": SubResource("AnimationLibrary_wbjcc")
-}
-autoplay = "blinking"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FriendlyMonitor/Panel/blink" unique_id=1745304328]
+libraries/ = SubResource("AnimationLibrary_wbjcc")
+autoplay = &"blinking"
 speed_scale = 1.2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FriendlyMonitor/Panel"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FriendlyMonitor/Panel" unique_id=917371403]
 z_index = -25
 scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_o8g2s")
@@ -1009,12 +1007,10 @@ animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FriendlyMonitor/Panel/AnimatedSprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_81hvq")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FriendlyMonitor/Panel/AnimatedSprite2D" unique_id=897707371]
+libraries/ = SubResource("AnimationLibrary_81hvq")
 
-[node name="friendlyMonitorBox" type="Button" parent="FriendlyMonitor"]
+[node name="friendlyMonitorBox" type="Button" parent="FriendlyMonitor" unique_id=1211651061]
 z_index = 500
 layout_mode = 0
 offset_top = 1.4991369
@@ -1024,7 +1020,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xr4ur")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tjf50")
 theme_override_styles/focus = SubResource("StyleBoxFlat_k5p8p")
 
-[node name="enemyMonitor" type="TextureRect" parent="."]
+[node name="enemyMonitor" type="TextureRect" parent="." unique_id=858131213]
 modulate = Color(0.97, 0.97, 0.97, 1)
 z_index = 100
 layout_mode = 0
@@ -1035,7 +1031,7 @@ offset_bottom = 711.0
 scale = Vector2(0.45779315, 0.45779315)
 texture = ExtResource("6_uoip4")
 
-[node name="incoming" type="Label" parent="enemyMonitor"]
+[node name="incoming" type="Label" parent="enemyMonitor" unique_id=562564172]
 z_index = -10
 layout_mode = 0
 offset_left = 91.74446
@@ -1047,7 +1043,7 @@ theme_override_fonts/font = ExtResource("10_vrvnp")
 theme_override_font_sizes/font_size = 66
 text = "INCOMING"
 
-[node name="static" type="TextureRect" parent="enemyMonitor"]
+[node name="static" type="TextureRect" parent="enemyMonitor" unique_id=710700599]
 self_modulate = Color(1, 1, 1, 0.39215687)
 z_index = -10
 layout_mode = 0
@@ -1059,7 +1055,7 @@ scale = Vector2(7.294696, 4.2510953)
 texture = SubResource("AnimatedTexture_6i2y2")
 expand_mode = 1
 
-[node name="hints" type="Control" parent="enemyMonitor"]
+[node name="hints" type="Control" parent="enemyMonitor" unique_id=1250904291]
 visible = false
 anchors_preset = 0
 offset_left = 43.687813
@@ -1068,7 +1064,7 @@ offset_right = 83.68781
 offset_bottom = -5.8722305
 scale = Vector2(0.97878414, 0.97878414)
 
-[node name="backG" type="Panel" parent="enemyMonitor/hints"]
+[node name="backG" type="Panel" parent="enemyMonitor/hints" unique_id=227444879]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 595.82117
@@ -1077,7 +1073,7 @@ offset_right = 1334.7434
 offset_bottom = 431.90533
 theme_override_styles/panel = SubResource("StyleBoxFlat_0xa0o")
 
-[node name="boss4" type="RichTextLabel" parent="enemyMonitor/hints"]
+[node name="boss4" type="RichTextLabel" parent="enemyMonitor/hints" unique_id=240946132]
 visible = false
 clip_contents = false
 layout_mode = 0
@@ -1092,7 +1088,7 @@ theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
 text = "Lucelopod"
 
-[node name="boss4Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss4"]
+[node name="boss4Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss4" unique_id=1571530210]
 layout_mode = 0
 offset_left = 3.1755981
 offset_top = 98.4394
@@ -1105,7 +1101,7 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Loves the glory"
 
-[node name="boss4Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss4"]
+[node name="boss4Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss4" unique_id=597250346]
 layout_mode = 0
 offset_left = 5.777588
 offset_top = 179.09644
@@ -1120,7 +1116,7 @@ text = "A squid turned deity through devout worship.
 It can control light, to a degree."
 scroll_active = false
 
-[node name="boss3" type="RichTextLabel" parent="enemyMonitor/hints"]
+[node name="boss3" type="RichTextLabel" parent="enemyMonitor/hints" unique_id=586071004]
 visible = false
 clip_contents = false
 layout_mode = 0
@@ -1135,7 +1131,7 @@ theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
 text = "Omega-12"
 
-[node name="boss3Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss3"]
+[node name="boss3Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss3" unique_id=2005486474]
 layout_mode = 0
 offset_left = 3.1755981
 offset_top = 98.4394
@@ -1148,7 +1144,7 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Overengineered"
 
-[node name="boss3Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss3"]
+[node name="boss3Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss3" unique_id=238513071]
 layout_mode = 0
 offset_left = 5.777588
 offset_top = 179.09644
@@ -1163,7 +1159,7 @@ text = "A rogue science experiment from the nearby lab.
 Invulnerable until it shoots it's laser."
 scroll_active = false
 
-[node name="boss2" type="RichTextLabel" parent="enemyMonitor/hints"]
+[node name="boss2" type="RichTextLabel" parent="enemyMonitor/hints" unique_id=1046763092]
 visible = false
 clip_contents = false
 layout_mode = 0
@@ -1178,7 +1174,7 @@ theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
 text = "Wallfish"
 
-[node name="boss2Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss2"]
+[node name="boss2Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss2" unique_id=1078207575]
 layout_mode = 0
 offset_left = 3.1755981
 offset_top = 98.4394
@@ -1191,7 +1187,7 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Hates industry"
 
-[node name="boss2Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss2"]
+[node name="boss2Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss2" unique_id=801739713]
 layout_mode = 0
 offset_left = 5.777588
 offset_top = 179.09644
@@ -1206,7 +1202,7 @@ text = "Guards the lab's industrial fans, keeping them off.
 Summons rocks and bullets at intruders."
 scroll_active = false
 
-[node name="boss1" type="RichTextLabel" parent="enemyMonitor/hints"]
+[node name="boss1" type="RichTextLabel" parent="enemyMonitor/hints" unique_id=1588689137]
 visible = false
 clip_contents = false
 layout_mode = 0
@@ -1221,7 +1217,7 @@ theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
 text = "Ghoti"
 
-[node name="boss1Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss1"]
+[node name="boss1Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss1" unique_id=672322629]
 layout_mode = 0
 offset_left = 3.1755981
 offset_top = 98.4394
@@ -1234,7 +1230,7 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "Pronounced \"fish\""
 
-[node name="boss1Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss1"]
+[node name="boss1Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss1" unique_id=1760038485]
 layout_mode = 0
 offset_left = 5.777588
 offset_top = 179.09644
@@ -1249,7 +1245,7 @@ text = "Particularly unfond of the color orange.
 Charges and shoots at anything that moves."
 scroll_active = false
 
-[node name="ScreenBackg" type="ColorRect" parent="enemyMonitor"]
+[node name="ScreenBackg" type="ColorRect" parent="enemyMonitor" unique_id=492666817]
 z_index = -15
 layout_mode = 0
 offset_left = 5.864563
@@ -1259,7 +1255,7 @@ offset_bottom = 51.729095
 scale = Vector2(14.522642, 8.553986)
 color = Color(0, 0, 0, 1)
 
-[node name="bossImages" type="Control" parent="enemyMonitor"]
+[node name="bossImages" type="Control" parent="enemyMonitor" unique_id=2126704577]
 anchors_preset = 0
 offset_left = 307.99936
 offset_top = 231.5456
@@ -1267,7 +1263,7 @@ offset_right = 347.99936
 offset_bottom = 271.5456
 scale = Vector2(0.9649123, 0.7826087)
 
-[node name="boss4img" type="AnimatedSprite2D" parent="enemyMonitor/bossImages"]
+[node name="boss4img" type="AnimatedSprite2D" parent="enemyMonitor/bossImages" unique_id=1144873482]
 z_index = -15
 position = Vector2(-9.055298, -64.19688)
 scale = Vector2(0.24763611, 0.2476361)
@@ -1275,14 +1271,14 @@ sprite_frames = SubResource("SpriteFrames_0xa0o")
 autoplay = "default"
 frame_progress = 0.5998166
 
-[node name="boss3img" type="Sprite2D" parent="enemyMonitor/bossImages"]
+[node name="boss3img" type="Sprite2D" parent="enemyMonitor/bossImages" unique_id=2078020796]
 z_index = -15
 position = Vector2(-13.583019, -5.5823364)
 rotation = 0.24735393
 scale = Vector2(0.1776218, 0.21899763)
 texture = ExtResource("26_v85fi")
 
-[node name="boss2img" type="AnimatedSprite2D" parent="enemyMonitor/bossImages"]
+[node name="boss2img" type="AnimatedSprite2D" parent="enemyMonitor/bossImages" unique_id=2096424058]
 z_index = -15
 rotation = -0.00047314167
 scale = Vector2(0.114897095, 0.14153935)
@@ -1290,13 +1286,13 @@ sprite_frames = SubResource("SpriteFrames_je7jv")
 autoplay = "default"
 frame_progress = 0.14896557
 
-[node name="boss1Img" type="Sprite2D" parent="enemyMonitor/bossImages"]
+[node name="boss1Img" type="Sprite2D" parent="enemyMonitor/bossImages" unique_id=1752561098]
 z_index = -15
 position = Vector2(-6.9088745, 10.633057)
 scale = Vector2(0.110861525, 0.08320246)
 texture = ExtResource("12_kpitc")
 
-[node name="HoverHint" type="Label" parent="enemyMonitor/bossImages/boss1Img"]
+[node name="HoverHint" type="Label" parent="enemyMonitor/bossImages/boss1Img" unique_id=2003954592]
 offset_left = 3288.7263
 offset_top = -3247.6416
 offset_right = 5533.409
@@ -1308,7 +1304,7 @@ theme_override_font_sizes/font_size = 300
 text = "<- Hover for info"
 autowrap_mode = 2
 
-[node name="enemyMonitorBox" type="Button" parent="enemyMonitor"]
+[node name="enemyMonitorBox" type="Button" parent="enemyMonitor" unique_id=756890518]
 z_index = 500
 layout_mode = 0
 offset_left = -4.368828
@@ -1319,7 +1315,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_i6qin")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1nidn")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mokga")
 
-[node name="Roe" type="Control" parent="."]
+[node name="Roe" type="Control" parent="." unique_id=522894692]
 anchors_preset = 0
 offset_left = 280.00003
 offset_top = 215.0
@@ -1328,7 +1324,7 @@ offset_bottom = 255.0
 scale = Vector2(0.62435806, 0.6292351)
 mouse_filter = 2
 
-[node name="roeAmount" type="RichTextLabel" parent="Roe"]
+[node name="roeAmount" type="RichTextLabel" parent="Roe" unique_id=1205775817]
 z_index = 10
 layout_mode = 0
 offset_left = 584.0
@@ -1341,7 +1337,7 @@ theme_override_fonts/normal_font = ExtResource("10_vrvnp")
 theme_override_font_sizes/normal_font_size = 100
 text = "0"
 
-[node name="RoeHint" type="RichTextLabel" parent="Roe"]
+[node name="RoeHint" type="RichTextLabel" parent="Roe" unique_id=1413883213]
 visible = false
 z_index = 50
 layout_mode = 0
@@ -1358,7 +1354,7 @@ text = "Roe
 
 Obtained by defeating enemies."
 
-[node name="RoeButton" type="Button" parent="Roe"]
+[node name="RoeButton" type="Button" parent="Roe" unique_id=2031523246]
 z_index = 50
 layout_mode = 0
 offset_left = 508.0
@@ -1369,9 +1365,9 @@ scale = Vector2(0.05050725, 0.05050725)
 icon = ExtResource("27_855ro")
 flat = true
 
-[node name="Pause Menu" parent="." instance=ExtResource("34_wbjcc")]
+[node name="Pause Menu" parent="." unique_id=177327753 instance=ExtResource("34_wbjcc")]
 
-[node name="hpbar" type="Control" parent="."]
+[node name="hpbar" type="Control" parent="." unique_id=1784818550]
 z_index = 50
 anchors_preset = 0
 offset_left = 517.0
@@ -1381,9 +1377,9 @@ offset_bottom = 242.0
 rotation = -1.5707964
 scale = Vector2(0.03480081, 0.03480081)
 
-[node name="menuHpBar" parent="hpbar" instance=ExtResource("31_1dcgu")]
+[node name="menuHpBar" parent="hpbar" unique_id=607520646 instance=ExtResource("31_1dcgu")]
 
-[node name="underconstruction" type="Control" parent="."]
+[node name="underconstruction" type="Control" parent="." unique_id=1583916380]
 visible = false
 z_index = 500
 layout_mode = 1
@@ -1394,7 +1390,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1
 
-[node name="Panel" type="Panel" parent="underconstruction"]
+[node name="Panel" type="Panel" parent="underconstruction" unique_id=177550695]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1403,7 +1399,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c3whj")
 
-[node name="Label" type="Label" parent="underconstruction"]
+[node name="Label" type="Label" parent="underconstruction" unique_id=1093844365]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

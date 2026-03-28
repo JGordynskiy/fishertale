@@ -5,9 +5,16 @@ extends Node2D
 @onready var whirlpoolnoise: AudioStreamPlayer2D = $whirlpoolnoise
 @onready var whirlpoolspawn: AudioStreamPlayer = $whirlpoolspawn
 
+@export var active = true
+
 @onready var cam = $"../fish/followCam"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	if !active:
+		$whirlpoolnoise.volume_db = -99
+		$whirlpoolspawn.volume_db = -99
+	
 	
 	visible = false
 	spawn.play("spawn")
@@ -20,7 +27,8 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(1, false).timeout
 	vortex.emitting = true
-	$Area2D/CollisionShape2D.disabled = false
+	if active:
+		$Area2D/CollisionShape2D.disabled = false
 	pass # Replace with function body.
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8ykuss2jwkyy"]
+[gd_scene format=3 uid="uid://c8ykuss2jwkyy"]
 
 [ext_resource type="Script" uid="uid://bj525i0h7bqhv" path="res://Scripts/evil_fish_charge_particle.gd" id="1_427ws"]
 
@@ -34,10 +34,10 @@ scale_min = 100.0
 scale_max = 200.0
 scale_curve = SubResource("CurveTexture_pyv65")
 
-[node name="evilFishChargeParticle" type="Node2D"]
+[node name="evilFishChargeParticle" type="Node2D" unique_id=1953788982]
 script = ExtResource("1_427ws")
 
-[node name="bulletcharge" type="GPUParticles2D" parent="."]
+[node name="bulletcharge" type="GPUParticles2D" parent="." unique_id=346333378]
 self_modulate = Color(0.27999997, 1, 0.952, 1)
 scale = Vector2(3.037736, 3.037736)
 emitting = false
@@ -47,7 +47,7 @@ one_shot = true
 speed_scale = 22.75
 process_material = SubResource("ParticleProcessMaterial_nv7te")
 
-[node name="splosion" type="GPUParticles2D" parent="."]
+[node name="splosion" type="GPUParticles2D" parent="." unique_id=2058730547]
 modulate = Color(0.17101565, 0.78278095, 0.62650365, 1)
 scale = Vector2(-49.374607, -49.374607)
 emitting = false

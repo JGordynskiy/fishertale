@@ -3,7 +3,7 @@ extends Node2D
 @onready var fish = $"../fish"
 @onready var game = $".."
 
-@onready var damageParticles = preload("res://scenes/particles/lightDamageParticles.tscn")
+const damageParticles = preload("res://scenes/particles/lightDamageParticles.tscn")
 
 # Bound for random teleportation
 @export var yRangeD : int
@@ -11,8 +11,8 @@ extends Node2D
 @export var xRangeL : int
 @export var xRangeR : int
 
-@onready var sparkle = preload("res://scenes/projectiles/sparkle.tscn")
-@onready var sparkleLine = preload("res://scenes/projectiles/sparkle_line_attack.tscn")
+const sparkle = preload("res://scenes/projectiles/sparkle.tscn")
+const sparkleLine = preload("res://scenes/projectiles/sparkle_line_attack.tscn")
 # distance from fish when randomly teleporting
 var spawnMin = 6000
 var spawnMax = 15000

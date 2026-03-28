@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://daallqpv0d4ul"]
+[gd_scene format=3 uid="uid://daallqpv0d4ul"]
 
 [ext_resource type="Script" uid="uid://crx37ouyvqali" path="res://Scripts/game1.gd" id="1_bo462"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="2_qtp2c"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="3_5v0ki"]
+[ext_resource type="PackedScene" uid="uid://dpk1k3d15gnda" path="res://scenes/loader/objectPreLoader.tscn" id="4_5ijg6"]
 [ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="6_i5lao"]
 [ext_resource type="PackedScene" uid="uid://d2f2njwjm1mdb" path="res://scenes/entities/evil_fish.tscn" id="6_kxvvm"]
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="7_vek25"]
@@ -18,7 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://bko8bas1376gv" path="res://Assets/music/boss1loop.ogg" id="14_oi55c"]
 [ext_resource type="AudioStream" uid="uid://ck787pu1kc7l5" path="res://Assets/music/boss1looplowpass.ogg" id="16_aln2l"]
 [ext_resource type="AudioStream" uid="uid://b2xbghqux8wrc" path="res://Assets/music/boss1int.ogg" id="17_0w3bu"]
-[ext_resource type="PackedScene" uid="uid://dq5rons5tejqv" path="res://scenes/enemy_bullet.tscn" id="19_6mlny"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kxvvm"]
 vertices = PackedVector2Array(-13607.758, -43967.203, -11293.906, -43443.71, -14516.633, -40564.344, -23968.617, -29689.008, -16561.797, -34351.367, -15226.469, -27948.203, -11144.539, -23379.547, -22181.523, -21129.64, 26188.906, -13108.07, 33859.39, -22110.36, 27499.344, -4867.3984, 25597.61, -11004.594, 7335.1484, -39334.86, 7162.5938, -39528, 8308.953, -39528, 25649.25, -15225.398, 19491.75, -38948.508, 21950.14, -39076.28, 25386.203, -36453.438, 24123.227, -16789.227, 22019.742, -17380.531, 12303.797, -21803.102, 11916.156, -23324.54, 16113.57, -37805.453, 24033.781, -9478.57, 24285.047, -3311.5625, 21916.46, -8938.906, 18372.656, -3786.5313, 19812.969, -9530.211, 10819.742, -24448.328, 9308.32, -24873.352, 8670.477, -32931.703, 5063.3438, -5433.0234, 25.890625, -22001.648, 1747.6875, -22360.719, 6238.078, -21877.867, 6625.711, -20356.43, 6625.3203, -26718.727, 7786.8906, -24485.703, 6663.1016, -23389.29, 7722.133, -19232.64, 8714.383, -2740.1875, 9233.547, -18807.633, 13988.3125, -3374.3281, 19902.422, -16840.86, 11878.781, -20291.68, 18338.602, -15314.852, 10755, -19195.258, 17747.29, -13211.367, 16801.32, -2840.6328, 18286.953, -11094.031)
@@ -64,42 +64,42 @@ _data = {
 &"fadeout": SubResource("Animation_kxvvm")
 }
 
-[node name="Game1" type="Node2D"]
+[node name="Game1" type="Node2D" unique_id=1293929273]
 script = ExtResource("1_bo462")
 
-[node name="Background" parent="." instance=ExtResource("10_kxvvm")]
+[node name="Background" parent="." unique_id=852952558 instance=ExtResource("10_kxvvm")]
 position = Vector2(22533, -13487)
 rotation = 1.5814941
 scale = Vector2(3.5292397, 3.5292397)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Background"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Background" unique_id=873608307]
 position = Vector2(-3098.6965, 5300.0664)
 rotation = 0.0034832358
 scale = Vector2(0.19067727, 0.19067727)
 navigation_polygon = SubResource("NavigationPolygon_kxvvm")
 
-[node name="Hazards" type="Node2D" parent="Background/NavigationRegion2D"]
+[node name="Hazards" type="Node2D" parent="Background/NavigationRegion2D" unique_id=2081470422]
 z_index = 300
 
-[node name="Object" parent="Background/NavigationRegion2D/Hazards" instance=ExtResource("6_i5lao")]
+[node name="Object" parent="Background/NavigationRegion2D/Hazards" unique_id=2016782606 instance=ExtResource("6_i5lao")]
 position = Vector2(22008.773, -13142.407)
 rotation = -0.5113642
 
-[node name="Object3" parent="Background/NavigationRegion2D/Hazards" instance=ExtResource("6_i5lao")]
+[node name="Object3" parent="Background/NavigationRegion2D/Hazards" unique_id=1722229333 instance=ExtResource("6_i5lao")]
 position = Vector2(9274.287, -21812.969)
 rotation = 0.5359249
 scale = Vector2(2.360991, 2.360991)
 
-[node name="Object2" parent="Background/NavigationRegion2D/Hazards" instance=ExtResource("6_i5lao")]
+[node name="Object2" parent="Background/NavigationRegion2D/Hazards" unique_id=1410061471 instance=ExtResource("6_i5lao")]
 position = Vector2(-5001.2656, -38747.613)
 rotation = -0.95917934
 scale = Vector2(18.269064, 18.269064)
 
-[node name="fish" parent="." instance=ExtResource("2_qtp2c")]
+[node name="fish" parent="." unique_id=2008832185 instance=ExtResource("2_qtp2c")]
 z_index = 600
 position = Vector2(9275.319, -14843.165)
 
-[node name="followCam" parent="fish" instance=ExtResource("3_5v0ki")]
+[node name="followCam" parent="fish" unique_id=1710170880 instance=ExtResource("3_5v0ki")]
 enabled = false
 limit_left = 4605
 limit_top = -25380
@@ -107,38 +107,36 @@ limit_right = 31945
 limit_bottom = -1320
 metadata/_edit_lock_ = true
 
-[node name="evilFish" parent="." instance=ExtResource("6_kxvvm")]
+[node name="evilFish" parent="." unique_id=1820923681 instance=ExtResource("6_kxvvm")]
 position = Vector2(20332, -13760)
 scale = Vector2(1.2455237, 1.2455237)
 
-[node name="ambience" type="AudioStreamPlayer" parent="."]
+[node name="ambience" type="AudioStreamPlayer" parent="." unique_id=1074410222]
 stream = ExtResource("7_vek25")
 bus = &"SFX"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ambience"]
-libraries = {
-&"": SubResource("AnimationLibrary_3sf34")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ambience" unique_id=431179660]
+libraries/ = SubResource("AnimationLibrary_3sf34")
 
-[node name="Ambient Particles" parent="." instance=ExtResource("9_iy4g1")]
+[node name="Ambient Particles" parent="." unique_id=150100469 instance=ExtResource("9_iy4g1")]
 z_index = 100
 position = Vector2(16036, 16186)
 
-[node name="Pause Menu" parent="." instance=ExtResource("8_cu3vh")]
+[node name="Pause Menu" parent="." unique_id=1468740674 instance=ExtResource("8_cu3vh")]
 unique_name_in_owner = true
 
-[node name="hpBar" parent="." instance=ExtResource("10_iy4g1")]
+[node name="hpBar" parent="." unique_id=1496634576 instance=ExtResource("10_iy4g1")]
 layer = 0
 
-[node name="bosshealthbar" parent="." instance=ExtResource("10_rwban")]
+[node name="bosshealthbar" parent="." unique_id=941387376 instance=ExtResource("10_rwban")]
 
-[node name="GameOver" parent="." instance=ExtResource("11_kxvvm")]
+[node name="GameOver" parent="." unique_id=24209529 instance=ExtResource("11_kxvvm")]
 layer = 3
 
-[node name="stopwatch" parent="." instance=ExtResource("14_6mlny")]
+[node name="stopwatch" parent="." unique_id=810672004 instance=ExtResource("14_6mlny")]
 visible = false
 
-[node name="cutsceneCam" type="Camera2D" parent="."]
+[node name="cutsceneCam" type="Camera2D" parent="." unique_id=1836148484]
 ignore_rotation = false
 enabled = false
 zoom = Vector2(0.08, 0.08)
@@ -148,33 +146,34 @@ limit_right = 30405
 limit_bottom = -825
 script = ExtResource("13_3sf34")
 
-[node name="Music" type="Node" parent="."]
+[node name="Music" type="Node" parent="." unique_id=1630810396]
 process_mode = 3
 
-[node name="Boss1end" type="AudioStreamPlayer" parent="Music"]
+[node name="Boss1end" type="AudioStreamPlayer" parent="Music" unique_id=1887391421]
 process_mode = 3
 stream = ExtResource("14_nu4re")
 volume_db = -4.0
 bus = &"Music"
 
-[node name="Boss1loop" type="AudioStreamPlayer" parent="Music"]
+[node name="Boss1loop" type="AudioStreamPlayer" parent="Music" unique_id=271716132]
 process_mode = 3
 stream = ExtResource("14_oi55c")
 volume_db = -2.0
 bus = &"Music"
 
-[node name="boss1looplowpass" type="AudioStreamPlayer" parent="Music"]
+[node name="boss1looplowpass" type="AudioStreamPlayer" parent="Music" unique_id=2118082549]
 process_mode = 3
 stream = ExtResource("16_aln2l")
 volume_db = -80.0
 
-[node name="boss1int" type="AudioStreamPlayer" parent="Music"]
+[node name="boss1int" type="AudioStreamPlayer" parent="Music" unique_id=141838266]
 stream = ExtResource("17_0w3bu")
 bus = &"Music"
 
-[node name="EnemyBullet" parent="." instance=ExtResource("19_6mlny")]
-position = Vector2(66630, -25048)
-rotation = -2.929912
+[node name="preLoading!" type="Node2D" parent="." unique_id=350631842]
+position = Vector2(-32233, -21958)
+
+[node name="objectPreLoader" parent="preLoading!" unique_id=770993929 instance=ExtResource("4_5ijg6")]
 
 [connection signal="finished" from="ambience" to="." method="_on_ambience_finished"]
 [connection signal="finished" from="Music/Boss1loop" to="." method="_on_boss_1_loop_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcqxpeyuf7pqo"]
+[gd_scene format=3 uid="uid://dcqxpeyuf7pqo"]
 
 [ext_resource type="Script" uid="uid://c7ecq3qk63hnj" path="res://scenes/levels/game_t.gd" id="1_hb3pr"]
 [ext_resource type="PackedScene" uid="uid://kufc7apr17a3" path="res://scenes/background_tut.tscn" id="2_yljmy"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="16_cc187"]
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="18_un2io"]
 [ext_resource type="PackedScene" uid="uid://du77jlb534rxn" path="res://scenes/entities/lunge_fish.tscn" id="19_o2a71"]
+[ext_resource type="PackedScene" uid="uid://dpk1k3d15gnda" path="res://scenes/loader/objectPreLoader.tscn" id="20_g7yl1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yljmy"]
 
@@ -30,17 +31,17 @@ vertices = PackedVector2Array(-18623.063, 7404.539, -18543.813, 5576.9063, -1693
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(2, 1, 5), PackedInt32Array(6, 2, 5, 7), PackedInt32Array(6, 7, 8), PackedInt32Array(6, 8, 9, 10), PackedInt32Array(11, 12, 13, 14, 15), PackedInt32Array(15, 14, 16, 17), PackedInt32Array(17, 16, 18, 3), PackedInt32Array(10, 9, 19, 20), PackedInt32Array(20, 19, 21), PackedInt32Array(20, 21, 22), PackedInt32Array(3, 18, 4), PackedInt32Array(23, 0, 4), PackedInt32Array(24, 23, 4), PackedInt32Array(20, 22, 25), PackedInt32Array(20, 25, 26), PackedInt32Array(27, 24, 4), PackedInt32Array(27, 4, 20), PackedInt32Array(27, 20, 26)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-32694, 1269, -35533, 14271, -10229, 12666, -7966, 7358, -3328, -1252, 1813, -438, 8807, 892, 10172, -5802, 5571, -5707, -2138, -3930, -4169, -1554, -10218, 5572, -16936, -89, -25288, -336), PackedVector2Array(-23331, 10781, -24661, 10210, -26237, 8802, -25836, 6702, -25232, 5039, -24100, 3562, -22573, 3493, -21033, 3969, -19716, 4468, -18554, 5581, -18633, 7403, -19125, 9225, -19943, 10575, -21558, 11146)])
 
-[node name="game_t" type="Node2D"]
+[node name="game_t" type="Node2D" unique_id=1215662939]
 script = ExtResource("1_hb3pr")
 
-[node name="coverupcollision" type="StaticBody2D" parent="." groups=["objects"]]
+[node name="coverupcollision" type="StaticBody2D" parent="." unique_id=997132273 groups=["objects"]]
 scale = Vector2(11.045784, 11.045784)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="coverupcollision"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="coverupcollision" unique_id=25266827]
 visible = false
 polygon = PackedVector2Array(-1068.1903, -1862.8826, -825.47327, -1681.5464, -699.1807, -1555.3445, -693.83936, -1533.7977, -675.4613, -1513.247, -653.9146, -1494.9595, -633.3638, -1489.5275, -605.29877, -1476.5814, -578.3202, -1473.3223, -546.0001, -1469.0671, -503.90262, -1470.1536, -475.83762, -1477.6677, -445.5093, -1486.1777, -409.8396, -1508.6298, -384.12845, -1546.7439, -325.82565, -1712.8706, -697.008, -1898.4618)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2121895553]
 self_modulate = Color(1, 1, 1, 0.25882354)
 z_index = 1000
 offset_left = 55424.0
@@ -50,84 +51,84 @@ offset_bottom = -38616.0
 scale = Vector2(-3306.4265, 1737.704)
 color = Color(2.887845e-05, 0.30066723, 0.75569415, 1)
 
-[node name="backgroundTut" parent="." instance=ExtResource("2_yljmy")]
+[node name="backgroundTut" parent="." unique_id=1064029711 instance=ExtResource("2_yljmy")]
 z_index = -320
 scale = Vector2(11.045784, 11.045784)
 
-[node name="fish" parent="." instance=ExtResource("3_uvv3c")]
+[node name="fish" parent="." unique_id=874229315 instance=ExtResource("3_uvv3c")]
 z_index = 500
 position = Vector2(-25506, -12573)
 
-[node name="followCam" parent="fish" instance=ExtResource("4_uq1e6")]
+[node name="followCam" parent="fish" unique_id=1431435567 instance=ExtResource("4_uq1e6")]
 limit_left = -33720
 limit_top = -25705
 limit_right = -13000
 limit_bottom = -8030
 limit_smoothed = true
 
-[node name="trigger1" type="Area2D" parent="."]
+[node name="trigger1" type="Area2D" parent="." unique_id=128995226]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger1" unique_id=1799248187]
 position = Vector2(-16284, -12950)
 scale = Vector2(100, 100)
 shape = SubResource("CircleShape2D_yljmy")
 
-[node name="trigger2" type="Area2D" parent="."]
+[node name="trigger2" type="Area2D" parent="." unique_id=217827880]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger2" unique_id=1783307154]
 position = Vector2(-4727, -14508)
 scale = Vector2(100, 100)
 shape = SubResource("RectangleShape2D_yljmy")
 
-[node name="trigger3" type="Area2D" parent="."]
+[node name="trigger3" type="Area2D" parent="." unique_id=1868778548]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger3" unique_id=383265522]
 position = Vector2(7946.001, -6521)
 scale = Vector2(-265.1824, 11.929243)
 shape = SubResource("RectangleShape2D_yljmy")
 
-[node name="trigger4" type="Area2D" parent="."]
+[node name="trigger4" type="Area2D" parent="." unique_id=951444914]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger4" unique_id=987039287]
 position = Vector2(-8917, 6971)
 rotation = -4.712389
 scale = Vector2(283.1812, -14.30965)
 shape = SubResource("RectangleShape2D_yljmy")
 
-[node name="Pause Menu" parent="." instance=ExtResource("5_uvv3c")]
+[node name="Pause Menu" parent="." unique_id=175774229 instance=ExtResource("5_uvv3c")]
 
-[node name="calmloop" type="AudioStreamPlayer" parent="."]
+[node name="calmloop" type="AudioStreamPlayer" parent="." unique_id=1771125292]
 process_mode = 3
 stream = ExtResource("6_uq1e6")
 bus = &"Music"
 
-[node name="calmfirst" type="AudioStreamPlayer" parent="."]
+[node name="calmfirst" type="AudioStreamPlayer" parent="." unique_id=1977545014]
 process_mode = 3
 stream = ExtResource("7_inl3r")
 bus = &"Music"
 
-[node name="calmactivity" type="AudioStreamPlayer" parent="."]
+[node name="calmactivity" type="AudioStreamPlayer" parent="." unique_id=517611543]
 process_mode = 3
 stream = ExtResource("8_nefry")
 bus = &"Music"
 
-[node name="Ambient Particles" parent="." instance=ExtResource("8_srh48")]
+[node name="Ambient Particles" parent="." unique_id=2064881115 instance=ExtResource("8_srh48")]
 z_index = 100
 position = Vector2(-12021, 18299)
 scale = Vector2(2.3644025, 7.4216585)
 
-[node name="Laser" parent="." instance=ExtResource("9_k4blr")]
+[node name="Laser" parent="." unique_id=304198244 instance=ExtResource("9_k4blr")]
 position = Vector2(-5974.0005, -14180.001)
 scale = Vector2(2.7856817, 2.7856817)
 
-[node name="coverup1" type="Polygon2D" parent="."]
+[node name="coverup1" type="Polygon2D" parent="." unique_id=1764524255]
 position = Vector2(-5034.001, -19148)
 scale = Vector2(19.056393, 19.056393)
 color = Color(0.2509804, 0.2509804, 0.2509804, 1)
 polygon = PackedVector2Array(-143.36401, 104.05957, 41.50833, 103.58728, 88.054504, -25.818115, -30.278503, -26.237915, -257.394, -9.812988)
 uv = PackedVector2Array(-228.5, -42, -42.5, 95, 144.5, -69)
 
-[node name="coverup2" type="Polygon2D" parent="."]
+[node name="coverup2" type="Polygon2D" parent="." unique_id=1567218923]
 position = Vector2(-8689, -10399.999)
 rotation = 3.1415927
 scale = Vector2(19.056393, 19.056393)
@@ -135,7 +136,7 @@ color = Color(0.2509804, 0.2509804, 0.2509804, 1)
 polygon = PackedVector2Array(-109.20218, 98.602234, -30.121124, 112.71814, 79.868256, 102.85272, 213.68161, 94.08923, 163.30478, -55.99164, -321.362, 12.27948)
 uv = PackedVector2Array(-228.5, -42, -42.5, 95, 144.5, -69)
 
-[node name="tutPause" type="Sprite2D" parent="."]
+[node name="tutPause" type="Sprite2D" parent="." unique_id=300117102]
 modulate = Color(0.6819995, 0.82573694, 1.0137012, 1)
 z_index = -100
 position = Vector2(5351, -1585)
@@ -143,7 +144,7 @@ rotation = 0.35296178
 scale = Vector2(3.217335, 3.217335)
 texture = ExtResource("12_lv6ac")
 
-[node name="tutSpace" type="Sprite2D" parent="."]
+[node name="tutSpace" type="Sprite2D" parent="." unique_id=835357537]
 modulate = Color(0.88, 0.88, 0.88, 1)
 z_index = -120
 position = Vector2(-9640.999, -14848.001)
@@ -151,54 +152,57 @@ rotation = 0.08767597
 scale = Vector2(1.642679, 1.5461042)
 texture = ExtResource("10_563oq")
 
-[node name="tutWASD" type="Sprite2D" parent="."]
+[node name="tutWASD" type="Sprite2D" parent="." unique_id=827810964]
 modulate = Color(0.47, 0.47, 0.47, 1)
 position = Vector2(-30524.002, -14148)
 rotation = -0.19269219
 scale = Vector2(2.759237, 2.5970185)
 texture = ExtResource("10_6rfn2")
 
-[node name="tutMouse" type="Sprite2D" parent="."]
+[node name="tutMouse" type="Sprite2D" parent="." unique_id=1581765372]
 z_index = -100
 position = Vector2(2217.0002, -14053)
 rotation = -0.29576984
 scale = Vector2(2.2998543, 2.2998543)
 texture = ExtResource("14_oh18h")
 
-[node name="breakRock" parent="." instance=ExtResource("12_2emxj")]
+[node name="breakRock" parent="." unique_id=234296993 instance=ExtResource("12_2emxj")]
 modulate = Color(0.47, 0.47, 0.47, 1)
 position = Vector2(8272, -6668)
 rotation = 0.29625225
 scale = Vector2(16.38196, 16.38196)
 
-[node name="breakRock2" parent="." instance=ExtResource("12_2emxj")]
+[node name="breakRock2" parent="." unique_id=580442129 instance=ExtResource("12_2emxj")]
 modulate = Color(0.47, 0.47, 0.47, 1)
 position = Vector2(6560, -18221)
 rotation = 1.2675385
 scale = Vector2(18.684883, 18.684883)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1172109668]
 navigation_polygon = SubResource("NavigationPolygon_un2io")
 
-[node name="Object" parent="NavigationRegion2D" instance=ExtResource("5_qjl4i")]
+[node name="Object" parent="NavigationRegion2D" unique_id=2033230615 instance=ExtResource("5_qjl4i")]
 position = Vector2(-22192, 7222)
 rotation = 0.37169135
 
-[node name="GameOver" parent="." instance=ExtResource("16_cc187")]
+[node name="GameOver" parent="." unique_id=1495417944 instance=ExtResource("16_cc187")]
 
-[node name="hpBar" parent="." instance=ExtResource("18_un2io")]
+[node name="hpBar" parent="." unique_id=692303486 instance=ExtResource("18_un2io")]
 
-[node name="lungeFish" parent="." instance=ExtResource("19_o2a71")]
+[node name="lungeFish" parent="." unique_id=1676706411 instance=ExtResource("19_o2a71")]
 position = Vector2(-22026, 2769.0002)
 scale = Vector2(0.69735014, 0.69735014)
 
-[node name="lungeFish2" parent="." instance=ExtResource("19_o2a71")]
+[node name="lungeFish2" parent="." unique_id=549521595 instance=ExtResource("19_o2a71")]
 position = Vector2(-29136, 12140)
 scale = Vector2(0.69735014, 0.69735014)
 
-[node name="lungeFish3" parent="." instance=ExtResource("19_o2a71")]
+[node name="lungeFish3" parent="." unique_id=466318883 instance=ExtResource("19_o2a71")]
 position = Vector2(-33213, 7891)
 scale = Vector2(0.69735014, 0.69735014)
+
+[node name="ParticleLoader" parent="." unique_id=770993929 instance=ExtResource("20_g7yl1")]
+position = Vector2(-44567, -50126)
 
 [connection signal="area_entered" from="trigger1" to="." method="_on_trigger_1_area_entered"]
 [connection signal="area_entered" from="trigger2" to="." method="_on_trigger_2_area_entered"]

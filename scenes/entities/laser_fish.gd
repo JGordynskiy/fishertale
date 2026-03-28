@@ -9,6 +9,9 @@ extends CharacterBody2D
 @onready var game = get_node("..")
 var rng = RandomNumberGenerator.new()
 
+var outline = load("res://scenes/entities/laser_fish.tscn::ShaderMaterial_3l436")
+
+
 @onready var navAgent: NavigationAgent2D = $NavigationAgent2D
 
 var dead = false
@@ -68,9 +71,13 @@ func _physics_process(delta: float) -> void:
 	
 	#invulnerability Visual
 	if invulnerable && boss3hp > 0:
-		$invulenrablePolygon.visible = true
+		$alive.material = outline
 	else:
-		$invulenrablePolygon.visible = false
+		$alive.material = null
+		
+	#Outline visual
+	
+	
 	
 	#Navigation + movement
 	if (boss3hp > 0 && global.hp > 0):

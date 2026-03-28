@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://35ujbpfc4pcd"]
+[gd_scene format=3 uid="uid://35ujbpfc4pcd"]
 
 [ext_resource type="Script" uid="uid://doh2fh45anxkr" path="res://scenes/particles/evil_fishdeath_particles.gd" id="1_pnxx1"]
 
@@ -11,17 +11,17 @@ curve = SubResource("Curve_5r2br")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fbdol"]
 particle_flag_disable_z = true
-radial_velocity_min = 1999.9999
+radial_velocity_min = 799.99994
 radial_velocity_max = 4000.0
 gravity = Vector3(0, -1000, 0)
 scale_min = 100.0
 scale_max = 200.0
 scale_curve = SubResource("CurveTexture_pyv65")
 
-[node name="Node2D" type="Node2D"]
+[node name="deathSplosion" type="Node2D" unique_id=823067845]
 script = ExtResource("1_pnxx1")
 
-[node name="deathSplosion" type="GPUParticles2D" parent="."]
+[node name="deathSplosion" type="GPUParticles2D" parent="." unique_id=1031435171]
 modulate = Color(1, 0.5, 0.5, 1)
 scale = Vector2(-49.374607, -49.374607)
 emitting = false

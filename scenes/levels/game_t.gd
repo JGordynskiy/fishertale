@@ -8,12 +8,12 @@ extends Node2D
 
 var enemyCount = 3
 
-@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
+const fadeRect = preload("res://scenes/ui/fade_rect.tscn")
 
 @onready var animation_player: AnimationPlayer = $faderect/faderect/AnimationPlayer
 
-@onready var crate = load("res://scenes/object.tscn")
-@onready var whirlpool = preload("res://scenes/entities/whirlpool.tscn")
+const crate = preload("res://scenes/object.tscn")
+const whirlpool = preload("res://scenes/entities/whirlpool.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

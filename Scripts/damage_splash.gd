@@ -1,8 +1,10 @@
 extends CanvasLayer
 
 
-@onready var root_level = get_tree().get_current_scene()
-@onready var fish = root_level.get_node("fish") 
+@onready var root_level = null
+@onready var fish = null 
+
+@export var active = true
 # this is better, because it'll take the top node of the scene
 # (The "level scene") and go from there. Only downside to this is
 # the fish must always be directly connected to the root level, or else
@@ -10,6 +12,11 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if active:
+		root_level = get_tree().get_current_scene()
+		fish = root_level.get_node("fish") 
+	
+	
 	if global.shield > 0:
 		$normal.hide()
 		$shielded.show()
@@ -35,4 +42,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !active:
+		visible = false
 	pass

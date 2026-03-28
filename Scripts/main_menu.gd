@@ -2,7 +2,7 @@ extends Control
 
 
 
-@onready var fadeRect = load("res://scenes/ui/fade_rect.tscn")
+const fadeRect = preload("res://scenes/ui/fade_rect.tscn")
 @onready var menumusic: AudioStreamPlayer = $sounds/menumusic
 @onready var menumusicloop: AudioStreamPlayer = $sounds/menumusicloop
 @onready var foosh: AudioStreamPlayer = $sounds/ui/foosh
@@ -17,6 +17,7 @@ var skip = false
 @onready var normal: TextureButton = $SecondMenu/modeButtons/normal
 @onready var melee: TextureButton = $SecondMenu/modeButtons/melee
 
+var initialStarted = false
 
 var menuStage = 1
 
@@ -39,15 +40,32 @@ func _ready() -> void:
 	add_child(thunkfade)
 	
 	await get_tree().create_timer(0.5).timeout
-	menumusic.play()
+	
 	
 	setInitialSettings()
 	
 	pass # Replace with function body.
 
+func menuVisible():
+	$sounds/ui/bigSelect.play()
+	$sounds/ui/select.play()
+	initialStarted = true
+	
+	$InitialStartup.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	$InitialStartup/RichTextLabel.hide()
+	await global.timer(0.2)
+	$InitialStartup/AnimationPlayer.play("fadeOut")
+	await global.timer(0.8)
+	$InitialStartup.queue_free()
+	menumusic.play()
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if (Input.is_action_just_pressed("click") && initialStarted == false):
+		menuVisible()
+	
 	
 	if (Input.is_action_pressed("sprint") || skip) && menuStage == 2:
 		$Label.show()
@@ -89,7 +107,7 @@ func resetStats():
 	
 	global.damageCost = 4
 	global.rateCost = 4
-	global.healthCost = 3
+	global.healthCost = 5
 	global.roe = 0
 	
 	global.curBoss = 0

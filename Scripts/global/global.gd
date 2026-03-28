@@ -35,7 +35,7 @@ var stopwatch = 0
 var roe = 0
 var damageCost = 4
 var rateCost = 4
-var healthCost = 3
+var healthCost = 5
 
 
 var accuracy = 0# 0.1 default, decrease to increase

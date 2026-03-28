@@ -15,7 +15,7 @@ var rng = RandomNumberGenerator.new()
 @onready var fish: CharacterBody2D = $".."
 var rotLock = true
 
-@onready var dmgSplash = load("res://scenes/damage_splash.tscn")
+const dmgSplash = preload("res://scenes/damage_splash.tscn")
 
 #@onready var fish = root_level.get_node("fish")
 

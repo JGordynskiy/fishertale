@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq5rons5tejqv"]
+[gd_scene format=3 uid="uid://dq5rons5tejqv"]
 
 [ext_resource type="Script" uid="uid://bjuxhw134thd0" path="res://Scripts/projectiles/enemy_bullet.gd" id="1_13kv7"]
 [ext_resource type="Texture2D" uid="uid://b80s2e757wl8l" path="res://Assets/enemies/enemyBullet/fishBulletEvilpop1.png" id="2_upu7t"]
@@ -47,22 +47,22 @@ animations = [{
 "speed": 60.0
 }]
 
-[node name="EnemyBullet" type="CharacterBody2D" groups=["dangerObj"]]
+[node name="EnemyBullet" type="CharacterBody2D" unique_id=524177575 groups=["dangerObj"]]
 z_index = 300
 rotation = -1.5707964
 scale = Vector2(2, 2)
 script = ExtResource("1_13kv7")
 
-[node name="area2d" type="Area2D" parent="."]
+[node name="area2d" type="Area2D" parent="." unique_id=622554628]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area2d"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area2d" unique_id=1042984121]
 visible = false
 z_index = 15
 position = Vector2(428.00003, 2.861023e-06)
 scale = Vector2(15.4447, -14.07353)
 shape = SubResource("CircleShape2D_v2l1h")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="area2d" groups=["dangerObj"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="area2d" unique_id=1088604590 groups=["dangerObj"]]
 process_mode = 3
 position = Vector2(392.78082, 4.491716)
 scale = Vector2(0.595, 0.595)
@@ -71,14 +71,14 @@ animation = &"shoot"
 frame_progress = 0.8599967
 offset = Vector2(-622.773, -13.81)
 
-[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+[node name="shoot" type="AudioStreamPlayer2D" parent="." unique_id=1726865519]
 stream = ExtResource("10_me7kd")
 volume_db = 5.0
-max_distance = 25000.0
+max_distance = 15000.0
 max_polyphony = 40
 bus = &"SFX"
 
-[node name="pop" type="AudioStreamPlayer2D" parent="."]
+[node name="pop" type="AudioStreamPlayer2D" parent="." unique_id=1856726967]
 stream = ExtResource("11_yh3mi")
 max_distance = 25000.0
 max_polyphony = 99

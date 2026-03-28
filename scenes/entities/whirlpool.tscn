@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://brl5cnqqbhosc"]
+[gd_scene format=3 uid="uid://brl5cnqqbhosc"]
 
 [ext_resource type="Texture2D" uid="uid://bjwi6jnglbfq3" path="res://Assets/whirlpool.png" id="1_lc5bf"]
 [ext_resource type="Script" uid="uid://cgktiop3fhxsp" path="res://scenes/entities/whirlpool.gd" id="1_uxmof"]
@@ -184,11 +184,11 @@ gravity = Vector3(0, -100, 0)
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_en0pd")
 
-[node name="whirlpool" type="Node2D"]
+[node name="whirlpool" type="Node2D" unique_id=1345115369]
 scale = Vector2(3, 3)
 script = ExtResource("1_uxmof")
 
-[node name="vortex" type="GPUParticles2D" parent="."]
+[node name="vortex" type="GPUParticles2D" parent="." unique_id=1350358069]
 modulate = Color(0.6, 0.8666666, 1, 1)
 scale = Vector2(2.604945, 2.604945)
 amount = 1800
@@ -197,32 +197,28 @@ speed_scale = 2.0
 visibility_rect = Rect2(-999999, -9999999, 9999999, 9999999)
 process_material = SubResource("ParticleProcessMaterial_soyup")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1224990389]
 position = Vector2(0.9999999, -4)
 texture = ExtResource("1_lc5bf")
 offset = Vector2(20.352732, 33.79003)
 
-[node name="spin" type="AnimationPlayer" parent="Sprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_2iwo4")
-}
-autoplay = "spin"
+[node name="spin" type="AnimationPlayer" parent="Sprite2D" unique_id=1968655423]
+libraries/ = SubResource("AnimationLibrary_2iwo4")
+autoplay = &"spin"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1772534390]
 scale = Vector2(0.60960335, 0.60960335)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=381671491]
 scale = Vector2(52.262924, 52.262924)
 shape = SubResource("CircleShape2D_lc5bf")
 disabled = true
 
-[node name="spawn" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_q0w7h")
-}
+[node name="spawn" type="AnimationPlayer" parent="." unique_id=1913721928]
+libraries/ = SubResource("AnimationLibrary_q0w7h")
 speed_scale = 0.5
 
-[node name="spawnsplosion" type="GPUParticles2D" parent="."]
+[node name="spawnsplosion" type="GPUParticles2D" parent="." unique_id=558681883]
 scale = Vector2(2.604945, 2.604945)
 emitting = false
 amount = 200
@@ -235,13 +231,13 @@ explosiveness = 1.0
 visibility_rect = Rect2(-99999, -999999, 999999, 9999999)
 process_material = SubResource("ParticleProcessMaterial_m41ew")
 
-[node name="whirlpoolnoise" type="AudioStreamPlayer2D" parent="."]
+[node name="whirlpoolnoise" type="AudioStreamPlayer2D" parent="." unique_id=1211433688]
 stream = ExtResource("4_soyup")
 volume_db = -10.0
 max_distance = 10000.0
 bus = &"SFX"
 
-[node name="whirlpoolspawn" type="AudioStreamPlayer" parent="."]
+[node name="whirlpoolspawn" type="AudioStreamPlayer" parent="." unique_id=238415012]
 stream = ExtResource("5_en0pd")
 volume_db = -5.0
 bus = &"SFX"

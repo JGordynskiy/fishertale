@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 @onready var game = get_owner()
 @onready var fish = game.get_node("fish") 
-@onready var bullet = preload("res://scenes/enemy_bullet.tscn")
-@onready var superbullet = preload("res://scenes/super_bullet.tscn")
-@onready var dashParticle = preload("res://scenes/particles/evilFishParticles.tscn")
-@onready var dash2Particle = preload("res://scenes/particles/evilFishChargeParticle.tscn")
-@onready var deathParticle = preload("res://scenes/particles/evilFishdeathParticles.tscn")
+const bullet = preload("res://scenes/enemy_bullet.tscn")
+const superbullet = preload("res://scenes/super_bullet.tscn")
+
+const dashParticle = preload("res://scenes/particles/evilFishParticles.tscn")
+const dash2Particle = preload("res://scenes/particles/evilFishChargeParticle.tscn")
+const deathParticle = preload("res://scenes/particles/evilFishdeathParticles.tscn")
+
 @onready var mini_charge: GPUParticles2D = $miniCharge
 @onready var recoil: AnimationPlayer = $Sprite2D/recoil
 @onready var sprite_2d: Sprite2D = $Sprite2D

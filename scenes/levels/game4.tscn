@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dniwn5btd1drm"]
+[gd_scene format=3 uid="uid://dniwn5btd1drm"]
 
 [ext_resource type="Script" uid="uid://43cc73f8fum8" path="res://scenes/levels/game_4.gd" id="1_0b6rn"]
 [ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="2_2dwkm"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://b018hgepvexvd" path="res://Assets/music/boss4int.ogg" id="15_4bexx"]
 [ext_resource type="AudioStream" uid="uid://d2taskqb7ry3t" path="res://Assets/music/boss4loop.ogg" id="16_yadk7"]
 [ext_resource type="AudioStream" uid="uid://b6aeisyygxtf3" path="res://Assets/music/boss4end.ogg" id="17_yadk7"]
+[ext_resource type="PackedScene" uid="uid://dpk1k3d15gnda" path="res://scenes/loader/objectPreLoader.tscn" id="18_8xy47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajj23"]
 size = Vector2(20.086098, 55.98082)
@@ -32,127 +33,130 @@ closed = false
 cull_mode = 2
 polygon = PackedVector2Array(29821, -10481, 29402, -11549, 33138, -11549, 32503, -16755, 31484, -17965, 33720, -17246, 33917, -19758, 34103, -17252, 36332, -17955, 35394, -16796, 34760, -11597, 38356, -11567, 38011, -10563)
 
-[node name="game4" type="Node2D"]
+[node name="game4" type="Node2D" unique_id=1084088570]
 script = ExtResource("1_0b6rn")
 
-[node name="FPS counter" parent="." instance=ExtResource("2_l38b5")]
+[node name="FPS counter" parent="." unique_id=64897488 instance=ExtResource("2_l38b5")]
 visible = false
 
-[node name="bosshealthbar" parent="." instance=ExtResource("2_2dwkm")]
+[node name="bosshealthbar" parent="." unique_id=983373506 instance=ExtResource("2_2dwkm")]
 script = ExtResource("3_ajj23")
 
-[node name="GameOver" parent="." instance=ExtResource("2_8kelq")]
+[node name="GameOver" parent="." unique_id=538070487 instance=ExtResource("2_8kelq")]
 
-[node name="Pause Menu" parent="." instance=ExtResource("2_8aaog")]
+[node name="Pause Menu" parent="." unique_id=1312566915 instance=ExtResource("2_8aaog")]
 
-[node name="hpBar" parent="." instance=ExtResource("3_yxrd2")]
+[node name="hpBar" parent="." unique_id=1431043044 instance=ExtResource("3_yxrd2")]
 
-[node name="darkness" type="CanvasModulate" parent="."]
+[node name="darkness" type="CanvasModulate" parent="." unique_id=1536738341]
 color = Color(0.171, 0.22259998, 0.3, 1)
 
-[node name="Ambient Particles" parent="." instance=ExtResource("10_b04r2")]
+[node name="Ambient Particles" parent="." unique_id=4138093 instance=ExtResource("10_b04r2")]
 z_index = 50
 position = Vector2(34015, -7986)
 scale = Vector2(1.457446, 1.457446)
 
-[node name="background" type="StaticBody2D" parent="." groups=["objects"]]
+[node name="background" type="StaticBody2D" parent="." unique_id=995575248 groups=["objects"]]
 position = Vector2(32512, -29696)
 scale = Vector2(4.9888024, 4.9888024)
 
-[node name="churchFore" type="Sprite2D" parent="background"]
+[node name="churchFore" type="Sprite2D" parent="background" unique_id=667648749]
 z_index = 100
 position = Vector2(-2, -2)
 texture = ExtResource("2_lsbcc")
 
-[node name="churchback" type="Sprite2D" parent="background"]
+[node name="churchback" type="Sprite2D" parent="background" unique_id=527338862]
 texture = ExtResource("3_ixi2k")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background" unique_id=715616543]
 position = Vector2(-2, -2.0004883)
 polygon = PackedVector2Array(-5174.1924, 2582.58, -4933.0522, -2479.9575, -3727.753, -4408.6772, 6988.6465, -4740.019, 3871.666, -3297.9897, -3322.0444, -3293.981, -3325.051, 2566.945, 3887.9023, 2570.954, 3874.2725, 5154.139, -5238.536, 4993.3794)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background" unique_id=1504125271]
 position = Vector2(5040.329, -270.72754)
 scale = Vector2(115.46666, 115.46666)
 shape = SubResource("RectangleShape2D_ajj23")
 
-[node name="fish" parent="." instance=ExtResource("3_ryi7u")]
+[node name="fish" parent="." unique_id=368780970 instance=ExtResource("3_ryi7u")]
 z_index = 500
 position = Vector2(26922, -33625)
 
-[node name="followCam" parent="fish" instance=ExtResource("5_13hsg")]
+[node name="followCam" parent="fish" unique_id=678523816 instance=ExtResource("5_13hsg")]
 limit_left = 14105
 limit_top = -48510
 limit_right = 53255
 limit_bottom = -15155
 
-[node name="objects" type="Node2D" parent="."]
+[node name="objects" type="Node2D" parent="." unique_id=1178960172]
 
-[node name="leftFixture" type="StaticBody2D" parent="objects" groups=["objects"]]
+[node name="leftFixture" type="StaticBody2D" parent="objects" unique_id=1228127698 groups=["objects"]]
 position = Vector2(22616, -35031)
 scale = Vector2(2.6323123, 2.6323123)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/leftFixture"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/leftFixture" unique_id=1419297860]
 position = Vector2(9.877247, 496.90146)
 scale = Vector2(47.99066, 47.99066)
 shape = SubResource("CircleShape2D_8kelq")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/leftFixture"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/leftFixture" unique_id=1044728200]
 occluder = SubResource("OccluderPolygon2D_617rf")
 
-[node name="middleFixture" type="StaticBody2D" parent="objects" groups=["objects"]]
+[node name="middleFixture" type="StaticBody2D" parent="objects" unique_id=589294831 groups=["objects"]]
 position = Vector2(33846, -42026)
 scale = Vector2(2.6323123, 2.6323123)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/middleFixture"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/middleFixture" unique_id=874184506]
 position = Vector2(9.877247, 496.90146)
 scale = Vector2(47.99066, 47.99066)
 shape = SubResource("CircleShape2D_8kelq")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/middleFixture"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/middleFixture" unique_id=1509727785]
 occluder = SubResource("OccluderPolygon2D_617rf")
 
-[node name="rightFixture" type="StaticBody2D" parent="objects" groups=["objects"]]
+[node name="rightFixture" type="StaticBody2D" parent="objects" unique_id=1112051110 groups=["objects"]]
 position = Vector2(45077.004, -35284)
 scale = Vector2(2.6323123, 2.6323123)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/rightFixture"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="objects/rightFixture" unique_id=1939056359]
 position = Vector2(9.877247, 496.90146)
 scale = Vector2(47.99066, 47.99066)
 shape = SubResource("CircleShape2D_8kelq")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/rightFixture"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="objects/rightFixture" unique_id=1656589798]
 occluder = SubResource("OccluderPolygon2D_617rf")
 
-[node name="fountain" type="LightOccluder2D" parent="objects"]
+[node name="fountain" type="LightOccluder2D" parent="objects" unique_id=1580463607]
 visible = false
 occluder = SubResource("OccluderPolygon2D_2dwkm")
 
-[node name="lightFish" parent="." instance=ExtResource("9_617rf")]
+[node name="lightFish" parent="." unique_id=62157390 instance=ExtResource("9_617rf")]
 position = Vector2(33846, -34083)
 yRangeD = -45000
 yRangeU = -18000
 xRangeL = 17000
 xRangeR = 50000
 
-[node name="ambience" type="AudioStreamPlayer" parent="."]
+[node name="ambience" type="AudioStreamPlayer" parent="." unique_id=317479910]
 stream = ExtResource("13_ajj23")
 autoplay = true
 bus = &"SFX"
 
-[node name="Music" type="Node" parent="."]
+[node name="Music" type="Node" parent="." unique_id=1500818221]
 
-[node name="musicint" type="AudioStreamPlayer" parent="Music"]
+[node name="musicint" type="AudioStreamPlayer" parent="Music" unique_id=721877288]
 stream = ExtResource("15_4bexx")
 volume_db = 2.0
 
-[node name="musicloop" type="AudioStreamPlayer" parent="Music"]
+[node name="musicloop" type="AudioStreamPlayer" parent="Music" unique_id=877839955]
 process_mode = 3
 stream = ExtResource("16_yadk7")
 
-[node name="musicend" type="AudioStreamPlayer" parent="Music"]
+[node name="musicend" type="AudioStreamPlayer" parent="Music" unique_id=1735258146]
 process_mode = 3
 stream = ExtResource("17_yadk7")
 volume_db = 2.0
+
+[node name="objectPreLoader" parent="." unique_id=770993929 instance=ExtResource("18_8xy47")]
+position = Vector2(-55908, -35130)
 
 [connection signal="finished" from="Music/musicint" to="." method="_on_musicint_finished"]

@@ -2,18 +2,19 @@ extends Node2D
 
 @onready var pause_menu: Control = $"Pause Menu/CanvasLayer"
 @onready var fadeanimation_player: AnimationPlayer = $faderect/faderect/AnimationPlayer
-@onready var fadeRect = preload("res://scenes/ui/fade_rect.tscn")
-@onready var whirlpool = preload("res://scenes/entities/whirlpool.tscn")
 @onready var camera: Camera2D = $fish/followCam
 @onready var rng = RandomNumberGenerator.new()
 
+const fadeRect = preload("res://scenes/ui/fade_rect.tscn")
+const whirlpool = preload("res://scenes/entities/whirlpool.tscn")
+const clearpopup = preload("res://scenes/ui/clearpopup.tscn")
 
 #roe popup
-@onready var roePopup = load("res://scenes/objects/roe_popup.tscn")
+const roePopup = preload("res://scenes/objects/roe_popup.tscn")
 @onready var xtraRoe = 0
 @onready var fish = get_node("fish") 
 @onready var boss1 = get_node("evilFish") 
-@onready var clearpopup = preload("res://scenes/ui/clearpopup.tscn")
+
 
 @onready var boss_1_loop: AudioStreamPlayer = $Music/Boss1loop
 @onready var boss_1_end: AudioStreamPlayer = $Music/Boss1end

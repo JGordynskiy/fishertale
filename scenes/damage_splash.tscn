@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpbp84laggncm"]
+[gd_scene format=3 uid="uid://cpbp84laggncm"]
 
 [ext_resource type="Texture2D" uid="uid://crr3m6foelwl0" path="res://Assets/damageOverlay.png" id="1_1dlyy"]
 [ext_resource type="Script" uid="uid://dalv12nmsj1fg" path="res://Scripts/damage_splash.gd" id="1_wwtet"]
@@ -64,35 +64,31 @@ _data = {
 &"fade_out": SubResource("Animation_b2n6h")
 }
 
-[node name="damageSplash" type="CanvasLayer"]
+[node name="damageSplash" type="CanvasLayer" unique_id=2004052816]
 process_mode = 3
 scale = Vector2(6.965, 6.965)
 transform = Transform2D(6.965, 0, 0, 6.965, 0, 0)
 script = ExtResource("1_wwtet")
 
-[node name="normal" type="Sprite2D" parent="."]
+[node name="normal" type="Sprite2D" parent="." unique_id=889683727]
 z_index = 255
 position = Vector2(91.02655, 51.54343)
 rotation = -3.1415927
 scale = Vector2(0.022611605, 0.022611605)
 texture = ExtResource("1_1dlyy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="normal"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="normal" unique_id=1704633602]
 process_mode = 3
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_xvyh6")
-}
+libraries/ = SubResource("AnimationLibrary_xvyh6")
 
-[node name="shielded" type="Sprite2D" parent="."]
+[node name="shielded" type="Sprite2D" parent="." unique_id=1035270137]
 position = Vector2(97.05671, 64.32161)
 rotation = 3.1415925
 scale = Vector2(0.028276695, 0.028276695)
 texture = ExtResource("3_b2n6h")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="shielded"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="shielded" unique_id=224161345]
 process_mode = 3
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_xvyh6")
-}
+libraries/ = SubResource("AnimationLibrary_xvyh6")

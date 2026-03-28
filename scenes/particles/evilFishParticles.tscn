@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://deh86lghlnitr"]
+[gd_scene format=3 uid="uid://deh86lghlnitr"]
 
 [ext_resource type="Script" uid="uid://cx6xh7jpffnxm" path="res://Scripts/evilFishParticles.gd" id="1_1ekvh"]
 [ext_resource type="Texture2D" uid="uid://biljmjygnte0k" path="res://Assets/bubble.png" id="2_pyv65"]
@@ -52,11 +52,11 @@ scale_min = 0.5
 scale_max = 0.5
 scale_curve = SubResource("CurveTexture_rha6e")
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=173575188]
 z_index = -200
 script = ExtResource("1_1ekvh")
 
-[node name="charge" type="GPUParticles2D" parent="."]
+[node name="charge" type="GPUParticles2D" parent="." unique_id=1757021991]
 scale = Vector2(3.2480185, 3.2480185)
 emitting = false
 amount = 200
@@ -66,7 +66,7 @@ speed_scale = 13.95
 visibility_rect = Rect2(-500, -500, 1000, 1000)
 process_material = SubResource("ParticleProcessMaterial_pyv65")
 
-[node name="splosion" type="GPUParticles2D" parent="."]
+[node name="splosion" type="GPUParticles2D" parent="." unique_id=1813920625]
 modulate = Color(1, 0.5, 0.5, 1)
 scale = Vector2(-49.374607, -49.374607)
 emitting = false
@@ -77,7 +77,7 @@ speed_scale = 5.0
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_rha6e")
 
-[node name="trail" type="GPUParticles2D" parent="."]
+[node name="trail" type="GPUParticles2D" parent="." unique_id=826870873]
 rotation = 3.1415927
 scale = Vector2(21.608011, 19.369713)
 emitting = false

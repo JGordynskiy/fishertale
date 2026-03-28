@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Fishertale"
 run/main_scene="uid://cjdpo2qo6jcen"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0.10080001, 0.11004001, 0.18, 1)
 boot_splash/show_image=false
 boot_splash/image="uid://l2qs8406r1w1"
@@ -21,6 +25,7 @@ config/windows_native_icon="res://Assets/ui/fishicon.ico"
 
 [audio]
 
+buses/default_bus_layout="uid://u0f60655wci2"
 general/default_playback_type.web=0
 
 [autoload]

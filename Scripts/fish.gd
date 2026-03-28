@@ -6,16 +6,17 @@ var mult = 1
 
 
 @onready var game  = get_owner()
-@onready var bullet = preload("res://scenes/bullet.tscn") #!! important!! This loads a scene from res://
+const bullet = preload("res://scenes/bullet.tscn") #!! important!! This loads a scene from res://
 @onready var camera = $followCam
-@onready var cloud = preload("res://scenes/particles/dash_cloud.tscn")
-@onready var bubbles = preload("res://scenes/particles/bubble_explosion.tscn")
-@onready var deathGore = preload("res://scenes/particles/fish_explosion.tscn")
-@onready var shieldPart = preload ("res://scenes/particles/shield_particles.tscn")
-@onready var shieldRPart = preload ("res://scenes/particles/shield_recovery_particles.tscn")
+const cloud = preload("res://scenes/particles/dash_cloud.tscn")
+const bubbles = preload("res://scenes/particles/bubble_explosion.tscn")
+const deathGore = preload("res://scenes/particles/fish_explosion.tscn")
+const shieldPart = preload ("res://scenes/particles/shield_particles.tscn")
+const shieldRPart = preload ("res://scenes/particles/shield_recovery_particles.tscn")
+var outline = load("res://scenes/entities/fish.tscn::ShaderMaterial_o23v1")
 
 #Roe
-@onready var roePopup = preload("res://scenes/objects/roe_popup.tscn")
+const roePopup = preload("res://scenes/objects/roe_popup.tscn")
 
 #Slash
 
@@ -48,7 +49,7 @@ var dangerTouching = 0
 
 var iFrames = 60
 var iFrameCount = iFrames
-var shieldRegenRate = 8
+var shieldRegenRate = 5
 
 var dashCool = 60
 var dashCount = 60
@@ -297,6 +298,15 @@ func _physics_process(delta):
 	#shows fire if debug damage
 	
 	shieldRegen(delta)
+	if $AnimatedSprite2D.material != null:
+		if global.shield > 0:
+			$AnimatedSprite2D.material.set_shader_parameter("outline_width", 70)
+			pass
+		else:
+			$AnimatedSprite2D.material.set_shader_parameter("outline_width", 0)
+			pass
+	
+	
 	
 	if global.hp < 1:
 		iFrameCount = 9999
@@ -360,9 +370,9 @@ func _physics_process(delta):
 	# iFrame visibility
 	if iFrameCount < iFrames:
 		sprite.self_modulate.a = 0.5
-		
-		
+		$AnimatedSprite2D.material = null
 	else:
+		$AnimatedSprite2D.material = outline
 		sprite.self_modulate.a = 1
 		sprite.speed_scale = 1
 	

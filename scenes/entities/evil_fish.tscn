@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2f2njwjm1mdb"]
+[gd_scene format=3 uid="uid://d2f2njwjm1mdb"]
 
 [ext_resource type="Texture2D" uid="uid://blky8mawp5lun" path="res://Assets/enemies/evilFish.png" id="1_6w7tp"]
 [ext_resource type="Script" uid="uid://xxhxnplho05k" path="res://Scripts/evil_fish.gd" id="1_xuvw8"]
@@ -127,7 +127,7 @@ _data = {
 radius = 8.590401
 height = 35.732998
 
-[node name="evilFish" type="CharacterBody2D" groups=["enemies", "objects"]]
+[node name="evilFish" type="CharacterBody2D" unique_id=704862105 groups=["enemies", "objects"]]
 top_level = true
 z_index = 500
 scale = Vector2(0.78756464, 0.78756464)
@@ -135,7 +135,7 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_xuvw8")
 
-[node name="miniCharge" type="GPUParticles2D" parent="."]
+[node name="miniCharge" type="GPUParticles2D" parent="." unique_id=1539305760]
 position = Vector2(1070.3882, 74.91448)
 scale = Vector2(1.4747648, 1.4747648)
 emitting = false
@@ -146,29 +146,27 @@ speed_scale = 15.0
 explosiveness = 0.25
 process_material = SubResource("ParticleProcessMaterial_4rtmy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=713005096]
 position = Vector2(-139, 0)
 texture = ExtResource("1_6w7tp")
 flip_h = true
 
-[node name="recoil" type="AnimationPlayer" parent="Sprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_ur1ch")
-}
+[node name="recoil" type="AnimationPlayer" parent="Sprite2D" unique_id=210872139]
+libraries/ = SubResource("AnimationLibrary_ur1ch")
 
-[node name="evilFish" type="Area2D" parent="." groups=["dangerObj", "enemyHitbox", "objects"]]
+[node name="evilFish" type="Area2D" parent="." unique_id=1636215644 groups=["dangerObj", "enemyHitbox", "objects"]]
 position = Vector2(38.99997, 1.3855578e-13)
 rotation = 1.5707963
 scale = Vector2(52.699898, 72.61581)
 
-[node name="evilFish" type="CollisionShape2D" parent="evilFish" groups=["dangerObj", "enemies", "objects"]]
+[node name="evilFish" type="CollisionShape2D" parent="evilFish" unique_id=622153587 groups=["dangerObj", "enemies", "objects"]]
 position = Vector2(0.29768717, -1.6868744e-06)
 rotation = -3.1415927
 scale = Vector2(-1.0065125, -1.0094099)
 shape = SubResource("CapsuleShape2D_y0tw7")
 debug_color = Color(0.8740858, 0.31367257, 0.3913808, 0.41960785)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1146635365]
 path_desired_distance = 1000.0
 target_desired_distance = 1000.0
 path_max_distance = 485.0
@@ -179,46 +177,44 @@ debug_path_custom_color = Color(1, 0.100000024, 0.100000024, 1)
 debug_path_custom_point_size = 250.0
 debug_path_custom_line_width = 20.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=481990970]
 wait_time = 0.5
 
-[node name="Dead" type="Sprite2D" parent="."]
+[node name="Dead" type="Sprite2D" parent="." unique_id=1710950756]
 position = Vector2(-139, 0)
 texture = ExtResource("3_y0tw7")
 flip_h = true
 
-[node name="chargeup" type="AudioStreamPlayer" parent="."]
+[node name="chargeup" type="AudioStreamPlayer" parent="." unique_id=918697045]
 stream = ExtResource("4_s5mj2")
 bus = &"SFX"
 
-[node name="chargeSFX" type="AudioStreamPlayer" parent="."]
+[node name="chargeSFX" type="AudioStreamPlayer" parent="." unique_id=309159055]
 stream = ExtResource("5_4rtmy")
 pitch_scale = 1.9
 bus = &"SFX"
 
-[node name="deathSFX" type="AudioStreamPlayer" parent="."]
+[node name="deathSFX" type="AudioStreamPlayer" parent="." unique_id=821324789]
 stream = ExtResource("6_4rtmy")
 bus = &"SFX"
 
-[node name="totalFade" type="AnimationPlayer" parent="."]
+[node name="totalFade" type="AnimationPlayer" parent="." unique_id=286907573]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_ncq60")
-}
+libraries/ = SubResource("AnimationLibrary_ncq60")
 
-[node name="dmgTake" type="AudioStreamPlayer2D" parent="."]
+[node name="dmgTake" type="AudioStreamPlayer2D" parent="." unique_id=395736641]
 stream = ExtResource("7_0w853")
 volume_db = 15.0
 max_distance = 99999.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies", "objects"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810816821 groups=["enemies", "objects"]]
 position = Vector2(38.99997, 1.3855579e-13)
 rotation = 1.5707963
 scale = Vector2(4.5407333, 4.553804)
 shape = SubResource("CapsuleShape2D_xuvw8")
 disabled = true
 
-[node name="fishFinder" type="RayCast2D" parent="."]
+[node name="fishFinder" type="RayCast2D" parent="." unique_id=1016422446]
 scale = Vector2(177.45752, 177.45752)
 target_position = Vector2(341.559, 0)
 

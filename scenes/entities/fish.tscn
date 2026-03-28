@@ -1,7 +1,8 @@
-[gd_scene load_steps=54 format=3 uid="uid://b0m4623tpxvua"]
+[gd_scene format=3 uid="uid://b0m4623tpxvua"]
 
 [ext_resource type="Script" uid="uid://bhiwhge6dfr8p" path="res://Scripts/fish.gd" id="1_8g0i4"]
 [ext_resource type="Texture2D" uid="uid://loab5wse0qu7" path="res://Assets/fishIdle1.png" id="2_6lgmd"]
+[ext_resource type="Shader" uid="uid://d1wngo8vkokb3" path="res://Assets/shader/outline.gdshader" id="2_gm1cm"]
 [ext_resource type="Texture2D" uid="uid://bni2lfb6d6jj" path="res://Assets/fishdead.png" id="2_k2ocq"]
 [ext_resource type="Texture2D" uid="uid://cl78i2o0b0b2d" path="res://Assets/fishIdle2.png" id="3_wpvan"]
 [ext_resource type="Texture2D" uid="uid://8nbr10e13gd2" path="res://Assets/fishIdle3.png" id="4_21k1a"]
@@ -29,6 +30,11 @@
 [ext_resource type="PackedScene" uid="uid://b2ey7eqnfhma2" path="res://scenes/particles/shield_recovery_particles.tscn" id="26_acutr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex20v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o23v1"]
+shader = ExtResource("2_gm1cm")
+shader_parameter/outline_width = 70.0
+shader_parameter/outline_color = Color(0.7849001, 0.42299998, 0.94, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfhab"]
 atlas = ExtResource("2_k2ocq")
@@ -508,20 +514,21 @@ scale_max = 75.0
 scale_curve = SubResource("CurveTexture_sscus")
 color = Color(1, 0.5733334, 0.19999999, 1)
 
-[node name="fish" type="CharacterBody2D" groups=["player"]]
+[node name="fish" type="CharacterBody2D" unique_id=54584755 groups=["player"]]
 scale = Vector2(1.25, 1.25)
 motion_mode = 1
 slide_on_ceiling = false
 safe_margin = 1.0
 script = ExtResource("1_8g0i4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=466838814]
 z_index = 810
 position = Vector2(0, 1)
 scale = Vector2(13.906297, 13.906297)
 shape = SubResource("CircleShape2D_ex20v")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1986938334]
+material = SubResource("ShaderMaterial_o23v1")
 position = Vector2(-80, 0)
 scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_nub35")
@@ -530,7 +537,7 @@ autoplay = "idle"
 frame_progress = 0.7050582
 flip_h = true
 
-[node name="blink" type="Polygon2D" parent="AnimatedSprite2D"]
+[node name="blink" type="Polygon2D" parent="AnimatedSprite2D" unique_id=1928307506]
 visible = false
 position = Vector2(2090.9092, -127.27272)
 scale = Vector2(8.17054, 5.6178904)
@@ -538,139 +545,133 @@ color = Color(1, 0.67058825, 0.34117648, 1)
 polygon = PackedVector2Array(-134, -65, -141.86224, 3.236414, -214.18417, 21.845793, -143.53122, 42.88248, -118.496704, 114.08358, -79.00234, 86.65595, -46.73111, 58.255447, -40.055237, 17.800274, -52.294342, -25.89131, -76.799995, -48.800003)
 uv = PackedVector2Array(-134, -65, -222, 24, -137, 84, -54, 20)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_81hvq")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1192258269]
+libraries/ = SubResource("AnimationLibrary_81hvq")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D" unique_id=1682116122]
 z_index = -100
 position = Vector2(843.63635, 0)
 scale = Vector2(4.624652, 4.5990663)
 occluder = SubResource("OccluderPolygon2D_80fr0")
 sdf_collision = false
 
-[node name="fish" type="Area2D" parent="." groups=["player"]]
+[node name="fish" type="Area2D" parent="." unique_id=235218322 groups=["player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fish" groups=["player"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fish" unique_id=683279832 groups=["player"]]
 visible = false
 z_index = 810
 position = Vector2(0, 1)
 scale = Vector2(13.906297, 13.906297)
 shape = SubResource("CircleShape2D_ex20v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1260061566]
 self_modulate = Color(0.485, 0.81641674, 0.97, 0)
 z_index = 60
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_wpvan")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_x24sl")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=29996164]
+libraries/ = SubResource("AnimationLibrary_x24sl")
 
-[node name="sounds" type="Node" parent="."]
+[node name="sounds" type="Node" parent="." unique_id=1221186012]
 
-[node name="shoot" type="AudioStreamPlayer" parent="sounds"]
+[node name="shoot" type="AudioStreamPlayer" parent="sounds" unique_id=1138707669]
 stream = ExtResource("7_21k1a")
 pitch_scale = 1.5
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="pop" type="AudioStreamPlayer" parent="sounds"]
+[node name="pop" type="AudioStreamPlayer" parent="sounds" unique_id=132454605]
 stream = ExtResource("8_bvcvt")
 pitch_scale = 1.5
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="woosh" type="AudioStreamPlayer" parent="sounds"]
+[node name="woosh" type="AudioStreamPlayer" parent="sounds" unique_id=81459861]
 stream = ExtResource("9_f1s4w")
 volume_db = 5.0
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="damage" type="AudioStreamPlayer" parent="sounds"]
+[node name="damage" type="AudioStreamPlayer" parent="sounds" unique_id=343250358]
 stream = ExtResource("10_f1s4w")
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="dashrecover" type="AudioStreamPlayer" parent="sounds"]
+[node name="dashrecover" type="AudioStreamPlayer" parent="sounds" unique_id=1536744503]
 stream = ExtResource("11_3ig6q")
 volume_db = 5.0
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="deathSound" type="AudioStreamPlayer" parent="sounds"]
+[node name="deathSound" type="AudioStreamPlayer" parent="sounds" unique_id=567408834]
 stream = ExtResource("12_ex20v")
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="deathPop" type="AudioStreamPlayer" parent="sounds"]
+[node name="deathPop" type="AudioStreamPlayer" parent="sounds" unique_id=13750624]
 stream = ExtResource("14_gfhab")
 volume_db = -10.0
 pitch_scale = 0.5
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="swim" type="AudioStreamPlayer" parent="sounds"]
+[node name="swim" type="AudioStreamPlayer" parent="sounds" unique_id=1336687907]
 stream = ExtResource("12_8hrfi")
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="slash" type="AudioStreamPlayer" parent="sounds"]
+[node name="slash" type="AudioStreamPlayer" parent="sounds" unique_id=404709638]
 stream = ExtResource("16_6j225")
 bus = &"SFX"
 
-[node name="slashland" type="AudioStreamPlayer" parent="sounds"]
+[node name="slashland" type="AudioStreamPlayer" parent="sounds" unique_id=1029391851]
 stream = ExtResource("17_8itkn")
 volume_db = 5.0
 bus = &"SFX"
 
-[node name="shieldBroken" type="AudioStreamPlayer" parent="sounds"]
+[node name="shieldBroken" type="AudioStreamPlayer" parent="sounds" unique_id=1964296127]
 stream = ExtResource("18_akm6d")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="shieldRecover" type="AudioStreamPlayer" parent="sounds"]
+[node name="shieldRecover" type="AudioStreamPlayer" parent="sounds" unique_id=1480072167]
 stream = ExtResource("19_acutr")
 volume_db = -10.0
 
-[node name="shieldDamage" type="AudioStreamPlayer" parent="sounds"]
+[node name="shieldDamage" type="AudioStreamPlayer" parent="sounds" unique_id=885241183]
 stream = ExtResource("20_acutr")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="totalPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rbg1i")
-}
+[node name="totalPlayer" type="AnimationPlayer" parent="." unique_id=1211453556]
+libraries/ = SubResource("AnimationLibrary_rbg1i")
 
-[node name="slashhitbox" type="Area2D" parent="." groups=["playerSlash"]]
+[node name="slashhitbox" type="Area2D" parent="." unique_id=1807027029 groups=["playerSlash"]]
 position = Vector2(5.5997925, 0)
 scale = Vector2(1.3104092, 1.3104092)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slashhitbox" groups=["playerSlash"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slashhitbox" unique_id=1496589341 groups=["playerSlash"]]
 position = Vector2(742.4347, -2.486035)
 scale = Vector2(68.5235, 53.730816)
 shape = SubResource("CircleShape2D_bfml3")
 disabled = true
 debug_color = Color(0.9054175, 0.27341783, 0.35639855, 0.41960785)
 
-[node name="slash" type="AnimatedSprite2D" parent="slashhitbox"]
+[node name="slash" type="AnimatedSprite2D" parent="slashhitbox" unique_id=687849283]
 z_index = 300
 position = Vector2(761.8597, -2.486035)
 scale = Vector2(2.02878, 1.8617731)
 sprite_frames = SubResource("SpriteFrames_o23v1")
 
-[node name="shieldRecoveryParticles" parent="." instance=ExtResource("26_acutr")]
+[node name="shieldRecoveryParticles" parent="." unique_id=331335641 instance=ExtResource("26_acutr")]
 z_index = -10
 scale = Vector2(2.600321, 2.600321)
 speed_scale = 1.0
 local_coords = true
 script = null
 
-[node name="movebubbles" type="GPUParticles2D" parent="."]
+[node name="movebubbles" type="GPUParticles2D" parent="." unique_id=867007646]
 z_index = -70
 position = Vector2(0, -72.799995)
 emitting = false
@@ -681,7 +682,7 @@ fixed_fps = 0
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_akm6d")
 
-[node name="fireParticles" type="GPUParticles2D" parent="."]
+[node name="fireParticles" type="GPUParticles2D" parent="." unique_id=1622819697]
 z_index = -100
 position = Vector2(206.40001, 0)
 scale = Vector2(1.3744084, 1.3744084)
