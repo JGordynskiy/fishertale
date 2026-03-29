@@ -45,6 +45,13 @@ func _ready() -> void:
 	#await get_tree().create_timer(4, false).timeout
 	#sweepLaser()
 	coolDown = 50
+	
+	$steam1.emitting = true
+	$steam2.emitting = true
+	await global.timer(0.01)
+	$steam1.emitting = false
+	$steam2.emitting = false
+	
 	pass 
 
 func _physics_process(delta: float) -> void:
@@ -71,8 +78,10 @@ func _physics_process(delta: float) -> void:
 	
 	#invulnerability Visual
 	if invulnerable && boss3hp > 0:
+		$Polygon2D.show()
 		$alive.material = outline
 	else:
+		$Polygon2D.hide()
 		$alive.material = null
 		
 	#Outline visual
@@ -250,7 +259,7 @@ func sweepLaser():
 	
 	#telegraphing the laser
 	$laserTelegraph.restart()
-	$laserTelegraph.emitting = true
+	#$laserTelegraph.emitting = true
 	$laserCharge.play()
 	if dead:
 		return
@@ -261,17 +270,21 @@ func sweepLaser():
 	
 	#Actually start the laser
 	invulnerable = false
+	## there is significant HTML5-only lag between now and the end of the function
+	
+	#line below not causing the lag
 	shoot(global_position.angle_to_point(fish.global_position) - global_rotation + rng.randf_range(-(PI/6), PI/6))
+	#animation not causing lag
 	$laser/AnimationPlayer.play("laserIn")
 	$laserBlast.play()
 	$laser.visible = true
 	laserEmitting = true
-	$laserTelegraph.restart()
-	$laserTelegraph.emitting = false
+	#$laserTelegraph.restart()
+	#$laserTelegraph.emitting = false
 	if dead:
 		return
 	
-	
+	#tween not causing lag
 	var tween2 = create_tween()
 	tween2.tween_property(self, "global_rotation", global_rotation+2*sweepRange*parity, 1)
 	$steam1.emitting = true
@@ -281,6 +294,10 @@ func sweepLaser():
 	laserEmitting = false
 	$steam1.emitting = false
 	$steam2.emitting = false
+	
+	
+	
+	
 	await global.timer(0.5)
 	invulnerable = true
 	if dead:

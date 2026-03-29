@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1u42n22eogqn"]
+[gd_scene format=3 uid="uid://b1u42n22eogqn"]
 
 [ext_resource type="Script" uid="uid://cv34dkwx5t1ct" path="res://Scripts/projectiles/hp_bar.gd" id="1_ah546"]
 [ext_resource type="Texture2D" uid="uid://b3wbrlpc72r1b" path="res://Assets/healthbarAll.png" id="1_wql2k"]
@@ -170,30 +170,28 @@ _data = {
 &"spawnIn": SubResource("Animation_6tq8q")
 }
 
-[node name="hpBar" type="CanvasLayer"]
+[node name="hpBar" type="CanvasLayer" unique_id=1830174198]
 script = ExtResource("1_ah546")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1750791589]
 self_modulate = Color(1, 1, 1, 0)
 offset_right = 450.0
 offset_bottom = 135.0
 scale = Vector2(0.6106482, 0.6106482)
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=554055368]
 position = Vector2(206.3381, 83.51781)
 scale = Vector2(0.06324578, 0.06324578)
 texture = ExtResource("1_wql2k")
 vframes = 6
 frame = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Sprite2D" unique_id=311327360]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6tq8q")
-}
+libraries/ = SubResource("AnimationLibrary_6tq8q")
 speed_scale = 2.0
 
-[node name="hpbarShieldBar" type="ProgressBar" parent="Panel/Sprite2D"]
+[node name="hpbarShieldBar" type="ProgressBar" parent="Panel/Sprite2D" unique_id=1832705409]
 offset_left = -2278.5576
 offset_top = 647.3174
 offset_right = 8702.443
@@ -206,7 +204,7 @@ step = 1.0
 show_percentage = false
 script = ExtResource("4_6tq8q")
 
-[node name="shieldRegenBar" type="ProgressBar" parent="Panel/Sprite2D/hpbarShieldBar"]
+[node name="shieldRegenBar" type="ProgressBar" parent="Panel/Sprite2D/hpbarShieldBar" unique_id=781506706]
 layout_mode = 0
 offset_left = 62.392048
 offset_top = 62.392395
@@ -220,7 +218,7 @@ step = 1.0
 value = 100.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1447394553]
 modulate = Color(1, 1, 1, 0)
 offset_left = 121.0
 offset_top = 170.0
@@ -230,7 +228,5 @@ theme_override_fonts/font = ExtResource("3_62e5l")
 theme_override_font_sizes/font_size = 66
 text = "Health"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
-libraries = {
-&"": SubResource("AnimationLibrary_5lv7s")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label" unique_id=2064829319]
+libraries/ = SubResource("AnimationLibrary_5lv7s")

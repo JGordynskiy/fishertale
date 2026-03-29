@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy6ucof82mofj"]
+[gd_scene format=3 uid="uid://cy6ucof82mofj"]
 
 [ext_resource type="Script" uid="uid://d36g67vglljy8" path="res://scenes/ui/fade_rect.gd" id="1_p1g1j"]
 
@@ -56,12 +56,12 @@ _data = {
 &"fadeout": SubResource("Animation_iy4g1")
 }
 
-[node name="fadeRect" type="CanvasLayer"]
+[node name="fadeRect" type="CanvasLayer" unique_id=1961645533]
 process_mode = 3
 layer = 3
 script = ExtResource("1_p1g1j")
 
-[node name="faderect" type="ColorRect" parent="."]
+[node name="faderect" type="ColorRect" parent="." unique_id=20272596]
 self_modulate = Color(0, 0, 0, 1)
 z_index = 805
 offset_left = 34955.996
@@ -73,7 +73,5 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="faderect"]
-libraries = {
-&"": SubResource("AnimationLibrary_iy4g1")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="faderect" unique_id=433347359]
+libraries/ = SubResource("AnimationLibrary_iy4g1")

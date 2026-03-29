@@ -11,6 +11,14 @@ func _process(delta: float) -> void:
 	value = global.shield
 	max_value = global.gameMaxShield
 	
+	if global.maxShield == 0:
+		hide()
+	else:
+		show()
+	
+	if $shieldRegenBar == null:
+		return
+	
 	if $shieldRegenBar != null:
 		$shieldRegenBar.max_value = global.gameMaxShield * 100
 		$shieldRegenBar.value = global.shieldRegen
@@ -18,8 +26,5 @@ func _process(delta: float) -> void:
 	
 	
 	
-	if global.maxShield == 0:
-		hide()
-	else:
-		show()
+	
 	pass

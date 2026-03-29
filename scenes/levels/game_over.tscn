@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ckvml63hdsptk"]
+[gd_scene format=3 uid="uid://ckvml63hdsptk"]
 
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_lpwf7"]
 [ext_resource type="Script" uid="uid://dn67wjet7fw7d" path="res://Scripts/gameover.gd" id="1_qy7gw"]
@@ -123,11 +123,11 @@ _data = {
 &"fadein": SubResource("Animation_qy7gw")
 }
 
-[node name="GameOver" type="CanvasLayer"]
+[node name="GameOver" type="CanvasLayer" unique_id=1395000608]
 layer = 2
 script = ExtResource("1_qy7gw")
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1652776674]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.24480002, 0.27336, 0.34, 1)
 anchors_preset = 15
@@ -140,7 +140,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_181lf")
 
-[node name="Panel" type="Panel" parent="ColorRect"]
+[node name="Panel" type="Panel" parent="ColorRect" unique_id=1768187121]
 layout_mode = 0
 offset_left = 288.99875
 offset_top = 102.99855
@@ -148,7 +148,7 @@ offset_right = 996.9957
 offset_bottom = 294.99585
 theme_override_styles/panel = SubResource("StyleBoxFlat_qfkai")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect" unique_id=418108649]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.4329992
@@ -164,7 +164,7 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 200
 alignment = 1
 
-[node name="Retry" type="Button" parent="ColorRect/HBoxContainer"]
+[node name="Retry" type="Button" parent="ColorRect/HBoxContainer" unique_id=370496350]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_org1n")
 theme_override_font_sizes/font_size = 150
@@ -174,7 +174,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lw2kh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
 text = "Retry"
 
-[node name="quitmaybe" type="Button" parent="ColorRect/HBoxContainer"]
+[node name="quitmaybe" type="Button" parent="ColorRect/HBoxContainer" unique_id=1085147103]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_org1n")
 theme_override_font_sizes/font_size = 150
@@ -184,7 +184,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lw2kh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
 text = "Quit"
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="ColorRect" unique_id=1208597577]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -199,14 +199,14 @@ theme_override_fonts/font = ExtResource("1_lpwf7")
 theme_override_font_sizes/font_size = 66
 text = "GAME OVER"
 
-[node name="messages" type="Control" parent="ColorRect"]
+[node name="messages" type="Control" parent="ColorRect" unique_id=2095614872]
 modulate = Color(0.62, 0.62, 0.62, 1)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(641.99725, 642.99097)
 
-[node name="1" type="Label" parent="ColorRect/messages"]
+[node name="1" type="Label" parent="ColorRect/messages" unique_id=788098441]
 visible = false
 layout_mode = 0
 offset_left = 394.99832
@@ -220,7 +220,7 @@ theme_override_font_sizes/font_size = 50
 text = "Try to dodge the attacks next time."
 horizontal_alignment = 1
 
-[node name="2" type="Label" parent="ColorRect/messages"]
+[node name="2" type="Label" parent="ColorRect/messages" unique_id=1816798593]
 visible = false
 layout_mode = 0
 offset_left = 331.99854
@@ -235,7 +235,7 @@ text = "You can use left-click to damage the enemy."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="3" type="Label" parent="ColorRect/messages"]
+[node name="3" type="Label" parent="ColorRect/messages" unique_id=2005669663]
 visible = false
 layout_mode = 0
 offset_left = 331.99854
@@ -250,7 +250,7 @@ text = "WASD to move."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="4" type="Label" parent="ColorRect/messages"]
+[node name="4" type="Label" parent="ColorRect/messages" unique_id=1946714825]
 visible = false
 layout_mode = 0
 offset_left = 331.99854
@@ -265,7 +265,7 @@ text = "Make sure your health stays above zero."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="5" type="Label" parent="ColorRect/messages"]
+[node name="5" type="Label" parent="ColorRect/messages" unique_id=246261907]
 visible = false
 layout_mode = 0
 offset_left = 279.99878
@@ -280,7 +280,7 @@ text = "Try to damage the enemy without it damaging you."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="6" type="Label" parent="ColorRect/messages"]
+[node name="6" type="Label" parent="ColorRect/messages" unique_id=1212208959]
 visible = false
 layout_mode = 0
 offset_left = 294.9987
@@ -295,7 +295,7 @@ text = "Next time, try to focus."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="7" type="Label" parent="ColorRect/messages"]
+[node name="7" type="Label" parent="ColorRect/messages" unique_id=231097377]
 visible = false
 layout_mode = 0
 offset_left = 294.9987
@@ -310,20 +310,20 @@ text = "If your health goes to 0, you die."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="really" type="Control" parent="."]
+[node name="really" type="Control" parent="." unique_id=1654304338]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Panel" type="Panel" parent="really"]
+[node name="Panel" type="Panel" parent="really" unique_id=862490737]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 721.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ecavu")
 
-[node name="Label" type="Label" parent="really"]
+[node name="Label" type="Label" parent="really" unique_id=226753710]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -338,7 +338,7 @@ theme_override_fonts/font = ExtResource("1_lpwf7")
 theme_override_font_sizes/font_size = 66
 text = "Give up?"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="really"]
+[node name="HBoxContainer" type="HBoxContainer" parent="really" unique_id=1104025365]
 layout_mode = 0
 offset_left = 438.0
 offset_top = 431.00003
@@ -347,7 +347,7 @@ offset_bottom = 632.0
 scale = Vector2(0.5859864, 0.5859864)
 theme_override_constants/separation = 150
 
-[node name="nvm" type="Button" parent="really/HBoxContainer"]
+[node name="nvm" type="Button" parent="really/HBoxContainer" unique_id=868574657]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_org1n")
 theme_override_font_sizes/font_size = 150
@@ -358,7 +358,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
 text = "Nvm
 "
 
-[node name="Quit" type="Button" parent="really/HBoxContainer"]
+[node name="Quit" type="Button" parent="really/HBoxContainer" unique_id=1028644628]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_org1n")
 theme_override_font_sizes/font_size = 150
@@ -369,22 +369,20 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_org1n")
 text = "Quit
 "
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_gdwfc")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=717627129]
+libraries/ = SubResource("AnimationLibrary_gdwfc")
 
-[node name="sounds" type="Node" parent="."]
+[node name="sounds" type="Node" parent="." unique_id=933592707]
 
-[node name="ui" type="Node" parent="sounds"]
+[node name="ui" type="Node" parent="sounds" unique_id=995064951]
 
-[node name="hoveron" type="AudioStreamPlayer" parent="sounds/ui"]
+[node name="hoveron" type="AudioStreamPlayer" parent="sounds/ui" unique_id=594887227]
 stream = ExtResource("4_trggy")
 
-[node name="hoveroff" type="AudioStreamPlayer" parent="sounds/ui"]
+[node name="hoveroff" type="AudioStreamPlayer" parent="sounds/ui" unique_id=65875806]
 stream = ExtResource("5_i47r0")
 
-[node name="select" type="AudioStreamPlayer" parent="sounds/ui"]
+[node name="select" type="AudioStreamPlayer" parent="sounds/ui" unique_id=1026432880]
 stream = ExtResource("6_nesse")
 
 [connection signal="mouse_entered" from="ColorRect/HBoxContainer/Retry" to="." method="_on_retry_mouse_entered"]

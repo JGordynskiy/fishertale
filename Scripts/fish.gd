@@ -13,6 +13,7 @@ const bubbles = preload("res://scenes/particles/bubble_explosion.tscn")
 const deathGore = preload("res://scenes/particles/fish_explosion.tscn")
 const shieldPart = preload ("res://scenes/particles/shield_particles.tscn")
 const shieldRPart = preload ("res://scenes/particles/shield_recovery_particles.tscn")
+
 var outline = load("res://scenes/entities/fish.tscn::ShaderMaterial_o23v1")
 
 #Roe
@@ -300,7 +301,7 @@ func _physics_process(delta):
 	shieldRegen(delta)
 	if $AnimatedSprite2D.material != null:
 		if global.shield > 0:
-			$AnimatedSprite2D.material.set_shader_parameter("outline_width", 70)
+			$AnimatedSprite2D.material.set_shader_parameter("outline_width", 60)
 			pass
 		else:
 			$AnimatedSprite2D.material.set_shader_parameter("outline_width", 0)

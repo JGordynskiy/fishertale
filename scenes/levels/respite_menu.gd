@@ -115,7 +115,6 @@ func _on_friendly_monitor_box_mouse_exited() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	roe_amount.text = str(global.roe)
-	
 	global.shield = global.maxShield
 	#global.hp = global.max_hp
 	

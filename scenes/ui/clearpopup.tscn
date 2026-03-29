@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://if20g6xuskvp"]
+[gd_scene format=3 uid="uid://if20g6xuskvp"]
 
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_8r2fy"]
 [ext_resource type="Script" uid="uid://bv2r6b6qyxewi" path="res://scenes/ui/clearpopup.gd" id="1_aabph"]
@@ -126,10 +126,10 @@ _data = {
 &"popup": SubResource("Animation_882kj")
 }
 
-[node name="Clearpopup" type="CanvasLayer"]
+[node name="Clearpopup" type="CanvasLayer" unique_id=1524200567]
 script = ExtResource("1_aabph")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=249168632]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -146,9 +146,7 @@ theme_override_fonts/font = ExtResource("1_8r2fy")
 theme_override_font_sizes/font_size = 1
 text = "CLEAR"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label" unique_id=1086609474]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_ng1dq")
-}
-autoplay = "popup"
+libraries/ = SubResource("AnimationLibrary_ng1dq")
+autoplay = &"popup"

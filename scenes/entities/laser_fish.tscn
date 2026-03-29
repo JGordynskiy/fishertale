@@ -12,7 +12,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3l436"]
 resource_local_to_scene = true
 shader = ExtResource("5_yifll")
-shader_parameter/outline_width = 30.0
+shader_parameter/outline_width = 0.0
 shader_parameter/outline_color = Color(0.83, 0.6225, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hll5x"]
@@ -275,6 +275,10 @@ stream = ExtResource("2_41bec")
 volume_db = 5.0
 max_distance = 99999.0
 bus = &"SFX"
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=746596799]
+color = Color(1, 0.727, 0.22000003, 1)
+polygon = PackedVector2Array(-150.5, -46.75, -167.08334, -36.166668, -181.08334, -17.083334, -186.91667, 0.9166667, -181.66667, 21.333334, -167.41667, 39.583336, -140.91667, 58.416668, -78.41667, 76.16667, -29.333334, 79.16667, 11.416667, 69.333336, 48.083336, 57.916668, 71.75, 39.583336, 174.08334, 100.75, 199.75, 64.833336, 145.58334, 34.666668, 145.58334, -35.416668, 195.66667, -66.41667, 170, -101.91667, 70.833336, -46.25, 40.666668, -60.083336, -0.5, -72.75, -35.5, -75.5, -73, -73.25, -117.16667, -65.583336)
 
 [node name="dead" type="Sprite2D" parent="." unique_id=1168966345]
 position = Vector2(-19.916666, 10.749999)

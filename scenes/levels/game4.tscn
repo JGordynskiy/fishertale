@@ -157,6 +157,6 @@ stream = ExtResource("17_yadk7")
 volume_db = 2.0
 
 [node name="objectPreLoader" parent="." unique_id=770993929 instance=ExtResource("18_8xy47")]
-position = Vector2(-55908, -35130)
+position = Vector2(-58596, -30778)
 
 [connection signal="finished" from="Music/musicint" to="." method="_on_musicint_finished"]

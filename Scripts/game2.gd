@@ -25,6 +25,8 @@ func _ready() -> void:
 	thunkfade.type = false
 	add_child(thunkfade)
 	
+
+	
 	globalSignals.game2toR.connect(fadeaway)
 	globalSignals.connect("boss2death", boss2clear)
 	globalSignals.gameOver.connect(gameOver)

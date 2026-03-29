@@ -1,13 +1,16 @@
 extends Node2D
 
 
-@onready var game = get_tree().get_current_scene()
-@onready var evilFish = game.get_node("evilFish")
+@onready var game 
+@onready var evilFish 
 @export var active = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if active:
+		game = get_tree().get_current_scene()
+		evilFish = game.get_node("evilFish")
+		
 		$bulletcharge.emitting = true
 		await get_tree().create_timer(0.5, false).timeout
 		$splosion.emitting = true

@@ -18,9 +18,16 @@ const whirlpool = preload("res://scenes/entities/whirlpool.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	var preloader = preload("res://scenes/loader/objectPreLoader.tscn").instantiate()
+	preloader.global_position = Vector2(-100000,-100000)
+	call_deferred("add_child", preloader)
+	
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = false
 	add_child(thunkfade)
+	
+	
 	
 	globalSignals.gameOver.connect(gameOver)
 	globalSignals.gameTtoR.connect(transition)

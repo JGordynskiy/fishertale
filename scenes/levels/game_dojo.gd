@@ -3,6 +3,11 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	var preloader = preload("res://scenes/loader/objectPreLoader.tscn").instantiate()
+	preloader.global_position = Vector2(-100000,-100000)
+	call_deferred("add_child", preloader)
+	
 	global.maxShield = 3
 	
 	global.debug = true

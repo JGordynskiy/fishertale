@@ -90,4 +90,5 @@ position = Vector2(662, 0)
 scale = Vector2(16.995098, 16.995098)
 shape = SubResource("CircleShape2D_etkvm")
 
+[connection signal="body_entered" from="superBulletdamage" to="." method="_on_super_bulletdamage_body_entered"]
 [connection signal="body_entered" from="superBullet" to="." method="_on_super_bullet_body_entered"]

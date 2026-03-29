@@ -24,6 +24,9 @@ const roePopup = preload("res://scenes/objects/roe_popup.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+
+	
 	global.stopwatch = 0
 	
 	camera.tutorial = false
@@ -37,6 +40,8 @@ func _ready() -> void:
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = false
 	add_child(thunkfade)
+	
+	
 	
 	
 	$"ambience".play()

@@ -39,6 +39,7 @@ signal boss1death
 var dead = false
 
 func _ready() -> void:
+	makePath()
 	look_at(fish.global_position)
 	startTimer = 150
 	moveSpeed = 0
@@ -50,6 +51,8 @@ func _ready() -> void:
 	pathPos = navAgent.get_next_path_position()
 	coolDown = 0
 	speed = moveSpeed
+	
+	
 	pass # Replace with function body.
 
 
@@ -154,13 +157,11 @@ func makePath():
 func dash(delta):
 	if dashing:
 		return
-	if fish.velocity == Vector2(0,0):
-		return
 	$chargeup.play()
+	
 	var instance = dashParticle.instantiate()
-	#instance.global_position = global_position
-
 	add_child(instance)
+	
 	moveSpeed = 0
 	coolDown = 130*coolMult
 	dashing = true
@@ -177,7 +178,27 @@ func dash(delta):
 
 	dashing = false
 	
-
+func silentDash(delta):
+	if dashing:
+		return
+	#$chargeup.play()
+	
+	var instance = dashParticle.instantiate()
+	#add_child(instance)
+	
+	moveSpeed = 0
+	coolDown = 130*coolMult
+	dashing = true
+	var orgSpeed = moveSpeedSet
+	#moveSpeed = 0
+	
+	#await get_tree().create_timer(1, false).timeout
+	#$chargeSFX.play()
+	rng.randomize()
+	makePath()
+	moveSpeed = orgSpeed *1
+	await get_tree().create_timer(0.4, false).timeout
+	dashing = false
 	
 	
 func superBullet():
@@ -212,7 +233,7 @@ func shoot(rot):
 	
 func triAttack():
 	
-	coolDown = 90*coolMult
+	coolDown = 70*coolMult
 	mini_charge.emitting = true
 	await get_tree().create_timer(0.5, false).timeout
 	if (boss1hp < 1):

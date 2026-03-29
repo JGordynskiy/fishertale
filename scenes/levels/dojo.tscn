@@ -124,5 +124,5 @@ scale = Vector2(8.087531, 8.087531)
 position = Vector2(10340, 594)
 scale = Vector2(9.081323, 9.081323)
 
-[node name="ParticleLoader" parent="." unique_id=770993929 instance=ExtResource("14_lwffo")]
-position = Vector2(4, 3991)
+[node name="objectPreLoader" parent="." unique_id=770993929 instance=ExtResource("14_lwffo")]
+position = Vector2(13987, 1940)

@@ -11,6 +11,7 @@ func _ready() -> void:
 		animation_player.play("fadein")
 	if (!type):
 		animation_player.play("fadeout")
+		pass
 	await get_tree().create_timer(2, false).timeout
 	queue_free()
 	pass # Replace with function body.

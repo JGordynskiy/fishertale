@@ -146,6 +146,6 @@ bus = &"Music"
 [node name="FPS counter" parent="." unique_id=1057167375 instance=ExtResource("18_rjglp")]
 
 [node name="objectPreLoader" parent="." unique_id=770993929 instance=ExtResource("20_jjybp")]
-position = Vector2(-59856, -47723)
+position = Vector2(-190443, -6248)
 
 [connection signal="finished" from="musicint" to="." method="_on_musicint_finished"]

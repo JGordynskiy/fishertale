@@ -41,7 +41,7 @@ func _on_retry_pressed() -> void:
 	if cam.tutorial:
 		$"sounds/ui/select".play()
 		var thunkfade = fadeRect.instantiate()
-		thunkfade.type = false
+		thunkfade.type = true
 		game.add_child(thunkfade)
 		await get_tree().create_timer(1.3).timeout
 		global.hp = global.max_hp

@@ -201,8 +201,8 @@ scale = Vector2(0.69735014, 0.69735014)
 position = Vector2(-33213, 7891)
 scale = Vector2(0.69735014, 0.69735014)
 
-[node name="ParticleLoader" parent="." unique_id=770993929 instance=ExtResource("20_g7yl1")]
-position = Vector2(-44567, -50126)
+[node name="objectPreLoader" parent="." unique_id=770993929 instance=ExtResource("20_g7yl1")]
+position = Vector2(-53238, -52944)
 
 [connection signal="area_entered" from="trigger1" to="." method="_on_trigger_1_area_entered"]
 [connection signal="area_entered" from="trigger2" to="." method="_on_trigger_2_area_entered"]

@@ -14,6 +14,7 @@ func _ready() -> void:
 	if !active:
 		$whirlpoolnoise.volume_db = -99
 		$whirlpoolspawn.volume_db = -99
+		
 	
 	
 	visible = false
@@ -26,8 +27,9 @@ func _ready() -> void:
 	visible = true
 	
 	await get_tree().create_timer(1, false).timeout
-	vortex.emitting = true
+	
 	if active:
+		vortex.emitting = true
 		$Area2D/CollisionShape2D.disabled = false
 	pass # Replace with function body.
 

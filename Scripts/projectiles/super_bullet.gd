@@ -60,11 +60,17 @@ func shoot(rot):
 	instance.spawnRot = rot
 	instance.dir = rot
 	instance.shotspeed = 10000
-	
-	game.add_child(instance)
+	if game != null:
+		game.add_child(instance)
 
 
 func _on_super_bullet_body_entered(body: Node2D) -> void:
+	if body.is_in_group("objects") || body.is_in_group("player") || body.is_in_group("playerBullet"):
+		curRange = range
+	pass # Replace with function body.
+
+
+func _on_super_bulletdamage_body_entered(body: Node2D) -> void:
 	if body.is_in_group("objects") || body.is_in_group("player") || body.is_in_group("playerBullet"):
 		curRange = range
 	pass # Replace with function body.

@@ -111,6 +111,6 @@ volume_db = -10.0
 bus = &"Music"
 
 [node name="objectPreLoader" parent="." unique_id=770993929 instance=ExtResource("18_u637n")]
-position = Vector2(-89846, -41525)
+position = Vector2(-43761, -24596)
 
 [connection signal="finished" from="Music/musicInt" to="." method="_on_music_int_finished"]

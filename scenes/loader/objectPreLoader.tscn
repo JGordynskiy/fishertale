@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dq5rons5tejqv" path="res://scenes/enemy_bullet.tscn" id="11_ab1c1"]
 [ext_resource type="PackedScene" uid="uid://b0goxsbgvutup" path="res://scenes/super_bullet.tscn" id="12_e7vun"]
 [ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="13_wbmut"]
+[ext_resource type="PackedScene" uid="uid://if20g6xuskvp" path="res://scenes/ui/clearpopup.tscn" id="14_e7vun"]
 
 [sub_resource type="Gradient" id="Gradient_4ov4s"]
 colors = PackedColorArray(1, 0.6, 0, 1, 1, 0, 0, 1)
@@ -64,6 +65,42 @@ scale_min = 50.0
 scale_max = 50.0
 color_ramp = SubResource("GradientTexture1D_quvlu")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ij8j0"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 38.41
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 1000.0
+linear_accel_max = 1000.0
+scale_min = 140.0
+scale_max = 140.0
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_e7vun"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nmtqf"]
+curve = SubResource("Curve_e7vun")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wbmut"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100.345, 1, 0)
+direction = Vector3(0, 1000, 0)
+spread = 5.0
+flatness = 1.0
+initial_velocity_min = 282.15
+initial_velocity_max = 649.5
+gravity = Vector3(0, -980, 0)
+scale_min = 100.0
+scale_max = 150.0
+scale_curve = SubResource("CurveTexture_nmtqf")
+
 [node name="objectPreLoader" type="Node2D" unique_id=770993929]
 script = ExtResource("1_jby3o")
 
@@ -77,6 +114,12 @@ position = Vector2(5721, -78)
 
 [node name="Object" parent="projectiles" unique_id=53077578 instance=ExtResource("13_wbmut")]
 position = Vector2(6845, 147)
+
+[node name="laserRay" type="RayCast2D" parent="projectiles" unique_id=527660903]
+position = Vector2(1476.0002, -203.00049)
+rotation = -3.1415927
+scale = Vector2(695.565, 131.83972)
+target_position = Vector2(-99999, 50)
 
 [node name="objects" type="Node2D" parent="." unique_id=374209463]
 
@@ -123,15 +166,51 @@ emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_e7vun")
 
+[node name="laserTelegraph" type="GPUParticles2D" parent="particles/boss3" unique_id=1899157633]
+z_index = -10
+position = Vector2(-55, 0)
+scale = Vector2(2.1189368, 1.2719063)
+emitting = false
+amount = 50
+lifetime = 16.0
+one_shot = true
+speed_scale = 8.0
+explosiveness = 0.55
+fixed_fps = 0
+visibility_rect = Rect2(-9999, -9999, 99999, 99999)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_ij8j0")
+
 [node name="boss1" type="Node2D" parent="particles" unique_id=1631641469]
+position = Vector2(-17976, 0)
 
 [node name="evilFishChargeParticle" parent="particles/boss1" unique_id=1924052094 instance=ExtResource("1_utbgf")]
 active = false
 
 [node name="deathSplosion" parent="particles/boss1" unique_id=685636933 instance=ExtResource("2_gvk7g")]
 
-[node name="variousBoss1" parent="particles/boss1" unique_id=1874404538 instance=ExtResource("3_53n2f")]
+[node name="evilFishParticles" parent="particles/boss1" unique_id=173575188 instance=ExtResource("3_53n2f")]
+position = Vector2(8337, 0)
 active = false
+
+[node name="boss2" type="Node2D" parent="particles" unique_id=1345408081]
+
+[node name="deathParticles" type="GPUParticles2D" parent="particles/boss2" unique_id=1492837944]
+modulate = Color(1, 0.71033335, 0.20999998, 1)
+z_index = -100
+position = Vector2(-24.000004, 393.00006)
+scale = Vector2(25.67757, -2.8444722)
+emitting = false
+amount = 360
+lifetime = 3.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.81
+randomness = 1.0
+fixed_fps = 0
+visibility_rect = Rect2(-9999, -9999, 99900, 99900)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_wbmut")
 
 [node name="playerFish" type="Node2D" parent="particles" unique_id=597966968]
 
@@ -144,7 +223,10 @@ active = false
 [node name="movebubbles" parent="particles/playerFish" unique_id=470742650 instance=ExtResource("7_gvk7g")]
 emitting = true
 
-[node name="camFX" type="Node" parent="." unique_id=1872893771]
+[node name="ui" type="Node" parent="." unique_id=1872893771]
 
-[node name="damageSplash" parent="camFX" unique_id=2004052816 instance=ExtResource("10_4ov4s")]
+[node name="damageSplash" parent="ui" unique_id=2004052816 instance=ExtResource("10_4ov4s")]
+active = false
+
+[node name="Clearpopup" parent="ui" unique_id=269129287 instance=ExtResource("14_e7vun")]
 active = false

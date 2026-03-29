@@ -52,7 +52,7 @@ scale_min = 0.5
 scale_max = 0.5
 scale_curve = SubResource("CurveTexture_rha6e")
 
-[node name="Node2D" type="Node2D" unique_id=173575188]
+[node name="evilFishParticles" type="Node2D" unique_id=173575188]
 z_index = -200
 script = ExtResource("1_1ekvh")
 

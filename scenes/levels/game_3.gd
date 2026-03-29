@@ -9,12 +9,14 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	global.pausable = true
+
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = false
 	add_child(thunkfade)
-	global.pausable = true
 	
+	
+	
+	global.pausable = true
 	globalSignals.connect("boss3death", spawnPortal)
 	globalSignals.connect("game3toR", transition)
 	globalSignals.connect("gameOver", gameOver)
