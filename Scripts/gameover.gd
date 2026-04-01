@@ -12,7 +12,7 @@ var rand : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	$gameoverloop.volume_db = -99
 	globalSignals.gameOver.connect(onDeath)
 	hide()
 	pass # Replace with function body.
@@ -30,7 +30,12 @@ func onDeath():
 	await get_tree().create_timer(3).timeout
 	show()
 	animation_player.play("fadein")
+	$gameoverloop.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property($gameoverloop, "volume_db", 5, 3)
+	
 	await get_tree().create_timer(1).timeout
+	
 	
 	pass
 
@@ -56,6 +61,8 @@ func _on_retry_pressed() -> void:
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = true
 	game.add_child(thunkfade)
+	var tween = get_tree().create_tween()
+	tween.tween_property($gameoverloop, "volume_db", -99, 0.5)
 	await get_tree().create_timer(0.6).timeout
 	#global.hp = global.max_hp
 	

@@ -61,7 +61,6 @@ var canMove = true
 
 func _ready():
 	
-	
 	blink.visible = false
 	$CollisionShape2D.disabled = false
 	$"fish/CollisionShape2D".disabled = false
@@ -106,9 +105,12 @@ func shieldRegen(delta):
 			
 		global.shield = floor(global.shieldRegen/100)
 		
-	
+func deathTween():
+	var tween = get_tree().create_tween()
+	tween.tween_property(global, "score", global.score-15000, 2)
 
 func death():
+	deathTween()
 	canShoot = false
 	canMove = false
 	$"AnimatedSprite2D".play("dead")
@@ -253,10 +255,11 @@ func takeDamage():
 				$sounds/shieldBroken.play()
 			else:
 				$sounds/shieldDamage.play()
-			
+			global.score -= 1000
 			global.shield -= 1
 			global.shieldRegen = global.shield * 100
 		else:
+			global.score -= 4000
 			global.hp -= 1
 			global.shieldRegen = 0
 		
@@ -297,6 +300,8 @@ func _physics_process(delta):
 		#$crosshair.scale.x += 1*delta
 		#$crosshair.scale.y += 1*delta
 	#shows fire if debug damage
+	if global.score <= 0:
+		global.score = 0
 	
 	shieldRegen(delta)
 	if $AnimatedSprite2D.material != null:

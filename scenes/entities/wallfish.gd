@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 		boss2hp = -100
 		globalSignals.emit_signal("boss2death")
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "global_position", Vector2(25541.0, -20737.0), 3)
+		tween.tween_property(self, "global_position", Vector2(30000, -457), 3)
 		active = false
 		$deathSFX.play()
 		$deathParticles.emitting = true
@@ -78,7 +78,7 @@ func attackSchedule(delta):
 
 func summon():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", Vector2(16541.0, -20737.0), 3)
+	tween.tween_property(self, "global_position", Vector2(10127, -457), 3)
 	active = true
 	cooldown = 180
 
@@ -106,8 +106,8 @@ func bulletAttack():
 	
 func rockAttack():
 	var instance = rock.instantiate()
-	instance.startx = -5500
-	instance.endx = 30000
+	instance.startx = -17000
+	instance.endx = 20000
 	instance.yrange1 = fish.global_position.y - 4000
 	instance.yrange2 = fish.global_position.y + 4000
 	

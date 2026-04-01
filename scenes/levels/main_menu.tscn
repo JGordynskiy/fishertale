@@ -400,9 +400,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 817.4321
-offset_top = 655.90356
+offset_top = 587.37634
 offset_right = 846.55054
-offset_bottom = 1047.0894
+offset_bottom = 1624.0317
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.21233284, 0.21233284)
@@ -445,7 +445,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_13qgu")
 text = "Options"
 
 [node name="Exit" type="Button" parent="IntialMenu/InitialButtons" unique_id=1253778542]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.00978053, 0.12789613, 0.22829098, 1)
@@ -791,7 +790,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tl0ru")
 
 [node name="fullscreenLabel" type="Label" parent="Options Menu/Other" unique_id=397252553]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -809,7 +807,6 @@ theme_override_font_sizes/font_size = 35
 text = "Fullscreen"
 
 [node name="fullScreenButton" type="Button" parent="Options Menu/Other" unique_id=359097366]
-visible = false
 layout_mode = 0
 offset_left = 1740.9183
 offset_top = 744.01
@@ -1017,6 +1014,41 @@ scale = Vector2(3.6620927, 3.6620927)
 theme_override_styles/hover = SubResource("StyleBoxFlat_g5b8e")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y2ttv")
 
+[node name="fpsLabel" type="Label" parent="debug Menu" unique_id=504941821]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.89813
+offset_top = 172.9497
+offset_right = 257.10193
+offset_bottom = 309.9497
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.57, 0.57, 0.57, 1)
+theme_override_font_sizes/font_size = 100
+text = "show FPS"
+horizontal_alignment = 1
+
+[node name="fpsSwitch" type="CheckButton" parent="debug Menu" unique_id=174338694]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.63611
+offset_top = 296.9242
+offset_right = -43.63611
+offset_bottom = 320.9242
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.6620927, 3.6620927)
+theme_override_styles/hover = SubResource("StyleBoxFlat_g5b8e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y2ttv")
+
 [node name="InitialStartup" type="Panel" parent="." unique_id=1102986662]
 layout_mode = 0
 offset_left = -78.31685
@@ -1077,3 +1109,4 @@ speed_scale = 1.5
 [connection signal="pressed" from="Options Menu/Other/fullScreenButton" to="." method="_on_full_screen_button_pressed"]
 [connection signal="pressed" from="debug Menu/infHP" to="." method="_on_inf_hp_pressed"]
 [connection signal="pressed" from="debug Menu/infROE" to="." method="_on_inf_roe_pressed"]
+[connection signal="pressed" from="debug Menu/fpsSwitch" to="." method="_on_fps_switch_pressed"]

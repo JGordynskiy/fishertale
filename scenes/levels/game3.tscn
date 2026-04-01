@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="1_rhr0n"]
 [ext_resource type="Script" uid="uid://raip1p1ewomr" path="res://scenes/levels/game_3.gd" id="1_xv74u"]
 [ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="2_82c8u"]
+[ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_hjbhe"]
+[ext_resource type="PackedScene" uid="uid://ckvxlitmipwpj" path="res://scenes/ui/score_hud.tscn" id="2_jjybp"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="2_oytuy"]
 [ext_resource type="Texture2D" uid="uid://cq2j1tnduua1x" path="res://Assets/backgrounds/gamelab.png" id="3_mowe4"]
 [ext_resource type="Script" uid="uid://xsa5x4ujmb56" path="res://scenes/ui/boss3healthbar.gd" id="3_xfp6f"]
@@ -11,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="6_v7put"]
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="7_xv74u"]
 [ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="8_xb6vp"]
+[ext_resource type="PackedScene" uid="uid://mk07chiss86c" path="res://Assets/shaders/water_shader.tscn" id="8_xknww"]
 [ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="9_lrvpm"]
 [ext_resource type="PackedScene" uid="uid://dlqmunvanqxus" path="res://scenes/entities/laser_fish.tscn" id="10_xb6vp"]
 [ext_resource type="PackedScene" uid="uid://cwhh0mgm82iav" path="res://scenes/spike.tscn" id="14_jt4if"]
@@ -18,8 +21,9 @@
 [ext_resource type="AudioStream" uid="uid://dlsnl77g337ux" path="res://Assets/music/boss3int.ogg" id="15_keobj"]
 [ext_resource type="AudioStream" uid="uid://cgewu8yaj23gb" path="res://Assets/music/boss3loop.ogg" id="16_perse"]
 [ext_resource type="AudioStream" uid="uid://pxg5n1eynj6y" path="res://Assets/music/boss3nd.ogg" id="17_mlfca"]
-[ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="18_rjglp"]
 [ext_resource type="PackedScene" uid="uid://dpk1k3d15gnda" path="res://scenes/loader/objectPreLoader.tscn" id="20_jjybp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjbhe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lrvpm"]
 vertices = PackedVector2Array(662.28125, -194.57813, 1316.8125, 110.921875, 262.4297, 67.328125, 116.109375, 1.46875, 119.10156, -54.96875, 537.5781, -202.64844, 690.28906, -303.5703, 426.04688, -702.0781, 1335.1719, -714.1094, 161.14063, -692.4297, 7.328125, -143.60156, 104.703125, 60.539063, 260.5703, 288.64844, 1286.9922, 303.2422, 1269.2109, 676.5625, -441.97656, 671.9375, -384.7422, 393.3125, 265.7578, 334.67188, 50.921875, 134.64844, 257.02344, 290.95313, -386.28906, 211.64063, -41.632813, 145.85938, -1422.2109, -292.90625, -1447.1094, -701.28125, -398.8125, -354.0625, -115.52344, -136.82813, -412.8672, -64.64844, -188.25, -48.5, -885.9922, 693.3828, -1438.4609, 682.1172, -1400.2422, -39.976563, -578.1797, 182.28125, -441.1875, 166.75, -188.25, 36.929688, 66.5, 108.828125, -130.28125, 116.13281)
@@ -28,6 +32,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1449, 691.9167, -880.4
 
 [node name="game3" type="Node2D" unique_id=299158082]
 script = ExtResource("1_xv74u")
+
+[node name="FPS counter" parent="." unique_id=848034560 instance=ExtResource("2_hjbhe")]
+
+[node name="scoreHUD" parent="." unique_id=908932221 instance=ExtResource("2_jjybp")]
 
 [node name="bosshealthbar" parent="." unique_id=1583703168 instance=ExtResource("2_82c8u")]
 script = ExtResource("3_xfp6f")
@@ -38,19 +46,24 @@ script = ExtResource("3_xfp6f")
 
 [node name="GameOver" parent="." unique_id=965162311 instance=ExtResource("8_xb6vp")]
 
+[node name="waterShader" parent="." unique_id=753160952 instance=ExtResource("8_xknww")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=957694096]
+color = Color(0.85, 0.9325, 1, 1)
+
 [node name="fish" parent="." unique_id=1999656227 instance=ExtResource("1_rhr0n")]
 z_index = 500
-position = Vector2(7071.001, -14352)
+position = Vector2(-11588.997, -5430.002)
 
 [node name="followCam" parent="fish" unique_id=1626671674 instance=ExtResource("2_oytuy")]
-limit_left = -350
-limit_top = -19415
-limit_right = 36090
-limit_bottom = 770
+limit_left = -18418
+limit_top = -9906
+limit_right = 17507
+limit_bottom = 9798
 
 [node name="background" type="StaticBody2D" parent="." unique_id=1036572831 groups=["objects"]]
 z_index = -500
-position = Vector2(11290, -9986)
+position = Vector2(-7098, -689)
 scale = Vector2(6.436667, 6.436667)
 
 [node name="ColorRect" type="ColorRect" parent="background" unique_id=1723842462]
@@ -63,7 +76,14 @@ offset_bottom = -38615.996
 scale = Vector2(-3306.4265, 1737.704)
 color = Color(0, 0.2599999, 0.65, 1)
 
-[node name="backg" type="Sprite2D" parent="background" unique_id=1436749672]
+[node name="Parallax2D" type="Parallax2D" parent="background" unique_id=939798769]
+scale = Vector2(1.3291303, 1.3291303)
+scroll_scale = Vector2(0.92, 0.92)
+
+[node name="backg" type="Sprite2D" parent="background/Parallax2D" unique_id=1436749672]
+material = SubResource("ShaderMaterial_hjbhe")
+position = Vector2(761.8786, 107.06995)
+scale = Vector2(1.132644, 1.132644)
 texture = ExtResource("3_mowe4")
 
 [node name="foreg" type="Sprite2D" parent="background" unique_id=1677877206]
@@ -81,19 +101,18 @@ z_index = 100
 position = Vector2(1029.1038, 2661.7813)
 scale = Vector2(0.2715754, 0.85245204)
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="background" unique_id=568606304]
+position = Vector2(1152.4598, 142.15431)
+scale = Vector2(1.8643188, 1.8643188)
+navigation_polygon = SubResource("NavigationPolygon_lrvpm")
+
 [node name="ambience" type="AudioStreamPlayer" parent="." unique_id=281249004]
 stream = ExtResource("4_oytuy")
 autoplay = true
 bus = &"SFX"
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=568606304]
-visible = false
-position = Vector2(18661, -9234)
-scale = Vector2(12, 12)
-navigation_polygon = SubResource("NavigationPolygon_lrvpm")
-
 [node name="enemies" type="Node2D" parent="." unique_id=2144620304]
-position = Vector2(18661, -9234)
+position = Vector2(273, 63)
 scale = Vector2(14.574766, 14.574766)
 
 [node name="laserTurret1" parent="enemies" unique_id=1670828424 instance=ExtResource("14_xfp6f")]
@@ -122,7 +141,7 @@ scale = Vector2(0.08914537, 0.08914537)
 
 [node name="laserFish" parent="." unique_id=1717009660 instance=ExtResource("10_xb6vp")]
 z_index = 300
-position = Vector2(18615.998, -6411)
+position = Vector2(168, 4721)
 scale = Vector2(14.574766, 14.574766)
 
 [node name="musicint" type="AudioStreamPlayer" parent="." unique_id=1588046577]
@@ -142,8 +161,6 @@ process_mode = 3
 stream = ExtResource("17_mlfca")
 volume_db = -5.0
 bus = &"Music"
-
-[node name="FPS counter" parent="." unique_id=1057167375 instance=ExtResource("18_rjglp")]
 
 [node name="objectPreLoader" parent="." unique_id=770993929 instance=ExtResource("20_jjybp")]
 position = Vector2(-190443, -6248)

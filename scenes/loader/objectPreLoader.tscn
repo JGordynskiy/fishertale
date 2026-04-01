@@ -111,6 +111,7 @@ position = Vector2(6890, 866)
 
 [node name="SuperBullet" parent="projectiles" unique_id=335071865 instance=ExtResource("12_e7vun")]
 position = Vector2(5721, -78)
+active = false
 
 [node name="Object" parent="projectiles" unique_id=53077578 instance=ExtResource("13_wbmut")]
 position = Vector2(6845, 147)
@@ -226,7 +227,9 @@ emitting = true
 [node name="ui" type="Node" parent="." unique_id=1872893771]
 
 [node name="damageSplash" parent="ui" unique_id=2004052816 instance=ExtResource("10_4ov4s")]
+visible = false
 active = false
 
 [node name="Clearpopup" parent="ui" unique_id=269129287 instance=ExtResource("14_e7vun")]
+visible = false
 active = false

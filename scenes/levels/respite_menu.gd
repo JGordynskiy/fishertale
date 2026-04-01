@@ -30,13 +30,19 @@ func _ready() -> void:
 	Engine.physics_ticks_per_second = 60
 	global.pausable = true
 	
+	if global.curBoss == 1:
+		global.score = 100000
+	
 	if global.hp < 1:
 		global.hp = global.savedHp
 		
 	if global.maxShield == 0:
 		global.shield = 1
 		global.maxShield = 1
-	
+	if global.infRoe || global.infHP:
+		$underconstruction/Label2.text = "CHEATER!"
+	else:
+		$underconstruction/Label2.text = str(global.score)
 	transitioning = false
 	
 	globalSignals.justPaused.connect(pauseGame)
@@ -86,6 +92,8 @@ func _on_enemy_monitor_box_mouse_exited() -> void:
 	
 ## FISH STATS
 func _on_friendly_monitor_box_mouse_entered() -> void:
+	$FriendlyMonitor/stats/scoreText.text = "Score: "+str(global.score)
+	
 	if global.heart == 1:
 		$FriendlyMonitor/stats/DmgText.text = "DMG: "+str(global.shot_damage)
 	if global.heart == 2:

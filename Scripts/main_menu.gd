@@ -284,3 +284,8 @@ func _on_full_screen_button_pressed() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+func _on_fps_switch_pressed() -> void:
+	settings.fpsVisible = !settings.fpsVisible
+	pass # Replace with function body.

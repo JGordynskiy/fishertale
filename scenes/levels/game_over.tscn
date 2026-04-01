@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cfuurh6fhfc7" path="res://Assets/sounds/uiHoveroff.ogg" id="5_i47r0"]
 [ext_resource type="AudioStream" uid="uid://dc6du6htd3uph" path="res://Assets/sounds/uiSelect.ogg" id="6_nesse"]
 [ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="9_ecavu"]
+[ext_resource type="AudioStream" uid="uid://ck0et8k08xdo3" path="res://Assets/music/gameover.ogg" id="13_pr6bw"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_181lf"]
 frames = 5
@@ -384,6 +385,10 @@ stream = ExtResource("5_i47r0")
 
 [node name="select" type="AudioStreamPlayer" parent="sounds/ui" unique_id=1026432880]
 stream = ExtResource("6_nesse")
+
+[node name="gameoverloop" type="AudioStreamPlayer" parent="." unique_id=1522137308]
+stream = ExtResource("13_pr6bw")
+bus = &"Music"
 
 [connection signal="mouse_entered" from="ColorRect/HBoxContainer/Retry" to="." method="_on_retry_mouse_entered"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/Retry" to="." method="_on_retry_pressed"]

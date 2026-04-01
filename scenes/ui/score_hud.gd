@@ -1,5 +1,4 @@
 extends CanvasLayer
-@onready var label: Label = $Label
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,14 +8,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	label.text = str(Engine.get_frames_per_second()) + " FPS"
-	if Engine.get_frames_per_second() < 59:
-		$Label.modulate.s = 1
-	else:
-		$Label.modulate.s = 0
-		
-	if settings.fpsVisible:
-		show()
-	else:
-		hide()
+	$Label.text = str("%08d" % global.score)
 	pass

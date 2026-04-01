@@ -25,7 +25,7 @@ const roePopup = preload("res://scenes/objects/roe_popup.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-
+	
 	
 	global.stopwatch = 0
 	
@@ -40,9 +40,7 @@ func _ready() -> void:
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = false
 	add_child(thunkfade)
-	
-	
-	
+
 	
 	$"ambience".play()
 	await get_tree().create_timer(0.25, false).timeout
@@ -57,12 +55,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if boss1.boss1hp > 0 && global.hp > 0:
-		global.stopwatch += delta
-	pass
+		global.score -= snapped(100*delta, 1)
 
 func bossDeath():
-	if global.stopwatch < 45:
-		xtraRoe = 5
+	var tween = get_tree().create_tween()
+	tween.tween_property(global, "score", global.score + 10000, 2)
 	
 func pauseGame():
 	$Music/boss1int.bus = "lowpass"

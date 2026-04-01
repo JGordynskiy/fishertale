@@ -1,17 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://pnkhtusxqtg4"]
+[gd_scene format=3 uid="uid://pnkhtusxqtg4"]
 
-[ext_resource type="Texture2D" uid="uid://do73iqlalsttk" path="res://Assets/backgrounds/waterlushcave.png" id="1_dfagn"]
+[ext_resource type="Texture2D" uid="uid://ktejlaub75h7" path="res://Assets/backgrounds/waterlishcaveBack.png" id="1_u7yvs"]
 [ext_resource type="Texture2D" uid="uid://dnk4qf4m5hwkq" path="res://Assets/backgrounds/waterlushcavefore.png" id="2_u7yvs"]
 
-[node name="backgroundlushcave" type="StaticBody2D" groups=["objects"]]
+[node name="backgroundlushcave" type="StaticBody2D" unique_id=1396460094 groups=["objects"]]
 
-[node name="backg" type="Sprite2D" parent="."]
-texture = ExtResource("1_dfagn")
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=2056603767]
+rotation = 1.5707964
+scale = Vector2(1, 1.143)
+scroll_scale = Vector2(0.9, 0.9)
 
-[node name="foreg" type="Sprite2D" parent="."]
+[node name="backg" type="Sprite2D" parent="Parallax2D" unique_id=1303257697]
+position = Vector2(895.00006, 108.486404)
+scale = Vector2(1.313044, 1.313044)
+texture = ExtResource("1_u7yvs")
+
+[node name="foreg" type="Sprite2D" parent="." unique_id=889662275]
 z_index = 1000
 position = Vector2(-145, 380)
+rotation = 1.5707964
+scale = Vector2(1, 1.143)
 texture = ExtResource("2_u7yvs")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["objects"]]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2092749009 groups=["objects"]]
+z_index = 500
+position = Vector2(290.99997, 526)
+rotation = 1.5707964
+scale = Vector2(1, 1.143)
 polygon = PackedVector2Array(-1281, 539, -1437, 659, -1632, -1150, -1245, -1372, 1653, -1579, 1839, 963, 1656, 2503, -858, 2609, -1886, 2164, -1280, 768, -1169, 620, -874, 1630, -545, 1835, -374, 1800, -163, 1785, 52, 1826, 170, 1761, 581, 1794, 844, 1664, 1283, 493, 918, -862, 731, -829, 429, -860, 217, -854, -54, -832, -265, -864, -546, -896, -804, -903, -1169, -520, -1237, 399, -1162, 642)

@@ -28,7 +28,7 @@ var maxShield = 0
 var gameMaxShield = 5
 var shieldRegen = 0
 
-
+var score = 100000
 var stopwatch = 0
 
 # Upgrades and Costs (CHANGE IN MAIN_MENU.GD)

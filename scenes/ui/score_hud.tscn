@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ckvxlitmipwpj"]
+
+[ext_resource type="Script" uid="uid://ccdobd5xa2sx3" path="res://scenes/ui/score_hud.gd" id="1_gp82b"]
+[ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="1_mmlrw"]
+
+[node name="scoreHUD" type="CanvasLayer" unique_id=908932221]
+script = ExtResource("1_gp82b")
+
+[node name="Label" type="Label" parent="." unique_id=1273378363]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1762.0
+offset_top = 19.0
+offset_right = -19.0
+offset_bottom = 352.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_mmlrw")
+theme_override_font_sizes/font_size = 25
+text = "000000"
+horizontal_alignment = 2

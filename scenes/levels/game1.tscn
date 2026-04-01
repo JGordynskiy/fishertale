@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://daallqpv0d4ul"]
 
 [ext_resource type="Script" uid="uid://crx37ouyvqali" path="res://Scripts/game1.gd" id="1_bo462"]
+[ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_5ijg6"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="2_qtp2c"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="3_5v0ki"]
 [ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="6_i5lao"]
 [ext_resource type="PackedScene" uid="uid://d2f2njwjm1mdb" path="res://scenes/entities/evil_fish.tscn" id="6_kxvvm"]
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="7_vek25"]
 [ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="8_cu3vh"]
+[ext_resource type="PackedScene" uid="uid://ckvxlitmipwpj" path="res://scenes/ui/score_hud.tscn" id="9_chbx8"]
 [ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="9_iy4g1"]
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="10_iy4g1"]
 [ext_resource type="PackedScene" uid="uid://bn2bjqurecbev" path="res://scenes/background.tscn" id="10_kxvvm"]
@@ -67,6 +69,8 @@ _data = {
 [node name="Game1" type="Node2D" unique_id=1293929273]
 script = ExtResource("1_bo462")
 
+[node name="FPS counter" parent="." unique_id=863857247 instance=ExtResource("2_5ijg6")]
+
 [node name="Background" parent="." unique_id=852952558 instance=ExtResource("10_kxvvm")]
 position = Vector2(22533, -13487)
 rotation = 1.5814941
@@ -121,6 +125,8 @@ libraries/ = SubResource("AnimationLibrary_3sf34")
 [node name="Ambient Particles" parent="." unique_id=150100469 instance=ExtResource("9_iy4g1")]
 z_index = 100
 position = Vector2(16036, 16186)
+
+[node name="scoreHUD" parent="." unique_id=908932221 instance=ExtResource("9_chbx8")]
 
 [node name="Pause Menu" parent="." unique_id=1468740674 instance=ExtResource("8_cu3vh")]
 unique_name_in_owner = true

@@ -12,6 +12,8 @@ var shotspeed : int
 
 var curRange : int
 
+@export var active = true
+
 var popped = false
 func _ready() -> void:
 	dir += PI/2
@@ -54,14 +56,15 @@ func pop():
 	queue_free()
 	
 func shoot(rot):
-	var instance = bullet.instantiate()
-	instance.range = 1500
-	instance.spawnPos = global_position
-	instance.spawnRot = rot
-	instance.dir = rot
-	instance.shotspeed = 10000
-	if game != null:
-		game.add_child(instance)
+	if active:
+		var instance = bullet.instantiate()
+		instance.range = 1500
+		instance.spawnPos = global_position
+		instance.spawnRot = rot
+		instance.dir = rot
+		instance.shotspeed = 10000
+		if game != null:
+			game.add_child(instance)
 
 
 func _on_super_bullet_body_entered(body: Node2D) -> void:

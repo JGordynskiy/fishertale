@@ -56,6 +56,10 @@ func gameOver():
 	tween.tween_property(music_loop, "pitch_scale", 0.2, 2)
 
 func boss2clear():
+	var tween = get_tree().create_tween()
+	tween.tween_property(global, "score", global.score + 10000, 2)
+	
+	
 	$Music/musicInt.stop()
 	$Music/musicLoop.stop()
 	$Music/musicEnd.play()
@@ -77,7 +81,7 @@ func boss2clear():
 	#sapawning portal
 	await get_tree().create_timer(2, false).timeout
 	var portal = whirlpool.instantiate()
-	global.whirlPoolPos = Vector2(17000, -20000)
+	global.whirlPoolPos = Vector2(9000, 0)
 	portal.global_position = global.whirlPoolPos
 	add_child(portal)
 	
@@ -88,7 +92,10 @@ func _process(delta: float) -> void:
 	
 	if (fish.global_position.x < 16000 && fanOn && !fish.mult > 1):
 		fish.global_position.x += fanSpeed
-		
+	
+	if wallfish.boss2hp > 0 && global.hp > 0 && fanOn:
+		global.score -= snapped(100*delta, 1)
+	
 	pass
 	
 	
@@ -96,7 +103,15 @@ func _process(delta: float) -> void:
 func _on_ambience_finished() -> void:
 	$"ambience".play()
 
+func fadeHint():
+	var org = $tutmouse.modulate.a
+	org /= 100
+	for i in range(100):
+		$tutmouse.modulate.a -= org
+		await global.timer(0.05)
+
 func bossStart():
+	fadeHint()
 	
 	await get_tree().create_timer(1, false).timeout
 	

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bww8vkou1mqo1" path="res://Scripts/game2.gd" id="1_ee6yk"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="1_f04mu"]
 [ext_resource type="PackedScene" uid="uid://5nhpv0faw0iy" path="res://scenes/entities/wallfish.tscn" id="2_1lsou"]
+[ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_7bmbl"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="2_33nkf"]
 [ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="2_c6ity"]
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="2_f04mu"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://pnkhtusxqtg4" path="res://scenes/backgroundlushcave.tscn" id="8_1lsou"]
 [ext_resource type="PackedScene" uid="uid://kkrhhsaofeou" path="res://scenes/objects/fan.tscn" id="8_c6ity"]
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="8_oevex"]
+[ext_resource type="PackedScene" uid="uid://ckvxlitmipwpj" path="res://scenes/ui/score_hud.tscn" id="8_vnlqn"]
 [ext_resource type="PackedScene" uid="uid://cwhh0mgm82iav" path="res://scenes/spike.tscn" id="13_hshte"]
 [ext_resource type="Texture2D" uid="uid://b8t1paljw5m18" path="res://Assets/tutMouse2.png" id="14_q6hs2"]
 [ext_resource type="AudioStream" uid="uid://cph2tykgpd0qa" path="res://Assets/music/boss2int.ogg" id="15_d1bqq"]
@@ -22,32 +24,36 @@
 [node name="Game2" type="Node2D" unique_id=1358927383]
 script = ExtResource("1_ee6yk")
 
+[node name="FPS counter" parent="." unique_id=1966108221 instance=ExtResource("2_7bmbl")]
+
 [node name="GameOver" parent="." unique_id=2034643806 instance=ExtResource("2_urfkc")]
 
 [node name="bosshealthbar" parent="." unique_id=387053762 instance=ExtResource("2_c6ity")]
 script = ExtResource("3_b1pko")
 
+[node name="scoreHUD" parent="." unique_id=908932221 instance=ExtResource("8_vnlqn")]
+
+[node name="hpBar" parent="." unique_id=1070986878 instance=ExtResource("2_f04mu")]
+
+[node name="Pause Menu" parent="." unique_id=99070688 instance=ExtResource("6_33nkf")]
+
 [node name="Wallfish" parent="." unique_id=18029838 instance=ExtResource("2_1lsou")]
 z_index = 300
-position = Vector2(22877.002, -20737)
+position = Vector2(16477.002, 383)
 rotation = -1.5707964
 scale = Vector2(3.5921154, 3.5921154)
 
 [node name="fish" parent="." unique_id=1183636885 instance=ExtResource("1_f04mu")]
 z_index = 500
-position = Vector2(6032.0005, -21576.998)
+position = Vector2(-367.99902, -457)
 
 [node name="followCam" parent="fish" unique_id=580376173 instance=ExtResource("2_33nkf")]
 position = Vector2(-168.00041, -0.001953125)
-limit_left = -4735
-limit_top = -29380
-limit_right = 20275
-limit_bottom = -11390
+limit_left = -10962
+limit_top = -8209
+limit_right = 12817
+limit_bottom = 9383
 limit_smoothed = true
-
-[node name="hpBar" parent="." unique_id=1070986878 instance=ExtResource("2_f04mu")]
-
-[node name="Pause Menu" parent="." unique_id=99070688 instance=ExtResource("6_33nkf")]
 
 [node name="ambience" type="AudioStreamPlayer" parent="." unique_id=1871148980]
 stream = ExtResource("8_oevex")
@@ -55,17 +61,31 @@ bus = &"SFX"
 
 [node name="backgroundlushcave" parent="." unique_id=383584892 instance=ExtResource("8_1lsou")]
 z_index = -500
-position = Vector2(11731, -20556.998)
-rotation = 1.5707964
-scale = Vector2(7.060037, 8.813087)
+position = Vector2(2395.0005, -3248.002)
+scale = Vector2(7, 7)
+
+[node name="Polygon2D2" type="Polygon2D" parent="backgroundlushcave" unique_id=30354004]
+position = Vector2(83.85708, 987.00037)
+rotation = 2.9855897
+scale = Vector2(-1.0314023, 0.9743944)
+color = Color(0.2475, 0.45924997, 0.55, 1)
+polygon = PackedVector2Array(734.7906, 1365.0706, 664.7141, 1618.4287, 882.39923, 1641.3303, 932.669, 1294.5785, 917.92096, 1003.7687, 822.73553, 761.37585, 683.47675, 541.3103, 504.14273, 474.00024, 407.7142, 555.71454, 575.21515, 642.1487, 675.25726, 725.67255, 737.41656, 1063.7991)
+
+[node name="Polygon2D3" type="Polygon2D" parent="backgroundlushcave" unique_id=564374758]
+position = Vector2(295.99994, -160.28545)
+rotation = 3.5533133
+scale = Vector2(-0.8905917, -1.1246604)
+color = Color(0.2475, 0.45924997, 0.55, 1)
+polygon = PackedVector2Array(734.7906, 1365.0706, 664.7141, 1618.4287, 882.39923, 1641.3303, 932.669, 1294.5785, 917.92096, 1003.7687, 822.73553, 761.37585, 683.47675, 541.3103, 504.14273, 474.00024, 407.7142, 555.71454, 575.21515, 642.1487, 675.25726, 725.67255, 737.41656, 1063.7991)
 
 [node name="fan" parent="." unique_id=1353235726 instance=ExtResource("8_c6ity")]
-position = Vector2(-3710, -20416.002)
+z_index = -100
+position = Vector2(-10110, 703.99805)
 scale = Vector2(4.503764, 4.503764)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1059156107]
 modulate = Color(0.32, 0.65999997, 1, 1)
-position = Vector2(11052, -28700.002)
+position = Vector2(4652, -7580.002)
 scale = Vector2(2.2823844, 2.2823844)
 
 [node name="Spike" parent="Node2D" unique_id=1332175467 instance=ExtResource("13_hshte")]
@@ -76,6 +96,10 @@ scale = Vector2(0.8787021, 0.8787021)
 position = Vector2(-537.5952, 7052.275)
 scale = Vector2(0.7570561, 0.7570561)
 
+[node name="Spike5" parent="Node2D" unique_id=1182276342 instance=ExtResource("13_hshte")]
+position = Vector2(325.97498, 3399.0781)
+scale = Vector2(0.46432513, 0.46432513)
+
 [node name="Spike3" parent="Node2D" unique_id=63194364 instance=ExtResource("13_hshte")]
 position = Vector2(-2216.5415, -234.8418)
 scale = Vector2(0.7570561, 0.7570561)
@@ -85,7 +109,7 @@ scale = Vector2(0.7570561, 0.7570561)
 [node name="tutmouse" type="Sprite2D" parent="." unique_id=807142706]
 modulate = Color(0.53, 0.6866667, 1, 0.5529412)
 z_index = -500
-position = Vector2(145.00018, -24740.998)
+position = Vector2(-6255.001, -3620.996)
 rotation = -0.30237585
 scale = Vector2(2.795344, 2.795344)
 texture = ExtResource("14_q6hs2")
@@ -111,6 +135,6 @@ volume_db = -10.0
 bus = &"Music"
 
 [node name="objectPreLoader" parent="." unique_id=770993929 instance=ExtResource("18_u637n")]
-position = Vector2(-43761, -24596)
+position = Vector2(-62577, -35732)
 
 [connection signal="finished" from="Music/musicInt" to="." method="_on_music_int_finished"]

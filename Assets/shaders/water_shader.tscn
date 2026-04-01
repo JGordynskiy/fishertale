@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://mk07chiss86c"]
+
+[ext_resource type="Shader" uid="uid://do0hv7sncbdgs" path="res://Assets/shaders/water.gdshader" id="1_fbspx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4jl1"]
+shader = ExtResource("1_fbspx")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_freq = 5.0
+shader_parameter/wave_width = 0.5
+
+[sub_resource type="ExternalTexture" id="ExternalTexture_a4jl1"]
+
+[node name="waterShader" type="CanvasLayer" unique_id=753160952]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1793063942]
+material = SubResource("ShaderMaterial_a4jl1")
+offset_left = -342.0
+offset_top = -126.0
+offset_right = 944.0
+offset_bottom = 603.0
+scale = Vector2(1.4777253, 1.4777253)
+texture = SubResource("ExternalTexture_a4jl1")
+metadata/_edit_use_anchors_ = true

@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dcqxpeyuf7pqo"]
 
 [ext_resource type="Script" uid="uid://c7ecq3qk63hnj" path="res://scenes/levels/game_t.gd" id="1_hb3pr"]
+[ext_resource type="PackedScene" uid="uid://mk07chiss86c" path="res://Assets/shaders/water_shader.tscn" id="2_a4jl1"]
 [ext_resource type="PackedScene" uid="uid://kufc7apr17a3" path="res://scenes/background_tut.tscn" id="2_yljmy"]
+[ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="3_hbtga"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="3_uvv3c"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="4_uq1e6"]
 [ext_resource type="PackedScene" uid="uid://dv5t54py7aslf" path="res://scenes/object.tscn" id="5_qjl4i"]
@@ -33,6 +35,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-32694, 1269, -35533, 1
 
 [node name="game_t" type="Node2D" unique_id=1215662939]
 script = ExtResource("1_hb3pr")
+
+[node name="waterShader" parent="." unique_id=753160952 instance=ExtResource("2_a4jl1")]
+
+[node name="FPS counter" parent="." unique_id=1118424807 instance=ExtResource("3_hbtga")]
 
 [node name="coverupcollision" type="StaticBody2D" parent="." unique_id=997132273 groups=["objects"]]
 scale = Vector2(11.045784, 11.045784)

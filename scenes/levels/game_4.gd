@@ -54,6 +54,10 @@ func unpauseGame():
 	$Music/musicend.bus = "Master"
 
 func clear():
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(global, "score", global.score + 10000, 2)
+	
 	$Music/musicint.stop()
 	$Music/musicloop.stop()
 	$Music/musicend.play()
@@ -132,6 +136,9 @@ func flickerOn():
 	$darkness.visible = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if lightfish.boss4hp > 0 && global.hp > 0 && $darkness.visible:
+		global.score -= snapped(100*delta, 1)
+	
 	pass
 
 

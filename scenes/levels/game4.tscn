@@ -4,15 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="2_2dwkm"]
 [ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="2_8aaog"]
 [ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="2_8kelq"]
+[ext_resource type="PackedScene" uid="uid://ckvxlitmipwpj" path="res://scenes/ui/score_hud.tscn" id="2_8v5nf"]
 [ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_l38b5"]
-[ext_resource type="Texture2D" uid="uid://b2i2f13eh3y42" path="res://Assets/backgrounds/churchFore.png" id="2_lsbcc"]
 [ext_resource type="Script" uid="uid://ny38hfc3r1c6" path="res://scenes/ui/boss4healthbar.gd" id="3_ajj23"]
-[ext_resource type="Texture2D" uid="uid://mgn2kdkvlaig" path="res://Assets/backgrounds/church.png" id="3_ixi2k"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="3_ryi7u"]
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="3_yxrd2"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="5_13hsg"]
 [ext_resource type="PackedScene" uid="uid://cth2l3adobs7" path="res://scenes/entities/lightFish.tscn" id="9_617rf"]
+[ext_resource type="Texture2D" uid="uid://dpegpr88coel6" path="res://Assets/backgrounds/churchbackMid.png" id="10_8v5nf"]
 [ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="10_b04r2"]
+[ext_resource type="Texture2D" uid="uid://di34u3x7yr5v0" path="res://Assets/backgrounds/churchBack.png" id="11_8v5nf"]
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="13_ajj23"]
 [ext_resource type="AudioStream" uid="uid://b018hgepvexvd" path="res://Assets/music/boss4int.ogg" id="15_4bexx"]
 [ext_resource type="AudioStream" uid="uid://d2taskqb7ry3t" path="res://Assets/music/boss4loop.ogg" id="16_yadk7"]
@@ -36,8 +37,9 @@ polygon = PackedVector2Array(29821, -10481, 29402, -11549, 33138, -11549, 32503,
 [node name="game4" type="Node2D" unique_id=1084088570]
 script = ExtResource("1_0b6rn")
 
+[node name="scoreHUD" parent="." unique_id=908932221 instance=ExtResource("2_8v5nf")]
+
 [node name="FPS counter" parent="." unique_id=64897488 instance=ExtResource("2_l38b5")]
-visible = false
 
 [node name="bosshealthbar" parent="." unique_id=983373506 instance=ExtResource("2_2dwkm")]
 script = ExtResource("3_ajj23")
@@ -63,10 +65,15 @@ scale = Vector2(4.9888024, 4.9888024)
 [node name="churchFore" type="Sprite2D" parent="background" unique_id=667648749]
 z_index = 100
 position = Vector2(-2, -2)
-texture = ExtResource("2_lsbcc")
+texture = ExtResource("10_8v5nf")
 
-[node name="churchback" type="Sprite2D" parent="background" unique_id=527338862]
-texture = ExtResource("3_ixi2k")
+[node name="Parallax2D" type="Parallax2D" parent="background" unique_id=403388486]
+modulate = Color(0.7569, 0.78706, 0.87, 1)
+
+[node name="churchback" type="Sprite2D" parent="background/Parallax2D" unique_id=527338862]
+position = Vector2(260.9845, 265.59482)
+scale = Vector2(1.0226827, 1.0226827)
+texture = ExtResource("11_8v5nf")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background" unique_id=715616543]
 position = Vector2(-2, -2.0004883)

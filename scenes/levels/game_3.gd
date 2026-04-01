@@ -4,7 +4,7 @@ extends Node2D
 @onready var fish = get_node("fish")
 @onready var whirlpool = preload("res://scenes/entities/whirlpool.tscn")
 @onready var clearpopup = preload("res://scenes/ui/clearpopup.tscn")
-
+@onready var boss3: CharacterBody2D = $laserFish
 @onready var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -61,8 +61,12 @@ func transition():
 	var thunkfade = fadeRect.instantiate()
 	thunkfade.type = true
 	add_child(thunkfade)
+	
 func spawnPortal():
 	#give roe
+	var tween = get_tree().create_tween()
+	tween.tween_property(global, "score", global.score + 10000, 2)
+	
 	clear()
 	var roeP = roePopup.instantiate()
 	roeP.global_position = fish.global_position
@@ -77,7 +81,7 @@ func spawnPortal():
 	await get_tree().create_timer(3, false).timeout
 	
 	var portal = whirlpool.instantiate()
-	global.whirlPoolPos = Vector2(17000, -2500)
+	global.whirlPoolPos = Vector2(0, 5000)
 	portal.z_index = 400
 	portal.global_position = global.whirlPoolPos
 	add_child(portal)
@@ -87,6 +91,9 @@ func spawnPortal():
 
 
 func _process(delta: float) -> void:
+	if boss3.boss3hp > 0 && global.hp > 0:
+		global.score -= snapped(100*delta, 1)
+	
 	pass
 
 

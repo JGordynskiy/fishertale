@@ -925,7 +925,7 @@ layout_mode = 0
 offset_left = -8.958982
 offset_top = -15.312606
 offset_right = 343.34576
-offset_bottom = 221.55608
+offset_bottom = 289.01874
 theme_override_styles/panel = SubResource("StyleBoxFlat_bsp48")
 
 [node name="theFish" type="Label" parent="FriendlyMonitor/stats" unique_id=615589903]
@@ -950,6 +950,17 @@ scale = Vector2(0.6861399, 0.6861399)
 theme_override_fonts/font = ExtResource("4_17bcf")
 theme_override_font_sizes/font_size = 61
 text = "DMG:"
+
+[node name="scoreText" type="Label" parent="FriendlyMonitor/stats" unique_id=2007615564]
+layout_mode = 0
+offset_left = 10.530234
+offset_top = 206.56442
+offset_right = 224.53023
+offset_bottom = 268.56442
+scale = Vector2(0.6861399, 0.6861399)
+theme_override_fonts/font = ExtResource("4_17bcf")
+theme_override_font_sizes/font_size = 31
+text = "Score:"
 
 [node name="rate" type="Label" parent="FriendlyMonitor/stats" unique_id=1797303446]
 visible = false
@@ -1380,7 +1391,6 @@ scale = Vector2(0.03480081, 0.03480081)
 [node name="menuHpBar" parent="hpbar" unique_id=607520646 instance=ExtResource("31_1dcgu")]
 
 [node name="underconstruction" type="Control" parent="." unique_id=1583916380]
-visible = false
 z_index = 500
 layout_mode = 1
 anchors_preset = 15
@@ -1399,7 +1409,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c3whj")
 
-[node name="Label" type="Label" parent="underconstruction" unique_id=1093844365]
+[node name="Label1" type="Label" parent="underconstruction" unique_id=1093844365]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1407,16 +1417,56 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -534.5
-offset_top = -106.5
+offset_top = -188.0
 offset_right = 534.5
-offset_bottom = 106.5
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("10_vrvnp")
 theme_override_font_sizes/font_size = 50
-text = "Under Construction
+text = "That's all for now!
 
-Use ESC to return to main menu"
+Your score:"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="underconstruction" unique_id=1882965257]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -534.5
+offset_top = 203.0
+offset_right = 534.5
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.26, 0.26, 0.26, 1)
+theme_override_fonts/font = ExtResource("10_vrvnp")
+theme_override_font_sizes/font_size = 30
+text = "Use esc to quit"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="underconstruction" unique_id=461710407]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -534.5
+offset_top = 21.5
+offset_right = 534.5
+offset_bottom = 234.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.75600004, 0.39, 1)
+theme_override_fonts/font = ExtResource("10_vrvnp")
+theme_override_font_sizes/font_size = 76
+text = "0000000"
 horizontal_alignment = 1
 autowrap_mode = 2
 
