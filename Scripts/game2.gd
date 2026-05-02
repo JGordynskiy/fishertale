@@ -88,7 +88,7 @@ func boss2clear():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	if (fish.global_position.x < 16000 && fanOn && !fish.mult > 1):
 		fish.global_position.x += fanSpeed
