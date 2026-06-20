@@ -71,7 +71,6 @@ func unpause():
 	global.pausable = false
 	globalSignals.emit_signal("justUnPaused")
 	$"unpause".play()
-	modulate.a= 250
 	animation_player.play("unpause")
 	paused = false
 	get_tree().paused = false

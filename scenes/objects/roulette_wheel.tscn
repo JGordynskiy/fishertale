@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ctdgjqbc3eg2s"]
+
+[ext_resource type="Script" uid="uid://cdeg2nwmfa1gc" path="res://scenes/objects/roulette_wheel.gd" id="1_1hd7w"]
+[ext_resource type="Texture2D" uid="uid://cyioxnquq08qc" path="res://Assets/objects/rouletteWheel.png" id="2_e22w2"]
+[ext_resource type="Texture2D" uid="uid://ca2l6klysq54u" path="res://Assets/objects/wheelTop.png" id="3_pfc3m"]
+
+[node name="rouletteWheel" type="Node2D" unique_id=662583383]
+script = ExtResource("1_1hd7w")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1465083814]
+position = Vector2(23, 20)
+remote_path = NodePath("../wheelTopShadow")
+update_rotation = false
+
+[node name="wheel" type="Sprite2D" parent="." unique_id=40452670]
+z_index = -2
+texture = ExtResource("2_e22w2")
+
+[node name="wheelTop" type="Sprite2D" parent="." unique_id=387318050]
+texture = ExtResource("3_pfc3m")
+
+[node name="wheelTopShadow" type="Sprite2D" parent="." unique_id=254384048]
+modulate = Color(0, 0, 0, 1)
+top_level = true
+z_index = -1
+position = Vector2(23, 20)
+texture = ExtResource("3_pfc3m")

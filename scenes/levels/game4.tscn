@@ -63,7 +63,6 @@ position = Vector2(32512, -29696)
 scale = Vector2(4.9888024, 4.9888024)
 
 [node name="churchFore" type="Sprite2D" parent="background" unique_id=667648749]
-z_index = 100
 position = Vector2(-2, -2)
 texture = ExtResource("10_8v5nf")
 
@@ -71,6 +70,7 @@ texture = ExtResource("10_8v5nf")
 modulate = Color(0.7569, 0.78706, 0.87, 1)
 
 [node name="churchback" type="Sprite2D" parent="background/Parallax2D" unique_id=527338862]
+z_index = -100
 position = Vector2(260.9845, 265.59482)
 scale = Vector2(1.0226827, 1.0226827)
 texture = ExtResource("11_8v5nf")

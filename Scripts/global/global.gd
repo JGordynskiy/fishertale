@@ -143,7 +143,6 @@ func transition_OneR():
 	pass
 	
 	
-	
 func transition_Rtwo():
 	await get_tree().create_timer(1, false).timeout
 	goto_scene("res://scenes/levels/game2.tscn")

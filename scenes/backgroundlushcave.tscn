@@ -11,8 +11,8 @@ scale = Vector2(1, 1.143)
 scroll_scale = Vector2(0.9, 0.9)
 
 [node name="backg" type="Sprite2D" parent="Parallax2D" unique_id=1303257697]
-position = Vector2(895.00006, 108.486404)
-scale = Vector2(1.313044, 1.313044)
+position = Vector2(360.99997, -937.8828)
+scale = Vector2(1.1611383, 1.1611383)
 texture = ExtResource("1_u7yvs")
 
 [node name="foreg" type="Sprite2D" parent="." unique_id=889662275]

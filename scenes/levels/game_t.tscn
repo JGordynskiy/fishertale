@@ -59,6 +59,7 @@ color = Color(2.887845e-05, 0.30066723, 0.75569415, 1)
 
 [node name="backgroundTut" parent="." unique_id=1064029711 instance=ExtResource("2_yljmy")]
 z_index = -320
+position = Vector2(-11205, -6508)
 scale = Vector2(11.045784, 11.045784)
 
 [node name="fish" parent="." unique_id=874229315 instance=ExtResource("3_uvv3c")]
@@ -184,12 +185,13 @@ position = Vector2(6560, -18221)
 rotation = 1.2675385
 scale = Vector2(18.684883, 18.684883)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1172109668]
-navigation_polygon = SubResource("NavigationPolygon_un2io")
-
-[node name="Object" parent="NavigationRegion2D" unique_id=2033230615 instance=ExtResource("5_qjl4i")]
+[node name="Object" parent="." unique_id=2033230615 instance=ExtResource("5_qjl4i")]
 position = Vector2(-22192, 7222)
 rotation = 0.37169135
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1172109668]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_un2io")
 
 [node name="GameOver" parent="." unique_id=1495417944 instance=ExtResource("16_cc187")]
 

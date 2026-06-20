@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://ch6js1r5byxsa"]
+
+[ext_resource type="PackedScene" uid="uid://wyaw628m300s" path="res://scenes/objects/stage_light.tscn" id="1_7a45r"]
+[ext_resource type="Script" uid="uid://qlk8li5beujo" path="res://scenes/levels/game_5.gd" id="1_eegog"]
+[ext_resource type="PackedScene" uid="uid://ckvxlitmipwpj" path="res://scenes/ui/score_hud.tscn" id="1_tojjd"]
+[ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_cnerr"]
+[ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="3_woc6i"]
+[ext_resource type="Script" uid="uid://38qumxndi7yy" path="res://scenes/ui/boss5healthbar.gd" id="4_tojjd"]
+[ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="5_eegog"]
+[ext_resource type="PackedScene" uid="uid://dugevekwvryul" path="res://scenes/levels/pause_menu.tscn" id="6_lm27b"]
+[ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="7_j40kf"]
+[ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="9_woc6i"]
+[ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="10_8h6m7"]
+[ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="11_8h6m7"]
+[ext_resource type="PackedScene" uid="uid://ctdgjqbc3eg2s" path="res://scenes/objects/roulette_wheel.tscn" id="12_lm27b"]
+
+[node name="game5" type="Node2D" unique_id=1499203329]
+script = ExtResource("1_eegog")
+
+[node name="scoreHUD" parent="." unique_id=908932221 instance=ExtResource("1_tojjd")]
+
+[node name="FPS counter" parent="." unique_id=1129805486 instance=ExtResource("2_cnerr")]
+
+[node name="bosshealthbar" parent="." unique_id=1261094694 instance=ExtResource("3_woc6i")]
+script = ExtResource("4_tojjd")
+
+[node name="GameOver" parent="." unique_id=1395000608 instance=ExtResource("5_eegog")]
+
+[node name="Pause Menu" parent="." unique_id=528621430 instance=ExtResource("6_lm27b")]
+
+[node name="hpBar" parent="." unique_id=1830174198 instance=ExtResource("7_j40kf")]
+
+[node name="darkness" type="CanvasModulate" parent="." unique_id=384886316]
+position = Vector2(-395, -184)
+color = Color(0.44, 0.44, 0.44, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=2041568129]
+position = Vector2(-12413, -6091)
+scale = Vector2(33.916077, 33.916077)
+color = Color(0.36, 0.12600002, 0, 1)
+polygon = PackedVector2Array(96.326004, -8.403095, 43.489685, 999.3196, 1060.677, 1084.0876, 1105.8472, -9.140208)
+
+[node name="StageLight" parent="." unique_id=1611069006 instance=ExtResource("1_7a45r")]
+position = Vector2(-4141, 152.00006)
+rotation = -0.57340586
+scale = Vector2(1.4184564, 1.4184564)
+
+[node name="StageLight2" parent="." unique_id=1398592668 instance=ExtResource("1_7a45r")]
+position = Vector2(20366.002, -111.0003)
+rotation = 0.57126606
+scale = Vector2(1.4184564, 1.4184564)
+
+[node name="rouletteWheel" parent="." unique_id=662583383 instance=ExtResource("12_lm27b")]
+z_index = 100
+position = Vector2(8196, 16494)
+scale = Vector2(18.089602, 18.089602)
+
+[node name="fish" parent="." unique_id=54584755 instance=ExtResource("9_woc6i")]
+z_index = 300
+position = Vector2(8058.999, 6528.9995)
+
+[node name="followCam" parent="fish" unique_id=912687775 instance=ExtResource("10_8h6m7")]
+zoom = Vector2(0.05, 0.05)
+limit_left = -4804
+limit_top = -3366
+limit_right = 20898
+limit_bottom = 25000
+limit_smoothed = true
+
+[node name="ambience" type="AudioStreamPlayer" parent="." unique_id=1309440307]
+stream = ExtResource("11_8h6m7")
+autoplay = true

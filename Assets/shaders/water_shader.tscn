@@ -5,8 +5,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a4jl1"]
 shader = ExtResource("1_fbspx")
 shader_parameter/wave_speed = 1.0
-shader_parameter/wave_freq = 5.0
-shader_parameter/wave_width = 0.5
+shader_parameter/wave_freq = 3.0
+shader_parameter/wave_width = 1.0
 
 [sub_resource type="ExternalTexture" id="ExternalTexture_a4jl1"]
 

@@ -24,6 +24,7 @@ var invulnerable = true
 var iFrames = 0
 var coolDown = 300
 var laserCoolDown = 250
+var sweepLaserCooldown = 1
 
 const boss3maxHP = 100
 var boss3hp = boss3maxHP
@@ -116,15 +117,20 @@ func _physics_process(delta: float) -> void:
 		speed -= 3500*delta
 		global_rotation = global_position.angle_to_point(fish.global_position) + PI
 	move_and_slide()
+	
 func bossScaling():
 	if boss3hp > boss3maxHP*0.8:
 		$shootTimer.wait_time = 2.5
+		sweepLaserCooldown = 0.9
 	elif boss3hp > boss3maxHP *0.6:
 		$shootTimer.wait_time = 2.0
+		sweepLaserCooldown = 0.8
 	elif boss3hp > boss3maxHP *0.4:
 		$shootTimer.wait_time = 1.8
+		sweepLaserCooldown = 0.7
 	elif boss3hp > boss3maxHP *0.2:
 		$shootTimer.wait_time = 1.2
+		sweepLaserCooldown = 0.6
 
 func shoot(rot):
 	if !global.hp > 0 || boss3hp <= 0:
@@ -144,7 +150,10 @@ func shoot(rot):
 	pass
 
 func follow():
-	coolDown = 50
+	coolDown = 70
+	var tween = create_tween()
+	tween.tween_property(self, "global_rotation", global_position.angle_to_point(fish.global_position)+PI, 0.5).set_trans(Tween.TRANS_CUBIC)
+	await global.timer(0.5)
 	makePath()
 	speed = moveSpeed
 
@@ -234,7 +243,7 @@ func laserSchedule(delta):
 			
 	
 func sweepLaser():
-	coolDown = 100
+	coolDown = 150*sweepLaserCooldown
 	#speed = 0
 	$laserTelegraph.emitting = false
 	rng.randomize()
@@ -255,7 +264,9 @@ func sweepLaser():
 	#orients laser fish correctly
 	var tween = create_tween()
 	tween.tween_property(self, "global_rotation", global_position.angle_to_point(fish.global_position) + PI - sweepRange*parity, 0.5).set_trans(Tween.TRANS_CUBIC)
-	await get_tree().create_timer(0.5, false).timeout #time from rotation to telegraph
+	
+	var temp = 0.5*sweepLaserCooldown
+	await get_tree().create_timer(temp, false).timeout #time from rotation to telegraph
 	
 	#telegraphing the laser
 	$laserTelegraph.restart()
@@ -298,7 +309,7 @@ func sweepLaser():
 	
 	
 	
-	await global.timer(0.5)
+	await global.timer(temp)
 	invulnerable = true
 	if dead:
 		return

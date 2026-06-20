@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://wyaw628m300s"]
+
+[ext_resource type="Script" uid="uid://cs44levv3jc7r" path="res://scenes/objects/stage_light.gd" id="1_3ff71"]
+[ext_resource type="Texture2D" uid="uid://br4fshfskcd4m" path="res://Assets/objects/stageLight.png" id="1_fubvi"]
+[ext_resource type="Texture2D" uid="uid://3yeymbba1l0k" path="res://Assets/objects/stageLightTexture.png" id="1_i2os5"]
+
+[node name="StageLight" type="Node2D" unique_id=1611069006]
+script = ExtResource("1_3ff71")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=155948150]
+position = Vector2(-65.99988, 866.0189)
+rotation = -0.50249946
+scale = Vector2(0.99892175, 0.99892175)
+texture = ExtResource("1_fubvi")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=48311413]
+position = Vector2(-10, 1157)
+scale = Vector2(4.1166525, 4.1166525)
+energy = 0.5
+texture = ExtResource("1_i2os5")
+offset = Vector2(0, 4024.148)
+height = 1.0

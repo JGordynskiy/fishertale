@@ -13,6 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://c668yt2tf0vtq" path="res://Assets/objects/monitorstatic/monitorstatic (5).jpg" id="10_fugxs"]
 [ext_resource type="FontFile" uid="uid://dgneouuso8jd1" path="res://Assets/fonts/PixelOperator8.ttf" id="12_h343x"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jpdx"]
+bg_color = Color(0.15, 0.15, 0.15, 0.7764706)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_dlnuo"]
 length = 0.001
 tracks/0/type = "value"
@@ -180,7 +188,15 @@ script = ExtResource("1_lx1ke")
 stream = ExtResource("2_c05mf")
 bus = &"SFX"
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=1758401339]
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=486586311]
+layout_mode = 0
+offset_left = -1.9205322
+offset_top = 36.2761
+offset_right = 1019.93134
+offset_bottom = 269.80835
+theme_override_styles/panel = SubResource("StyleBoxFlat_7jpdx")
+
+[node name="PausedLabel" type="Label" parent="CanvasLayer" unique_id=1758401339]
 layout_mode = 1
 offset_left = 60.754
 offset_top = 83.197266

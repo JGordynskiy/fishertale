@@ -27,8 +27,6 @@ func _ready() -> void:
 	thunkfade.type = false
 	add_child(thunkfade)
 	
-	
-	
 	globalSignals.gameOver.connect(gameOver)
 	globalSignals.gameTtoR.connect(transition)
 	
@@ -62,7 +60,8 @@ func unpauseGame():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if enemyCount == 0:
+	
+	if enemyCount == 0 && camera.tutStage == 4:
 		enemyCount = -1
 		
 		await get_tree().create_timer(1, false).timeout
@@ -73,8 +72,6 @@ func _process(delta: float) -> void:
 		var instance = whirlpool.instantiate()
 		instance.global_position = Vector2(-33000, 11600) 
 		add_child(instance)
-		
-		
 	pass
 
 

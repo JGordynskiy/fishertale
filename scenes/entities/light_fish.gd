@@ -18,6 +18,8 @@ var spawnMin = 6000
 var spawnMax = 15000
 
 var boss4hp = 200
+var bossCool = 1
+var bossCoolExtra = 1
 
 var iFrames = 0
 var rand = 0
@@ -46,13 +48,14 @@ func _ready() -> void:
 	await global.timer(2)
 	spawnOut()
 	await global.timer(1)
-	
+	await get_tree().create_timer(1, false).timeout
+	spawnIn()
 	while (boss4hp > 0 && global.hp > 0):
-		await get_tree().create_timer(1, false).timeout
-		spawnIn()
 		if dead:
 			break
-		await get_tree().create_timer(2, false).timeout
+			
+		var temp = 3*bossCool*bossCoolExtra*1.2
+		await global.timer(temp)
 		if dead:
 			break
 		spawnOut()
@@ -60,7 +63,9 @@ func _ready() -> void:
 			break
 			
 		#choose next attack
-		await attackSchedule()
+		attackSchedule()
+		await global.timer(1)
+		spawnIn()
 		if dead:
 			break
 
@@ -135,6 +140,14 @@ func bossScaling():
 		if maxRand == 2:
 			rand = 3
 		maxRand = 3
+		
+	match rand:
+		2: bossCool = 1
+		3: bossCool = 0.9
+		4: bossCool = 0.8
+		5: bossCool = 0.7
+		6: bossCool = 0.6
+		7: bossCool = 0.5
 
 func boss4death():
 	globalSignals.boss4death.emit()
@@ -185,11 +198,11 @@ func newLocation():
 		if (oldLoc.distance_to(newLoc) > 4000 && newLoc.distance_to(fish.global_position) > spawnMin && newLoc.distance_to(fish.global_position) < spawnMax):
 			break
 		
-		if (newLoc.distance_to($"../objects/leftFixture".global_position) < 4000):
+		if (newLoc.distance_to($"../objects/leftFixture".global_position) < 8000):
 			continue
-		if (newLoc.distance_to($"../objects/middleFixture".global_position) < 4000):
+		if (newLoc.distance_to($"../objects/middleFixture".global_position) < 8000):
 			continue
-		if (newLoc.distance_to($"../objects/rightFixture".global_position) < 4000):
+		if (newLoc.distance_to($"../objects/rightFixture".global_position) < 8000):
 			continue
 			
 	#print("===Final distance: "+str(global_position.distance_to(fish.global_position)))
@@ -348,6 +361,7 @@ func trackLine():
 # High Level attacks
 ## 1 Spiral sparkle, 3 shrinking linewalls
 func spiralWall():
+	bossCoolExtra = 1
 	rng.randomize()
 	spinnySparkle(randf_range(0, PI))
 	manyLinesHori(2700)
@@ -359,6 +373,7 @@ func spiralWall():
 
 ## 3 linewalls, single diection
 func basicTripWall():
+	bossCoolExtra = 1.1
 	manyLinesHori(2200)
 	await global.timer(0.8)
 	manyLinesVert(2000)
@@ -375,6 +390,7 @@ func tripleSpiral():
 
 ## five sets of linewalls with varying direction and shrinking density
 func barrageWall():
+	bossCoolExtra = 1.5
 	manyLinesHori(2300)
 	await get_tree().create_timer(0.7, false).timeout
 	manyLinesVert(2200)
@@ -388,6 +404,7 @@ func barrageWall():
 
 ## Three sets of double linewalls
 func tripleWall():
+	bossCoolExtra = 1.2
 	manyLinesHori(2400)
 	manyLinesVert(2400)
 	await global.timer(1.0)
@@ -399,6 +416,7 @@ func tripleWall():
 
 ## 8 basic sparkles 45 degree difference
 func cardinalSparkle():
+	bossCoolExtra = 0.8
 	var startDir = rng.randf_range(0, PI)
 	$chargePart.emitting = true
 	$xtraLight.energy = 1
@@ -409,12 +427,14 @@ func cardinalSparkle():
 
 ## 8 basic sparkles random directions
 func random8Sparkle():
+	bossCoolExtra = 0.8
 	for i in range(8):
 		basicSparkle(rng.randf_range(0, 2*PI), 10000)
 		rng.randomize()
 
 ## 4 basic sparkles targets to fish accompanied by 10 tracking lines
 func target4Sparkle():
+	bossCoolExtra = 2
 	$chargePart.emitting = true
 	$xtraLight.energy = 1
 	await global.timer(1)
@@ -436,6 +456,7 @@ func target4Sparkle():
 	
 ## 20 fast tracking lines
 func trackingBarrage():
+	bossCoolExtra = 1.8
 	#spinnySparkle(0)
 	for i in range(20):
 		trackLine()
