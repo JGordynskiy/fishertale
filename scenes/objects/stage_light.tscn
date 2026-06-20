@@ -16,7 +16,8 @@ texture = ExtResource("1_fubvi")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=48311413]
 position = Vector2(-10, 1157)
 scale = Vector2(4.1166525, 4.1166525)
-energy = 0.5
+color = Color(1, 0.9083333, 0.75, 1)
+energy = 0.4
 texture = ExtResource("1_i2os5")
 offset = Vector2(0, 4024.148)
 height = 1.0

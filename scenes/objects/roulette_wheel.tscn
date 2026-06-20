@@ -2,26 +2,161 @@
 
 [ext_resource type="Script" uid="uid://cdeg2nwmfa1gc" path="res://scenes/objects/roulette_wheel.gd" id="1_1hd7w"]
 [ext_resource type="Texture2D" uid="uid://cyioxnquq08qc" path="res://Assets/objects/rouletteWheel.png" id="2_e22w2"]
+[ext_resource type="AudioStream" uid="uid://oqql6hjnb6tn" path="res://Assets/sounds/woodSlam.ogg" id="2_txpvk"]
+[ext_resource type="AudioStream" uid="uid://dsbxgkvrpgayn" path="res://Assets/sounds/rouletteSpin.ogg" id="3_j2ty7"]
 [ext_resource type="Texture2D" uid="uid://ca2l6klysq54u" path="res://Assets/objects/wheelTop.png" id="3_pfc3m"]
+[ext_resource type="Texture2D" uid="uid://bux6kwq8udc3n" path="res://Assets/fight-dust-cloud-free-vector.webp" id="5_x4ucc"]
+
+[sub_resource type="Animation" id="Animation_j2ty7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ymwt4"]
+resource_name = "poof"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c4oy2"]
+_data = {
+&"RESET": SubResource("Animation_j2ty7"),
+&"poof": SubResource("Animation_ymwt4")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x4ucc"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_x4ucc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c4oy2"]
+resource_name = "push"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(-226.47276, -226.47276)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vysj"]
+_data = {
+&"RESET": SubResource("Animation_x4ucc"),
+&"push": SubResource("Animation_c4oy2")
+}
 
 [node name="rouletteWheel" type="Node2D" unique_id=662583383]
 script = ExtResource("1_1hd7w")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1465083814]
-position = Vector2(23, 20)
-remote_path = NodePath("../wheelTopShadow")
-update_rotation = false
+[node name="woodSlam" type="AudioStreamPlayer" parent="." unique_id=1228136486]
+stream = ExtResource("2_txpvk")
+
+[node name="spin" type="AudioStreamPlayer" parent="." unique_id=1424435174]
+stream = ExtResource("3_j2ty7")
 
 [node name="wheel" type="Sprite2D" parent="." unique_id=40452670]
 z_index = -2
 texture = ExtResource("2_e22w2")
 
 [node name="wheelTop" type="Sprite2D" parent="." unique_id=387318050]
+z_index = 500
 texture = ExtResource("3_pfc3m")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="wheelTop" unique_id=1953066857 groups=["objects"]]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wheelTop/StaticBody2D" unique_id=1074286757]
+polygon = PackedVector2Array(-4, -204, -21, -196, -29, -185, -31, -165, -21, -149, -10, -144, -9, -105, -22, -101, -22, -96, -10, -91, -9, -52, -32, -44, -49, -22, -52, -9, -91, -8, -95, -21, -102, -22, -105, -9, -144, -9, -152, -24, -166, -31, -183, -30, -200, -18, -205, -1, -202, 16, -188, 27, -171, 30, -156, 25, -144, 8, -106, 8, -101, 18, -95, 20, -91, 7, -52, 7, -47, 24, -30, 42, -9, 51, -8, 90, -22, 94, -20, 101, -9, 104, -8, 143, -28, 157, -32, 178, -25, 193, -2, 205, 18, 201, 30, 183, 26, 156, 9, 144, 8, 104, 20, 98, 9, 89, 9, 50, 26, 44, 41, 31, 51, 8, 97, 8, 102, 20, 107, 20, 112, 8, 143, 8, 151, 22, 168, 30, 185, 27, 200, 16, 205, 0, 198, -21, 185, -30, 162, -31, 147, -19, 142, -9, 112, -9, 108, -20, 102, -22, 98, -10, 52, -10, 43, -31, 28, -45, 8, -53, 8, -90, 21, -98, 8, -107, 8, -144, 21, -152, 30, -168, 29, -184, 20, -197, 6, -204)
+disabled = true
+
 [node name="wheelTopShadow" type="Sprite2D" parent="." unique_id=254384048]
+visible = false
 modulate = Color(0, 0, 0, 1)
-top_level = true
 z_index = -1
 position = Vector2(23, 20)
 texture = ExtResource("3_pfc3m")
+
+[node name="cloud" type="Sprite2D" parent="." unique_id=456843406]
+modulate = Color(1, 1, 1, 0)
+z_index = 500
+texture = ExtResource("5_x4ucc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cloud" unique_id=1491742507]
+libraries/ = SubResource("AnimationLibrary_c4oy2")
+speed_scale = 2.0
+
+[node name="pushAway" type="StaticBody2D" parent="." unique_id=2119653905]
+rotation = -0.0054371804
+scale = Vector2(1e-05, 1e-05)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushAway" unique_id=636976259]
+shape = SubResource("CircleShape2D_x4ucc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pushAway" unique_id=252942682]
+root_node = NodePath("../CollisionShape2D")
+libraries/ = SubResource("AnimationLibrary_7vysj")
+speed_scale = 3.0

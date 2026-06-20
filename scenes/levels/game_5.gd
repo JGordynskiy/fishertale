@@ -5,6 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	global.pausable = true
 	playerCam.zoom.x = 0.05
 	playerCam.zoom.y = 0.05
 	pass # Replace with function body.

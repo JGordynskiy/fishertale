@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://buy7w360hpg5"]
+[gd_scene format=3 uid="uid://buy7w360hpg5"]
 
 [ext_resource type="Script" uid="uid://pmpdoibaedk5" path="res://Scripts/projectiles/bullet.gd" id="1_y25gk"]
 [ext_resource type="Texture2D" uid="uid://doqx47w5jgjvx" path="res://Assets/fishBullet/pop1.png" id="2_s437g"]
@@ -77,13 +77,13 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Bullet" type="CharacterBody2D" groups=["playerBullet"]]
+[node name="Bullet" type="CharacterBody2D" unique_id=1300457022 groups=["playerBullet"]]
 z_index = 500
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_y25gk")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1787468105]
 position = Vector2(-1.1226306e-05, 248.99997)
 rotation = -2.3749168
 scale = Vector2(1.7232234, 1.7232234)
@@ -94,16 +94,16 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_s437g")
 
-[node name="Area2D" type="Area2D" parent="." groups=["playerBullet"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=1136014335 groups=["playerBullet"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["playerBullet"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1116158596 groups=["playerBullet"]]
 z_index = 35
 position = Vector2(-1.5258789e-05, -816.9231)
 rotation = -0.61341053
 scale = Vector2(0.556666, 0.556666)
 shape = SubResource("CircleShape2D_6jwkh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=608005449]
 position = Vector2(1.9073486e-06, -456.92307)
 rotation = -1.5996152
 scale = Vector2(0.8099625, 0.8099625)
