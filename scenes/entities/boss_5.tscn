@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dq84ppomvsvsd"]
+
+[ext_resource type="Script" uid="uid://bon7erukmrly4" path="res://scenes/entities/boss_5.gd" id="1_3uddt"]
+
+[node name="boss5" type="Node2D" unique_id=582584505]
+script = ExtResource("1_3uddt")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=888904201]
+color = Color(0.39999998, 0.39999998, 1, 1)
+polygon = PackedVector2Array(-36, 55, 206, 190, 245, -15, 145, -152, -249, -135, -192, 12)

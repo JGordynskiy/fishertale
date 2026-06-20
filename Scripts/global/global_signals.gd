@@ -31,7 +31,9 @@ signal game4toR
 
 #Boss2
 signal boss2Start
-
+	
+#boss5
+signal wheelFinish
 
 signal slashSuccess
 

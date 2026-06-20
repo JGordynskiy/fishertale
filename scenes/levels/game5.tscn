@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://wyaw628m300s" path="res://scenes/objects/stage_light.tscn" id="1_7a45r"]
 [ext_resource type="Script" uid="uid://qlk8li5beujo" path="res://scenes/levels/game_5.gd" id="1_eegog"]
 [ext_resource type="PackedScene" uid="uid://ckvxlitmipwpj" path="res://scenes/ui/score_hud.tscn" id="1_tojjd"]
+[ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_6qngc"]
 [ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_cnerr"]
+[ext_resource type="Texture2D" uid="uid://h3rxannkko1f" path="res://Assets/White_circle.png" id="3_dgj8b"]
 [ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="3_woc6i"]
 [ext_resource type="Script" uid="uid://38qumxndi7yy" path="res://scenes/ui/boss5healthbar.gd" id="4_tojjd"]
 [ext_resource type="PackedScene" uid="uid://ckvml63hdsptk" path="res://scenes/levels/game_over.tscn" id="5_eegog"]
@@ -13,9 +15,315 @@
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="10_8h6m7"]
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="11_8h6m7"]
 [ext_resource type="PackedScene" uid="uid://ctdgjqbc3eg2s" path="res://scenes/objects/roulette_wheel.tscn" id="12_lm27b"]
+[ext_resource type="PackedScene" uid="uid://dq84ppomvsvsd" path="res://scenes/entities/boss_5.tscn" id="14_j40kf"]
+
+[sub_resource type="Animation" id="Animation_6qngc"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-33, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(176, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_dgj8b"]
+resource_name = "splash"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0.055, 0, 0, 0, 0.5594434, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0.055, 0, 0, 0, 0.5753115, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(-33, 0, 0, 0.16666667, 0, -33, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(315, 0, 0, 0, -86.06618, 176, -0.6666666, 4.9534607, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.08454883, 0.16666667, 0, 0),
+"times": PackedFloat32Array(1.492707, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fud0v"]
+_data = {
+&"RESET": SubResource("Animation_6qngc"),
+&"splash": SubResource("Animation_dgj8b")
+}
+
+[sub_resource type="Animation" id="Animation_fud0v"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_5pojn"]
+resource_name = "flash"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0.2, 0, 0, 0.050000004, 0.13333334, 0.8, -0.10000001, -0.10000001, 0, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0.2, 0, 0, 0.050000004, 0.13333334, 0.8, -0.10000001, -0.10000001, 0, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hdlpk"]
+_data = {
+&"RESET": SubResource("Animation_fud0v"),
+&"flash": SubResource("Animation_5pojn")
+}
 
 [node name="game5" type="Node2D" unique_id=1499203329]
 script = ExtResource("1_eegog")
+
+[node name="Prompts" type="CanvasLayer" parent="." unique_id=110431828]
+
+[node name="betOnRed" type="RichTextLabel" parent="Prompts" unique_id=1384015810]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -673.0
+offset_top = -184.0
+offset_right = 673.0
+offset_bottom = -67.33478
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(671, 34)
+theme_override_fonts/normal_font = ExtResource("2_6qngc")
+theme_override_font_sizes/normal_font_size = 62
+bbcode_enabled = true
+text = "Bet on [color=red]Red"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prompts/betOnRed" unique_id=1853333678]
+libraries/ = SubResource("AnimationLibrary_fud0v")
+
+[node name="betOnBlack" type="RichTextLabel" parent="Prompts" unique_id=1282392590]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -673.0
+offset_top = -184.0
+offset_right = 673.0
+offset_bottom = -83.999756
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(687, 33)
+theme_override_fonts/normal_font = ExtResource("2_6qngc")
+theme_override_font_sizes/normal_font_size = 62
+bbcode_enabled = true
+text = "Bet on [color=darkgray]Black"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prompts/betOnBlack" unique_id=1214618898]
+libraries/ = SubResource("AnimationLibrary_fud0v")
+
+[node name="betOnGreen" type="RichTextLabel" parent="Prompts" unique_id=709362564]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -673.0
+offset_top = -184.0
+offset_right = 673.0
+offset_bottom = -84.00018
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(677, 34)
+theme_override_fonts/normal_font = ExtResource("2_6qngc")
+theme_override_font_sizes/normal_font_size = 62
+bbcode_enabled = true
+text = "Bet on [color=green]Green"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prompts/betOnGreen" unique_id=1782936653]
+libraries/ = SubResource("AnimationLibrary_fud0v")
+
+[node name="debug" type="CanvasLayer" parent="." unique_id=617108804]
+visible = false
+
+[node name="inBlack" type="Label" parent="debug" unique_id=1304134126]
+offset_left = 61.0
+offset_top = 146.0
+offset_right = 218.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 39
+text = "inBlack: "
+
+[node name="inRed" type="Label" parent="debug" unique_id=1240382943]
+offset_left = 61.0
+offset_top = 215.0
+offset_right = 218.0
+offset_bottom = 269.0
+theme_override_colors/font_color = Color(1, 0.31, 0.31, 1)
+theme_override_font_sizes/font_size = 39
+text = "inRed: "
+
+[node name="inGreen" type="Label" parent="debug" unique_id=1130909809]
+offset_left = 61.0
+offset_top = 295.0
+offset_right = 218.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0.52, 1, 0.36, 1)
+theme_override_font_sizes/font_size = 39
+text = "inGreen: "
 
 [node name="scoreHUD" parent="." unique_id=908932221 instance=ExtResource("1_tojjd")]
 
@@ -55,6 +363,16 @@ z_index = 100
 position = Vector2(8196, 16494)
 scale = Vector2(18.089602, 18.089602)
 
+[node name="Sprite2D" type="Sprite2D" parent="rouletteWheel" unique_id=577659792]
+visible = false
+self_modulate = Color(0.55266666, 1, 0.39, 0.49019608)
+position = Vector2(-2.321782, -23.715302)
+texture = ExtResource("3_dgj8b")
+offset = Vector2(15, 45)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="rouletteWheel/Sprite2D" unique_id=1609926792]
+libraries/ = SubResource("AnimationLibrary_hdlpk")
+
 [node name="fish" parent="." unique_id=54584755 instance=ExtResource("9_woc6i")]
 z_index = 300
 position = Vector2(8058.999, 6528.9995)
@@ -70,3 +388,8 @@ limit_smoothed = true
 [node name="ambience" type="AudioStreamPlayer" parent="." unique_id=1309440307]
 stream = ExtResource("11_8h6m7")
 autoplay = true
+
+[node name="boss5" parent="." unique_id=582584505 instance=ExtResource("14_j40kf")]
+position = Vector2(9369, 1339)
+rotation = -0.42990023
+scale = Vector2(20.815195, 20.815195)
