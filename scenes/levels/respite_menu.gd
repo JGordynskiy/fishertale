@@ -27,6 +27,11 @@ var transitioning = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#debug!
+	print_debug("debug in respite menu scripot")
+	global.roe = 999
+	
+	
 	Engine.physics_ticks_per_second = 60
 	global.pausable = true
 	
@@ -168,11 +173,16 @@ func _process(delta: float) -> void:
 		$enemyMonitor/hints/boss4.visible = true
 	else:
 		$enemyMonitor/hints/boss4.visible = false
+		
+	if global.curBoss == 5:
+		$enemyMonitor/hints/boss5.visible = true
+	else:
+		$enemyMonitor/hints/boss5.visible = false
 	
 	
 	
 	#ready Button
-	if global.curBoss > 4:
+	if global.curBoss > 5:
 		$ReadyButton.disabled = true
 		$underconstruction.visible = true
 	else:
@@ -228,6 +238,8 @@ func _on_ready_button_pressed() -> void:
 			globalSignals.emit_signal("gameRto3")
 		elif global.curBoss == 4:
 			globalSignals.emit_signal("gameRto4")
+		elif global.curBoss == 5:
+			globalSignals.emit_signal("gameRto5")
 		
 	pass # Replace with function body.
 

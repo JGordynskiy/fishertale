@@ -16,6 +16,7 @@ signal boss1death
 signal boss2death
 signal boss3death
 signal boss4death
+signal boss5death
 
 #Scene transition
 signal gameTtoR
@@ -27,6 +28,7 @@ signal gameRto3
 signal game3toR
 signal gameRto4
 signal game4toR
+signal gameRto5
 
 
 #Boss2

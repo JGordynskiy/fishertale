@@ -1,10 +1,128 @@
 [gd_scene format=3 uid="uid://dq84ppomvsvsd"]
 
 [ext_resource type="Script" uid="uid://bon7erukmrly4" path="res://scenes/entities/boss_5.gd" id="1_3uddt"]
+[ext_resource type="Texture2D" uid="uid://bg73jd063x8om" path="res://Assets/enemies/casinoFish/casinoFishHead1.png" id="2_o3uwr"]
+[ext_resource type="Texture2D" uid="uid://c82m31vv3t1qt" path="res://Assets/enemies/casinoFish/casinoFishTentBack1.png" id="2_xqj1y"]
+[ext_resource type="Texture2D" uid="uid://cf8il81mkpw45" path="res://Assets/enemies/casinoFish/casinoFishHead2.png" id="3_1j7xn"]
+[ext_resource type="Texture2D" uid="uid://ckixja3wofexe" path="res://Assets/enemies/casinoFish/casinoFishTentBack2.png" id="3_aht1e"]
+[ext_resource type="Texture2D" uid="uid://bx56emu4xx7v4" path="res://Assets/enemies/casinoFish/casinoFishHead3.png" id="4_73103"]
+[ext_resource type="Texture2D" uid="uid://bgq2mhlnckthv" path="res://Assets/enemies/casinoFish/casinoFishTentBack3.png" id="4_fahde"]
+[ext_resource type="Texture2D" uid="uid://cxlbg115ynyx2" path="res://Assets/enemies/casinoFish/casinoFishTentBack4.png" id="5_bgw5v"]
+[ext_resource type="Texture2D" uid="uid://bbed1faq2crcs" path="res://Assets/enemies/casinoFish/casinoFishTentBack5.png" id="6_a45sr"]
+[ext_resource type="Texture2D" uid="uid://bb05sfj1d8o2t" path="res://Assets/enemies/casinoFish/casinoFishTent1.png" id="7_hlttb"]
+[ext_resource type="Texture2D" uid="uid://dxjcewwwb02va" path="res://Assets/enemies/casinoFish/casinoFishTent2.png" id="8_unkfp"]
+[ext_resource type="Texture2D" uid="uid://dsisfback8mew" path="res://Assets/enemies/casinoFish/casinoFishTent3.png" id="9_sth16"]
+[ext_resource type="Texture2D" uid="uid://dxw74efn3dv3i" path="res://Assets/enemies/casinoFish/casinoFishTent4.png" id="10_xrt38"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3ugb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xqj1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aht1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fahde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bgw5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a45sr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3uddt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hlttb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_unkfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sth16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xrt38")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvnp7"]
+animations = [{
+"frames": [{
+"duration": 40.0,
+"texture": ExtResource("2_o3uwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1j7xn")
+}, {
+"duration": 4.0,
+"texture": ExtResource("4_73103")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1j7xn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqj1y"]
+size = Vector2(404.2215, 62.11661)
 
 [node name="boss5" type="Node2D" unique_id=582584505]
+modulate = Color(1, 0.783, 0.58000004, 1)
 script = ExtResource("1_3uddt")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=888904201]
 color = Color(0.39999998, 0.39999998, 1, 1)
 polygon = PackedVector2Array(-36, 55, 206, 190, 245, -15, 145, -152, -249, -135, -192, 12)
+
+[node name="backtentacles" type="AnimatedSprite2D" parent="." unique_id=1588681041]
+modulate = Color(0.51, 0.51, 0.51, 1)
+position = Vector2(-1626, 413)
+scale = Vector2(1.2752693, 1.0625668)
+sprite_frames = SubResource("SpriteFrames_v3ugb")
+autoplay = "default"
+frame_progress = 0.5517936
+centered = false
+
+[node name="tentacles" type="AnimatedSprite2D" parent="." unique_id=2133405723]
+modulate = Color(0.51, 0.51, 0.51, 1)
+position = Vector2(-1737, 620)
+scale = Vector2(1.2752693, 1.0625668)
+sprite_frames = SubResource("SpriteFrames_3uddt")
+autoplay = "default"
+frame_progress = 0.67885494
+centered = false
+
+[node name="head" type="AnimatedSprite2D" parent="." unique_id=32385158]
+sprite_frames = SubResource("SpriteFrames_nvnp7")
+autoplay = "default"
+frame_progress = 0.49353755
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=105170227]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=775461549]
+position = Vector2(-130, 248.49771)
+scale = Vector2(11.800461, 11.800461)
+shape = SubResource("RectangleShape2D_xqj1y")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1401206831 groups=["dangerObj", "enemyHitbox", "objects"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1920452990]
+modulate = Color(1, 1, 1, 0.11764706)
+polygon = PackedVector2Array(-1504, 707, -2234, 620, -2234, -809, 2788, -832, 2227, 611, 1754, 698, 1226, 753, 742, 773, -6, 801, -998, 766)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

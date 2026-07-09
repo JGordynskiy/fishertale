@@ -5,7 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://oqql6hjnb6tn" path="res://Assets/sounds/woodSlam.ogg" id="2_txpvk"]
 [ext_resource type="AudioStream" uid="uid://dsbxgkvrpgayn" path="res://Assets/sounds/rouletteSpin.ogg" id="3_j2ty7"]
 [ext_resource type="Texture2D" uid="uid://ca2l6klysq54u" path="res://Assets/objects/wheelTop.png" id="3_pfc3m"]
+[ext_resource type="AudioStream" uid="uid://b6k16lfb6aly7" path="res://Assets/sounds/woodScrape.ogg" id="4_ymwt4"]
 [ext_resource type="Texture2D" uid="uid://bux6kwq8udc3n" path="res://Assets/fight-dust-cloud-free-vector.webp" id="5_x4ucc"]
+[ext_resource type="Texture2D" uid="uid://bfrolh5cgv0md" path="res://Assets/fadeRect.png" id="8_c4oy2"]
 
 [sub_resource type="Animation" id="Animation_j2ty7"]
 length = 0.001
@@ -108,20 +110,136 @@ _data = {
 &"push": SubResource("Animation_c4oy2")
 }
 
+[sub_resource type="Animation" id="Animation_7vysj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.53, 0.53, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x6k0g"]
+resource_name = "flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.53, 0.53, 1), Color(1, 0.53, 0.53, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n3smq"]
+_data = {
+&"RESET": SubResource("Animation_7vysj"),
+&"flash": SubResource("Animation_x6k0g")
+}
+
+[sub_resource type="Animation" id="Animation_n3smq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vxqk3"]
+resource_name = "flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.71, 0.71, 0.71, 1), Color(0.71, 0.71, 0.71, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65jbl"]
+_data = {
+&"RESET": SubResource("Animation_n3smq"),
+&"flash": SubResource("Animation_vxqk3")
+}
+
+[sub_resource type="Animation" id="Animation_65jbl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5985, 1, 0.26999998, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s2lnu"]
+resource_name = "flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5985, 1, 0.26999998, 1), Color(0.5985, 1, 0.26999998, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v3e3b"]
+_data = {
+&"RESET": SubResource("Animation_65jbl"),
+&"flash": SubResource("Animation_s2lnu")
+}
+
 [node name="rouletteWheel" type="Node2D" unique_id=662583383]
 script = ExtResource("1_1hd7w")
 
 [node name="woodSlam" type="AudioStreamPlayer" parent="." unique_id=1228136486]
 stream = ExtResource("2_txpvk")
+volume_db = 4.0
 
 [node name="spin" type="AudioStreamPlayer" parent="." unique_id=1424435174]
 stream = ExtResource("3_j2ty7")
+
+[node name="woodScrape" type="AudioStreamPlayer" parent="." unique_id=1618122751]
+stream = ExtResource("4_ymwt4")
 
 [node name="wheel" type="Sprite2D" parent="." unique_id=40452670]
 z_index = -2
 texture = ExtResource("2_e22w2")
 
 [node name="red" type="Area2D" parent="wheel" unique_id=1480761036]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wheel/red" unique_id=1686542667]
 rotation = 0.27293116
@@ -184,6 +302,7 @@ scale = Vector2(1, 0.98434097)
 polygon = PackedVector2Array(-143.0449, -188.8282, -94, -219, -192.56473, -456.57568, -301.13968, -394.2194)
 
 [node name="black" type="Area2D" parent="wheel" unique_id=1774261423]
+visible = false
 rotation = 0.26877573
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="wheel/black" unique_id=1243922022]
@@ -237,6 +356,7 @@ scale = Vector2(1, 0.98434097)
 polygon = PackedVector2Array(-143.0449, -188.8282, -94, -219, -192.56473, -456.57568, -301.13968, -394.2194)
 
 [node name="green" type="Area2D" parent="wheel" unique_id=195655264]
+visible = false
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="wheel/green" unique_id=1330569615]
 rotation = 0.5341555
@@ -286,6 +406,271 @@ shape = SubResource("CircleShape2D_x4ucc")
 root_node = NodePath("../CollisionShape2D")
 libraries/ = SubResource("AnimationLibrary_7vysj")
 speed_scale = 3.0
+
+[node name="flashes" type="Node2D" parent="." unique_id=1670904867]
+
+[node name="reds" type="Node2D" parent="flashes" unique_id=800867991]
+modulate = Color(1, 0.53, 0.53, 0)
+
+[node name="Sprite2D" type="Polygon2D" parent="flashes/reds" unique_id=1839388724]
+position = Vector2(-2.0000153, 1.9999695)
+rotation = -1.874898
+scale = Vector2(0.3877333, 0.10435567)
+offset = Vector2(2098.6624, 246.96284)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D2" type="Polygon2D" parent="flashes/reds" unique_id=908444608]
+position = Vector2(-1.9999924, 2)
+rotation = -1.3497005
+scale = Vector2(0.3877333, 0.10435567)
+offset = Vector2(2102.6965, 213.75093)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -848.8579, -592.99896)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D3" type="Polygon2D" parent="flashes/reds" unique_id=641137156]
+position = Vector2(-2, 2)
+rotation = -0.82855004
+scale = Vector2(0.3877333, 0.10435567)
+offset = Vector2(2104.0874, 221.1697)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D4" type="Polygon2D" parent="flashes/reds" unique_id=1265374006]
+position = Vector2(-2, 2.0000076)
+rotation = -0.29741204
+scale = Vector2(0.3877333, 0.10435567)
+offset = Vector2(2104.4814, 132.40884)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D5" type="Polygon2D" parent="flashes/reds" unique_id=1178664936]
+position = Vector2(-1.9999695, 2.0000076)
+rotation = 0.22318381
+scale = Vector2(0.3877333, 0.10435567)
+offset = Vector2(2086.7944, 113.89084)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D6" type="Polygon2D" parent="flashes/reds" unique_id=520596621]
+position = Vector2(-2, 1.9999695)
+rotation = 0.7464907
+scale = Vector2(0.3877333, 0.10435566)
+offset = Vector2(2086.5347, 119.34787)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D7" type="Polygon2D" parent="flashes/reds" unique_id=1313923864]
+position = Vector2(-2.0000153, 2)
+rotation = 1.2596257
+scale = Vector2(0.3877333, 0.10435566)
+offset = Vector2(2080.4387, 190.03012)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D8" type="Polygon2D" parent="flashes/reds" unique_id=33592984]
+position = Vector2(-2, 2)
+rotation = 1.7960428
+scale = Vector2(0.3877333, 0.10435567)
+offset = Vector2(2071.5313, 111.023544)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D9" type="Polygon2D" parent="flashes/reds" unique_id=1081025266]
+position = Vector2(-2, 2)
+rotation = 2.3222256
+scale = Vector2(0.3877333, 0.10435567)
+offset = Vector2(2067.7773, 119.985825)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D10" type="Polygon2D" parent="flashes/reds" unique_id=2117696178]
+position = Vector2(-2.000061, 2.0000153)
+rotation = 2.8362942
+scale = Vector2(0.3877333, 0.10435567)
+offset = Vector2(2075.9856, 200.06941)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D11" type="Polygon2D" parent="flashes/reds" unique_id=1999986645]
+position = Vector2(-2, 2)
+rotation = 3.3712118
+scale = Vector2(0.38773337, 0.10435567)
+offset = Vector2(2076.4167, 152.06718)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D12" type="Polygon2D" parent="flashes/reds" unique_id=1717515133]
+position = Vector2(-2, 2)
+rotation = 3.8821602
+scale = Vector2(0.3877333, 0.10435566)
+offset = Vector2(2088.8418, 258.3017)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="flashes/reds" unique_id=83828751]
+libraries/ = SubResource("AnimationLibrary_n3smq")
+speed_scale = 0.7
+
+[node name="blacks" type="Node2D" parent="flashes" unique_id=1615215599]
+modulate = Color(0, 0, 0, 0)
+rotation = 0.2609372
+
+[node name="Sprite2D2" type="Polygon2D" parent="flashes/blacks" unique_id=1086800684]
+position = Vector2(-2.1902847, -0.45025635)
+rotation = -1.3531927
+scale = Vector2(0.38914734, 0.11885225)
+offset = Vector2(2090.3875, 227.44777)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D3" type="Polygon2D" parent="flashes/blacks" unique_id=1445344522]
+position = Vector2(-2.1903076, -0.4501648)
+rotation = -0.8320423
+scale = Vector2(0.38914734, 0.118852206)
+offset = Vector2(2095.299, 255.20291)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D4" type="Polygon2D" parent="flashes/blacks" unique_id=1293677655]
+position = Vector2(-2.1903076, -0.45018005)
+rotation = -0.30090433
+scale = Vector2(0.38914743, 0.118852206)
+offset = Vector2(2101.672, 177.84573)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D5" type="Polygon2D" parent="flashes/blacks" unique_id=1477670974]
+position = Vector2(-2.1903076, -0.4501419)
+rotation = 0.21969153
+scale = Vector2(0.3891474, 0.11885226)
+offset = Vector2(2090.6091, 158.35909)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D6" type="Polygon2D" parent="flashes/blacks" unique_id=1712098788]
+position = Vector2(-2.1903076, -0.4501648)
+rotation = 0.7429985
+scale = Vector2(0.3891474, 0.118852206)
+offset = Vector2(2095.986, 150.97389)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D8" type="Polygon2D" parent="flashes/blacks" unique_id=538069966]
+position = Vector2(-2.190277, -0.45013428)
+rotation = 1.7925506
+scale = Vector2(0.38914743, 0.11885222)
+offset = Vector2(2083.824, 97.142746)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D9" type="Polygon2D" parent="flashes/blacks" unique_id=9320859]
+position = Vector2(-2.1903381, -0.4501953)
+rotation = 2.3187332
+scale = Vector2(0.38914734, 0.118852206)
+offset = Vector2(2076.479, 85.66179)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D10" type="Polygon2D" parent="flashes/blacks" unique_id=1443768258]
+position = Vector2(-2.1903381, -0.45017242)
+rotation = 2.8328018
+scale = Vector2(0.38914734, 0.118852206)
+offset = Vector2(2078.894, 154.71411)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D11" type="Polygon2D" parent="flashes/blacks" unique_id=564738518]
+position = Vector2(-2.1902466, -0.4502182)
+rotation = 3.3677194
+scale = Vector2(0.3891474, 0.11885223)
+offset = Vector2(2072.5232, 107.68713)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D12" type="Polygon2D" parent="flashes/blacks" unique_id=336051916]
+position = Vector2(-2.190277, -0.45013428)
+rotation = 3.8786678
+scale = Vector2(0.3891474, 0.11885225)
+offset = Vector2(2079.4426, 226.47385)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-861.58105, 560.8881, 1464.1504, 1988.3317, 1496.2036, -1291.2345, -852.1377, -560.1831)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="flashes/blacks" unique_id=692824619]
+libraries/ = SubResource("AnimationLibrary_65jbl")
+speed_scale = 0.7
+
+[node name="greens" type="Node2D" parent="flashes" unique_id=1529858039]
+modulate = Color(0.5985, 1, 0.26999998, 0)
+z_index = 600
+
+[node name="Sprite2D2" type="Polygon2D" parent="flashes/greens" unique_id=699984002]
+position = Vector2(9.536743e-07, -0.9999695)
+rotation = -1.6116962
+scale = Vector2(0.38746515, 0.11047753)
+offset = Vector2(2080.2297, 175.02357)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-851.7771, 581.07654, 1468.4558, 2073.661, 1508.9788, -1399.252, -833.3231, -557.73285)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Sprite2D3" type="Polygon2D" parent="flashes/greens" unique_id=1326605333]
+position = Vector2(-9.536743e-07, -1.0000305)
+rotation = -4.7545476
+scale = Vector2(0.38746515, 0.11047753)
+offset = Vector2(2095.8743, 186.88445)
+texture = ExtResource("8_c4oy2")
+polygon = PackedVector2Array(-877.89966, 564.0685, 1436.7476, 2057.0881, 1479.2781, -1478.9482, -858.49304, -619.87634)
+uv = PackedVector2Array(0, 1714, 1534, 1714, 1534, 0, 0, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="flashes/greens" unique_id=800764595]
+libraries/ = SubResource("AnimationLibrary_v3e3b")
+speed_scale = 0.7
 
 [connection signal="area_entered" from="wheel/red" to="." method="_on_red_area_entered"]
 [connection signal="area_exited" from="wheel/red" to="." method="_on_red_area_exited"]

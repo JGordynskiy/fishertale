@@ -1,11 +1,12 @@
 extends Node
+
 @onready var current_scene = null
 @onready var inGame = false
 var debug = false
 
 var debugCounter = 0
-#1 is default, 2 is melee
 
+# 1 is default, 2 is melee
 
 ## STATS
 # STATS MUST BE CHANGED IN MAIN_MENU.GD
@@ -62,7 +63,7 @@ var infRoe = false
 func _ready() -> void:
 	
 	#debug!
-	curBoss = 4
+	
 	
 	globalSignals.connect("gameTtoR", transition_TutR)
 	
@@ -77,6 +78,8 @@ func _ready() -> void:
 	
 	globalSignals.connect("gameRto4", transition_Rfour)
 	globalSignals.connect("game4toR", transition_fourR)
+	
+	globalSignals.connect("gameRto5", transition_Rfive)
 	
 	
 	var root = get_tree().root
@@ -103,9 +106,7 @@ func _deferred_goto_scene(path):
 	get_tree().current_scene = current_scene
 	
 func _process(delta: float) -> void:
-	
 	global.slash_damage = global.shot_damage*2
-	
 	if infHP:
 		global.hp = 5
 	if infRoe:
@@ -174,3 +175,8 @@ func transition_fourR():
 	curBoss = 5
 	await get_tree().create_timer(1.5, false).timeout
 	goto_scene("res://scenes/levels/respite_menu.tscn")
+	
+func transition_Rfive():
+	curBoss = 5
+	await get_tree().create_timer(1.5, false).timeout
+	goto_scene("res://scenes/levels/game5.tscn")

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvxlitmipwpj" path="res://scenes/ui/score_hud.tscn" id="1_tojjd"]
 [ext_resource type="FontFile" uid="uid://cxis0d8o6i83q" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_6qngc"]
 [ext_resource type="PackedScene" uid="uid://by7vcs52nv2vp" path="res://scenes/ui/fps_counter.tscn" id="2_cnerr"]
+[ext_resource type="AudioStream" uid="uid://dapto54ac688x" path="res://Assets/sounds/promptShow.ogg" id="3_527wi"]
 [ext_resource type="Texture2D" uid="uid://h3rxannkko1f" path="res://Assets/White_circle.png" id="3_dgj8b"]
 [ext_resource type="PackedScene" uid="uid://df3qjfdbfmxtg" path="res://scenes/ui/bosshealthbar.tscn" id="3_woc6i"]
 [ext_resource type="Script" uid="uid://38qumxndi7yy" path="res://scenes/ui/boss5healthbar.gd" id="4_tojjd"]
@@ -13,9 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://b1u42n22eogqn" path="res://scenes/ui/hpBar.tscn" id="7_j40kf"]
 [ext_resource type="PackedScene" uid="uid://b0m4623tpxvua" path="res://scenes/entities/fish.tscn" id="9_woc6i"]
 [ext_resource type="PackedScene" uid="uid://bxhi6du2j5byq" path="res://scenes/playerCam.tscn" id="10_8h6m7"]
+[ext_resource type="AudioStream" uid="uid://gca8vujf2xyh" path="res://Assets/music/boss5first.ogg" id="10_ug0t4"]
 [ext_resource type="AudioStream" uid="uid://bq1vl6xwqmf2w" path="res://Assets/sounds/ambience/deep-underwater-ambience-tonal-dark-402568.mp3" id="11_8h6m7"]
+[ext_resource type="AudioStream" uid="uid://badmfo15hfwti" path="res://Assets/music/boss5loop.ogg" id="11_cgvwj"]
 [ext_resource type="PackedScene" uid="uid://ctdgjqbc3eg2s" path="res://scenes/objects/roulette_wheel.tscn" id="12_lm27b"]
 [ext_resource type="PackedScene" uid="uid://dq84ppomvsvsd" path="res://scenes/entities/boss_5.tscn" id="14_j40kf"]
+[ext_resource type="Texture2D" uid="uid://dk72uxm7qs046" path="res://Assets/backgrounds/casinoBack.png" id="17_5pojn"]
+[ext_resource type="Texture2D" uid="uid://bljievqnjdura" path="res://Assets/backgrounds/casinoFore.png" id="18_hdlpk"]
+[ext_resource type="PackedScene" uid="uid://dnegu7lg7p353" path="res://scenes/particles/ambient_particles.tscn" id="21_cgvwj"]
 
 [sub_resource type="Animation" id="Animation_6qngc"]
 length = 0.001
@@ -140,6 +146,42 @@ _data = {
 &"splash": SubResource("Animation_dgj8b")
 }
 
+[sub_resource type="Animation" id="Animation_527wi"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-573.001, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ip3h6"]
+resource_name = "sway"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(573.001, -0.25, 0, 0.6, 51.622253, 2545, -1.139961, 16.88802, 0.87666655, -12.987427, 573.001, -0.63333344, 12.292175, 0.25, 0),
+"times": PackedFloat32Array(0, 1.49, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsrvb"]
+_data = {
+&"RESET": SubResource("Animation_527wi"),
+&"sway": SubResource("Animation_ip3h6")
+}
+
 [sub_resource type="Animation" id="Animation_fud0v"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -219,6 +261,253 @@ _data = {
 &"flash": SubResource("Animation_5pojn")
 }
 
+[sub_resource type="Animation" id="Animation_hdlpk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.38039216, 0.38039216, 0.38039216, 1)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(0.38039216, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(0.38039216, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(0.38039216, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:isReady")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ug0t4"]
+resource_name = "ready"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.38039216, 0.38039216, 0.38039216, 1), Color(0.84, 0.84, 0.84, 1)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(8.001, 0, 0, 0, 6.8725386, 16.241474, -0.3333333, 0.03810501, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(8.001, 0, 0, 0, 6.8725386, 16.241474, -0.3333333, 0.0581913, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:isReady")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_cgvwj"]
+resource_name = "unready"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(16.241, -0.25, 0, 0, -6.710411, 8, -0.26666665, 0.024116516, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(16.241, -0.25, 0, 0, -6.630066, 8, -0.26666665, -0.036141872, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.84, -0.25, 0, 0.25, 0, 0.38, -0.083333336, 0.07666667, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.84, -0.25, 0, 0.25, 0, 0.38, -0.083333336, 0.07666667, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.84, -0.25, 0, 0.25, 0, 0.38, -0.083333336, 0.07666667, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:isReady")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_527wi"]
+_data = {
+&"RESET": SubResource("Animation_hdlpk"),
+&"ready": SubResource("Animation_ug0t4"),
+&"unready": SubResource("Animation_cgvwj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pojn"]
+size = Vector2(20.372486, 102.98979)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdlpk"]
+size = Vector2(27.25029, 8.038773)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug0t4"]
+size = Vector2(34.569695, 4.555725)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgvwj"]
+size = Vector2(190.04776, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_527wi"]
+size = Vector2(26455, 422)
+
 [node name="game5" type="Node2D" unique_id=1499203329]
 script = ExtResource("1_eegog")
 
@@ -296,6 +585,59 @@ horizontal_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Prompts/betOnGreen" unique_id=1782936653]
 libraries/ = SubResource("AnimationLibrary_fud0v")
 
+[node name="collectGreen" type="RichTextLabel" parent="Prompts" unique_id=1093109684]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -673.0
+offset_top = -184.0
+offset_right = 673.0
+offset_bottom = -67.334564
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(671, 34)
+theme_override_fonts/normal_font = ExtResource("2_6qngc")
+theme_override_font_sizes/normal_font_size = 62
+bbcode_enabled = true
+text = "Collect the [color=green]Green"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prompts/collectGreen" unique_id=168430689]
+libraries/ = SubResource("AnimationLibrary_fud0v")
+
+[node name="collectNothing" type="RichTextLabel" parent="Prompts" unique_id=24180260]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -673.0
+offset_top = -184.0
+offset_right = 673.0
+offset_bottom = -67.3345
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(671, 34)
+theme_override_fonts/normal_font = ExtResource("2_6qngc")
+theme_override_font_sizes/normal_font_size = 62
+bbcode_enabled = true
+text = "Collect [color=gray]Nothing"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prompts/collectNothing" unique_id=158745699]
+libraries/ = SubResource("AnimationLibrary_fud0v")
+
+[node name="promptNoise" type="AudioStreamPlayer" parent="Prompts" unique_id=1948578606]
+stream = ExtResource("3_527wi")
+volume_db = 10.0
+bus = &"SFX"
+
 [node name="debug" type="CanvasLayer" parent="." unique_id=617108804]
 visible = false
 
@@ -338,30 +680,56 @@ script = ExtResource("4_tojjd")
 
 [node name="hpBar" parent="." unique_id=1830174198 instance=ExtResource("7_j40kf")]
 
+[node name="music" type="Node" parent="." unique_id=2129289272]
+
+[node name="intro" type="AudioStreamPlayer" parent="music" unique_id=1763704095]
+process_mode = 3
+stream = ExtResource("10_ug0t4")
+autoplay = true
+bus = &"Music"
+
+[node name="loop" type="AudioStreamPlayer" parent="music" unique_id=606142077]
+process_mode = 3
+stream = ExtResource("11_cgvwj")
+bus = &"Music"
+
 [node name="darkness" type="CanvasModulate" parent="." unique_id=384886316]
 position = Vector2(-395, -184)
 color = Color(0.44, 0.44, 0.44, 1)
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=2041568129]
-position = Vector2(-10386.999, -3955)
-scale = Vector2(33.916077, 33.916077)
-color = Color(0.36, 0.12600002, 0, 1)
-polygon = PackedVector2Array(96.326004, -8.403095, 43.489685, 999.3196, 1060.677, 1084.0876, 1105.8472, -9.140208)
+[node name="boss5" parent="." unique_id=582584505 instance=ExtResource("14_j40kf")]
+position = Vector2(8248, -573.001)
+rotation = 0.0027410686
+scale = Vector2(7.5869856, 7.5869856)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="boss5" unique_id=1931620034]
+libraries/ = SubResource("AnimationLibrary_vsrvb")
+autoplay = &"sway"
+speed_scale = 0.7
 
 [node name="StageLight" parent="." unique_id=1611069006 instance=ExtResource("1_7a45r")]
-position = Vector2(-4141, 152.00006)
+z_index = 600
+position = Vector2(-5816, 3818.0002)
 rotation = -0.57340586
 scale = Vector2(1.4184564, 1.4184564)
 
 [node name="StageLight2" parent="." unique_id=1398592668 instance=ExtResource("1_7a45r")]
-position = Vector2(20366.002, -111.0003)
+z_index = 600
+position = Vector2(22041, 3554.9998)
 rotation = 0.57126606
 scale = Vector2(1.4184564, 1.4184564)
 
+[node name="StageLight3" parent="." unique_id=269945963 instance=ExtResource("1_7a45r")]
+z_index = 600
+position = Vector2(7558.004, -18124)
+rotation = 0.0023707151
+scale = Vector2(1.9682599, 1.0429366)
+
 [node name="rouletteWheel" parent="." unique_id=662583383 instance=ExtResource("12_lm27b")]
+modulate = Color(0.38039216, 0.38039216, 0.38039216, 1)
 z_index = 100
-position = Vector2(8196, 16494)
-scale = Vector2(18.089602, 18.089602)
+position = Vector2(8196, 19723)
+scale = Vector2(8, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="rouletteWheel" unique_id=577659792]
 visible = false
@@ -373,23 +741,121 @@ offset = Vector2(15, 45)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="rouletteWheel/Sprite2D" unique_id=1609926792]
 libraries/ = SubResource("AnimationLibrary_hdlpk")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="rouletteWheel" unique_id=123784671]
+libraries/ = SubResource("AnimationLibrary_527wi")
+speed_scale = 0.7
+
 [node name="fish" parent="." unique_id=54584755 instance=ExtResource("9_woc6i")]
 z_index = 300
-position = Vector2(8058.999, 6528.9995)
+position = Vector2(8058.999, 10916)
 
 [node name="followCam" parent="fish" unique_id=912687775 instance=ExtResource("10_8h6m7")]
-zoom = Vector2(0.05, 0.05)
+position = Vector2(-35.99922, -180.7996)
+scale = Vector2(2.5456393, 0.4464018)
+zoom = Vector2(0.04, 0.04)
 limit_left = -4804
-limit_top = -3366
+limit_top = -4783
 limit_right = 20898
-limit_bottom = 25000
+limit_bottom = 29862
 limit_smoothed = true
+editor_draw_limits = true
 
 [node name="ambience" type="AudioStreamPlayer" parent="." unique_id=1309440307]
 stream = ExtResource("11_8h6m7")
 autoplay = true
 
-[node name="boss5" parent="." unique_id=582584505 instance=ExtResource("14_j40kf")]
-position = Vector2(9369, 1339)
-rotation = -0.42990023
-scale = Vector2(20.815195, 20.815195)
+[node name="backgrounds" type="Node2D" parent="." unique_id=1985300600]
+position = Vector2(8147, 16520)
+
+[node name="casinoBack" type="Sprite2D" parent="backgrounds" unique_id=1729985972]
+z_index = -500
+position = Vector2(0, 985)
+scale = Vector2(10.404703, 10.404703)
+texture = ExtResource("17_5pojn")
+
+[node name="casinoFore" type="Sprite2D" parent="backgrounds" unique_id=551517814]
+z_index = 500
+position = Vector2(0, 3349)
+scale = Vector2(15.229703, 15.229703)
+texture = ExtResource("18_hdlpk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="backgrounds" unique_id=1659335240 groups=["objects"]]
+z_index = 500
+position = Vector2(0, -679)
+scale = Vector2(1.1990168, 1.1990168)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=862960878]
+position = Vector2(-13917.5, -3189.5)
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_5pojn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=1792181237]
+position = Vector2(13811.004, -3189.5)
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_5pojn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=1023405934]
+position = Vector2(13811.004, 8052.5)
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_hdlpk")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=1329886168]
+position = Vector2(-13875.999, 8052.5)
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_hdlpk")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=748232270]
+position = Vector2(-13875.999, 8466.5)
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_ug0t4")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=71811766]
+position = Vector2(-13875.999, -16370.002)
+rotation = 3.1415927
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_hdlpk")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=742628249]
+position = Vector2(-13875.999, -16801)
+rotation = 3.1415927
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_ug0t4")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=368072337]
+position = Vector2(13781.001, -16370.002)
+rotation = 3.1415927
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_hdlpk")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=700907477]
+position = Vector2(13781.001, -16801)
+rotation = 3.1415927
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_ug0t4")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=485895617]
+position = Vector2(13803.005, 8466.5)
+scale = Vector2(237.72261, 237.72261)
+shape = SubResource("RectangleShape2D_ug0t4")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="backgrounds/StaticBody2D" unique_id=740419030]
+position = Vector2(0, 11559)
+scale = Vector2(254.44131, 254.44131)
+shape = SubResource("RectangleShape2D_cgvwj")
+
+[node name="Ambient Particles" parent="." unique_id=1318109393 instance=ExtResource("21_cgvwj")]
+z_index = 300
+position = Vector2(-36049, 30887)
+
+[node name="greenChipCheck" type="Area2D" parent="." unique_id=915864248]
+position = Vector2(0, 1222)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="greenChipCheck" unique_id=1469047637]
+z_index = 600
+position = Vector2(8924.5, 26466)
+scale = Vector2(2.0550516, 2.0550516)
+shape = SubResource("RectangleShape2D_527wi")
+debug_color = Color(0, 0.78, 0.16900001, 0.41960785)
+
+[connection signal="finished" from="music/intro" to="." method="_on_intro_finished"]
+[connection signal="area_entered" from="greenChipCheck" to="." method="_on_green_chip_check_area_entered"]

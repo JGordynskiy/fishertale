@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcs8e4huaa1w6"]
+[gd_scene format=3 uid="uid://bcs8e4huaa1w6"]
 
 [ext_resource type="Script" uid="uid://cxaxxfw4o8kk5" path="res://scenes/particles/shield_particles.gd" id="1_wg1en"]
 
@@ -19,7 +19,8 @@ scale_max = 100.0
 scale_curve = SubResource("CurveTexture_wg1en")
 color = Color(0.70533335, 0.48000002, 1, 1)
 
-[node name="shieldParticles" type="GPUParticles2D"]
+[node name="shieldParticles" type="GPUParticles2D" unique_id=2034887539]
+z_index = 400
 scale = Vector2(2.8011088, 2.8011088)
 emitting = false
 amount = 150

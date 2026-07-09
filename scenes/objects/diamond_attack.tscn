@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://da7r287p3yg47"]
+
+[ext_resource type="Script" uid="uid://c40bw20ivh2w" path="res://scenes/objects/diamond_attack.gd" id="1_e6miq"]
+[ext_resource type="Texture2D" uid="uid://d1gc5kqj3hbur" path="res://Assets/objects/diamond.png" id="1_xiucd"]
+[ext_resource type="AudioStream" uid="uid://jtykfvv58hnm" path="res://Assets/sounds/Diamond spawning sound effect.mp3" id="3_aihpi"]
+
+[sub_resource type="Animation" id="Animation_aihpi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nmbsx"]
+resource_name = "fadeIn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0009999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(2.53, 2.53), Vector2(0.75, 0.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1n1tp"]
+_data = {
+&"RESET": SubResource("Animation_aihpi"),
+&"fadeIn": SubResource("Animation_nmbsx")
+}
+
+[sub_resource type="Gradient" id="Gradient_aihpi"]
+colors = PackedColorArray(0.85, 0.49838334, 0.2295, 1, 1, 0.79733336, 0.62, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nmbsx"]
+gradient = SubResource("Gradient_aihpi")
+
+[sub_resource type="Curve" id="Curve_e6miq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.52112675, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_aihpi"]
+curve = SubResource("Curve_e6miq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nmbsx"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 0, 0)
+scale_min = 125.0
+scale_max = 125.0
+scale_curve = SubResource("CurveTexture_aihpi")
+color_ramp = SubResource("GradientTexture1D_nmbsx")
+
+[node name="diamondAttack" type="CharacterBody2D" unique_id=1425209029]
+z_index = 200
+script = ExtResource("1_e6miq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1601490902]
+modulate = Color(1, 1, 1, 0)
+rotation = 1.5707964
+texture = ExtResource("1_xiucd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=5878742]
+libraries/ = SubResource("AnimationLibrary_1n1tp")
+speed_scale = 1.5
+
+[node name="Area2D" type="Area2D" parent="." unique_id=927640359 groups=["dangerObj"]]
+rotation = 1.5707964
+scale = Vector2(0.72082925, 0.72082925)
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=49612014]
+polygon = PackedVector2Array(1.3872516, -903.12646, -337.11172, 1.4735621e-05, -4.1618333, 914.2248, 338.49902, -5.549179)
+
+[node name="spawnNoise" type="AudioStreamPlayer" parent="." unique_id=1016213262]
+stream = ExtResource("3_aihpi")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1207266848]
+scale = Vector2(1.829467, 1.829467)
+emitting = false
+amount = 50
+lifetime = 0.5
+visibility_rect = Rect2(-100000, -100000, 200000, 200000)
+process_material = SubResource("ParticleProcessMaterial_nmbsx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=403004531]
+
+[connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

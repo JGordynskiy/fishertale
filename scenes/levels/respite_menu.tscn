@@ -1256,6 +1256,49 @@ text = "Particularly unfond of the color orange.
 Charges and shoots at anything that moves."
 scroll_active = false
 
+[node name="boss5" type="RichTextLabel" parent="enemyMonitor/hints" unique_id=1701805490]
+visible = false
+clip_contents = false
+layout_mode = 0
+offset_left = 631.58276
+offset_top = 82.57446
+offset_right = 1481.6345
+offset_bottom = 500.21924
+scale = Vector2(0.80337787, 0.80337787)
+theme_override_colors/default_color = Color(1, 1, 0.45999998, 1)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Octoboss"
+
+[node name="boss5Sub" type="RichTextLabel" parent="enemyMonitor/hints/boss5" unique_id=628093849]
+layout_mode = 0
+offset_left = 3.1755981
+offset_top = 98.4394
+offset_right = 940.0716
+offset_bottom = 516.08417
+scale = Vector2(0.8193567, 0.8193567)
+theme_override_colors/default_color = Color(1, 1, 0.45882353, 1)
+theme_override_fonts/normal_font = ExtResource("10_vrvnp")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Gambling with your life"
+
+[node name="boss5Desc" type="RichTextLabel" parent="enemyMonitor/hints/boss5" unique_id=1301479351]
+layout_mode = 0
+offset_left = 5.777588
+offset_top = 179.09644
+offset_right = 827.95856
+offset_bottom = 596.7412
+scale = Vector2(1.0525964, 1.0525964)
+theme_override_fonts/normal_font = ExtResource("4_17bcf")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Self-proclaimed owner of all things shiny under the sea.
+
+You'll have to play by his rules to defeat him."
+scroll_active = false
+
 [node name="ScreenBackg" type="ColorRect" parent="enemyMonitor" unique_id=492666817]
 z_index = -15
 layout_mode = 0
@@ -1391,6 +1434,7 @@ scale = Vector2(0.03480081, 0.03480081)
 [node name="menuHpBar" parent="hpbar" unique_id=607520646 instance=ExtResource("31_1dcgu")]
 
 [node name="underconstruction" type="Control" parent="." unique_id=1583916380]
+visible = false
 z_index = 500
 layout_mode = 1
 anchors_preset = 15

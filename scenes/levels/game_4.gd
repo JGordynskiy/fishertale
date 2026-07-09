@@ -15,8 +15,8 @@ func _ready() -> void:
 	
 	
 	#Engine.physics_ticks_per_second = 120
-	$fish/followCam.zoom.y = 0.05
-	$fish/followCam.zoom.x = 0.05
+	$fish/followCam.zoom.y = 0.045
+	$fish/followCam.zoom.x = 0.045
 	
 	$darkness.visible = false
 	globalSignals.connect("boss4death", clear)
@@ -49,9 +49,9 @@ func pauseGame():
 	$Music/musicloop.bus = "lowpass"
 	$Music/musicend.bus = "lowpass"
 func unpauseGame():
-	$Music/musicint.bus = "Master"
-	$Music/musicloop.bus = "Master"
-	$Music/musicend.bus = "Master"
+	$Music/musicint.bus = "Music"
+	$Music/musicloop.bus = "Music"
+	$Music/musicend.bus = "Music"
 
 func clear():
 	

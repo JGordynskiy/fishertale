@@ -1,16 +1,16 @@
 extends Node2D
 
-@onready var game = get_tree().current_scene
+@onready var game = $".."
 @onready var fish = game.fish
 
 var spinSpeed = 0
 
 var spinning = false
 signal spinFinish
+@export var isReady = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	
 	pass # Replace with function body.
 
@@ -22,17 +22,18 @@ func _physics_process(delta: float) -> void:
 	
 	$wheel.global_rotation += spinSpeed*delta
 	$wheelTop.global_rotation -= spinSpeed*delta
+	$flashes.global_rotation = $wheel.global_rotation
 	
-	
-	if spinSpeed > 0.04:
-		spinSpeed -= 0.04
-	elif spinSpeed < -0.04:
-		spinSpeed += 0.04
-	else:
-		spinSpeed = 0
-		if spinning:
-			spinning = false
-			globalSignals.emit_signal("wheelFinish")
+	if isReady:
+		if spinSpeed > 0.04:
+			spinSpeed -= 0.04
+		elif spinSpeed < -0.04:
+			spinSpeed += 0.04
+		else:
+			spinSpeed = 0
+			if spinning:
+				spinning = false
+				globalSignals.emit_signal("wheelFinish")
 
 
 func spin():
@@ -48,6 +49,8 @@ func spin():
 	pass
 
 func popOut():
+	
+	
 	$wheelTop.z_index = 500
 	$pushAway/AnimationPlayer.play("push")
 	$wheelTop/StaticBody2D/CollisionPolygon2D.set_deferred("disabled", false)
@@ -66,6 +69,12 @@ func popIn():
 	$woodSlam.play()
 	$wheelTopShadow.hide()
 
+func flashRed():
+	$flashes/reds/AnimationPlayer.play("flash")
+func flashBlack():
+	$flashes/blacks/AnimationPlayer.play("flash")
+func flashGreen():
+	$flashes/greens/AnimationPlayer.play("flash")
 
 func _on_red_area_entered(area: Area2D) -> void:
 	if area.name == "fish":
